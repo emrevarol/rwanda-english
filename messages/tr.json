@@ -1,0 +1,172 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "dashboard": "Gösterge Paneli",
+    "writing": "Yazma",
+    "speaking": "Konuşma",
+    "listening": "Dinleme",
+    "tutor": "AI Öğretmen",
+    "assessment": "Seviye Testi",
+    "login": "Giriş Yap",
+    "register": "Kayıt Ol",
+    "logout": "Çıkış Yap"
+  },
+  "landing": {
+    "hero": {
+      "title": "İngilizce Yeterliliğinizi Artırın",
+      "subtitle": "Ruandalı öğretmenler için tasarlanmış AI destekli İngilizce öğrenme platformu. Kişiselleştirilmiş alıştırmalar ve anında AI geri bildirimiyle becerilerinizi geliştirin.",
+      "cta": "Ücretsiz Başla",
+      "login": "Hesabınız var mı? Giriş Yapın"
+    },
+    "features": {
+      "title": "Başarı İçin İhtiyacınız Olan Her Şey",
+      "writing": {
+        "title": "Yazma Pratiği",
+        "description": "IELTS tarzı makaleler ve raporlar yazın, dilbilgisi, kelime ve yapı konusunda anında AI geri bildirimi alın."
+      },
+      "speaking": {
+        "title": "Konuşma Pratiği",
+        "description": "Sesinizi kaydedin, AI öğretmenimizden akıcılık, telaffuz ve dilbilgisi hakkında ayrıntılı geri bildirim alın."
+      },
+      "listening": {
+        "title": "Dinleme Pratiği",
+        "description": "AI tarafından oluşturulan metinleri dinleyin ve anlama sorularını yanıtlayarak dinleme becerilerinizi keskinleştirin."
+      },
+      "tutor": {
+        "title": "AI Öğretmen Sohbeti",
+        "description": "Seviyenizi ve öğrenme hedeflerinizi bilen AI öğretmeninizden istediğiniz zaman kişiselleştirilmiş yardım alın."
+      }
+    },
+    "cefr": {
+      "title": "Seviyenize Uyum Sağlar",
+      "subtitle": "AI'mız her zaman doğru tempoda öğrenmeniz için CEFR seviyenize (A1-C2) uyum sağlar."
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Tekrar Hoş Geldiniz",
+      "subtitle": "İngilizce öğrenme yolculuğunuza devam etmek için giriş yapın",
+      "email": "E-posta",
+      "password": "Şifre",
+      "submit": "Giriş Yap",
+      "noAccount": "Hesabınız yok mu?",
+      "signUp": "Kayıt Ol",
+      "error": "Geçersiz e-posta veya şifre"
+    },
+    "register": {
+      "title": "Hesap Oluştur",
+      "subtitle": "Bugün İngilizce öğrenme yolculuğunuza başlayın",
+      "name": "Ad Soyad",
+      "email": "E-posta",
+      "password": "Şifre",
+      "language": "Tercih Edilen Dil",
+      "submit": "Hesap Oluştur",
+      "hasAccount": "Zaten hesabınız var mı?",
+      "login": "Giriş Yapın",
+      "success": "Hesap oluşturuldu! Lütfen giriş yapın."
+    }
+  },
+  "assessment": {
+    "title": "İngilizce Seviye Testi",
+    "subtitle": "CEFR seviyenizi belirlemek için 10 soruyu yanıtlayın. Bu, öğrenme deneyiminizi kişiselleştirmemize yardımcı olur.",
+    "question": "Soru",
+    "of": "/",
+    "next": "Sonraki Soru",
+    "submit": "Testi Gönder",
+    "yourAnswer": "Cevabınız...",
+    "result": {
+      "title": "Sonuçlarınız",
+      "level": "CEFR Seviyeniz",
+      "score": "Puan",
+      "feedback": "Geri Bildirim",
+      "dashboard": "Gösterge Paneline Git",
+      "retry": "Testi Yeniden Al"
+    }
+  },
+  "dashboard": {
+    "title": "Gösterge Paneliniz",
+    "welcome": "Tekrar hoş geldiniz",
+    "level": "CEFR Seviyesi",
+    "recentActivity": "Son Etkinlikler",
+    "skills": "Beceri Özeti",
+    "continuelearning": "Öğrenmeye Devam Et",
+    "writing": "Yazma",
+    "speaking": "Konuşma",
+    "listening": "Dinleme",
+    "vocabulary": "Kelime",
+    "grammar": "Dilbilgisi",
+    "noActivity": "Son etkinlik yok. Öğrenmeye başlayın!",
+    "bandScore": "Bant Puanı",
+    "fluencyScore": "Akıcılık Puanı"
+  },
+  "writing": {
+    "title": "Yazma Pratiği",
+    "task1": "Görev 1: Veri Açıklaması",
+    "task2": "Görev 2: Makale",
+    "prompt": "Yazma Sorusu",
+    "placeholder": "Buraya yazmaya başlayın...",
+    "wordCount": "Kelime",
+    "submit": "AI Geri Bildirimi Al",
+    "submitting": "Analiz ediliyor...",
+    "history": "Geçmiş Gönderiler",
+    "newTask": "Yeni Görev",
+    "feedback": {
+      "title": "AI Geri Bildirimi",
+      "band": "Bant Puanı",
+      "taskAchievement": "Görev Başarısı",
+      "coherence": "Uyum ve Tutarlılık",
+      "vocabulary": "Kelime",
+      "grammar": "Dilbilgisi",
+      "improved": "İyileştirilmiş Cümleler",
+      "overall": "Genel Geri Bildirim"
+    }
+  },
+  "speaking": {
+    "title": "Konuşma Pratiği",
+    "topic": "Konu",
+    "newTopic": "Yeni Konu",
+    "record": "Kaydı Başlat",
+    "stop": "Kaydı Durdur",
+    "recording": "Kaydediliyor...",
+    "analyzing": "Analiz ediliyor...",
+    "noSupport": "Konuşma tanıma tarayıcınızda desteklenmiyor. Lütfen Chrome kullanın.",
+    "transcript": "Konuşmanız",
+    "feedback": {
+      "title": "AI Geri Bildirimi",
+      "score": "Akıcılık Puanı",
+      "fluency": "Akıcılık",
+      "grammar": "Dilbilgisi",
+      "vocabulary": "Kelime",
+      "model": "Model Cevap",
+      "overall": "Genel Geri Bildirim"
+    }
+  },
+  "listening": {
+    "title": "Dinleme Pratiği",
+    "generate": "Yeni Metin Oluştur",
+    "generating": "Oluşturuluyor...",
+    "play": "Metni Oynat",
+    "stop": "Durdur",
+    "passage": "Metin",
+    "questions": "Anlama Soruları",
+    "submit": "Cevapları Gönder",
+    "result": "Puanınız",
+    "explanation": "Açıklama"
+  },
+  "tutor": {
+    "title": "AI Öğretmen",
+    "subtitle": "İngilizce hakkında her şeyi sorun!",
+    "placeholder": "Sorunuzu yazın...",
+    "send": "Gönder",
+    "suggestions": "Önerilen Sorular",
+    "thinking": "Düşünüyor..."
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Bir şeyler ters gitti",
+    "retry": "Tekrar Dene",
+    "back": "Geri",
+    "save": "Kaydet",
+    "cancel": "İptal"
+  }
+}

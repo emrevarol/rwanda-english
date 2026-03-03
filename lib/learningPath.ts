@@ -1,0 +1,229 @@
+// 365-day learning path curriculum
+// Each day = 2 tasks × 15 minutes
+
+export type TaskType = 'writing-essay' | 'writing-chart' | 'listening' | 'tutor' | 'vocabulary'
+
+export interface DayTask {
+  type: TaskType
+  title: string
+  description: string
+  duration: number // minutes
+  href: string
+  icon: string
+  color: string
+}
+
+export interface DayPlan {
+  day: number
+  week: number
+  theme: string
+  task1: DayTask
+  task2: DayTask
+  tip: string
+}
+
+const TASK_POOL: Record<TaskType, Omit<DayTask, 'description'>> = {
+  'writing-essay': {
+    type: 'writing-essay',
+    title: 'Essay Writing',
+    duration: 15,
+    href: '/writing',
+    icon: '✍️',
+    color: 'blue',
+  },
+  'writing-chart': {
+    type: 'writing-chart',
+    title: 'Data Description',
+    duration: 15,
+    href: '/writing',
+    icon: '📊',
+    color: 'indigo',
+  },
+  listening: {
+    type: 'listening',
+    title: 'Listening Practice',
+    duration: 15,
+    href: '/listening',
+    icon: '🎧',
+    color: 'purple',
+  },
+  tutor: {
+    type: 'tutor',
+    title: 'AI Tutor Session',
+    duration: 15,
+    href: '/tutor',
+    icon: '🤖',
+    color: 'green',
+  },
+  vocabulary: {
+    type: 'vocabulary',
+    title: 'Vocabulary & Grammar',
+    duration: 15,
+    href: '/tutor',
+    icon: '📚',
+    color: 'orange',
+  },
+}
+
+// 7-day rotating schedule
+const WEEKLY_PATTERNS: Array<{ task1: TaskType; task2: TaskType; theme: string; tip: string }> = [
+  {
+    task1: 'writing-essay',
+    task2: 'listening',
+    theme: 'Expression & Comprehension',
+    tip: 'Read your essay aloud after writing — it helps catch grammar errors.',
+  },
+  {
+    task1: 'tutor',
+    task2: 'writing-chart',
+    theme: 'Grammar Focus',
+    tip: 'Ask your AI tutor about one grammar rule you struggle with.',
+  },
+  {
+    task1: 'listening',
+    task2: 'writing-essay',
+    theme: 'Input & Output',
+    tip: 'Listen to the passage twice before answering questions.',
+  },
+  {
+    task1: 'writing-chart',
+    task2: 'tutor',
+    theme: 'Academic Skills',
+    tip: 'Use phrases like "The data shows..." and "It is evident that..." in your chart description.',
+  },
+  {
+    task1: 'vocabulary',
+    task2: 'listening',
+    theme: 'Vocabulary Building',
+    tip: 'Learn 3 new words today and use them in a sentence.',
+  },
+  {
+    task1: 'tutor',
+    task2: 'writing-essay',
+    theme: 'Fluency & Writing',
+    tip: 'Set a 15-minute timer and write without stopping — quantity builds fluency.',
+  },
+  {
+    task1: 'listening',
+    task2: 'vocabulary',
+    theme: 'Weekly Review',
+    tip: 'Review what you learned this week. What was most challenging?',
+  },
+]
+
+const TASK_DESCRIPTIONS: Record<TaskType, (day: number, level: string) => string> = {
+  'writing-essay': (day, level) => {
+    const topics: Record<string, string[]> = {
+      A1: ['Write about your school', 'Describe your classroom', 'Write about your favorite teacher'],
+      A2: ['Write about why education is important', 'Describe a good lesson you taught'],
+      B1: ['Should technology replace teachers? Give your opinion', 'What makes a great school?'],
+      B2: ['Discuss the impact of English on Rwandan education', 'Evaluate teacher training programs'],
+      C1: ['Critically assess inclusive education policies in Rwanda', 'Analyze curriculum reform challenges'],
+      C2: ['Evaluate philosophical approaches to education equity in Africa'],
+    }
+    const t = topics[level] || topics['B1']
+    return t[day % t.length]
+  },
+  'writing-chart': (day, level) => {
+    const topics: Record<string, string[]> = {
+      A1: ['Describe the table showing class sizes'],
+      A2: ['Summarize the bar chart about student attendance'],
+      B1: ['Describe the line graph showing literacy rates 2010-2023'],
+      B2: ['Analyze the charts comparing education spending across East Africa'],
+      C1: ['Synthesize the data on teacher-student ratios and learning outcomes'],
+      C2: ['Critically evaluate the statistical evidence on education inequality'],
+    }
+    const t = topics[level] || topics['B1']
+    return t[day % t.length]
+  },
+  listening: (day, level) => 'Listen to the AI-generated passage and answer comprehension questions',
+  tutor: (day, level) => {
+    const prompts: Record<string, string[]> = {
+      A1: ['Practice basic greetings and introductions', 'Ask about simple grammar rules'],
+      A2: ['Practice talking about daily routines', 'Learn common classroom expressions'],
+      B1: ['Discuss challenges of teaching in English', 'Practice explaining complex ideas simply'],
+      B2: ['Debate education policy topics', 'Practice formal academic language'],
+      C1: ['Discuss research and evidence in education', 'Practice academic argument construction'],
+      C2: ['Engage in sophisticated pedagogical debate', 'Critique educational philosophies'],
+    }
+    const t = prompts[level] || prompts['B1']
+    return t[day % t.length]
+  },
+  vocabulary: (day, level) => {
+    const sessions: Record<string, string[]> = {
+      A1: ['Learn 5 classroom words', 'Practice common verbs'],
+      A2: ['Learn education vocabulary', 'Practice adjectives'],
+      B1: ['Academic word list — Group ' + ((day % 10) + 1), 'Connective phrases for essays'],
+      B2: ['Advanced academic vocabulary', 'Idiomatic expressions in education'],
+      C1: ['Technical pedagogical vocabulary', 'Rhetorical devices and discourse markers'],
+      C2: ['Nuanced academic register', 'Collocations and fixed phrases'],
+    }
+    const t = sessions[level] || sessions['B1']
+    return t[day % t.length]
+  },
+}
+
+export function getDayPlan(dayNumber: number, level: string): DayPlan {
+  const weekIndex = (dayNumber - 1) % 7
+  const pattern = WEEKLY_PATTERNS[weekIndex]
+  const week = Math.ceil(dayNumber / 7)
+
+  const makeTask = (type: TaskType): DayTask => ({
+    ...TASK_POOL[type],
+    description: TASK_DESCRIPTIONS[type](dayNumber, level),
+  })
+
+  return {
+    day: dayNumber,
+    week,
+    theme: pattern.theme,
+    task1: makeTask(pattern.task1),
+    task2: makeTask(pattern.task2),
+    tip: pattern.tip,
+  }
+}
+
+export function getTodayDayNumber(startDate: Date): number {
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  const start = new Date(startDate)
+  start.setHours(0, 0, 0, 0)
+  const diffMs = today.getTime() - start.getTime()
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
+  return Math.min(Math.max(diffDays + 1, 1), 365)
+}
+
+export function getTodayString(): string {
+  return new Date().toISOString().split('T')[0]
+}
+
+export function getStreakCount(completedDates: string[]): number {
+  if (completedDates.length === 0) return 0
+  const sorted = [...completedDates].sort().reverse()
+  const today = getTodayString()
+  const yesterday = new Date()
+  yesterday.setDate(yesterday.getDate() - 1)
+  const yesterdayStr = yesterday.toISOString().split('T')[0]
+
+  if (sorted[0] !== today && sorted[0] !== yesterdayStr) return 0
+
+  let streak = 0
+  let current = new Date()
+  if (sorted[0] === today) {
+    streak = 1
+    current.setDate(current.getDate() - 1)
+  } else {
+    current = yesterday
+  }
+
+  for (let i = 1; i < sorted.length; i++) {
+    const expected = current.toISOString().split('T')[0]
+    if (sorted[i] === expected) {
+      streak++
+      current.setDate(current.getDate() - 1)
+    } else {
+      break
+    }
+  }
+  return streak
+}

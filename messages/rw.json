@@ -1,0 +1,172 @@
+{
+  "nav": {
+    "home": "Ahabanza",
+    "dashboard": "Ikibaho",
+    "writing": "Inyandiko",
+    "speaking": "Kuvuga",
+    "listening": "Kumva",
+    "tutor": "Mwarimu wa AI",
+    "assessment": "Ikizamini",
+    "login": "Injira",
+    "register": "Iyandikishe",
+    "logout": "Sohoka"
+  },
+  "landing": {
+    "hero": {
+      "title": "Noneho Neza Icyongereza Cyawe",
+      "subtitle": "Urubuga rwigisha Icyongereza gifashijwe na AI, rushinzwe abarimu b'u Rwanda. Noneho ubumenyi bwawe ukoresheje imyitozo bwite n'igisubizo cya AI.",
+      "cta": "Tangira Ubuntu",
+      "login": "Usanzwe ufite konti? Injira"
+    },
+    "features": {
+      "title": "Byose Ukeneye Kuzamuka",
+      "writing": {
+        "title": "Imyitozo yo Kwandika",
+        "description": "Imyitozo yandike nk'iy'IELTS n'ibisubizo bya AI ku bya giramarki, ijambo, n'imiterere."
+      },
+      "speaking": {
+        "title": "Imyitozo yo Kuvuga",
+        "description": "Shiraho ijwi ryawe ubone igisubizo girambuye ku bungubu, imvugo, no giramarki."
+      },
+      "listening": {
+        "title": "Imyitozo yo Kumva",
+        "description": "Kumva inshamake zakozwe na AI uzisuzume kugira ngo noneha ubushobozi bwawe bwo kumva."
+      },
+      "tutor": {
+        "title": "Ikiganiro na Mwarimu wa AI",
+        "description": "Bona ubufasha bwite igihe cyose bwa mwarimu wa AI uzi urwego rwawe n'intego zo kwiga."
+      }
+    },
+    "cefr": {
+      "title": "Yihinduranya no Rwego Rwawe",
+      "subtitle": "AI yacu yihinduranya n'urwego rwawe rwa CEFR (A1-C2) kugira ngo buri gihe uzige mu cyiciro gikwiriye."
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Murakaza Neza",
+      "subtitle": "Injira gukomeza urugendo rwawe rwo kwiga Icyongereza",
+      "email": "Imeyili",
+      "password": "Ijambo ry'ibanga",
+      "submit": "Injira",
+      "noAccount": "Nta konti ufite?",
+      "signUp": "Iyandikishe",
+      "error": "Imeyili cyangwa ijambo ry'ibanga ntabwo ari ryo"
+    },
+    "register": {
+      "title": "Fungura Konti",
+      "subtitle": "Tangira urugendo rwawe rwo kwiga Icyongereza uyu munsi",
+      "name": "Amazina Yuzuye",
+      "email": "Imeyili",
+      "password": "Ijambo ry'ibanga",
+      "language": "Ururimi Rwakunda",
+      "submit": "Fungura Konti",
+      "hasAccount": "Usanzwe ufite konti?",
+      "login": "Injira",
+      "success": "Konti yakozwe! Nyamuneka injira."
+    }
+  },
+  "assessment": {
+    "title": "Ikizamini cy'Icyongereza",
+    "subtitle": "Subiza ibibazo 10 kugira ngo bimenye urwego rwawe rwa CEFR. Bitugirira ngo bwite ubwigishirize bwawe.",
+    "question": "Ikibazo",
+    "of": "kuri",
+    "next": "Ikibazo Gikurkurikira",
+    "submit": "Ohereza Ikizamini",
+    "yourAnswer": "Igisubizo cyawe...",
+    "result": {
+      "title": "Ibyavuye",
+      "level": "Urwego Rwawe rwa CEFR",
+      "score": "Amanota",
+      "feedback": "Igisubizo",
+      "dashboard": "Genda ku Kibaho",
+      "retry": "Subiramo Ikizamini"
+    }
+  },
+  "dashboard": {
+    "title": "Ikibaho Cyawe",
+    "welcome": "Murakaza neza",
+    "level": "Urwego rwa CEFR",
+    "recentActivity": "Ibikorwa Biheruka",
+    "skills": "Incamake y'Ubumenyi",
+    "continuelearning": "Komeza Kwiga",
+    "writing": "Kwandika",
+    "speaking": "Kuvuga",
+    "listening": "Kumva",
+    "vocabulary": "Ijambo",
+    "grammar": "Giramariki",
+    "noActivity": "Nta bikorwa biheruka. Tangira kwiga!",
+    "bandScore": "Amanota",
+    "fluencyScore": "Amanota yo Kuvuga"
+  },
+  "writing": {
+    "title": "Imyitozo yo Kwandika",
+    "task1": "Inshingano 1: Gusobanura Amakuru",
+    "task2": "Inshingano 2: Inshamake",
+    "prompt": "Ikibazo cyo Kwandika",
+    "placeholder": "Tangira kwandika hano...",
+    "wordCount": "Amagambo",
+    "submit": "Bona Igisubizo cya AI",
+    "submitting": "Isuzumwa...",
+    "history": "Inyandiko z'Aho Hasaga",
+    "newTask": "Inshingano Nshya",
+    "feedback": {
+      "title": "Igisubizo cya AI",
+      "band": "Amanota",
+      "taskAchievement": "Kuzuza Inshingano",
+      "coherence": "Guhuza no Guhuzanya",
+      "vocabulary": "Ijambo",
+      "grammar": "Giramariki",
+      "improved": "Interuro Nziza",
+      "overall": "Igisubizo Rusange"
+    }
+  },
+  "speaking": {
+    "title": "Imyitozo yo Kuvuga",
+    "topic": "Ikiganiro",
+    "newTopic": "Ikiganiro Gishya",
+    "record": "Tangira Kwandika Ijwi",
+    "stop": "Hagarika Kwandika Ijwi",
+    "recording": "Kwandika Ijwi...",
+    "analyzing": "Isuzumwa...",
+    "noSupport": "Gushyiraho ijwi ntabwo bikunzwe muri porogaramu yawe. Nyamuneka koresha Chrome.",
+    "transcript": "Ijwi Ryawe",
+    "feedback": {
+      "title": "Igisubizo cya AI",
+      "score": "Amanota yo Kuvuga",
+      "fluency": "Bungubu",
+      "grammar": "Giramariki",
+      "vocabulary": "Ijambo",
+      "model": "Igisubizo cy'Akarorero",
+      "overall": "Igisubizo Rusange"
+    }
+  },
+  "listening": {
+    "title": "Imyitozo yo Kumva",
+    "generate": "Kora Inshamake Nshya",
+    "generating": "Ikorwa...",
+    "play": "Vuga Inshamake",
+    "stop": "Hagarika",
+    "passage": "Inshamake",
+    "questions": "Ibibazo by'Kumva",
+    "submit": "Ohereza Ibisubizo",
+    "result": "Amanota Yawe",
+    "explanation": "Ibisobanuro"
+  },
+  "tutor": {
+    "title": "Mwarimu wa AI",
+    "subtitle": "Mbaza icyo ushaka ku Cyongereza!",
+    "placeholder": "Andika ikibazo cyawe...",
+    "send": "Ohereza",
+    "suggestions": "Ibibazo Byasabwa",
+    "thinking": "Ntekereza..."
+  },
+  "common": {
+    "loading": "Gutegereza...",
+    "error": "Habaye ikosa",
+    "retry": "Gerageza Nanone",
+    "back": "Subira",
+    "save": "Bika",
+    "cancel": "Hagarika"
+  }
+}

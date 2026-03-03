@@ -1,0 +1,39 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
+import { analyzeSpeaking } from '@/lib/claude'
+import { prisma } from '@/lib/db'
+import { isMockMode, mockSpeakingFeedback } from '@/lib/mock'
+
+export async function POST(req: NextRequest) {
+  try {
+    const session = await getServerSession(authOptions)
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    const { transcript, topic } = await req.json()
+
+    if (!transcript || !topic) {
+      return NextResponse.json({ error: 'Missing fields' }, { status: 400 })
+    }
+
+    const feedback = isMockMode()
+      ? mockSpeakingFeedback
+      : await analyzeSpeaking(transcript, topic, session.user.level, session.user.language)
+
+    await prisma.speakingSubmission.create({
+      data: {
+        userId: session.user.id,
+        transcript,
+        feedback: JSON.stringify(feedback),
+        score: feedback.score || 5,
+      },
+    })
+
+    return NextResponse.json(feedback)
+  } catch (error) {
+    console.error('Speaking analyze error:', error)
+    return NextResponse.json({ error: 'Failed to analyze speaking' }, { status: 500 })
+  }
+}

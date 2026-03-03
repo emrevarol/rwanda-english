@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String               @id @default(cuid())
+  name                String
+  email               String               @unique
+  password            String
+  level               String               @default("B1")
+  language            String               @default("en")
+  createdAt           DateTime             @default(now())
+  writingSubmissions  WritingSubmission[]
+  speakingSubmissions SpeakingSubmission[]
+  listeningSessions   ListeningSession[]
+  chatMessages        ChatMessage[]
+  dailyProgress       DailyProgress[]
+}
+
+model WritingSubmission {
+  id        String   @id @default(cuid())
+  userId    String
+  taskType  String
+  prompt    String
+  response  String
+  feedback  String
+  band      Float
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model SpeakingSubmission {
+  id         String   @id @default(cuid())
+  userId     String
+  transcript String
+  feedback   String
+  score      Float
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
+}
+
+model ListeningSession {
+  id        String   @id @default(cuid())
+  userId    String
+  passage   String
+  score     Float
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  userId    String
+  role      String
+  content   String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model DailyProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  date      String
+  task1Type String
+  task1Done Boolean  @default(false)
+  task2Type String
+  task2Done Boolean  @default(false)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, date])
+}
