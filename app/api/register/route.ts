@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import { prisma } from '@/lib/db'
+import { sendOtpEmail } from '@/lib/email'
 
 function generateOtp(): string {
   return Math.floor(100000 + Math.random() * 900000).toString()
@@ -54,9 +55,13 @@ export async function POST(req: NextRequest) {
       },
     })
 
-    // In production, send email here (Resend, SendGrid, etc.)
-    // For now, log to console
-    console.log(`\n📧 OTP for ${email}: ${code}\n`)
+    // Send OTP via email
+    try {
+      await sendOtpEmail(email, code, name)
+    } catch (emailErr) {
+      console.error('Email send failed:', emailErr)
+      // Still return success — user can request resend
+    }
 
     return NextResponse.json({
       success: true,

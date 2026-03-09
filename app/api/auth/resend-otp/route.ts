@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
+import { sendOtpEmail } from '@/lib/email'
 
 function generateOtp(): string {
   return Math.floor(100000 + Math.random() * 900000).toString()
@@ -38,7 +39,11 @@ export async function POST(req: NextRequest) {
       },
     })
 
-    console.log(`\n📧 OTP for ${email}: ${code}\n`)
+    try {
+      await sendOtpEmail(email, code, user.name || 'User')
+    } catch (emailErr) {
+      console.error('Email send failed:', emailErr)
+    }
 
     return NextResponse.json({
       success: true,
