@@ -21,8 +21,9 @@ export default function SpeakingPage() {
   const { data: session, status } = useSession()
 
   const [topic, setTopic] = useState('')
+  const [mode, setMode] = useState<'text' | 'voice'>('text')
   const [voiceSupported, setVoiceSupported] = useState(false)
-  const [mode, setMode] = useState<'voice' | 'text'>('voice')
+  const [voiceTested, setVoiceTested] = useState(false)
   const [transcript, setTranscript] = useState('')
   const [isRecording, setIsRecording] = useState(false)
   const [feedback, setFeedback] = useState<Feedback | null>(null)
@@ -30,14 +31,10 @@ export default function SpeakingPage() {
   const [error, setError] = useState('')
   const recognitionRef = useRef<any>(null)
 
-  // Check if SpeechRecognition API exists (don't test-start, just check)
+  // Check if SpeechRecognition API exists
   useEffect(() => {
     const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
-    if (SR) {
-      setVoiceSupported(true)
-    } else {
-      setMode('text')
-    }
+    if (SR) setVoiceSupported(true)
   }, [])
 
   useEffect(() => {
@@ -85,13 +82,17 @@ export default function SpeakingPage() {
       setIsRecording(false)
       if (event.error === 'network' || event.error === 'audio-capture' || event.error === 'service-not-allowed') {
         setVoiceSupported(false)
+        setVoiceTested(true)
         setMode('text')
-        setError(t('errorNetwork'))
       } else if (event.error === 'not-allowed') {
         setError(t('errorNotAllowed'))
       } else {
         setError(t('errorGeneric', { error: event.error }))
       }
+    }
+
+    recognition.onstart = () => {
+      setVoiceTested(true)
     }
 
     recognition.onend = () => {
@@ -180,17 +181,9 @@ export default function SpeakingPage() {
           </div>
         </div>
 
-        {/* Mode selector — only show if voice is available */}
+        {/* Mode selector — show voice option only if API exists and hasn't failed */}
         {voiceSupported && (
           <div className="flex gap-2 mb-4">
-            <button
-              onClick={() => setMode('voice')}
-              className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                mode === 'voice' ? 'bg-blue-600 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
-              }`}
-            >
-              🎙️ {t('voiceMode')}
-            </button>
             <button
               onClick={() => setMode('text')}
               className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-colors ${
@@ -198,6 +191,14 @@ export default function SpeakingPage() {
               }`}
             >
               ⌨️ {t('textMode')}
+            </button>
+            <button
+              onClick={() => setMode('voice')}
+              className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                mode === 'voice' ? 'bg-blue-600 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              🎙️ {t('voiceMode')}
             </button>
           </div>
         )}
@@ -232,7 +233,10 @@ export default function SpeakingPage() {
             </div>
           ) : (
             <div>
-              <p className="text-sm text-gray-500 mb-3">{t('textModeDesc')}</p>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-2xl">💬</span>
+                <p className="text-sm text-gray-500">{t('textModeDesc')}</p>
+              </div>
               <textarea
                 value={transcript}
                 onChange={(e) => setTranscript(e.target.value)}
