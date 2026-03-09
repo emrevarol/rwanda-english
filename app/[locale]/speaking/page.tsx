@@ -21,21 +21,17 @@ export default function SpeakingPage() {
   const { data: session, status } = useSession()
 
   const [topic, setTopic] = useState('')
-  const [mode, setMode] = useState<'text' | 'voice'>('text')
-  const [voiceSupported, setVoiceSupported] = useState(false)
-  const [voiceTested, setVoiceTested] = useState(false)
+  const [mode, setMode] = useState<'voice' | 'text'>('voice')
   const [transcript, setTranscript] = useState('')
   const [isRecording, setIsRecording] = useState(false)
+  const [isTranscribing, setIsTranscribing] = useState(false)
   const [feedback, setFeedback] = useState<Feedback | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const recognitionRef = useRef<any>(null)
-
-  // Check if SpeechRecognition API exists
-  useEffect(() => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
-    if (SR) setVoiceSupported(true)
-  }, [])
+  const [recordingTime, setRecordingTime] = useState(0)
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null)
+  const chunksRef = useRef<Blob[]>([])
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     if (session?.user?.level) {
@@ -48,70 +44,86 @@ export default function SpeakingPage() {
     setTranscript('')
     setFeedback(null)
     setError('')
+    setRecordingTime(0)
   }
 
-  const startRecording = () => {
+  const startRecording = async () => {
     setError('')
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
-    if (!SpeechRecognition) {
-      setError(t('noSupport'))
-      setMode('text')
-      return
-    }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      const mediaRecorder = new MediaRecorder(stream, {
+        mimeType: MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
+          ? 'audio/webm;codecs=opus'
+          : 'audio/webm',
+      })
 
-    const recognition = new SpeechRecognition()
-    recognition.continuous = true
-    recognition.interimResults = true
-    recognition.lang = 'en-US'
-
-    let finalTranscript = transcript
-
-    recognition.onresult = (event: any) => {
-      let interim = ''
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        if (event.results[i].isFinal) {
-          finalTranscript += event.results[i][0].transcript + ' '
-        } else {
-          interim += event.results[i][0].transcript
-        }
+      chunksRef.current = []
+      mediaRecorder.ondataavailable = (e) => {
+        if (e.data.size > 0) chunksRef.current.push(e.data)
       }
-      setTranscript(finalTranscript + interim)
-    }
 
-    recognition.onerror = (event: any) => {
-      setIsRecording(false)
-      if (event.error === 'network' || event.error === 'audio-capture' || event.error === 'service-not-allowed') {
-        setVoiceSupported(false)
-        setVoiceTested(true)
-        setMode('text')
-      } else if (event.error === 'not-allowed') {
+      mediaRecorder.onstop = async () => {
+        // Stop all tracks
+        stream.getTracks().forEach((track) => track.stop())
+        // Stop timer
+        if (timerRef.current) clearInterval(timerRef.current)
+
+        const blob = new Blob(chunksRef.current, { type: 'audio/webm' })
+        if (blob.size < 1000) {
+          setError(t('errorTooShort'))
+          return
+        }
+        await transcribeAudio(blob)
+      }
+
+      mediaRecorder.start(250) // collect data every 250ms
+      mediaRecorderRef.current = mediaRecorder
+      setIsRecording(true)
+      setRecordingTime(0)
+
+      // Start timer
+      timerRef.current = setInterval(() => {
+        setRecordingTime((prev) => prev + 1)
+      }, 1000)
+    } catch (err: any) {
+      if (err.name === 'NotAllowedError') {
         setError(t('errorNotAllowed'))
       } else {
-        setError(t('errorGeneric', { error: event.error }))
+        setError(t('errorMicStart', { error: err.message }))
       }
-    }
-
-    recognition.onstart = () => {
-      setVoiceTested(true)
-    }
-
-    recognition.onend = () => {
-      setIsRecording(false)
-      setTranscript(finalTranscript)
-    }
-
-    try {
-      recognition.start()
-      recognitionRef.current = recognition
-      setIsRecording(true)
-    } catch (err: any) {
-      setError(t('errorMicStart', { error: err.message }))
     }
   }
 
   const stopRecording = () => {
-    recognitionRef.current?.stop()
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+      mediaRecorderRef.current.stop()
+    }
     setIsRecording(false)
+  }
+
+  const transcribeAudio = async (blob: Blob) => {
+    setIsTranscribing(true)
+    try {
+      const formData = new FormData()
+      formData.append('audio', blob, 'recording.webm')
+
+      const res = await fetch('/api/speaking/transcribe', {
+        method: 'POST',
+        body: formData,
+      })
+
+      const data = await res.json()
+      if (!res.ok || data.error) {
+        setError(data.error || 'Transcription failed')
+      } else if (!data.transcript?.trim()) {
+        setError(t('errorNoSpeech'))
+      } else {
+        setTranscript((prev) => (prev ? prev + ' ' + data.transcript : data.transcript))
+      }
+    } catch {
+      setError(t('errorNetwork'))
+    }
+    setIsTranscribing(false)
   }
 
   const submitForFeedback = async () => {
@@ -152,6 +164,12 @@ export default function SpeakingPage() {
     return 'text-red-600'
   }
 
+  const formatTime = (seconds: number) => {
+    const m = Math.floor(seconds / 60)
+    const s = seconds % 60
+    return `${m}:${s.toString().padStart(2, '0')}`
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
@@ -181,53 +199,65 @@ export default function SpeakingPage() {
           </div>
         </div>
 
-        {/* Mode selector — show voice option only if API exists and hasn't failed */}
-        {voiceSupported && (
-          <div className="flex gap-2 mb-4">
-            <button
-              onClick={() => setMode('text')}
-              className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                mode === 'text' ? 'bg-blue-600 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
-              }`}
-            >
-              ⌨️ {t('textMode')}
-            </button>
-            <button
-              onClick={() => setMode('voice')}
-              className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                mode === 'voice' ? 'bg-blue-600 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
-              }`}
-            >
-              🎙️ {t('voiceMode')}
-            </button>
-          </div>
-        )}
+        {/* Mode selector */}
+        <div className="flex gap-2 mb-4">
+          <button
+            onClick={() => setMode('voice')}
+            className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+              mode === 'voice' ? 'bg-blue-600 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
+            }`}
+          >
+            🎙️ {t('voiceMode')}
+          </button>
+          <button
+            onClick={() => setMode('text')}
+            className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+              mode === 'text' ? 'bg-blue-600 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
+            }`}
+          >
+            ⌨️ {t('textMode')}
+          </button>
+        </div>
 
         {/* Input area */}
         <div className="bg-white rounded-xl border border-gray-200 p-5 mb-4">
-          {mode === 'voice' && voiceSupported ? (
+          {mode === 'voice' ? (
             <div className="text-center space-y-4">
               {/* Record button */}
               <button
                 onClick={isRecording ? stopRecording : startRecording}
-                disabled={loading}
+                disabled={loading || isTranscribing}
                 className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl mx-auto transition-all ${
                   isRecording
                     ? 'bg-red-500 text-white animate-pulse shadow-lg shadow-red-200'
-                    : 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-200'
+                    : isTranscribing
+                      ? 'bg-gray-300 text-gray-500'
+                      : 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-200'
                 }`}
               >
-                {isRecording ? '⏹' : '🎙️'}
+                {isRecording ? '⏹' : isTranscribing ? '...' : '🎙️'}
               </button>
               <p className="text-sm text-gray-500">
-                {isRecording ? t('recording') : t('record')}
+                {isRecording
+                  ? `${t('recording')} — ${formatTime(recordingTime)}`
+                  : isTranscribing
+                    ? t('transcribing')
+                    : t('record')}
               </p>
               {/* Show transcript */}
               {transcript && (
                 <div className="text-left bg-gray-50 rounded-lg p-4 mt-4">
                   <div className="text-xs font-medium text-gray-400 mb-1">{t('transcript')}</div>
                   <p className="text-sm text-gray-800 leading-relaxed">{transcript}</p>
-                  <div className="text-xs text-gray-400 mt-2">{wordCount} {t('words')}</div>
+                  <div className="flex items-center justify-between mt-2">
+                    <div className="text-xs text-gray-400">{wordCount} {t('words')}</div>
+                    <button
+                      onClick={() => setTranscript('')}
+                      className="text-xs text-red-400 hover:text-red-600"
+                    >
+                      {t('clear')}
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
@@ -252,7 +282,7 @@ export default function SpeakingPage() {
           {transcript.trim() && !feedback && (
             <button
               onClick={submitForFeedback}
-              disabled={loading || wordCount < 3}
+              disabled={loading || wordCount < 3 || isTranscribing}
               className="w-full mt-4 bg-blue-600 text-white py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors disabled:opacity-50"
             >
               {loading ? t('analyzing') : t('getAIFeedback')}
