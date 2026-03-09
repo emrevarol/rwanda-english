@@ -433,7 +433,7 @@
     },
     "shareProgress": "進捗を共有",
     "shareYourProgress": "あなたの進捗を共有",
-    "shareText": "{name}はEnglishProで{level}レベルです！ライティング：{writing}/9 · スピーキング：{speaking}% · リスニング：{listening}%",
+    "shareText": "{name}はenglish.cashで{level}レベルです！ライティング：{writing}/9 · スピーキング：{speaking}% · リスニング：{listening}%",
     "shareCardSubtitle": "英語学習の進捗",
     "writing": "ライティング",
     "speaking": "スピーキング",

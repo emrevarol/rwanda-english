@@ -6,12 +6,12 @@ function getResend() {
 
 export async function sendOtpEmail(to: string, code: string, name: string) {
   const { error } = await getResend().emails.send({
-    from: 'EnglishPro <onboarding@resend.dev>',
+    from: 'english.cash <onboarding@resend.dev>',
     to,
     subject: `Your verification code: ${code}`,
     html: `
       <div style="font-family: sans-serif; max-width: 400px; margin: 0 auto; padding: 20px;">
-        <h2 style="color: #2563eb; margin-bottom: 8px;">EnglishPro</h2>
+        <h2 style="color: #2563eb; margin-bottom: 8px;">english.cash</h2>
         <p>Hi ${name},</p>
         <p>Your verification code is:</p>
         <div style="background: #f0f4ff; border: 2px solid #2563eb; border-radius: 12px; padding: 20px; text-align: center; margin: 20px 0;">

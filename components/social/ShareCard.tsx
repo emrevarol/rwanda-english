@@ -74,7 +74,7 @@ export default function ShareCard({ userName, userLevel, onClose }: Props) {
       ctx.fillStyle = 'white'
       ctx.font = 'bold 28px Inter, sans-serif'
       ctx.textAlign = 'center'
-      ctx.fillText('EnglishPro', 300, 70)
+      ctx.fillText('english.cash', 300, 70)
 
       ctx.font = '16px Inter, sans-serif'
       ctx.fillStyle = 'rgba(255,255,255,0.8)'
@@ -98,10 +98,10 @@ export default function ShareCard({ userName, userLevel, onClose }: Props) {
       // Footer
       ctx.font = '14px Inter, sans-serif'
       ctx.fillStyle = 'rgba(255,255,255,0.5)'
-      ctx.fillText('englishpro.app', 300, 360)
+      ctx.fillText('english.cash', 300, 360)
 
       const link = document.createElement('a')
-      link.download = 'englishpro-progress.png'
+      link.download = 'english-cash-progress.png'
       link.href = canvas.toDataURL('image/png')
       link.click()
     } catch {}
@@ -119,7 +119,7 @@ export default function ShareCard({ userName, userLevel, onClose }: Props) {
         ref={cardRef}
         className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-xl p-6 text-white text-center mb-4"
       >
-        <div className="text-sm opacity-80 mb-1">EnglishPro</div>
+        <div className="text-sm opacity-80 mb-1">english.cash</div>
         <div className="text-2xl font-bold mb-1">{userName}</div>
         <div className="text-4xl font-extrabold text-yellow-300 mb-3">{userLevel}</div>
         <div className="flex justify-center gap-6 text-sm">

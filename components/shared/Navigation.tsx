@@ -31,7 +31,7 @@ export default function Navigation() {
           <Link href="/" className="flex items-center gap-2.5 group">
             <Logo size={34} />
             <span className="font-bold text-gray-900 dark:text-white hidden sm:block text-lg tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              EnglishPro
+              english.cash
             </span>
           </Link>
 

@@ -433,7 +433,7 @@
     },
     "shareProgress": "Partager les progrès",
     "shareYourProgress": "Partager vos progrès",
-    "shareText": "{name} est au niveau {level} sur EnglishPro ! Écriture : {writing}/9 · Oral : {speaking}% · Écoute : {listening}%",
+    "shareText": "{name} est au niveau {level} sur english.cash ! Écriture : {writing}/9 · Oral : {speaking}% · Écoute : {listening}%",
     "shareCardSubtitle": "Progrès en apprentissage de l'anglais",
     "writing": "Écriture",
     "speaking": "Expression orale",

@@ -21,8 +21,8 @@ export default function SpeakingPage() {
   const { data: session, status } = useSession()
 
   const [topic, setTopic] = useState('')
-  const [mode, setMode] = useState<'voice' | 'text'>('text')
   const [voiceSupported, setVoiceSupported] = useState(false)
+  const [mode, setMode] = useState<'voice' | 'text'>('voice')
   const [transcript, setTranscript] = useState('')
   const [isRecording, setIsRecording] = useState(false)
   const [feedback, setFeedback] = useState<Feedback | null>(null)
@@ -30,22 +30,13 @@ export default function SpeakingPage() {
   const [error, setError] = useState('')
   const recognitionRef = useRef<any>(null)
 
-  // Check voice support on mount
+  // Check if SpeechRecognition API exists (don't test-start, just check)
   useEffect(() => {
     const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
-    if (!SR) return // stays false
-    try {
-      const test = new SR()
-      test.lang = 'en-US'
-      let hadError = false
-      test.onerror = () => { hadError = true; test.abort() }
-      test.onend = () => { if (!hadError) setVoiceSupported(true) }
-      test.onresult = () => {} // needed for some browsers
-      test.start()
-      // Safety timeout — if no response in 3s, assume not supported
-      setTimeout(() => { try { test.abort() } catch {} }, 3000)
-    } catch {
-      // stays false
+    if (SR) {
+      setVoiceSupported(true)
+    } else {
+      setMode('text')
     }
   }, [])
 
@@ -213,7 +204,7 @@ export default function SpeakingPage() {
 
         {/* Input area */}
         <div className="bg-white rounded-xl border border-gray-200 p-5 mb-4">
-          {mode === 'voice' ? (
+          {mode === 'voice' && voiceSupported ? (
             <div className="text-center space-y-4">
               {/* Record button */}
               <button

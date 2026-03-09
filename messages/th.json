@@ -433,7 +433,7 @@
     },
     "shareProgress": "แชร์ความก้าวหน้า",
     "shareYourProgress": "แชร์ความก้าวหน้าของคุณ",
-    "shareText": "{name} อยู่ที่ระดับ {level} บน EnglishPro! การเขียน: {writing}/9 · การพูด: {speaking}% · การฟัง: {listening}%",
+    "shareText": "{name} อยู่ที่ระดับ {level} บน english.cash! การเขียน: {writing}/9 · การพูด: {speaking}% · การฟัง: {listening}%",
     "shareCardSubtitle": "ความก้าวหน้าการเรียนภาษาอังกฤษ",
     "writing": "การเขียน",
     "speaking": "การพูด",
