@@ -15,11 +15,11 @@
   },
   "landing": {
     "hero": {
-      "badge": "Öğretmenler İçin Tasarlandı",
+      "badge": "Daha İyi İngilizce = Daha Çok Para",
       "titleBefore": "İngilizceyi",
       "titleHighlight": "365 Günde",
-      "subtitle": "Öğretmenler için AI destekli İngilizce öğrenme platformu. Günde sadece 2 oturum, 15'er dakika — akıcılığa giden kişisel yolunuz.",
-      "cta": "Ücretsiz Başla →",
+      "subtitle": "Kariyer gelişimi için AI destekli İngilizce öğrenme. Günde sadece 15 dakika — akıcılığa ve daha yüksek kazanca giden kişisel yolunuz.",
+      "cta": "3 Gün Ücretsiz Başla →",
       "login": "Giriş Yap",
       "dayProgram": "Günlük Program",
       "minDay": "dk/gün",
@@ -39,7 +39,7 @@
     },
     "features": {
       "title": "İhtiyacınız Olan Her Şey",
-      "subtitle": "Claude AI ile desteklenen dört temel modül",
+      "subtitle": "AI ile desteklenen dört temel modül",
       "comingSoon": "Yakında",
       "writing": {
         "title": "Yazma Pratiği",
@@ -55,8 +55,38 @@
       },
       "speaking": {
         "title": "Konuşma Pratiği",
-        "description": "Yakında — gerçek zamanlı telaffuz geri bildirimi, akıcılık puanlama ve IELTS Konuşma bant değerlendirmesi."
+        "description": "Sesli ve yazılı giriş ile gerçek zamanlı AI geri bildirimi — akıcılık, dilbilgisi, kelime ve örnek yanıtlar."
       }
+    },
+    "pricing": {
+      "title": "Basit Fiyatlandırma",
+      "subtitle": "Kendinize yatırım yapın. Daha iyi İngilizce = daha iyi kariyer = daha çok para.",
+      "free": "Ücretsiz",
+      "freeDesc": "3 gün tam erişim",
+      "freePeriod": "3 gün boyunca",
+      "freeFeature1": "Tam AI geri bildirim",
+      "freeFeature2": "Tüm modüller açık",
+      "freeFeature3": "Seviye testi dahil",
+      "freeBtn": "Ücretsiz Başla →",
+      "daily": "Günlük",
+      "dailyPrice": "$0.99",
+      "dailyPeriod": "/gün",
+      "dailyDesc": "Kullandıkça öde",
+      "dailyFeature1": "Sınırsız AI geri bildirim",
+      "dailyFeature2": "Tüm modüller",
+      "dailyFeature3": "İstediğin zaman iptal",
+      "dailyBtn": "Günlük Abone Ol",
+      "monthly": "Aylık",
+      "monthlyPrice": "$19.99",
+      "monthlyPeriod": "/ay",
+      "monthlyDesc": "En popüler",
+      "monthlyFeature1": "Sınırsız her şey",
+      "monthlyFeature2": "Öncelikli AI yanıtlar",
+      "monthlyFeature3": "Günlüğe göre %33 tasarruf",
+      "monthlyBtn": "Aylık Abone Ol",
+      "popular": "En Popüler",
+      "studentDiscount": "Öğrencilere %50 indirim!",
+      "studentBtn": "Öğrenci Durumunu Doğrula"
     },
     "cefr": {
       "title": "Seviyenize Uyum Sağlar",
@@ -69,11 +99,11 @@
       "c2": "Ustalık"
     },
     "cta": {
-      "title": "İngilizce Devrimine Katılın",
-      "subtitle": "Günde 15 dakika, günde iki kez. Hepsi bu kadar.",
+      "title": "Daha İyi İngilizce. Daha İyi Kariyer. Daha Çok Para.",
+      "subtitle": "Günde 15 dakika yeter. 3 gün ücretsiz başla.",
       "button": "365 Günlük Yolculuğunuza Başlayın →"
     },
-    "footer": "© 2026 English Proficiency Platform · Claude AI ile Desteklenmektedir · Öğretmenler İçin Yapılmıştır"
+    "footer": "© 2026 english.cash · AI Destekli İngilizce Öğrenme · Daha İyi İngilizce = Daha Çok Para"
   },
   "auth": {
     "login": {
@@ -99,7 +129,22 @@
       "success": "Hesap oluşturuldu! Lütfen giriş yapın.",
       "langEnglish": "English",
       "langKinyarwanda": "Kinyarwanda",
-      "langTurkish": "Türkçe"
+      "langTurkish": "Türkçe",
+      "langChinese": "中文",
+      "langSpanish": "Español",
+      "langPortuguese": "Português",
+      "langJapanese": "日本語",
+      "langKorean": "한국어",
+      "langIndonesian": "Bahasa Indonesia",
+      "langArabic": "العربية",
+      "langHindi": "हिन्दी",
+      "langVietnamese": "Tiếng Việt",
+      "langThai": "ไทย",
+      "langGerman": "Deutsch",
+      "langFrench": "Français",
+      "langItalian": "Italiano",
+      "langRussian": "Русский",
+      "langPolish": "Polski"
     },
     "verify": {
       "title": "E-postanızı Doğrulayın",

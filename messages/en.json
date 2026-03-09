@@ -15,11 +15,11 @@
   },
   "landing": {
     "hero": {
-      "badge": "Designed for Teachers",
+      "badge": "Better English = More Cash",
       "titleBefore": "Master English in",
       "titleHighlight": "365 Days",
-      "subtitle": "AI-powered English learning platform for teachers. Just 2 sessions of 15 minutes a day — your personalized path to fluency.",
-      "cta": "Start Free Today →",
+      "subtitle": "AI-powered English learning for career growth. Just 15 minutes a day — your personalized path to fluency and higher earnings.",
+      "cta": "Start Free for 3 Days →",
       "login": "Login",
       "dayProgram": "Day Program",
       "minDay": "min/day",
@@ -39,7 +39,7 @@
     },
     "features": {
       "title": "Everything You Need",
-      "subtitle": "Four core modules, powered by Claude AI",
+      "subtitle": "Four core modules, powered by AI",
       "comingSoon": "Coming Soon",
       "writing": {
         "title": "Writing Practice",
@@ -55,8 +55,38 @@
       },
       "speaking": {
         "title": "Speaking Practice",
-        "description": "Coming soon — real-time pronunciation feedback, fluency scoring, and IELTS Speaking band evaluation."
+        "description": "Real-time voice and text input with AI feedback on fluency, grammar, vocabulary, and model answers."
       }
+    },
+    "pricing": {
+      "title": "Simple Pricing",
+      "subtitle": "Invest in yourself. Better English = better career = more cash.",
+      "free": "Free",
+      "freeDesc": "3 days full access",
+      "freePeriod": "for 3 days",
+      "freeFeature1": "Full AI feedback",
+      "freeFeature2": "All modules unlocked",
+      "freeFeature3": "Placement test included",
+      "freeBtn": "Start Free →",
+      "daily": "Daily",
+      "dailyPrice": "$0.99",
+      "dailyPeriod": "/day",
+      "dailyDesc": "Pay as you go",
+      "dailyFeature1": "Unlimited AI feedback",
+      "dailyFeature2": "All modules",
+      "dailyFeature3": "Cancel anytime",
+      "dailyBtn": "Subscribe Daily",
+      "monthly": "Monthly",
+      "monthlyPrice": "$19.99",
+      "monthlyPeriod": "/month",
+      "monthlyDesc": "Most popular",
+      "monthlyFeature1": "Unlimited everything",
+      "monthlyFeature2": "Priority AI responses",
+      "monthlyFeature3": "Save 33% vs daily",
+      "monthlyBtn": "Subscribe Monthly",
+      "popular": "Most Popular",
+      "studentDiscount": "Students get 50% off!",
+      "studentBtn": "Verify Student Status"
     },
     "cefr": {
       "title": "Adaptive to Your Level",
@@ -69,11 +99,11 @@
       "c2": "Mastery"
     },
     "cta": {
-      "title": "Join the English Revolution",
-      "subtitle": "15 minutes a day, twice a day. That's all it takes.",
+      "title": "Better English. Better Career. More Cash.",
+      "subtitle": "15 minutes a day is all it takes. Start free for 3 days.",
       "button": "Start Your 365-Day Journey →"
     },
-    "footer": "© 2026 English Proficiency Platform · Powered by Claude AI · Built for Teachers"
+    "footer": "© 2026 english.cash · AI-Powered English Learning · Better English = More Cash"
   },
   "auth": {
     "login": {
@@ -99,7 +129,22 @@
       "success": "Account created! Please login.",
       "langEnglish": "English",
       "langKinyarwanda": "Kinyarwanda",
-      "langTurkish": "Türkçe"
+      "langTurkish": "Türkçe",
+      "langChinese": "中文",
+      "langSpanish": "Español",
+      "langPortuguese": "Português",
+      "langJapanese": "日本語",
+      "langKorean": "한국어",
+      "langIndonesian": "Bahasa Indonesia",
+      "langArabic": "العربية",
+      "langHindi": "हिन्दी",
+      "langVietnamese": "Tiếng Việt",
+      "langThai": "ไทย",
+      "langGerman": "Deutsch",
+      "langFrench": "Français",
+      "langItalian": "Italiano",
+      "langRussian": "Русский",
+      "langPolish": "Polski"
     },
     "verify": {
       "title": "Verify Your Email",

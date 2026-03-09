@@ -15,11 +15,11 @@
   },
   "landing": {
     "hero": {
-      "badge": "Byagenewe Abarimu",
+      "badge": "Icyongereza Cyiza = Amafaranga Menshi",
       "titleBefore": "Menya Icyongereza mu",
       "titleHighlight": "Minsi 365",
-      "subtitle": "Urubuga rwigisha Icyongereza rufashijwe na AI, rushinzwe abarimu. Amasomo 2 y'iminota 15 ku munsi — inzira yawe bwite yo kugera ku kuvuga neza.",
-      "cta": "Tangira Ubuntu →",
+      "subtitle": "Kwiga Icyongereza bifashijwe na AI kugira ngo umwuga wawe ukure. Iminota 15 gusa ku munsi — inzira yawe bwite yo kugera ku kuvuga neza no kwinjiza byinshi.",
+      "cta": "Tangira Ubuntu Iminsi 3 →",
       "login": "Injira",
       "dayProgram": "Gahunda y'Umunsi",
       "minDay": "iminota/umunsi",
@@ -39,7 +39,7 @@
     },
     "features": {
       "title": "Byose Ukeneye",
-      "subtitle": "Moduli enye z'ingenzi, zifashijwe na Claude AI",
+      "subtitle": "Moduli enye z'ingenzi, zifashijwe na AI",
       "comingSoon": "Biraje Vuba",
       "writing": {
         "title": "Imyitozo yo Kwandika",
@@ -47,7 +47,7 @@
       },
       "listening": {
         "title": "Imyitozo yo Kumva",
-        "description": "AI ikora inshamake zijyanye n'u Rwanda zisomwa n'ijwi rya tekinoloji. Subiza ibibazo by'ubumenyi ubone ibisobanuro byihuse."
+        "description": "AI ikora inshamake zisomwa n'ijwi rya tekinoloji. Subiza ibibazo by'ubumenyi ubone ibisobanuro byihuse."
       },
       "tutor": {
         "title": "Ikiganiro na Mwarimu wa AI",
@@ -55,8 +55,38 @@
       },
       "speaking": {
         "title": "Imyitozo yo Kuvuga",
-        "description": "Biraje vuba — igisubizo cy'imvugo mu gihe nyacyo, amanota y'uburenganzira, n'igipimo cy'IELTS cyo Kuvuga."
+        "description": "Ijwi n'inyandiko hamwe n'igisubizo cya AI mu gihe nyacyo — ubungubu, giramariki, amagambo, n'ibisubizo by'akarorero."
       }
+    },
+    "pricing": {
+      "title": "Ibiciro Byoroshye",
+      "subtitle": "Shyira imari mu bwawe. Icyongereza cyiza = umwuga mwiza = amafaranga menshi.",
+      "free": "Ubuntu",
+      "freeDesc": "Iminsi 3 yose",
+      "freePeriod": "mu minsi 3",
+      "freeFeature1": "Igisubizo cya AI cyose",
+      "freeFeature2": "Moduli zose zifunguye",
+      "freeFeature3": "Ikizamini cy'urwego kirimo",
+      "freeBtn": "Tangira Ubuntu →",
+      "daily": "Ku Munsi",
+      "dailyPrice": "$0.99",
+      "dailyPeriod": "/umunsi",
+      "dailyDesc": "Ishyura uko ukoresha",
+      "dailyFeature1": "Ibisubizo bya AI bidafite imipaka",
+      "dailyFeature2": "Moduli zose",
+      "dailyFeature3": "Hagarika igihe icyo ari cyo cyose",
+      "dailyBtn": "Iyandikishe ku Munsi",
+      "monthly": "Buri Kwezi",
+      "monthlyPrice": "$19.99",
+      "monthlyPeriod": "/ukwezi",
+      "monthlyDesc": "Ikunzwe cyane",
+      "monthlyFeature1": "Byose bidafite imipaka",
+      "monthlyFeature2": "Ibisubizo bya AI byihuse",
+      "monthlyFeature3": "Bunguka 33% ugereranije n'umunsi",
+      "monthlyBtn": "Iyandikishe ku Kwezi",
+      "popular": "Ikunzwe Cyane",
+      "studentDiscount": "Abanyeshuri babona 50% yo kugabanya!",
+      "studentBtn": "Emeza ko Uri Umunyeshuri"
     },
     "cefr": {
       "title": "Yihinduranya n'Urwego Rwawe",
@@ -69,11 +99,11 @@
       "c2": "Ubuhanga"
     },
     "cta": {
-      "title": "Injira mu Ihindagurika ry'Icyongereza",
-      "subtitle": "Iminota 15 ku munsi, kabiri ku munsi. Ni byo byose bisabwa.",
+      "title": "Icyongereza Cyiza. Umwuga Mwiza. Amafaranga Menshi.",
+      "subtitle": "Iminota 15 ku munsi ni byo gusa bisabwa. Tangira ubuntu iminsi 3.",
       "button": "Tangira Urugendo rw'Iminsi 365 →"
     },
-    "footer": "© 2026 English Proficiency Platform · Ifashijwe na Claude AI · Yakozwe ku Barimu"
+    "footer": "© 2026 english.cash · Kwiga Icyongereza Bifashijwe na AI · Icyongereza Cyiza = Amafaranga Menshi"
   },
   "auth": {
     "login": {
@@ -99,7 +129,22 @@
       "success": "Konti yakozwe! Nyamuneka injira.",
       "langEnglish": "English",
       "langKinyarwanda": "Kinyarwanda",
-      "langTurkish": "Türkçe"
+      "langTurkish": "Türkçe",
+      "langChinese": "中文",
+      "langSpanish": "Español",
+      "langPortuguese": "Português",
+      "langJapanese": "日本語",
+      "langKorean": "한국어",
+      "langIndonesian": "Bahasa Indonesia",
+      "langArabic": "العربية",
+      "langHindi": "हिन्दी",
+      "langVietnamese": "Tiếng Việt",
+      "langThai": "ไทย",
+      "langGerman": "Deutsch",
+      "langFrench": "Français",
+      "langItalian": "Italiano",
+      "langRussian": "Русский",
+      "langPolish": "Polski"
     },
     "verify": {
       "title": "Emeza Imeyili Yawe",

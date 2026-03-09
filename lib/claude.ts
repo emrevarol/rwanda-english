@@ -10,6 +10,21 @@ const LANG_NAMES: Record<string, string> = {
   en: 'English',
   tr: 'Turkish',
   rw: 'Kinyarwanda',
+  zh: 'Chinese',
+  es: 'Spanish',
+  pt: 'Portuguese',
+  ja: 'Japanese',
+  ko: 'Korean',
+  id: 'Indonesian',
+  ar: 'Arabic',
+  hi: 'Hindi',
+  vi: 'Vietnamese',
+  th: 'Thai',
+  de: 'German',
+  fr: 'French',
+  it: 'Italian',
+  ru: 'Russian',
+  pl: 'Polish',
 }
 
 export function getCEFRSystemPrompt(level: string, language: string): string {

@@ -32,7 +32,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-4 py-2 rounded-full mb-6 border border-white/20">
-                <span>🇷🇼</span>
+                <span>💰</span>
                 <span>{t('hero.badge')}</span>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
@@ -79,7 +79,7 @@ export default function HomePage() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 h-80">
                 <img
                   src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=800&q=80"
-                  alt="Teachers learning English"
+                  alt="People learning English"
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     (e.target as HTMLImageElement).style.display = 'none'
@@ -163,7 +163,6 @@ export default function HomePage() {
               image="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=600&q=80"
               color="orange"
               href="/register"
-              comingSoonLabel={t('features.comingSoon')}
             />
           </div>
         </div>
@@ -185,10 +184,78 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Pricing */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900">{t('pricing.title')}</h2>
+            <p className="text-gray-500 mt-3 max-w-xl mx-auto">{t('pricing.subtitle')}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Free */}
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 flex flex-col">
+              <div className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">{t('pricing.free')}</div>
+              <div className="flex items-baseline gap-1 mb-1">
+                <span className="text-4xl font-extrabold text-gray-900">$0</span>
+              </div>
+              <div className="text-sm text-gray-400 mb-6">{t('pricing.freePeriod')}</div>
+              <ul className="space-y-3 mb-8 flex-1">
+                <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.freeFeature1')}</li>
+                <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.freeFeature2')}</li>
+                <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.freeFeature3')}</li>
+              </ul>
+              <Link href="/register" className="w-full text-center bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                {t('pricing.freeBtn')}
+              </Link>
+            </div>
+
+            {/* Daily */}
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 flex flex-col">
+              <div className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">{t('pricing.daily')}</div>
+              <div className="flex items-baseline gap-1 mb-1">
+                <span className="text-4xl font-extrabold text-gray-900">{t('pricing.dailyPrice')}</span>
+                <span className="text-gray-400 text-sm">{t('pricing.dailyPeriod')}</span>
+              </div>
+              <div className="text-sm text-gray-400 mb-6">{t('pricing.dailyDesc')}</div>
+              <ul className="space-y-3 mb-8 flex-1">
+                <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.dailyFeature1')}</li>
+                <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.dailyFeature2')}</li>
+                <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.dailyFeature3')}</li>
+              </ul>
+              <Link href="/register" className="w-full text-center bg-blue-600 text-white py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors">
+                {t('pricing.dailyBtn')}
+              </Link>
+            </div>
+
+            {/* Monthly — highlighted */}
+            <div className="relative bg-gradient-to-b from-blue-50 to-white dark:from-blue-900/20 dark:to-gray-800 rounded-2xl border-2 border-blue-500 p-6 flex flex-col shadow-lg">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-full">
+                {t('pricing.popular')}
+              </div>
+              <div className="text-sm font-bold text-blue-600 uppercase tracking-wide mb-2">{t('pricing.monthly')}</div>
+              <div className="flex items-baseline gap-1 mb-1">
+                <span className="text-4xl font-extrabold text-gray-900">{t('pricing.monthlyPrice')}</span>
+                <span className="text-gray-400 text-sm">{t('pricing.monthlyPeriod')}</span>
+              </div>
+              <div className="text-sm text-gray-400 mb-6">{t('pricing.monthlyDesc')}</div>
+              <ul className="space-y-3 mb-8 flex-1">
+                <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.monthlyFeature1')}</li>
+                <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.monthlyFeature2')}</li>
+                <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.monthlyFeature3')}</li>
+              </ul>
+              <Link href="/register" className="w-full text-center bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-md">
+                {t('pricing.monthlyBtn')}
+              </Link>
+            </div>
+          </div>
+          <p className="text-center mt-6 text-sm text-green-600 font-medium">🎓 {t('pricing.studentDiscount')}</p>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 text-white animate-gradient">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <div className="text-5xl mb-6">🇷🇼</div>
+          <div className="text-5xl mb-6">💰</div>
           <h2 className="text-3xl font-bold mb-4">{t('cta.title')}</h2>
           <p className="text-blue-100 mb-8 text-lg">
             {t('cta.subtitle')}
