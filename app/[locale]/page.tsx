@@ -1,12 +1,15 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { useSession } from 'next-auth/react'
 import { Link } from '@/i18n/navigation'
 import Navigation from '@/components/shared/Navigation'
 
 export default function HomePage() {
   const t = useTranslations('landing')
   const tc = useTranslations('nav')
+  const { data: session } = useSession()
+  const actionHref = session ? '/dashboard' : '/register'
 
   const cefrLevels = [
     { level: 'A1', label: t('cefr.a1'), color: 'bg-red-100 text-red-700 border-red-200' },
@@ -44,7 +47,7 @@ export default function HomePage() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/register"
+                  href={actionHref}
                   className="bg-yellow-400 text-blue-900 text-base font-bold px-7 py-3.5 rounded-xl hover:bg-yellow-300 transition-all shadow-lg"
                 >
                   {t('hero.cta')}
@@ -138,7 +141,7 @@ export default function HomePage() {
               description={t('features.writing.description')}
               image="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80"
               color="blue"
-              href="/register"
+              href={actionHref}
             />
             <FeatureBig
               icon="🎧"
@@ -146,7 +149,7 @@ export default function HomePage() {
               description={t('features.listening.description')}
               image="https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=600&q=80"
               color="purple"
-              href="/register"
+              href={actionHref}
             />
             <FeatureBig
               icon="🤖"
@@ -154,7 +157,7 @@ export default function HomePage() {
               description={t('features.tutor.description')}
               image="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=600&q=80"
               color="green"
-              href="/register"
+              href={actionHref}
             />
             <FeatureBig
               icon="🎙️"
@@ -162,7 +165,7 @@ export default function HomePage() {
               description={t('features.speaking.description')}
               image="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=600&q=80"
               color="orange"
-              href="/register"
+              href={actionHref}
             />
           </div>
         </div>
@@ -204,7 +207,7 @@ export default function HomePage() {
                 <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.freeFeature2')}</li>
                 <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.freeFeature3')}</li>
               </ul>
-              <Link href="/register" className="w-full text-center bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+              <Link href={actionHref} className="w-full text-center bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
                 {t('pricing.freeBtn')}
               </Link>
             </div>
@@ -222,7 +225,7 @@ export default function HomePage() {
                 <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.dailyFeature2')}</li>
                 <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.dailyFeature3')}</li>
               </ul>
-              <Link href="/register" className="w-full text-center bg-blue-600 text-white py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors">
+              <Link href={actionHref} className="w-full text-center bg-blue-600 text-white py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors">
                 {t('pricing.dailyBtn')}
               </Link>
             </div>
@@ -243,7 +246,7 @@ export default function HomePage() {
                 <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.monthlyFeature2')}</li>
                 <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.monthlyFeature3')}</li>
               </ul>
-              <Link href="/register" className="w-full text-center bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-md">
+              <Link href={actionHref} className="w-full text-center bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-md">
                 {t('pricing.monthlyBtn')}
               </Link>
             </div>
@@ -261,7 +264,7 @@ export default function HomePage() {
             {t('cta.subtitle')}
           </p>
           <Link
-            href="/register"
+            href={actionHref}
             className="inline-block bg-yellow-400 text-blue-900 text-lg font-bold px-10 py-4 rounded-xl hover:bg-yellow-300 transition-all shadow-lg"
           >
             {t('cta.button')}
