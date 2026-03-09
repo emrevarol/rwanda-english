@@ -1,9 +1,11 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY)
+}
 
 export async function sendOtpEmail(to: string, code: string, name: string) {
-  const { error } = await resend.emails.send({
+  const { error } = await getResend().emails.send({
     from: 'EnglishPro <onboarding@resend.dev>',
     to,
     subject: `Your verification code: ${code}`,
