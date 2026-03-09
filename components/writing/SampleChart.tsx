@@ -94,7 +94,7 @@ function PieChart({ rand }: { rand: () => number }) {
 }
 
 function BarChart({ rand }: { rand: () => number }) {
-  const countries = ['Rwanda', 'Kenya', 'Uganda', 'Tanzania', 'Burundi']
+  const countries = ['USA', 'UK', 'Germany', 'Japan', 'Brazil']
   const colors = ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444']
   const data2018 = countries.map(() => 40 + Math.floor(rand() * 40))
   const data2023 = countries.map((_, i) => Math.min(95, data2018[i] + 5 + Math.floor(rand() * 20)))

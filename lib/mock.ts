@@ -32,45 +32,40 @@ export const mockSpeakingFeedback = {
   vocabulary:
     'Appropriate vocabulary for the topic. Consider using more topic-specific terms. For example, instead of "school problems" say "educational challenges" or "pedagogical obstacles".',
   modelAnswer:
-    'Teaching in Rwanda presents unique challenges. Teachers must navigate large class sizes while ensuring every student receives adequate attention. Professional development programs and collaborative teaching approaches can significantly enhance educational outcomes.',
+    'Effective communication in English opens doors to global opportunities. Professionals who can articulate their ideas clearly in English are more likely to advance in their careers. Regular practice, combined with feedback-driven learning, can significantly enhance both fluency and confidence.',
   overallFeedback:
     'Great effort! You scored 7/10. Your ideas are clear and well-organized. To improve further, practice speaking on academic topics daily and record yourself to identify areas for improvement.',
 }
 
 export const mockListeningContent = {
   passage:
-    'Education in Rwanda has undergone significant transformation over the past two decades. The government has invested heavily in building new schools and training teachers across the country. Today, Rwanda boasts one of the highest primary school enrollment rates in sub-Saharan Africa, reaching over 97 percent. English was adopted as the medium of instruction in 2009, replacing French, which has created both opportunities and challenges for teachers and students alike. Teacher professional development programs have been established to help educators improve their English proficiency and adopt modern teaching methods.',
+    'The global demand for English proficiency has grown dramatically in recent years. Studies show that employees who speak fluent English earn on average 30 to 50 percent more than their peers in many countries. The rise of remote work has further increased this demand, as international companies seek talent regardless of location. Online learning platforms powered by artificial intelligence have made English education more accessible and personalized than ever before. These platforms can adapt to individual learning speeds, provide instant feedback, and offer practice in all four language skills: reading, writing, speaking, and listening.',
   questions: [
     {
-      question: 'What percentage of children are enrolled in primary school in Rwanda?',
-      options: ['Over 75%', 'Over 85%', 'Over 97%', 'Over 60%'],
+      question: 'How much more do English-speaking employees earn on average?',
+      options: ['10 to 20 percent', '20 to 30 percent', '30 to 50 percent', '50 to 70 percent'],
       correct: 2,
       explanation:
-        'The passage states Rwanda has "over 97 percent" primary school enrollment rate.',
+        'The passage states employees who speak fluent English earn "30 to 50 percent more" than their peers.',
     },
     {
-      question: 'When did Rwanda change its medium of instruction to English?',
-      options: ['1994', '2000', '2009', '2015'],
+      question: 'What has further increased the demand for English proficiency?',
+      options: ['Tourism', 'Social media', 'Remote work', 'Immigration'],
       correct: 2,
-      explanation: 'The passage clearly states "English was adopted as the medium of instruction in 2009".',
+      explanation: 'The passage states "The rise of remote work has further increased this demand."',
     },
     {
-      question: 'What did English replace as the language of instruction?',
-      options: ['Kinyarwanda', 'Swahili', 'Portuguese', 'French'],
-      correct: 3,
-      explanation: 'The passage says English replaced "French" as the medium of instruction.',
-    },
-    {
-      question: 'What is the main purpose of teacher professional development programs?',
-      options: [
-        'To teach new subjects',
-        'To improve English and modern teaching methods',
-        'To increase teacher salaries',
-        'To build new schools',
-      ],
+      question: 'What technology has made English education more accessible?',
+      options: ['Virtual reality', 'Artificial intelligence', 'Blockchain', 'Social networks'],
       correct: 1,
+      explanation: 'The passage mentions "Online learning platforms powered by artificial intelligence."',
+    },
+    {
+      question: 'How many language skills do AI platforms practice?',
+      options: ['Two', 'Three', 'Four', 'Five'],
+      correct: 2,
       explanation:
-        'The passage states programs were established "to help educators improve their English proficiency and adopt modern teaching methods".',
+        'The passage lists four skills: "reading, writing, speaking, and listening."',
     },
   ],
 }
@@ -85,13 +80,13 @@ export const mockAssessmentResult = {
 export function mockTutorResponse(message: string): string {
   const lower = message.toLowerCase()
   if (lower.includes('passive')) {
-    return "Great question! The **passive voice** is formed with **be + past participle**.\n\nExamples:\n- Active: *The teacher explains the lesson.*\n- Passive: *The lesson is explained by the teacher.*\n\nWe use passive voice when:\n1. The action is more important than who did it\n2. We don't know who did the action\n3. It sounds more formal\n\nWould you like to practice with some exercises?"
+    return "Great question! The **passive voice** is formed with **be + past participle**.\n\nExamples:\n- Active: *The manager approves the report.*\n- Passive: *The report is approved by the manager.*\n\nWe use passive voice when:\n1. The action is more important than who did it\n2. We don't know who did the action\n3. It sounds more formal\n\nWould you like to practice with some exercises?"
   }
   if (lower.includes('since') || lower.includes(' for ')) {
-    return '**Since** vs **For** — a common question!\n\n- Use **FOR** with a duration (length of time):\n  - *I have lived here **for** 5 years.*\n  - *She studied **for** 3 hours.*\n\n- Use **SINCE** with a starting point in time:\n  - *I have lived here **since** 2019.*\n  - *She has been a teacher **since** January.*\n\nTip: If you can replace it with "a duration of", use **for**. If you can replace it with "starting from", use **since**.'
+    return '**Since** vs **For** — a common question!\n\n- Use **FOR** with a duration (length of time):\n  - *I have lived here **for** 5 years.*\n  - *She studied **for** 3 hours.*\n\n- Use **SINCE** with a starting point in time:\n  - *I have lived here **since** 2019.*\n  - *She has worked here **since** January.*\n\nTip: If you can replace it with "a duration of", use **for**. If you can replace it with "starting from", use **since**.'
   }
   if (lower.includes('vocabulary') || lower.includes('word')) {
     return "Here are some **advanced vocabulary words** useful for academic writing:\n\n| Basic | Advanced |\n|-------|----------|\n| show | demonstrate, illustrate |\n| big | significant, substantial |\n| think | argue, contend, assert |\n| use | utilize, employ |\n| help | facilitate, enhance |\n\nTry to use these in your next writing exercise!"
   }
-  return `That's a great question! As a ${process.env.MOCK_LEVEL || 'B1'} level learner, here's my advice:\n\nEnglish learning requires consistent practice in all four skills: **Reading, Writing, Speaking, and Listening**. \n\nFor Rwandan teachers, I recommend:\n1. Read English newspapers daily (The New Times)\n2. Practice writing short paragraphs on education topics\n3. Listen to BBC Learning English podcasts\n4. Speak English with colleagues during breaks\n\nWhat specific aspect would you like to work on?`
+  return `That's a great question! As a ${process.env.MOCK_LEVEL || 'B1'} level learner, here's my advice:\n\nEnglish learning requires consistent practice in all four skills: **Reading, Writing, Speaking, and Listening**. \n\nHere are my top recommendations:\n1. Read English articles daily (BBC, The Guardian)\n2. Practice writing short paragraphs on topics you care about\n3. Listen to English podcasts (BBC Learning English, TED Talks)\n4. Speak English whenever you get the chance — even to yourself!\n\nWhat specific aspect would you like to work on?`
 }

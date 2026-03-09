@@ -124,7 +124,7 @@ export async function analyzeSpeaking(
     messages: [
       {
         role: 'user',
-        content: `Analyze this spoken English response for a teacher learning English.
+        content: `Analyze this spoken English response from a student learning English.
 
 Speaking topic: "${topic}"
 

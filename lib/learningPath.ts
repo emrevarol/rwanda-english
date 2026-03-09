@@ -90,24 +90,24 @@ const WEEKLY_PATTERNS: Array<{ task1: TaskType; task2: TaskType; themeKey: strin
 const TASK_DESCRIPTIONS: Record<TaskType, (day: number, level: string) => string> = {
   'writing-essay': (day, level) => {
     const topics: Record<string, string[]> = {
-      A1: ['Write about your school', 'Describe your classroom', 'Write about your favorite teacher'],
-      A2: ['Write about why education is important', 'Describe a good lesson you taught'],
-      B1: ['Should technology replace teachers? Give your opinion', 'What makes a great school?'],
-      B2: ['Discuss the impact of English on education', 'Evaluate teacher training programs'],
-      C1: ['Critically assess inclusive education policies', 'Analyze curriculum reform challenges'],
-      C2: ['Evaluate philosophical approaches to education equity'],
+      A1: ['Write about your daily routine', 'Describe your favorite place', 'Write about your best friend'],
+      A2: ['Write about why learning English is important', 'Describe your dream job'],
+      B1: ['Should companies require English skills? Give your opinion', 'How has the internet changed learning?'],
+      B2: ['Discuss the impact of English on global careers', 'Evaluate the benefits of online learning'],
+      C1: ['Critically assess the role of English in international business', 'Analyze the digital skills gap'],
+      C2: ['Evaluate the socioeconomic impact of language proficiency globally'],
     }
     const t = topics[level] || topics['B1']
     return t[day % t.length]
   },
   'writing-chart': (day, level) => {
     const topics: Record<string, string[]> = {
-      A1: ['Describe the table showing class sizes'],
-      A2: ['Summarize the bar chart about student attendance'],
-      B1: ['Describe the line graph showing literacy rates 2010-2023'],
-      B2: ['Analyze the charts comparing education spending'],
-      C1: ['Synthesize the data on teacher-student ratios and learning outcomes'],
-      C2: ['Critically evaluate the statistical evidence on education inequality'],
+      A1: ['Describe the table showing monthly sales data'],
+      A2: ['Summarize the bar chart about internet usage trends'],
+      B1: ['Describe the line graph showing smartphone adoption 2018-2024'],
+      B2: ['Analyze the charts comparing remote work trends by industry'],
+      C1: ['Synthesize the data on English proficiency and average salaries'],
+      C2: ['Critically evaluate the statistical evidence on the global skills gap'],
     }
     const t = topics[level] || topics['B1']
     return t[day % t.length]
@@ -116,22 +116,22 @@ const TASK_DESCRIPTIONS: Record<TaskType, (day: number, level: string) => string
   tutor: (day, level) => {
     const prompts: Record<string, string[]> = {
       A1: ['Practice basic greetings and introductions', 'Ask about simple grammar rules'],
-      A2: ['Practice talking about daily routines', 'Learn common classroom expressions'],
-      B1: ['Discuss challenges of teaching in English', 'Practice explaining complex ideas simply'],
-      B2: ['Debate education policy topics', 'Practice formal academic language'],
-      C1: ['Discuss research and evidence in education', 'Practice academic argument construction'],
-      C2: ['Engage in sophisticated pedagogical debate', 'Critique educational philosophies'],
+      A2: ['Practice talking about daily routines', 'Learn common workplace expressions'],
+      B1: ['Discuss challenges of learning English', 'Practice explaining complex ideas simply'],
+      B2: ['Debate current affairs topics in English', 'Practice formal business language'],
+      C1: ['Discuss global trends and their implications', 'Practice academic argument construction'],
+      C2: ['Engage in sophisticated debate on complex topics', 'Analyze nuanced arguments'],
     }
     const t = prompts[level] || prompts['B1']
     return t[day % t.length]
   },
   vocabulary: (day, level) => {
     const sessions: Record<string, string[]> = {
-      A1: ['Learn 5 classroom words', 'Practice common verbs'],
-      A2: ['Learn education vocabulary', 'Practice adjectives'],
+      A1: ['Learn 5 everyday words', 'Practice common verbs'],
+      A2: ['Learn workplace vocabulary', 'Practice adjectives'],
       B1: ['Academic word list — Group ' + ((day % 10) + 1), 'Connective phrases for essays'],
-      B2: ['Advanced academic vocabulary', 'Idiomatic expressions in education'],
-      C1: ['Technical pedagogical vocabulary', 'Rhetorical devices and discourse markers'],
+      B2: ['Advanced business vocabulary', 'Idiomatic expressions for professionals'],
+      C1: ['Technical vocabulary for your field', 'Rhetorical devices and discourse markers'],
       C2: ['Nuanced academic register', 'Collocations and fixed phrases'],
     }
     const t = sessions[level] || sessions['B1']
