@@ -13,9 +13,7 @@ export default function ListeningPage() {
   if (status === 'unauthenticated') {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">
-          Please <Link href="/login" className="text-blue-600 hover:underline">login</Link> to practice listening.
-        </p>
+        <p className="text-gray-600">{t('loginMessage')}</p>
       </div>
     )
   }
@@ -27,7 +25,7 @@ export default function ListeningPage() {
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
           <p className="text-gray-500 text-sm mt-1">
-            Level: <span className="font-medium text-blue-600">{session?.user?.level}</span>
+            {t('level')} <span className="font-medium text-blue-600">{session?.user?.level}</span>
           </p>
         </div>
         <ListeningPlayer />

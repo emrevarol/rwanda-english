@@ -13,6 +13,7 @@ model User {
   name                String
   email               String               @unique
   password            String
+  emailVerified       Boolean              @default(false)
   level               String               @default("B1")
   language            String               @default("en")
   createdAt           DateTime             @default(now())
@@ -20,7 +21,21 @@ model User {
   speakingSubmissions SpeakingSubmission[]
   listeningSessions   ListeningSession[]
   chatMessages        ChatMessage[]
+  chatSessions        ChatSession[]
   dailyProgress       DailyProgress[]
+  otpCodes            OtpCode[]
+  sentFriendships     Friendship[]         @relation("sentFriendships")
+  receivedFriendships Friendship[]         @relation("receivedFriendships")
+}
+
+model OtpCode {
+  id        String   @id @default(cuid())
+  userId    String
+  code      String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model WritingSubmission {
@@ -54,25 +69,51 @@ model ListeningSession {
   user      User     @relation(fields: [userId], references: [id])
 }
 
-model ChatMessage {
-  id        String   @id @default(cuid())
+model ChatSession {
+  id        String        @id @default(cuid())
   userId    String
+  title     String        @default("New Chat")
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  user      User          @relation(fields: [userId], references: [id])
+  messages  ChatMessage[]
+}
+
+model ChatMessage {
+  id        String       @id @default(cuid())
+  userId    String
+  sessionId String?
   role      String
   content   String
+  createdAt DateTime     @default(now())
+  user      User         @relation(fields: [userId], references: [id])
+  session   ChatSession? @relation(fields: [sessionId], references: [id])
+}
+
+model Friendship {
+  id        String   @id @default(cuid())
+  userId    String
+  friendId  String
+  status    String   @default("pending") // pending, accepted, rejected
   createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation("sentFriendships", fields: [userId], references: [id])
+  friend    User     @relation("receivedFriendships", fields: [friendId], references: [id])
+
+  @@unique([userId, friendId])
 }
 
 model DailyProgress {
-  id        String   @id @default(cuid())
-  userId    String
-  date      String
-  task1Type String
-  task1Done Boolean  @default(false)
-  task2Type String
-  task2Done Boolean  @default(false)
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
+  id          String   @id @default(cuid())
+  userId      String
+  date        String
+  task1Type   String
+  task1Done   Boolean  @default(false)
+  task1Mins   Int      @default(0)
+  task2Type   String
+  task2Done   Boolean  @default(false)
+  task2Mins   Int      @default(0)
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id])
 
   @@unique([userId, date])
 }

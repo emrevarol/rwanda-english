@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl'
 import { useSession, signOut } from 'next-auth/react'
 import { Link, usePathname } from '@/i18n/navigation'
 import LanguageSwitcher from './LanguageSwitcher'
+import Logo from './Logo'
+import ThemeToggle from './ThemeToggle'
 
 export default function Navigation() {
   const t = useTranslations('nav')
@@ -12,23 +14,25 @@ export default function Navigation() {
 
   const navLinks = session
     ? [
-        { href: '/learning-path', label: '🗓 Daily Plan' },
+        { href: '/learning-path', label: '🗓 ' + t('dailyPlan') },
         { href: '/dashboard', label: t('dashboard') },
         { href: '/writing', label: t('writing') },
         { href: '/listening', label: t('listening') },
+        { href: '/speaking', label: t('speaking') },
         { href: '/tutor', label: t('tutor') },
+        { href: '/friends', label: t('friends') },
       ]
     : []
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 backdrop-blur-sm bg-white/95 dark:bg-gray-900/95">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">RE</span>
-            </div>
-            <span className="font-bold text-gray-900 hidden sm:block">Rwanda English</span>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <Logo size={34} />
+            <span className="font-bold text-gray-900 dark:text-white hidden sm:block text-lg tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              EnglishPro
+            </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
@@ -36,10 +40,10 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
                   pathname === link.href
-                    ? 'bg-blue-50 text-blue-700'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                    ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 shadow-sm'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
                 {link.label}
@@ -47,19 +51,20 @@ export default function Navigation() {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
             <LanguageSwitcher />
             {session ? (
-              <div className="flex items-center gap-3">
-                <span className="text-sm text-gray-600 hidden sm:block">
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-600 dark:text-gray-300 hidden sm:block">
                   {session.user.name}
                 </span>
-                <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">
+                <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">
                   {session.user.level}
                 </span>
                 <button
                   onClick={() => signOut({ callbackUrl: '/en' })}
-                  className="text-sm text-gray-500 hover:text-gray-700"
+                  className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
                 >
                   {t('logout')}
                 </button>
@@ -68,13 +73,13 @@ export default function Navigation() {
               <div className="flex items-center gap-2">
                 <Link
                   href="/login"
-                  className="text-sm text-gray-600 hover:text-gray-900"
+                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
                 >
                   {t('login')}
                 </Link>
                 <Link
                   href="/register"
-                  className="bg-blue-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm px-4 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-sm"
                 >
                   {t('register')}
                 </Link>
@@ -86,16 +91,16 @@ export default function Navigation() {
 
       {/* Mobile menu */}
       {session && navLinks.length > 0 && (
-        <div className="md:hidden border-t border-gray-100">
+        <div className="md:hidden border-t border-gray-100 dark:border-gray-700">
           <div className="flex overflow-x-auto gap-1 px-4 py-2">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex-shrink-0 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                   pathname === link.href
-                    ? 'bg-blue-50 text-blue-700'
-                    : 'text-gray-600 hover:bg-gray-50'
+                    ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
                 }`}
               >
                 {link.label}

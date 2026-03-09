@@ -4,7 +4,13 @@ export const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 })
 
-export const MODEL = 'claude-sonnet-4-6'
+export const MODEL = 'claude-haiku-4-5-20251001'
+
+const LANG_NAMES: Record<string, string> = {
+  en: 'English',
+  tr: 'Turkish',
+  rw: 'Kinyarwanda',
+}
 
 export function getCEFRSystemPrompt(level: string, language: string): string {
   const levelDescriptions: Record<string, string> = {
@@ -16,13 +22,14 @@ export function getCEFRSystemPrompt(level: string, language: string): string {
     C2: 'Use proficiency-level vocabulary, highly complex academic texts, rhetorical devices, debate topics, professional and academic discourse.',
   }
 
-  const langNote = language !== 'en'
-    ? `The user prefers explanations in ${language === 'rw' ? 'Kinyarwanda' : 'Turkish'} when needed, but always respond primarily in English.`
-    : ''
+  const langName = LANG_NAMES[language] || 'English'
+  const langInstruction = language !== 'en'
+    ? `IMPORTANT: Write ALL your feedback, explanations, and responses in ${langName}. The student's interface language is ${langName}, so they expect feedback in ${langName}. Only keep English examples, vocabulary words, and grammar terms in English — everything else must be in ${langName}.`
+    : 'Write all feedback and explanations in English.'
 
-  return `You are an expert English language teacher for Rwandan teachers. The student's CEFR level is ${level}.
+  return `You are an expert English language teacher. The student's CEFR level is ${level}.
 Adapt your language complexity accordingly: ${levelDescriptions[level] || levelDescriptions['B1']}
-${langNote}
+${langInstruction}
 Always be encouraging, clear, and specific in your feedback.`
 }
 
@@ -61,6 +68,7 @@ Please provide a JSON response with the following structure:
   "overallFeedback": "<2-3 sentence overall comment>"
 }
 
+IMPORTANT: All feedback text values must be written in ${LANG_NAMES[language] || 'English'}. Keep JSON keys in English. The "improvedSentences" should show the corrected English sentences, but any explanatory text should be in ${LANG_NAMES[language] || 'English'}.
 Only return valid JSON, nothing else.`,
       },
     ],
@@ -101,7 +109,7 @@ export async function analyzeSpeaking(
     messages: [
       {
         role: 'user',
-        content: `Analyze this spoken English response for a Rwandan teacher learning English.
+        content: `Analyze this spoken English response for a teacher learning English.
 
 Speaking topic: "${topic}"
 
@@ -118,6 +126,7 @@ Provide a JSON response:
   "overallFeedback": "<encouraging overall comment>"
 }
 
+IMPORTANT: All feedback text values must be written in ${LANG_NAMES[language] || 'English'}. The "modelAnswer" should be in English (since they're learning English), but all explanatory feedback must be in ${LANG_NAMES[language] || 'English'}.
 Only return valid JSON, nothing else.`,
       },
     ],
@@ -152,11 +161,11 @@ export async function generateListeningContent(level: string, language: string) 
     messages: [
       {
         role: 'user',
-        content: `Generate a listening comprehension exercise for a ${level} English learner who is a Rwandan teacher.
+        content: `Generate a listening comprehension exercise for a ${level} English learner.
 
 Return a JSON object:
 {
-  "passage": "<a reading passage of 100-200 words appropriate for ${level} level, about an educational or everyday topic relevant to Rwanda>",
+  "passage": "<a reading passage of 100-200 words appropriate for ${level} level, about an educational or everyday topic. The passage MUST be in English since this is an English learning exercise>",
   "questions": [
     {
       "question": "<comprehension question>",
@@ -167,6 +176,7 @@ Return a JSON object:
   ]
 }
 
+IMPORTANT: The "passage" must be in English (it's an English listening exercise). The "question" text, "options", and "explanation" must all be in ${LANG_NAMES[language] || 'English'} so the student can understand them in their preferred language.
 Include 4 questions. Only return valid JSON, nothing else.`,
       },
     ],
@@ -182,7 +192,8 @@ Include 4 questions. Only return valid JSON, nothing else.`,
 
 export async function gradeAssessment(
   questions: Array<{ question: string; userAnswer: string; correctAnswer?: string }>,
-  level: string
+  level: string,
+  language: string = 'en'
 ) {
   const message = await anthropic.messages.create({
     model: MODEL,
@@ -204,6 +215,7 @@ Return JSON:
   "feedback": "<brief explanation of why this level was assigned>"
 }
 
+IMPORTANT: The "feedback" text must be written in ${LANG_NAMES[language] || 'English'}.
 Only return valid JSON, nothing else.`,
       },
     ],

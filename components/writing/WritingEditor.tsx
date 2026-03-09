@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { getWritingPrompt } from '@/lib/helpers'
+import SampleChart from './SampleChart'
 
 interface Feedback {
   band: number
@@ -88,6 +89,9 @@ export default function WritingEditor({
           </button>
         </div>
       </div>
+
+      {/* Sample chart for Task 1 */}
+      {taskType === 'task1' && prompt && <SampleChart prompt={prompt} />}
 
       {/* Editor */}
       <div className="bg-white rounded-xl border border-gray-200 p-4">

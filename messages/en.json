@@ -9,14 +9,16 @@
     "assessment": "Take Test",
     "login": "Login",
     "register": "Sign Up",
-    "logout": "Logout"
+    "logout": "Logout",
+    "dailyPlan": "Daily Plan",
+    "friends": "Friends"
   },
   "landing": {
     "hero": {
-      "badge": "Designed for Rwandan Teachers",
+      "badge": "Designed for Teachers",
       "titleBefore": "Master English in",
       "titleHighlight": "365 Days",
-      "subtitle": "AI-powered English learning platform for Rwandan teachers. Just 2 sessions of 15 minutes a day — your personalized path to fluency.",
+      "subtitle": "AI-powered English learning platform for teachers. Just 2 sessions of 15 minutes a day — your personalized path to fluency.",
       "cta": "Start Free Today →",
       "login": "Login",
       "dayProgram": "Day Program",
@@ -45,7 +47,7 @@
       },
       "listening": {
         "title": "Listening Practice",
-        "description": "AI generates Rwanda-relevant passages read aloud via text-to-speech. Answer comprehension questions and get instant explanations."
+        "description": "AI generates relevant passages read aloud via text-to-speech. Answer comprehension questions and get instant explanations."
       },
       "tutor": {
         "title": "AI Tutor Chat",
@@ -67,11 +69,11 @@
       "c2": "Mastery"
     },
     "cta": {
-      "title": "Join Rwanda's English Revolution",
+      "title": "Join the English Revolution",
       "subtitle": "15 minutes a day, twice a day. That's all it takes.",
       "button": "Start Your 365-Day Journey →"
     },
-    "footer": "© 2024 Rwanda English Proficiency Platform · Powered by Claude AI · Built for Rwandan Teachers"
+    "footer": "© 2026 English Proficiency Platform · Powered by Claude AI · Built for Teachers"
   },
   "auth": {
     "login": {
@@ -98,6 +100,18 @@
       "langEnglish": "English",
       "langKinyarwanda": "Kinyarwanda",
       "langTurkish": "Türkçe"
+    },
+    "verify": {
+      "title": "Verify Your Email",
+      "subtitle": "We sent a 6-digit code to",
+      "placeholder": "Enter 6-digit code",
+      "submit": "Verify",
+      "verifying": "Verifying...",
+      "resend": "Resend Code",
+      "resent": "Code resent!",
+      "success": "Email verified! Redirecting to login...",
+      "error": "Invalid or expired code. Please try again.",
+      "devNote": "Development mode — your OTP code is:"
     }
   },
   "assessment": {
@@ -192,7 +206,42 @@
     "oneSession": "1 session",
     "twoSessions": "2 sessions completed",
     "less": "Less",
-    "more": "More"
+    "more": "More",
+    "clickForDetail": "Click a day for details",
+    "minutes": "min",
+    "writingActivity": "writing submission(s)",
+    "listeningActivity": "listening session(s)",
+    "chatActivity": "tutor messages",
+    "totalTime": "Total time",
+    "avgBand": "Avg band",
+    "avgScore": "Avg score",
+    "noActivityDay": "No activity on this day.",
+    "beforeJoin": "Before you joined",
+    "themes": {
+      "expressionComprehension": "Expression & Comprehension",
+      "grammarFocus": "Grammar Focus",
+      "inputOutput": "Input & Output",
+      "academicSkills": "Academic Skills",
+      "vocabularyBuilding": "Vocabulary Building",
+      "fluencyWriting": "Fluency & Writing",
+      "weeklyReview": "Weekly Review"
+    },
+    "taskTitles": {
+      "writingEssay": "Essay Writing",
+      "writingChart": "Data Description",
+      "listening": "Listening Practice",
+      "tutor": "AI Tutor Session",
+      "vocabulary": "Vocabulary & Grammar"
+    },
+    "tips": {
+      "readAloud": "Read your essay aloud after writing — it helps catch grammar errors.",
+      "askGrammar": "Ask your AI tutor about one grammar rule you struggle with.",
+      "listenTwice": "Listen to the passage twice before answering questions.",
+      "usePhrases": "Use phrases like \"The data shows...\" and \"It is evident that...\" in your chart description.",
+      "learnWords": "Learn 3 new words today and use them in a sentence.",
+      "setTimer": "Set a 15-minute timer and write without stopping — quantity builds fluency.",
+      "reviewWeek": "Review what you learned this week. What was most challenging?"
+    }
   },
   "writing": {
     "title": "Writing Practice",
@@ -243,7 +292,8 @@
     "practiceWithTutor": "Practice with AI Tutor instead",
     "voiceMode": "Voice",
     "textMode": "Text Input",
-    "textModeDesc": "Speak out loud, then type what you said (or just type your response directly):",
+    "textModeDesc": "Type your English response to the topic above. Speak out loud first, then write what you said — or type directly.",
+    "unavailable": "unavailable",
     "textPlaceholder": "Type your spoken response here...",
     "words": "words",
     "getAIFeedback": "Get AI Feedback",
@@ -301,7 +351,51 @@
     "suggestion5": "Can you correct this: 'Yesterday I go to school'",
     "suggestion6": "How do I improve my essay coherence?",
     "suggestion7": "What are good connective phrases for essays?",
-    "suggestion8": "Explain the present perfect tense with examples"
+    "suggestion8": "Explain the present perfect tense with examples",
+    "chatHistory": "Chat History",
+    "newChat": "New Chat",
+    "noHistory": "No previous chats yet.",
+    "retry": "Retry",
+    "searchChats": "Search chats...",
+    "yesterday": "Yesterday",
+    "noResults": "No chats found."
+  },
+  "social": {
+    "title": "Friends & Social",
+    "subtitle": "Connect with other learners, compare progress, and share achievements.",
+    "loginMessage": "Please login to access social features.",
+    "findFriends": "Find Friends",
+    "searchPlaceholder": "Search by name or email...",
+    "addFriend": "Add Friend",
+    "alreadyAdded": "Already added",
+    "pendingRequests": "Friend Requests",
+    "yourFriends": "Your Friends",
+    "noFriends": "No friends yet. Search and add someone!",
+    "accept": "Accept",
+    "reject": "Decline",
+    "compare": "Compare",
+    "sentRequests": "Sent Requests",
+    "pending": "Pending",
+    "compareTitle": "Skill Comparison",
+    "skill": "Skill",
+    "axis": {
+      "writing": "Writing",
+      "speaking": "Speaking",
+      "listening": "Listening",
+      "vocabulary": "Vocabulary",
+      "consistency": "Consistency",
+      "streak": "Streak"
+    },
+    "shareProgress": "Share Progress",
+    "shareYourProgress": "Share Your Progress",
+    "shareText": "{name} is at {level} level on EnglishPro! Writing: {writing}/9 · Speaking: {speaking}% · Listening: {listening}%",
+    "shareCardSubtitle": "English Learning Progress",
+    "writing": "Writing",
+    "speaking": "Speaking",
+    "listening": "Listening",
+    "downloadImage": "Save Image",
+    "copyText": "Copy Text",
+    "copied": "Copied!"
   },
   "common": {
     "loading": "Loading...",

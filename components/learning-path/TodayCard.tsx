@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import type { DayPlan } from '@/lib/learningPath'
 
 const colorMap: Record<string, { bg: string; border: string; text: string; btn: string }> = {
@@ -20,6 +21,7 @@ interface Props {
 
 export default function TodayCard({ plan, progress, onComplete, locale }: Props) {
   const router = useRouter()
+  const t = useTranslations('learningPath')
 
   const handleStart = (href: string, task: 'task1' | 'task2') => {
     // Mark as done then navigate
@@ -35,12 +37,12 @@ export default function TodayCard({ plan, progress, onComplete, locale }: Props)
       <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4 text-white">
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-xs font-medium text-blue-200 uppercase tracking-wide">Today's Focus</div>
-            <div className="text-lg font-bold mt-0.5">{plan.theme}</div>
+            <div className="text-xs font-medium text-blue-200 uppercase tracking-wide">{t('todaysFocus')}</div>
+            <div className="text-lg font-bold mt-0.5">{plan.themeKey ? t(plan.themeKey) : plan.theme}</div>
           </div>
           {bothDone && (
             <div className="bg-white/20 text-white text-sm font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5">
-              ✅ Day Complete!
+              {t('dayComplete')}
             </div>
           )}
         </div>
@@ -48,24 +50,26 @@ export default function TodayCard({ plan, progress, onComplete, locale }: Props)
 
       <div className="p-6 space-y-4">
         <TaskRow
-          label="Session 1 · 15 min"
+          label={t('session1')}
           task={plan.task1}
           done={progress.task1Done}
           onStart={() => handleStart(plan.task1.href, 'task1')}
+          t={t}
         />
         <div className="border-t border-dashed border-gray-200" />
         <TaskRow
-          label="Session 2 · 15 min"
+          label={t('session2')}
           task={plan.task2}
           done={progress.task2Done}
           onStart={() => handleStart(plan.task2.href, 'task2')}
+          t={t}
         />
       </div>
 
       {bothDone && (
         <div className="bg-green-50 border-t border-green-100 px-6 py-4 text-center">
           <p className="text-green-700 font-medium text-sm">
-            🎉 Amazing work! You completed today's sessions. See you tomorrow!
+            {t('amazingWork')}
           </p>
         </div>
       )}
@@ -78,11 +82,13 @@ function TaskRow({
   task,
   done,
   onStart,
+  t,
 }: {
   label: string
   task: DayPlan['task1']
   done: boolean
   onStart: () => void
+  t: ReturnType<typeof useTranslations>
 }) {
   const c = colorMap[task.color] || colorMap.blue
 
@@ -94,7 +100,7 @@ function TaskRow({
           <div>
             <div className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-0.5">{label}</div>
             <div className={`font-semibold ${done ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
-              {task.title}
+              {t(task.titleKey)}
             </div>
             <div className={`text-sm mt-0.5 ${done ? 'text-gray-400' : 'text-gray-600'}`}>
               {task.description}
@@ -102,13 +108,13 @@ function TaskRow({
           </div>
         </div>
         {done ? (
-          <span className="flex-shrink-0 text-green-600 font-semibold text-sm whitespace-nowrap">Done ✓</span>
+          <span className="flex-shrink-0 text-green-600 font-semibold text-sm whitespace-nowrap">{t('doneCheck')}</span>
         ) : (
           <button
             onClick={onStart}
             className={`flex-shrink-0 ${c.btn} text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors whitespace-nowrap`}
           >
-            Start →
+            {t('startBtn')}
           </button>
         )}
       </div>

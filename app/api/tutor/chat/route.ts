@@ -12,16 +12,35 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const { messages } = await req.json()
+    const { messages, sessionId } = await req.json()
     if (!messages || !Array.isArray(messages)) {
       return NextResponse.json({ error: 'Invalid messages' }, { status: 400 })
+    }
+
+    // Ensure we have a valid session
+    let chatSessionId = sessionId
+    if (!chatSessionId) {
+      const chatSession = await prisma.chatSession.create({
+        data: { userId: session.user.id, title: 'New Chat' },
+      })
+      chatSessionId = chatSession.id
     }
 
     const lastMessage = messages[messages.length - 1]
 
     await prisma.chatMessage.create({
-      data: { userId: session.user.id, role: 'user', content: lastMessage.content },
+      data: { userId: session.user.id, sessionId: chatSessionId, role: 'user', content: lastMessage.content },
     })
+
+    // Auto-title: use first user message as title (truncated)
+    const messageCount = await prisma.chatMessage.count({ where: { sessionId: chatSessionId, role: 'user' } })
+    if (messageCount === 1) {
+      const title = lastMessage.content.slice(0, 60) + (lastMessage.content.length > 60 ? '...' : '')
+      await prisma.chatSession.update({ where: { id: chatSessionId }, data: { title } })
+    }
+
+    // Update session timestamp
+    await prisma.chatSession.update({ where: { id: chatSessionId }, data: { updatedAt: new Date() } })
 
     // Mock mode: stream a fake response word by word
     if (isMockMode()) {
@@ -31,13 +50,13 @@ export async function POST(req: NextRequest) {
         async start(controller) {
           const words = mockText.split(' ')
           for (const word of words) {
-            controller.enqueue(encoder.encode(`data: ${JSON.stringify({ text: word + ' ' })}\n\n`))
+            controller.enqueue(encoder.encode(`data: ${JSON.stringify({ text: word + ' ', sessionId: chatSessionId })}\n\n`))
             await new Promise((r) => setTimeout(r, 30))
           }
           controller.enqueue(encoder.encode('data: [DONE]\n\n'))
           controller.close()
           await prisma.chatMessage.create({
-            data: { userId: session.user.id, role: 'assistant', content: mockText },
+            data: { userId: session.user.id, sessionId: chatSessionId, role: 'assistant', content: mockText },
           })
         },
       })
@@ -63,6 +82,8 @@ export async function POST(req: NextRequest) {
       async start(controller) {
         let fullResponse = ''
         try {
+          // Send sessionId first
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify({ sessionId: chatSessionId })}\n\n`))
           for await (const chunk of stream) {
             if (chunk.type === 'content_block_delta' && chunk.delta.type === 'text_delta') {
               const text = chunk.delta.text
@@ -72,7 +93,7 @@ export async function POST(req: NextRequest) {
           }
           controller.enqueue(encoder.encode('data: [DONE]\n\n'))
           await prisma.chatMessage.create({
-            data: { userId: session.user.id, role: 'assistant', content: fullResponse },
+            data: { userId: session.user.id, sessionId: chatSessionId, role: 'assistant', content: fullResponse },
           })
         } catch (err) {
           controller.error(err)

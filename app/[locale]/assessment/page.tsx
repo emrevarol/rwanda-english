@@ -25,8 +25,8 @@ export default function AssessmentPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-600 mb-4">Please login to take the assessment.</p>
-          <Link href="/login" className="text-blue-600 hover:underline">Login</Link>
+          <p className="text-gray-600 mb-4">{t('loginMessage')}</p>
+          <Link href="/login" className="text-blue-600 hover:underline">{t('back')}</Link>
         </div>
       </div>
     )
@@ -167,7 +167,7 @@ export default function AssessmentPage() {
               disabled={current === 0}
               className="px-4 py-2 text-sm text-gray-500 hover:text-gray-700 disabled:opacity-30"
             >
-              ← Back
+              {t('back')}
             </button>
 
             {current < questions.length - 1 ? (

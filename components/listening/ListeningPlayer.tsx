@@ -37,12 +37,12 @@ export default function ListeningPlayer() {
       const res = await fetch('/api/listening/generate')
       const data = await res.json()
       if (!res.ok || data.error) {
-        setError(data.error || 'Failed to generate content. Please try again.')
+        setError(data.error || t('errorGenerate'))
       } else {
         setContent(data)
       }
     } catch {
-      setError('Connection error. Please try again.')
+      setError(t('errorConnection'))
     }
     setLoading(false)
   }
@@ -92,7 +92,7 @@ export default function ListeningPlayer() {
         <div className="text-4xl mb-4">🎧</div>
         <h2 className="text-lg font-semibold text-gray-900 mb-2">{t('title')}</h2>
         <p className="text-gray-500 text-sm mb-6">
-          Generate an AI-created passage, listen to it, and answer comprehension questions.
+          {t('playerDesc')}
         </p>
         <button
           onClick={generate}

@@ -5,53 +5,66 @@ import { Link } from '@/i18n/navigation'
 import Navigation from '@/components/shared/Navigation'
 
 export default function HomePage() {
+  const t = useTranslations('landing')
+  const tc = useTranslations('nav')
+
+  const cefrLevels = [
+    { level: 'A1', label: t('cefr.a1'), color: 'bg-red-100 text-red-700 border-red-200' },
+    { level: 'A2', label: t('cefr.a2'), color: 'bg-orange-100 text-orange-700 border-orange-200' },
+    { level: 'B1', label: t('cefr.b1'), color: 'bg-yellow-100 text-yellow-700 border-yellow-200' },
+    { level: 'B2', label: t('cefr.b2'), color: 'bg-green-100 text-green-700 border-green-200' },
+    { level: 'C1', label: t('cefr.c1'), color: 'bg-blue-100 text-blue-700 border-blue-200' },
+    { level: 'C2', label: t('cefr.c2'), color: 'bg-purple-100 text-purple-700 border-purple-200' },
+  ]
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Navigation />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-700 via-indigo-600 to-purple-700 text-white animate-gradient">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-white rounded-full translate-x-1/3 translate-y-1/3" />
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-300 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-yellow-200 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-30" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-4 py-2 rounded-full mb-6 border border-white/20">
                 <span>🇷🇼</span>
-                <span>Designed for Rwandan Teachers</span>
+                <span>{t('hero.badge')}</span>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-                Master English in{' '}
-                <span className="text-yellow-300">365 Days</span>
+                {t('hero.titleBefore')}{' '}
+                <span className="text-yellow-300">{t('hero.titleHighlight')}</span>
               </h1>
               <p className="text-lg text-blue-100 mb-8 leading-relaxed max-w-lg">
-                AI-powered English learning platform for Rwandan teachers. Just 2 sessions of 15 minutes a day — your personalized path to fluency.
+                {t('hero.subtitle')}
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/register"
                   className="bg-yellow-400 text-blue-900 text-base font-bold px-7 py-3.5 rounded-xl hover:bg-yellow-300 transition-all shadow-lg"
                 >
-                  Start Free Today →
+                  {t('hero.cta')}
                 </Link>
                 <Link
                   href="/login"
                   className="bg-white/10 border border-white/30 text-white text-base font-medium px-7 py-3.5 rounded-xl hover:bg-white/20 transition-all"
                 >
-                  Login
+                  {t('hero.login')}
                 </Link>
               </div>
               <div className="mt-10 flex items-center gap-6 text-sm text-blue-200">
                 <div className="flex items-center gap-2">
                   <span className="text-yellow-300 font-bold text-lg">365</span>
-                  <span>Day Program</span>
+                  <span>{t('hero.dayProgram')}</span>
                 </div>
                 <div className="w-px h-6 bg-white/20" />
                 <div className="flex items-center gap-2">
                   <span className="text-yellow-300 font-bold text-lg">30</span>
-                  <span>min/day</span>
+                  <span>{t('hero.minDay')}</span>
                 </div>
                 <div className="w-px h-6 bg-white/20" />
                 <div className="flex items-center gap-2">
@@ -78,14 +91,14 @@ export default function HomePage() {
               <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-xl p-4 flex items-center gap-3">
                 <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-xl">🔥</div>
                 <div>
-                  <div className="text-xs text-gray-400">Current streak</div>
-                  <div className="text-lg font-bold text-gray-800">21 days</div>
+                  <div className="text-xs text-gray-400">{t('hero.streakLabel')}</div>
+                  <div className="text-lg font-bold text-gray-800">{t('hero.streakDays')}</div>
                 </div>
               </div>
               <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-xl p-4 flex items-center gap-3">
                 <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-xl">📈</div>
                 <div>
-                  <div className="text-xs text-gray-400">Level up</div>
+                  <div className="text-xs text-gray-400">{t('hero.levelUpLabel')}</div>
                   <div className="text-lg font-bold text-gray-800">A2 → B1</div>
                 </div>
               </div>
@@ -95,81 +108,74 @@ export default function HomePage() {
       </section>
 
       {/* How it works */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">How It Works</h2>
+            <h2 className="text-3xl font-bold text-gray-900">{t('howItWorks.title')}</h2>
             <p className="text-gray-500 mt-3 max-w-xl mx-auto">
-              No decision fatigue. We plan everything. You just show up.
+              {t('howItWorks.subtitle')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <StepCard step="01" icon="📝" title="Take Placement Test" description="A 10-question adaptive test determines your CEFR level (A1–C2) and personalizes your entire 365-day journey." color="blue" />
-            <StepCard step="02" icon="🗓" title="Follow Daily Plan" description="Every day you get 2 sessions of 15 minutes. Writing, Listening, or AI Tutor — we decide, you execute." color="green" />
-            <StepCard step="03" icon="📊" title="Track Your Progress" description="See your CEFR level rise, skills radar evolve, and streak grow. Your dashboard shows every improvement." color="purple" />
+            <StepCard step="01" icon="📝" title={t('howItWorks.step1Title')} description={t('howItWorks.step1Desc')} color="blue" />
+            <StepCard step="02" icon="🗓" title={t('howItWorks.step2Title')} description={t('howItWorks.step2Desc')} color="green" />
+            <StepCard step="03" icon="📊" title={t('howItWorks.step3Title')} description={t('howItWorks.step3Desc')} color="purple" />
           </div>
         </div>
       </section>
 
       {/* Features */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Everything You Need</h2>
-            <p className="text-gray-500 mt-3">Four core modules, powered by Claude AI</p>
+            <h2 className="text-3xl font-bold text-gray-900">{t('features.title')}</h2>
+            <p className="text-gray-500 mt-3">{t('features.subtitle')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FeatureBig
               icon="✍️"
-              title="Writing Practice"
-              description="IELTS-style essay and data description tasks. Get band scores, detailed feedback on grammar and vocabulary, and improved sentence examples — all from AI."
+              title={t('features.writing.title')}
+              description={t('features.writing.description')}
               image="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80"
               color="blue"
               href="/register"
             />
             <FeatureBig
               icon="🎧"
-              title="Listening Practice"
-              description="AI generates Rwanda-relevant passages read aloud via text-to-speech. Answer comprehension questions and get instant explanations."
+              title={t('features.listening.title')}
+              description={t('features.listening.description')}
               image="https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=600&q=80"
               color="purple"
               href="/register"
             />
             <FeatureBig
               icon="🤖"
-              title="AI Tutor Chat"
-              description="Your personal English teacher available 24/7. Ask grammar questions, practice conversations, get vocabulary help. The tutor knows your level and adapts."
+              title={t('features.tutor.title')}
+              description={t('features.tutor.description')}
               image="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=600&q=80"
               color="green"
               href="/register"
             />
             <FeatureBig
               icon="🎙️"
-              title="Speaking Practice"
-              description="Coming soon — real-time pronunciation feedback, fluency scoring, and IELTS Speaking band evaluation."
+              title={t('features.speaking.title')}
+              description={t('features.speaking.description')}
               image="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=600&q=80"
               color="orange"
               href="/register"
-              comingSoon
+              comingSoonLabel={t('features.comingSoon')}
             />
           </div>
         </div>
       </section>
 
       {/* CEFR levels */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-800/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Adaptive to Your Level</h2>
-          <p className="text-gray-500 mb-10">Our AI adapts every exercise to your current CEFR level</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('cefr.title')}</h2>
+          <p className="text-gray-500 mb-10">{t('cefr.subtitle')}</p>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
-            {[
-              { level: 'A1', label: 'Beginner', color: 'bg-red-100 text-red-700 border-red-200' },
-              { level: 'A2', label: 'Elementary', color: 'bg-orange-100 text-orange-700 border-orange-200' },
-              { level: 'B1', label: 'Intermediate', color: 'bg-yellow-100 text-yellow-700 border-yellow-200' },
-              { level: 'B2', label: 'Upper Inter.', color: 'bg-green-100 text-green-700 border-green-200' },
-              { level: 'C1', label: 'Advanced', color: 'bg-blue-100 text-blue-700 border-blue-200' },
-              { level: 'C2', label: 'Mastery', color: 'bg-purple-100 text-purple-700 border-purple-200' },
-            ].map((l) => (
+            {cefrLevels.map((l) => (
               <div key={l.level} className={`rounded-xl border-2 p-4 ${l.color}`}>
                 <div className="text-2xl font-extrabold">{l.level}</div>
                 <div className="text-xs mt-1 font-medium">{l.label}</div>
@@ -180,25 +186,25 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+      <section className="py-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 text-white animate-gradient">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <div className="text-5xl mb-6">🇷🇼</div>
-          <h2 className="text-3xl font-bold mb-4">Join Rwanda's English Revolution</h2>
+          <h2 className="text-3xl font-bold mb-4">{t('cta.title')}</h2>
           <p className="text-blue-100 mb-8 text-lg">
-            15 minutes a day, twice a day. That's all it takes.
+            {t('cta.subtitle')}
           </p>
           <Link
             href="/register"
             className="inline-block bg-yellow-400 text-blue-900 text-lg font-bold px-10 py-4 rounded-xl hover:bg-yellow-300 transition-all shadow-lg"
           >
-            Start Your 365-Day Journey →
+            {t('cta.button')}
           </Link>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-8 text-center text-sm">
-        <p>© 2024 Rwanda English Proficiency Platform · Powered by Claude AI · Built for Rwandan Teachers</p>
+      <footer className="bg-gray-900 dark:bg-black text-gray-400 py-8 text-center text-sm">
+        <p>{t('footer')}</p>
       </footer>
     </div>
   )
@@ -220,9 +226,9 @@ function StepCard({ step, icon, title, description, color }: {
   )
 }
 
-function FeatureBig({ icon, title, description, image, color, href, comingSoon }: {
+function FeatureBig({ icon, title, description, image, color, href, comingSoonLabel }: {
   icon: string; title: string; description: string; image: string
-  color: string; href: string; comingSoon?: boolean
+  color: string; href: string; comingSoonLabel?: string
 }) {
   const colors: Record<string, string> = {
     blue: 'from-blue-500 to-blue-700',
@@ -242,10 +248,10 @@ function FeatureBig({ icon, title, description, image, color, href, comingSoon }
         <div className="absolute inset-0 flex items-center justify-center">
           <span className="text-5xl">{icon}</span>
         </div>
-        {comingSoon && (
+        {comingSoonLabel && (
           <div className="absolute top-3 right-3 bg-white/90 text-orange-600 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
             <span className="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse"></span>
-            Coming Soon
+            {comingSoonLabel}
           </div>
         )}
       </div>

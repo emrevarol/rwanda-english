@@ -35,7 +35,10 @@ export default function RegisterPage() {
       if (!res.ok) {
         setError(data.error || 'Registration failed')
       } else {
-        router.push(`/${locale}/login?registered=true`)
+        // Redirect to OTP verification page
+        const params = new URLSearchParams({ email: form.email })
+        if (data.otp) params.set('otp', data.otp) // dev mode only
+        router.push(`/${locale}/verify?${params.toString()}`)
       }
     } catch {
       setError('Something went wrong')

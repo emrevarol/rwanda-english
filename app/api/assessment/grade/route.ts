@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
 
     const result = isMockMode()
       ? mockAssessmentResult
-      : await gradeAssessment(answers, session.user.level)
+      : await gradeAssessment(answers, session.user.level, session.user.language)
 
     await prisma.user.update({
       where: { id: session.user.id },

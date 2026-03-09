@@ -9,12 +9,17 @@ export async function POST(req: NextRequest) {
     const session = await getServerSession(authOptions)
     if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-    const { task } = await req.json() // 'task1' | 'task2'
+    const { task, minutes } = await req.json() // task: 'task1' | 'task2', minutes: number
     const today = getTodayString()
+    const mins = Math.max(0, Math.min(120, Math.round(minutes || 0)))
 
-    const updated = await prisma.dailyProgress.updateMany({
+    const data = task === 'task1'
+      ? { task1Done: true, task1Mins: mins }
+      : { task2Done: true, task2Mins: mins }
+
+    await prisma.dailyProgress.updateMany({
       where: { userId: session.user.id, date: today },
-      data: task === 'task1' ? { task1Done: true } : { task2Done: true },
+      data,
     })
 
     return NextResponse.json({ success: true })

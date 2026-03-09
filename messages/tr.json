@@ -9,38 +9,71 @@
     "assessment": "Seviye Testi",
     "login": "Giriş Yap",
     "register": "Kayıt Ol",
-    "logout": "Çıkış Yap"
+    "logout": "Çıkış Yap",
+    "dailyPlan": "Günlük Plan",
+    "friends": "Arkadaşlar"
   },
   "landing": {
     "hero": {
-      "title": "İngilizce Yeterliliğinizi Artırın",
-      "subtitle": "Ruandalı öğretmenler için tasarlanmış AI destekli İngilizce öğrenme platformu. Kişiselleştirilmiş alıştırmalar ve anında AI geri bildirimiyle becerilerinizi geliştirin.",
-      "cta": "Ücretsiz Başla",
-      "login": "Hesabınız var mı? Giriş Yapın"
+      "badge": "Öğretmenler İçin Tasarlandı",
+      "titleBefore": "İngilizceyi",
+      "titleHighlight": "365 Günde",
+      "subtitle": "Öğretmenler için AI destekli İngilizce öğrenme platformu. Günde sadece 2 oturum, 15'er dakika — akıcılığa giden kişisel yolunuz.",
+      "cta": "Ücretsiz Başla →",
+      "login": "Giriş Yap",
+      "dayProgram": "Günlük Program",
+      "minDay": "dk/gün",
+      "streakLabel": "Mevcut seri",
+      "streakDays": "21 gün",
+      "levelUpLabel": "Seviye atlama"
+    },
+    "howItWorks": {
+      "title": "Nasıl Çalışır",
+      "subtitle": "Karar yorgunluğu yok. Her şeyi biz planlıyoruz. Siz sadece katılın.",
+      "step1Title": "Seviye Testini Çöz",
+      "step1Desc": "10 soruluk uyarlanabilir test, CEFR seviyenizi (A1–C2) belirler ve 365 günlük yolculuğunuzu kişiselleştirir.",
+      "step2Title": "Günlük Planı Takip Et",
+      "step2Desc": "Her gün 15'er dakikalık 2 oturum alırsınız. Yazma, Dinleme veya AI Öğretmen — biz karar veririz, siz uygularsınız.",
+      "step3Title": "İlerlemenizi Takip Edin",
+      "step3Desc": "CEFR seviyenizin yükselişini, beceri radarınızın gelişimini ve serinizin büyümesini izleyin. Gösterge paneliniz her ilerlemeyi gösterir."
     },
     "features": {
-      "title": "Başarı İçin İhtiyacınız Olan Her Şey",
+      "title": "İhtiyacınız Olan Her Şey",
+      "subtitle": "Claude AI ile desteklenen dört temel modül",
+      "comingSoon": "Yakında",
       "writing": {
         "title": "Yazma Pratiği",
-        "description": "IELTS tarzı makaleler ve raporlar yazın, dilbilgisi, kelime ve yapı konusunda anında AI geri bildirimi alın."
-      },
-      "speaking": {
-        "title": "Konuşma Pratiği",
-        "description": "Sesinizi kaydedin, AI öğretmenimizden akıcılık, telaffuz ve dilbilgisi hakkında ayrıntılı geri bildirim alın."
+        "description": "IELTS tarzı makale ve veri açıklama görevleri. AI'dan bant puanları, dilbilgisi ve kelime hakkında detaylı geri bildirim ve iyileştirilmiş cümle örnekleri alın."
       },
       "listening": {
         "title": "Dinleme Pratiği",
-        "description": "AI tarafından oluşturulan metinleri dinleyin ve anlama sorularını yanıtlayarak dinleme becerilerinizi keskinleştirin."
+        "description": "AI ilgili metinler oluşturur ve metin-konuşma ile seslendirir. Anlama sorularını yanıtlayın ve anında açıklama alın."
       },
       "tutor": {
         "title": "AI Öğretmen Sohbeti",
-        "description": "Seviyenizi ve öğrenme hedeflerinizi bilen AI öğretmeninizden istediğiniz zaman kişiselleştirilmiş yardım alın."
+        "description": "7/24 erişilebilir kişisel İngilizce öğretmeniniz. Dilbilgisi soruları sorun, konuşma pratiği yapın, kelime yardımı alın. Öğretmen seviyenizi bilir ve uyum sağlar."
+      },
+      "speaking": {
+        "title": "Konuşma Pratiği",
+        "description": "Yakında — gerçek zamanlı telaffuz geri bildirimi, akıcılık puanlama ve IELTS Konuşma bant değerlendirmesi."
       }
     },
     "cefr": {
       "title": "Seviyenize Uyum Sağlar",
-      "subtitle": "AI'mız her zaman doğru tempoda öğrenmeniz için CEFR seviyenize (A1-C2) uyum sağlar."
-    }
+      "subtitle": "AI'mız her alıştırmayı mevcut CEFR seviyenize göre uyarlar",
+      "a1": "Başlangıç",
+      "a2": "Temel",
+      "b1": "Orta",
+      "b2": "Üst Orta",
+      "c1": "İleri",
+      "c2": "Ustalık"
+    },
+    "cta": {
+      "title": "İngilizce Devrimine Katılın",
+      "subtitle": "Günde 15 dakika, günde iki kez. Hepsi bu kadar.",
+      "button": "365 Günlük Yolculuğunuza Başlayın →"
+    },
+    "footer": "© 2026 English Proficiency Platform · Claude AI ile Desteklenmektedir · Öğretmenler İçin Yapılmıştır"
   },
   "auth": {
     "login": {
@@ -63,7 +96,22 @@
       "submit": "Hesap Oluştur",
       "hasAccount": "Zaten hesabınız var mı?",
       "login": "Giriş Yapın",
-      "success": "Hesap oluşturuldu! Lütfen giriş yapın."
+      "success": "Hesap oluşturuldu! Lütfen giriş yapın.",
+      "langEnglish": "English",
+      "langKinyarwanda": "Kinyarwanda",
+      "langTurkish": "Türkçe"
+    },
+    "verify": {
+      "title": "E-postanızı Doğrulayın",
+      "subtitle": "6 haneli bir kod gönderdik:",
+      "placeholder": "6 haneli kodu girin",
+      "submit": "Doğrula",
+      "verifying": "Doğrulanıyor...",
+      "resend": "Kodu Tekrar Gönder",
+      "resent": "Kod tekrar gönderildi!",
+      "success": "E-posta doğrulandı! Giriş sayfasına yönlendiriliyorsunuz...",
+      "error": "Geçersiz veya süresi dolmuş kod. Lütfen tekrar deneyin.",
+      "devNote": "Geliştirme modu — OTP kodunuz:"
     }
   },
   "assessment": {
@@ -74,6 +122,8 @@
     "next": "Sonraki Soru",
     "submit": "Testi Gönder",
     "yourAnswer": "Cevabınız...",
+    "loginMessage": "Seviye testini almak için lütfen giriş yapın.",
+    "back": "← Geri",
     "result": {
       "title": "Sonuçlarınız",
       "level": "CEFR Seviyeniz",
@@ -93,11 +143,105 @@
     "writing": "Yazma",
     "speaking": "Konuşma",
     "listening": "Dinleme",
-    "vocabulary": "Kelime",
+    "vocabulary": "Kelime Bilgisi",
     "grammar": "Dilbilgisi",
     "noActivity": "Son etkinlik yok. Öğrenmeye başlayın!",
     "bandScore": "Bant Puanı",
-    "fluencyScore": "Akıcılık Puanı"
+    "fluencyScore": "Akıcılık Puanı",
+    "dayOf": "Gün {day} / 365",
+    "allDone": "Tamamlandı!",
+    "halfDone": "½ Tamamlandı",
+    "startBtn": "Başla →",
+    "dayStreak": "{streak} günlük seri",
+    "progressOverTime": "Zaman İçindeki İlerleme",
+    "keepPracticing": "İngilizce yeterlilik seviyenizi yükseltmek için pratik yapmaya devam edin.",
+    "aiTutor": "AI Öğretmen",
+    "retakeTest": "Seviye Testini Yeniden Al",
+    "loginMessage": "Gösterge panelinize erişmek için lütfen giriş yapın.",
+    "noDataYet": "Henüz veri yok. İlerlemenizi görmek için pratik yapmaya başlayın!"
+  },
+  "learningPath": {
+    "title": "Öğrenme Yolu",
+    "subtitle": "365 gün · 2 oturum × 15 dk",
+    "day": "Gün",
+    "of365": "/ 365",
+    "overallProgress": "Genel İlerleme",
+    "complete": "tamamlandı",
+    "day1": "Gün 1",
+    "day365": "Gün 365",
+    "daysCompleted": "{count} gün tamamlandı",
+    "tabToday": "📅 Bugünün Planı",
+    "tabPath": "🗺 Tüm Yol",
+    "tabConsistency": "📊 Düzenlilik",
+    "todaysTip": "Günün İpucu",
+    "monthlySummary": "Aylık Özet",
+    "loginMessage": "Öğrenme yolunuzu görmek için lütfen giriş yapın.",
+    "todaysFocus": "Bugünün Odağı",
+    "dayComplete": "Gün Tamamlandı!",
+    "session1": "Oturum 1 · 15 dk",
+    "session2": "Oturum 2 · 15 dk",
+    "amazingWork": "Harika iş! Bugünkü oturumlarınızı tamamladınız. Yarın görüşürüz!",
+    "doneCheck": "Tamamlandı ✓",
+    "startBtn": "Başla →",
+    "startStreak": "Serinize başlayın!",
+    "startStreakDesc": "Seri başlatmak için bugün her iki oturumu da tamamlayın.",
+    "legendaryStreak": "Efsanevi seri! 🏆",
+    "onFire": "Ateştesiniz! Devam edin! 🔥",
+    "oneWeek": "Bir hafta güçlü! 💪",
+    "greatConsistency": "Harika düzenlilik!",
+    "goodStart": "İyi bir başlangıç!",
+    "dayStreakLabel": "{streak} Günlük Seri",
+    "daysInRow": "gün üst üste",
+    "thisWeek": "Bu Hafta",
+    "todayLegendItem": "Bugün",
+    "full365": "365 Günlük Tam Yol",
+    "doneLegend": "Tamamlandı",
+    "todayBadge": "BUGÜN",
+    "upcoming": "Yaklaşan",
+    "weekLabel": "Hafta {week}",
+    "consistency": "Düzenlilik",
+    "activeDays": "{count} aktif gün",
+    "fullDays": "{count} tam gün",
+    "noSessions": "Oturum yok",
+    "oneSession": "1 oturum",
+    "twoSessions": "2 oturum tamamlandı",
+    "less": "Az",
+    "more": "Çok",
+    "clickForDetail": "Detay için bir güne tıklayın",
+    "minutes": "dk",
+    "writingActivity": "yazma gönderimi",
+    "listeningActivity": "dinleme oturumu",
+    "chatActivity": "öğretmen mesajı",
+    "totalTime": "Toplam süre",
+    "avgBand": "Ort. bant",
+    "avgScore": "Ort. puan",
+    "noActivityDay": "Bu gün etkinlik yok.",
+    "beforeJoin": "Katılmadan önce",
+    "themes": {
+      "expressionComprehension": "İfade & Anlama",
+      "grammarFocus": "Dilbilgisi Odağı",
+      "inputOutput": "Girdi & Çıktı",
+      "academicSkills": "Akademik Beceriler",
+      "vocabularyBuilding": "Kelime Geliştirme",
+      "fluencyWriting": "Akıcılık & Yazma",
+      "weeklyReview": "Haftalık Gözden Geçirme"
+    },
+    "taskTitles": {
+      "writingEssay": "Makale Yazma",
+      "writingChart": "Veri Açıklaması",
+      "listening": "Dinleme Pratiği",
+      "tutor": "AI Öğretmen Oturumu",
+      "vocabulary": "Kelime & Dilbilgisi"
+    },
+    "tips": {
+      "readAloud": "Yazdıktan sonra makalenizi sesli okuyun — dilbilgisi hatalarını yakalamanıza yardımcı olur.",
+      "askGrammar": "AI öğretmeninize zorlandığınız bir dilbilgisi kuralı hakkında sorun.",
+      "listenTwice": "Soruları yanıtlamadan önce metni iki kez dinleyin.",
+      "usePhrases": "Veri açıklamanızda \"Veriler gösteriyor ki...\" ve \"Açıkça görülüyor ki...\" gibi ifadeler kullanın.",
+      "learnWords": "Bugün 3 yeni kelime öğrenin ve bunları bir cümlede kullanın.",
+      "setTimer": "15 dakikalık bir zamanlayıcı kurun ve durmadan yazın — miktar akıcılık geliştirir.",
+      "reviewWeek": "Bu hafta öğrendiklerinizi gözden geçirin. En zorlu olan ne oldu?"
+    }
   },
   "writing": {
     "title": "Yazma Pratiği",
@@ -110,12 +254,18 @@
     "submitting": "Analiz ediliyor...",
     "history": "Geçmiş Gönderiler",
     "newTask": "Yeni Görev",
+    "practice": "Pratik",
+    "noSubmissions": "Henüz gönderim yok. Yazmaya başlayın!",
+    "loginMessage": "Yazma pratiği yapmak için lütfen giriş yapın.",
+    "connectionError": "Bağlantı hatası. Lütfen internetinizi kontrol edin ve tekrar deneyin.",
+    "level": "Seviye:",
+    "taskLabel": "Görev {n}",
     "feedback": {
       "title": "AI Geri Bildirimi",
       "band": "Bant Puanı",
       "taskAchievement": "Görev Başarısı",
       "coherence": "Uyum ve Tutarlılık",
-      "vocabulary": "Kelime",
+      "vocabulary": "Kelime Bilgisi",
       "grammar": "Dilbilgisi",
       "improved": "İyileştirilmiş Cümleler",
       "overall": "Genel Geri Bildirim"
@@ -131,12 +281,34 @@
     "analyzing": "Analiz ediliyor...",
     "noSupport": "Konuşma tanıma tarayıcınızda desteklenmiyor. Lütfen Chrome kullanın.",
     "transcript": "Konuşmanız",
+    "comingSoonBadge": "Yakında",
+    "comingSoonDesc": "Gerçek zamanlı ses analizi ile gelişmiş bir konuşma pratiği modülü geliştiriyoruz.",
+    "interimDesc": "Bu arada, bugünün konularını AI Öğretmen ile tartışarak konuşma pratiği yapabilirsiniz.",
+    "whatsComingTitle": "Neler gelecek:",
+    "feature1": "Gerçek zamanlı telaffuz geri bildirimi",
+    "feature2": "Akıcılık ve tonlama puanlama",
+    "feature3": "Anadil sesiyle model cevaplar",
+    "feature4": "IELTS Konuşma bant puanlama",
+    "practiceWithTutor": "Bunun yerine AI Öğretmen ile pratik yapın",
+    "voiceMode": "Ses",
+    "textMode": "Yazı Girişi",
+    "textModeDesc": "Yukarıdaki konuya İngilizce yanıtınızı yazın. Önce sesli konuşun, sonra yazdıklarınızı girin — veya doğrudan yazın.",
+    "unavailable": "kullanılamıyor",
+    "textPlaceholder": "Sözlü yanıtınızı buraya yazın...",
+    "words": "kelime",
+    "getAIFeedback": "AI Geri Bildirimi Al",
+    "errorNetwork": "Ses tanıma Google sunucuları (ağ) gerektirir. Yazı giriş moduna geçildi — yanıtınızı aşağıya yazın.",
+    "errorNotAllowed": "Mikrofon erişimi reddedildi. Tarayıcı ayarlarından mikrofona izin verin veya yazı moduna geçin.",
+    "errorAudioCapture": "Mikrofon algılanamadı. Yazı moduna geçin.",
+    "errorGeneric": "Konuşma hatası: {error}. Bunun yerine yazı modunu deneyin.",
+    "errorMicStart": "Mikrofon başlatılamadı: {error}",
+    "loginMessage": "Konuşma pratiği yapmak için lütfen giriş yapın.",
     "feedback": {
       "title": "AI Geri Bildirimi",
       "score": "Akıcılık Puanı",
       "fluency": "Akıcılık",
       "grammar": "Dilbilgisi",
-      "vocabulary": "Kelime",
+      "vocabulary": "Kelime Bilgisi",
       "model": "Model Cevap",
       "overall": "Genel Geri Bildirim"
     }
@@ -151,7 +323,12 @@
     "questions": "Anlama Soruları",
     "submit": "Cevapları Gönder",
     "result": "Puanınız",
-    "explanation": "Açıklama"
+    "explanation": "Açıklama",
+    "loginMessage": "Dinleme pratiği yapmak için lütfen giriş yapın.",
+    "playerDesc": "AI tarafından oluşturulmuş bir metin dinleyin ve anlama sorularını yanıtlayın.",
+    "errorGenerate": "İçerik oluşturulamadı. Lütfen tekrar deneyin.",
+    "errorConnection": "Bağlantı hatası. Lütfen tekrar deneyin.",
+    "level": "Seviye:"
   },
   "tutor": {
     "title": "AI Öğretmen",
@@ -159,7 +336,66 @@
     "placeholder": "Sorunuzu yazın...",
     "send": "Gönder",
     "suggestions": "Önerilen Sorular",
-    "thinking": "Düşünüyor..."
+    "thinking": "Düşünüyor...",
+    "headerTitle": "İngilizce AI Öğretmen",
+    "typing": "Yazıyor...",
+    "adaptedTo": "{level} seviyesine uyarlandı",
+    "stop": "Durdur",
+    "poweredBy": "Claude AI ile Desteklenmektedir · Seviye {level}",
+    "loginMessage": "AI öğretmen ile sohbet etmek için lütfen giriş yapın.",
+    "greeting": "Merhaba **{name}**! 👋 Ben senin AI İngilizce öğretmeninim.\n\n**{level} seviyesinde** olduğunu görüyorum — her şeyi senin seviyene uyarlayacağım.\n\nBugün ne üzerinde çalışmak istersin? Dilbilgisi, kelime bilgisi, yazma ipuçları veya İngilizce ile ilgili her şeyi sorabilirsin!",
+    "suggestion1": "'since' ve 'for' arasındaki farkı açıkla",
+    "suggestion2": "Edilgen çatıyı nasıl doğru kullanırım?",
+    "suggestion3": "Akademik yazı için 5 ileri seviye kelime ver",
+    "suggestion4": "B1 ve B2 İngilizce seviyesi arasındaki fark nedir?",
+    "suggestion5": "Bunu düzelt: 'Yesterday I go to school'",
+    "suggestion6": "Makalemde bütünlüğü nasıl artırabilirim?",
+    "suggestion7": "Makaleler için iyi bağlama ifadeleri nelerdir?",
+    "suggestion8": "Present perfect tense'i örneklerle açıkla",
+    "chatHistory": "Sohbet Geçmişi",
+    "newChat": "Yeni Sohbet",
+    "noHistory": "Henüz önceki sohbet yok.",
+    "retry": "Tekrar Dene",
+    "searchChats": "Sohbetlerde ara...",
+    "yesterday": "Dün",
+    "noResults": "Sohbet bulunamadı."
+  },
+  "social": {
+    "title": "Arkadaşlar & Sosyal",
+    "subtitle": "Diğer öğrencilerle bağlantı kurun, ilerlemenizi karşılaştırın ve başarılarınızı paylaşın.",
+    "loginMessage": "Sosyal özelliklere erişmek için lütfen giriş yapın.",
+    "findFriends": "Arkadaş Bul",
+    "searchPlaceholder": "İsim veya e-posta ile arayın...",
+    "addFriend": "Arkadaş Ekle",
+    "alreadyAdded": "Zaten eklendi",
+    "pendingRequests": "Arkadaşlık İstekleri",
+    "yourFriends": "Arkadaşlarınız",
+    "noFriends": "Henüz arkadaş yok. Birini arayın ve ekleyin!",
+    "accept": "Kabul Et",
+    "reject": "Reddet",
+    "compare": "Karşılaştır",
+    "sentRequests": "Gönderilen İstekler",
+    "pending": "Beklemede",
+    "compareTitle": "Beceri Karşılaştırması",
+    "skill": "Beceri",
+    "axis": {
+      "writing": "Yazma",
+      "speaking": "Konuşma",
+      "listening": "Dinleme",
+      "vocabulary": "Kelime",
+      "consistency": "Düzenlilik",
+      "streak": "Seri"
+    },
+    "shareProgress": "İlerlemeyi Paylaş",
+    "shareYourProgress": "İlerlemenizi Paylaşın",
+    "shareText": "{name} EnglishPro'da {level} seviyesinde! Yazma: {writing}/9 · Konuşma: {speaking}% · Dinleme: {listening}%",
+    "shareCardSubtitle": "İngilizce Öğrenme İlerlemesi",
+    "writing": "Yazma",
+    "speaking": "Konuşma",
+    "listening": "Dinleme",
+    "downloadImage": "Resmi Kaydet",
+    "copyText": "Metni Kopyala",
+    "copied": "Kopyalandı!"
   },
   "common": {
     "loading": "Yükleniyor...",
@@ -167,6 +403,7 @@
     "retry": "Tekrar Dene",
     "back": "Geri",
     "save": "Kaydet",
-    "cancel": "İptal"
+    "cancel": "İptal",
+    "level": "Seviye"
   }
 }

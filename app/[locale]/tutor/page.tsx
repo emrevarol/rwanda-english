@@ -8,14 +8,13 @@ import ChatInterface from '@/components/tutor/ChatInterface'
 
 export default function TutorPage() {
   const t = useTranslations('tutor')
+  const tc = useTranslations('common')
   const { data: session, status } = useSession()
 
   if (status === 'unauthenticated') {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">
-          Please <Link href="/login" className="text-blue-600 hover:underline">login</Link> to chat with the AI tutor.
-        </p>
+        <p className="text-gray-600">{t('loginMessage')}</p>
       </div>
     )
   }
@@ -27,7 +26,7 @@ export default function TutorPage() {
         <div className="mb-4">
           <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
           <p className="text-gray-500 text-sm">
-            {t('subtitle')} — Level:{' '}
+            {t('subtitle')} — {tc('level')}:{' '}
             <span className="font-medium text-blue-600">{session?.user?.level}</span>
           </p>
         </div>

@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import Navigation from '@/components/shared/Navigation'
 import WritingEditor from '@/components/writing/WritingEditor'
 
 export default function WritingPage() {
   const t = useTranslations('writing')
+  const tc = useTranslations('common')
+  const locale = useLocale()
   const { data: session, status } = useSession()
   const [activeTab, setActiveTab] = useState<'practice' | 'history'>('practice')
   const [taskType, setTaskType] = useState<'task1' | 'task2'>('task2')
@@ -28,9 +30,7 @@ export default function WritingPage() {
   if (status === 'unauthenticated') {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">
-          Please <Link href="/login" className="text-blue-600 hover:underline">login</Link> to practice writing.
-        </p>
+        <p className="text-gray-600">{t('loginMessage')}</p>
       </div>
     )
   }
@@ -43,7 +43,7 @@ export default function WritingPage() {
           <div>
             <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
             <p className="text-gray-500 text-sm mt-1">
-              Level: <span className="font-medium text-blue-600">{session?.user?.level}</span>
+              {t('level')} <span className="font-medium text-blue-600">{session?.user?.level}</span>
             </p>
           </div>
           <div className="flex gap-2">
@@ -55,7 +55,7 @@ export default function WritingPage() {
                   : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
               }`}
             >
-              Practice
+              {t('practice')}
             </button>
             <button
               onClick={() => setActiveTab('history')}
@@ -104,11 +104,11 @@ export default function WritingPage() {
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('history')}</h2>
             {loadingHistory ? (
-              <p className="text-gray-400 text-sm">Loading...</p>
+              <p className="text-gray-400 text-sm">{tc('loading')}</p>
             ) : history.length === 0 ? (
               <div className="text-center py-8 text-gray-400">
                 <div className="text-4xl mb-3">✍️</div>
-                <p>No submissions yet. Start writing!</p>
+                <p>{t('noSubmissions')}</p>
               </div>
             ) : (
               <div className="space-y-4">
@@ -119,10 +119,10 @@ export default function WritingPage() {
                       <div className="flex items-start justify-between mb-2">
                         <div>
                           <span className="text-xs font-medium bg-blue-100 text-blue-700 px-2 py-0.5 rounded mr-2">
-                            {sub.taskType === 'task1' ? 'Task 1' : 'Task 2'}
+                            {t('taskLabel', { n: sub.taskType === 'task1' ? 1 : 2 })}
                           </span>
                           <span className="text-xs text-gray-400">
-                            {new Date(sub.createdAt).toLocaleDateString()}
+                            {new Date(sub.createdAt).toLocaleDateString(locale)}
                           </span>
                         </div>
                         <span className="text-lg font-bold text-blue-600">Band {sub.band}</span>

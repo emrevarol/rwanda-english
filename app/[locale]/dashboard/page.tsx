@@ -20,13 +20,14 @@ interface DashboardData {
 
 interface TodayPlan {
   dayNumber: number
-  plan: { theme: string; task1: { title: string; icon: string; href: string }; task2: { title: string; icon: string; href: string } }
+  plan: { theme: string; themeKey?: string; task1: { title: string; icon: string; href: string }; task2: { title: string; icon: string; href: string } }
   progress: { task1Done: boolean; task2Done: boolean }
   streak: number
 }
 
 export default function DashboardPage() {
   const t = useTranslations('dashboard')
+  const tl = useTranslations('learningPath')
   const { data: session, status } = useSession()
   const locale = useLocale()
   const [data, setData] = useState<DashboardData | null>(null)
@@ -48,13 +49,7 @@ export default function DashboardPage() {
   if (status === 'unauthenticated') {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">
-          Please{' '}
-          <Link href="/login" className="text-blue-600 hover:underline">
-            login
-          </Link>{' '}
-          to access your dashboard.
-        </p>
+        <p className="text-gray-600">{t('loginMessage')}</p>
       </div>
     )
   }
@@ -98,8 +93,8 @@ export default function DashboardPage() {
                   🗓
                 </div>
                 <div>
-                  <div className="text-xs text-blue-200 font-medium uppercase tracking-wide">Day {todayPlan.dayNumber} of 365</div>
-                  <div className="font-bold text-lg">{todayPlan.plan.theme}</div>
+                  <div className="text-xs text-blue-200 font-medium uppercase tracking-wide">{t('dayOf', { day: todayPlan.dayNumber })}</div>
+                  <div className="font-bold text-lg">{todayPlan.plan.themeKey ? tl(todayPlan.plan.themeKey) : todayPlan.plan.theme}</div>
                   <div className="text-sm text-blue-200 mt-0.5 flex items-center gap-3">
                     <span>{todayPlan.plan.task1.icon} {todayPlan.plan.task1.title}</span>
                     <span>·</span>
@@ -109,14 +104,14 @@ export default function DashboardPage() {
               </div>
               <div className="text-right flex-shrink-0">
                 {todayPlan.progress.task1Done && todayPlan.progress.task2Done ? (
-                  <div className="bg-green-400 text-green-900 text-sm font-bold px-3 py-1.5 rounded-full">✅ Done!</div>
+                  <div className="bg-green-400 text-green-900 text-sm font-bold px-3 py-1.5 rounded-full">{t('allDone')}</div>
                 ) : todayPlan.progress.task1Done || todayPlan.progress.task2Done ? (
-                  <div className="bg-yellow-400 text-yellow-900 text-sm font-bold px-3 py-1.5 rounded-full">½ Done</div>
+                  <div className="bg-yellow-400 text-yellow-900 text-sm font-bold px-3 py-1.5 rounded-full">{t('halfDone')}</div>
                 ) : (
-                  <div className="bg-white/20 text-white text-sm font-medium px-3 py-1.5 rounded-full">Start →</div>
+                  <div className="bg-white/20 text-white text-sm font-medium px-3 py-1.5 rounded-full">{t('startBtn')}</div>
                 )}
                 {todayPlan.streak > 0 && (
-                  <div className="text-yellow-300 text-xs mt-1.5">🔥 {todayPlan.streak}-day streak</div>
+                  <div className="text-yellow-300 text-xs mt-1.5">{t('dayStreak', { streak: todayPlan.streak })}</div>
                 )}
               </div>
             </div>
@@ -164,7 +159,7 @@ export default function DashboardPage() {
 
           {/* Score Chart */}
           <div className="bg-white rounded-xl border border-gray-200 p-6 lg:col-span-2">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Progress Over Time</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('progressOverTime')}</h2>
             <ScoreChart
               writingData={data?.writingHistory || []}
               speakingData={data?.speakingHistory || []}
@@ -177,7 +172,7 @@ export default function DashboardPage() {
           <div className="bg-white rounded-xl border border-gray-200 p-6 lg:col-span-2">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('recentActivity')}</h2>
             {loading ? (
-              <p className="text-gray-400 text-sm">Loading...</p>
+              <p className="text-gray-400 text-sm">{t('noDataYet')}</p>
             ) : data?.recentActivity.length === 0 ? (
               <p className="text-gray-400 text-sm">{t('noActivity')}</p>
             ) : (
@@ -193,7 +188,7 @@ export default function DashboardPage() {
                           {item.type} — {item.detail}
                         </div>
                         <div className="text-xs text-gray-400">
-                          {new Date(item.date).toLocaleDateString()}
+                          {new Date(item.date).toLocaleDateString(locale)}
                         </div>
                       </div>
                     </div>
@@ -208,7 +203,7 @@ export default function DashboardPage() {
 
           <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-6 text-white">
             <h2 className="text-lg font-semibold mb-2">{t('continuelearning')}</h2>
-            <p className="text-blue-100 text-sm mb-6">Keep practicing to improve your English proficiency level.</p>
+            <p className="text-blue-100 text-sm mb-6">{t('keepPracticing')}</p>
             <div className="space-y-3">
               <Link
                 href="/writing"
@@ -232,13 +227,13 @@ export default function DashboardPage() {
                 href="/tutor"
                 className="block bg-white/10 hover:bg-white/20 text-white text-sm px-4 py-3 rounded-lg transition-colors"
               >
-                🤖 AI Tutor
+                {t('aiTutor')}
               </Link>
               <Link
                 href="/assessment"
                 className="block bg-white text-blue-700 text-sm px-4 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors text-center"
               >
-                📝 Retake Placement Test
+                {t('retakeTest')}
               </Link>
             </div>
           </div>

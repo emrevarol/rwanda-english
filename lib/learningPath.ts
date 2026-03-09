@@ -5,7 +5,7 @@ export type TaskType = 'writing-essay' | 'writing-chart' | 'listening' | 'tutor'
 
 export interface DayTask {
   type: TaskType
-  title: string
+  titleKey: string
   description: string
   duration: number // minutes
   href: string
@@ -16,16 +16,27 @@ export interface DayTask {
 export interface DayPlan {
   day: number
   week: number
-  theme: string
+  themeKey: string
+  theme: string // fallback
   task1: DayTask
   task2: DayTask
-  tip: string
+  tipKey: string
+  tip: string // fallback
 }
 
-const TASK_POOL: Record<TaskType, Omit<DayTask, 'description'>> = {
+interface TaskPoolEntry {
+  type: TaskType
+  titleKey: string
+  duration: number
+  href: string
+  icon: string
+  color: string
+}
+
+const TASK_POOL: Record<TaskType, TaskPoolEntry> = {
   'writing-essay': {
     type: 'writing-essay',
-    title: 'Essay Writing',
+    titleKey: 'taskTitles.writingEssay',
     duration: 15,
     href: '/writing',
     icon: '✍️',
@@ -33,7 +44,7 @@ const TASK_POOL: Record<TaskType, Omit<DayTask, 'description'>> = {
   },
   'writing-chart': {
     type: 'writing-chart',
-    title: 'Data Description',
+    titleKey: 'taskTitles.writingChart',
     duration: 15,
     href: '/writing',
     icon: '📊',
@@ -41,7 +52,7 @@ const TASK_POOL: Record<TaskType, Omit<DayTask, 'description'>> = {
   },
   listening: {
     type: 'listening',
-    title: 'Listening Practice',
+    titleKey: 'taskTitles.listening',
     duration: 15,
     href: '/listening',
     icon: '🎧',
@@ -49,7 +60,7 @@ const TASK_POOL: Record<TaskType, Omit<DayTask, 'description'>> = {
   },
   tutor: {
     type: 'tutor',
-    title: 'AI Tutor Session',
+    titleKey: 'taskTitles.tutor',
     duration: 15,
     href: '/tutor',
     icon: '🤖',
@@ -57,7 +68,7 @@ const TASK_POOL: Record<TaskType, Omit<DayTask, 'description'>> = {
   },
   vocabulary: {
     type: 'vocabulary',
-    title: 'Vocabulary & Grammar',
+    titleKey: 'taskTitles.vocabulary',
     duration: 15,
     href: '/tutor',
     icon: '📚',
@@ -66,49 +77,14 @@ const TASK_POOL: Record<TaskType, Omit<DayTask, 'description'>> = {
 }
 
 // 7-day rotating schedule
-const WEEKLY_PATTERNS: Array<{ task1: TaskType; task2: TaskType; theme: string; tip: string }> = [
-  {
-    task1: 'writing-essay',
-    task2: 'listening',
-    theme: 'Expression & Comprehension',
-    tip: 'Read your essay aloud after writing — it helps catch grammar errors.',
-  },
-  {
-    task1: 'tutor',
-    task2: 'writing-chart',
-    theme: 'Grammar Focus',
-    tip: 'Ask your AI tutor about one grammar rule you struggle with.',
-  },
-  {
-    task1: 'listening',
-    task2: 'writing-essay',
-    theme: 'Input & Output',
-    tip: 'Listen to the passage twice before answering questions.',
-  },
-  {
-    task1: 'writing-chart',
-    task2: 'tutor',
-    theme: 'Academic Skills',
-    tip: 'Use phrases like "The data shows..." and "It is evident that..." in your chart description.',
-  },
-  {
-    task1: 'vocabulary',
-    task2: 'listening',
-    theme: 'Vocabulary Building',
-    tip: 'Learn 3 new words today and use them in a sentence.',
-  },
-  {
-    task1: 'tutor',
-    task2: 'writing-essay',
-    theme: 'Fluency & Writing',
-    tip: 'Set a 15-minute timer and write without stopping — quantity builds fluency.',
-  },
-  {
-    task1: 'listening',
-    task2: 'vocabulary',
-    theme: 'Weekly Review',
-    tip: 'Review what you learned this week. What was most challenging?',
-  },
+const WEEKLY_PATTERNS: Array<{ task1: TaskType; task2: TaskType; themeKey: string; tipKey: string }> = [
+  { task1: 'writing-essay', task2: 'listening', themeKey: 'themes.expressionComprehension', tipKey: 'tips.readAloud' },
+  { task1: 'tutor', task2: 'writing-chart', themeKey: 'themes.grammarFocus', tipKey: 'tips.askGrammar' },
+  { task1: 'listening', task2: 'writing-essay', themeKey: 'themes.inputOutput', tipKey: 'tips.listenTwice' },
+  { task1: 'writing-chart', task2: 'tutor', themeKey: 'themes.academicSkills', tipKey: 'tips.usePhrases' },
+  { task1: 'vocabulary', task2: 'listening', themeKey: 'themes.vocabularyBuilding', tipKey: 'tips.learnWords' },
+  { task1: 'tutor', task2: 'writing-essay', themeKey: 'themes.fluencyWriting', tipKey: 'tips.setTimer' },
+  { task1: 'listening', task2: 'vocabulary', themeKey: 'themes.weeklyReview', tipKey: 'tips.reviewWeek' },
 ]
 
 const TASK_DESCRIPTIONS: Record<TaskType, (day: number, level: string) => string> = {
@@ -117,9 +93,9 @@ const TASK_DESCRIPTIONS: Record<TaskType, (day: number, level: string) => string
       A1: ['Write about your school', 'Describe your classroom', 'Write about your favorite teacher'],
       A2: ['Write about why education is important', 'Describe a good lesson you taught'],
       B1: ['Should technology replace teachers? Give your opinion', 'What makes a great school?'],
-      B2: ['Discuss the impact of English on Rwandan education', 'Evaluate teacher training programs'],
-      C1: ['Critically assess inclusive education policies in Rwanda', 'Analyze curriculum reform challenges'],
-      C2: ['Evaluate philosophical approaches to education equity in Africa'],
+      B2: ['Discuss the impact of English on education', 'Evaluate teacher training programs'],
+      C1: ['Critically assess inclusive education policies', 'Analyze curriculum reform challenges'],
+      C2: ['Evaluate philosophical approaches to education equity'],
     }
     const t = topics[level] || topics['B1']
     return t[day % t.length]
@@ -129,14 +105,14 @@ const TASK_DESCRIPTIONS: Record<TaskType, (day: number, level: string) => string
       A1: ['Describe the table showing class sizes'],
       A2: ['Summarize the bar chart about student attendance'],
       B1: ['Describe the line graph showing literacy rates 2010-2023'],
-      B2: ['Analyze the charts comparing education spending across East Africa'],
+      B2: ['Analyze the charts comparing education spending'],
       C1: ['Synthesize the data on teacher-student ratios and learning outcomes'],
       C2: ['Critically evaluate the statistical evidence on education inequality'],
     }
     const t = topics[level] || topics['B1']
     return t[day % t.length]
   },
-  listening: (day, level) => 'Listen to the AI-generated passage and answer comprehension questions',
+  listening: () => 'Listen to the AI-generated passage and answer comprehension questions',
   tutor: (day, level) => {
     const prompts: Record<string, string[]> = {
       A1: ['Practice basic greetings and introductions', 'Ask about simple grammar rules'],
@@ -176,10 +152,12 @@ export function getDayPlan(dayNumber: number, level: string): DayPlan {
   return {
     day: dayNumber,
     week,
-    theme: pattern.theme,
+    themeKey: pattern.themeKey,
+    theme: pattern.themeKey, // fallback, will be resolved by client
     task1: makeTask(pattern.task1),
     task2: makeTask(pattern.task2),
-    tip: pattern.tip,
+    tipKey: pattern.tipKey,
+    tip: pattern.tipKey, // fallback
   }
 }
 
