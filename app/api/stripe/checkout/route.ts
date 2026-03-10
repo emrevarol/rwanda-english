@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
-import { stripe, PRICES } from '@/lib/stripe'
+import { getStripe, PRICES } from '@/lib/stripe'
 import { prisma } from '@/lib/db'
 
 export async function POST(req: NextRequest) {
@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     // Get or create Stripe customer
     let customerId = user.stripeCustomerId
     if (!customerId) {
-      const customer = await stripe.customers.create({
+      const customer = await getStripe().customers.create({
         email: user.email,
         name: user.name,
         metadata: { userId: session.user.id },
@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
 
     const origin = req.headers.get('origin') || 'https://english.cash'
 
-    const checkoutSession = await stripe.checkout.sessions.create({
+    const checkoutSession = await getStripe().checkout.sessions.create({
       customer: customerId,
       mode: 'subscription',
       line_items: [{ price: priceId, quantity: 1 }],
@@ -57,7 +57,17 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ url: checkoutSession.url })
   } catch (error: any) {
-    console.error('Checkout error:', error)
-    return NextResponse.json({ error: error.message || 'Failed to create checkout session' }, { status: 500 })
+    console.error('Checkout error:', JSON.stringify({
+      message: error.message,
+      type: error.type,
+      code: error.code,
+      statusCode: error.statusCode,
+      raw: error.raw?.message,
+    }))
+    return NextResponse.json({
+      error: error.message || 'Failed to create checkout session',
+      type: error.type,
+      code: error.code,
+    }, { status: 500 })
   }
 }

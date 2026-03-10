@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { stripe } from '@/lib/stripe'
+import { getStripe } from '@/lib/stripe'
 import { prisma } from '@/lib/db'
 
 export async function POST(req: NextRequest) {
@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
   let event
   try {
-    event = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET)
+    event = getStripe().webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET)
   } catch (err: any) {
     console.error('Webhook signature verification failed:', err.message)
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
         const subscriptionId = session.subscription as string
 
         if (userId && subscriptionId) {
-          const sub = await stripe.subscriptions.retrieve(subscriptionId) as any
+          const sub = await getStripe().subscriptions.retrieve(subscriptionId) as any
           const plan = sub.items?.data?.[0]?.price?.recurring?.interval === 'day' ? 'daily' : 'monthly'
 
           await prisma.user.update({
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
         const invoice = event.data.object as any
         const subscriptionId = invoice.subscription as string
         if (subscriptionId) {
-          const sub = await stripe.subscriptions.retrieve(subscriptionId) as any
+          const sub = await getStripe().subscriptions.retrieve(subscriptionId) as any
           await prisma.user.updateMany({
             where: { subscriptionId },
             data: {
