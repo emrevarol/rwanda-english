@@ -42,14 +42,20 @@ export default function PricingPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ plan }),
       })
-      const data = await res.json()
-      if (data.url) {
-        window.location.href = data.url
-      } else {
-        alert(data.error || 'Failed to start checkout')
+      const text = await res.text()
+      console.log('Checkout response:', res.status, text)
+      try {
+        const data = JSON.parse(text)
+        if (data.url) {
+          window.location.href = data.url
+        } else {
+          alert(JSON.stringify(data, null, 2))
+        }
+      } catch {
+        alert('Response: ' + text.slice(0, 500))
       }
     } catch (err: any) {
-      alert('Something went wrong: ' + (err.message || 'Please try again.'))
+      alert('Fetch error: ' + (err.message || String(err)))
     }
     setLoading(null)
   }
