@@ -1,9 +1,7 @@
 import Stripe from 'stripe'
 import { prisma } from './db'
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2026-02-25.clover',
-})
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
 
 export const PRICES = {
   daily: process.env.STRIPE_PRICE_DAILY!,
