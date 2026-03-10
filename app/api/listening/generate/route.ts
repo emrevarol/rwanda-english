@@ -3,12 +3,17 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { generateListeningContent } from '@/lib/claude'
 import { isMockMode, mockListeningContent } from '@/lib/mock'
+import { hasActiveAccess } from '@/lib/stripe'
 
 export async function GET(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions)
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    if (!(await hasActiveAccess(session.user.id))) {
+      return NextResponse.json({ error: 'Subscription required', code: 'SUBSCRIPTION_REQUIRED' }, { status: 403 })
     }
 
     const content = isMockMode()

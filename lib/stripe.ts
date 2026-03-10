@@ -1,0 +1,35 @@
+import Stripe from 'stripe'
+import { prisma } from './db'
+
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: '2026-02-25.clover',
+})
+
+export const PRICES = {
+  daily: process.env.STRIPE_PRICE_DAILY!,
+  monthly: process.env.STRIPE_PRICE_MONTHLY!,
+  dailyStudent: process.env.STRIPE_PRICE_DAILY_STUDENT!,
+  monthlyStudent: process.env.STRIPE_PRICE_MONTHLY_STUDENT!,
+}
+
+export async function hasActiveAccess(userId: string): Promise<boolean> {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { trialEndsAt: true, subscriptionStatus: true, subscriptionEnd: true },
+  })
+  if (!user) return false
+
+  const now = new Date()
+
+  // Check free trial
+  if (user.trialEndsAt && user.trialEndsAt > now) return true
+
+  // Check active subscription
+  if (
+    user.subscriptionStatus === 'active' &&
+    user.subscriptionEnd &&
+    user.subscriptionEnd > now
+  ) return true
+
+  return false
+}

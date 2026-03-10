@@ -17,6 +17,13 @@ model User {
   level               String               @default("B1")
   language            String               @default("en")
   createdAt           DateTime             @default(now())
+  stripeCustomerId    String?              @unique
+  subscriptionId      String?              @unique
+  subscriptionStatus  String?
+  subscriptionPlan    String?
+  subscriptionEnd     DateTime?
+  isStudent           Boolean              @default(false)
+  trialEndsAt         DateTime?
   writingSubmissions  WritingSubmission[]
   speakingSubmissions SpeakingSubmission[]
   listeningSessions   ListeningSession[]

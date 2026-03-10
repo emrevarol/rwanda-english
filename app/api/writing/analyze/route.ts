@@ -4,12 +4,17 @@ import { authOptions } from '@/lib/auth'
 import { analyzeWriting } from '@/lib/claude'
 import { prisma } from '@/lib/db'
 import { isMockMode, mockWritingFeedback } from '@/lib/mock'
+import { hasActiveAccess } from '@/lib/stripe'
 
 export async function POST(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions)
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    if (!(await hasActiveAccess(session.user.id))) {
+      return NextResponse.json({ error: 'Subscription required', code: 'SUBSCRIPTION_REQUIRED' }, { status: 403 })
     }
 
     const { text, prompt, taskType } = await req.json()

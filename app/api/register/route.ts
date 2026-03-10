@@ -36,6 +36,7 @@ export async function POST(req: NextRequest) {
             language: language || 'en',
             level: 'B1',
             emailVerified: false,
+            trialEndsAt: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // 3-day free trial
           },
         })
 
