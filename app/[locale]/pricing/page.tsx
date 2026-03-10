@@ -45,9 +45,11 @@ export default function PricingPage() {
       const data = await res.json()
       if (data.url) {
         window.location.href = data.url
+      } else {
+        alert(data.error || 'Failed to start checkout')
       }
-    } catch {
-      alert('Something went wrong. Please try again.')
+    } catch (err: any) {
+      alert('Something went wrong: ' + (err.message || 'Please try again.'))
     }
     setLoading(null)
   }
