@@ -57,17 +57,14 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ url: checkoutSession.url })
   } catch (error: any) {
-    console.error('Checkout error:', JSON.stringify({
-      message: error.message,
-      type: error.type,
-      code: error.code,
-      statusCode: error.statusCode,
-      raw: error.raw?.message,
-    }))
+    const keyPreview = process.env.STRIPE_SECRET_KEY
+      ? `${process.env.STRIPE_SECRET_KEY.slice(0, 10)}...${process.env.STRIPE_SECRET_KEY.slice(-4)} (len=${process.env.STRIPE_SECRET_KEY.length})`
+      : 'MISSING'
     return NextResponse.json({
       error: error.message || 'Failed to create checkout session',
       type: error.type,
       code: error.code,
+      keyPreview,
     }, { status: 500 })
   }
 }
