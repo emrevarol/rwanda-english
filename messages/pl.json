@@ -15,7 +15,7 @@
   },
   "landing": {
     "hero": {
-      "badge": "Lepszy Angielski = Więcej Pieniędzy",
+      "badge": "Szkolenie Językowe AI dla Globalnych Karier",
       "titleBefore": "Opanuj angielski w",
       "titleHighlight": "365 Dni",
       "subtitle": "Nauka angielskiego oparta na AI dla rozwoju kariery. Tylko 15 minut dziennie — Twoja spersonalizowana droga do biegłości i wyższych zarobków.",
@@ -26,6 +26,16 @@
       "streakLabel": "Aktualna seria",
       "streakDays": "21 dni",
       "levelUpLabel": "Awans poziomu"
+    },
+    "problem": {
+      "title": "Luka w Możliwościach",
+      "subtitle": "Miliony utalentowanych profesjonalistów nie mają dostępu do globalnych możliwości — nie z powodu braku umiejętności, ale dlatego że nie potrafią ich komunikować po angielsku.",
+      "stat1": "75%",
+      "stat1Label": "zdalnych ofert pracy wymaga angielskiego",
+      "stat2": "30-50%",
+      "stat2Label": "wyższa pensja z płynnym angielskim",
+      "stat3": "2B+",
+      "stat3Label": "osób uczy się angielskiego na świecie"
     },
     "howItWorks": {
       "title": "Jak To Działa",
@@ -38,7 +48,7 @@
       "step3Desc": "Obserwuj jak rośnie Twój poziom CEFR, rozwija się radar umiejętności i rośnie seria. Twój panel pokazuje każdą poprawę."
     },
     "features": {
-      "title": "Wszystko, Czego Potrzebujesz",
+      "title": "Stworzone dla Rozwoju Kariery",
       "subtitle": "Cztery główne moduły oparte na AI",
       "comingSoon": "Wkrótce",
       "writing": {
@@ -59,7 +69,7 @@
       }
     },
     "pricing": {
-      "title": "Proste Ceny",
+      "title": "Zainwestuj w Swoją Karierę",
       "subtitle": "Zainwestuj w siebie. Lepszy angielski = lepsza kariera = więcej pieniędzy.",
       "free": "Za Darmo",
       "freeDesc": "3 dni pełnego dostępu",
@@ -88,6 +98,11 @@
       "studentDiscount": "Studenci otrzymują 50% zniżki!",
       "studentBtn": "Zweryfikuj Status Studenta"
     },
+    "founder": {
+      "title": "Stworzone przez Emre Varol",
+      "bio": "Inżynier oprogramowania i założyciel skupiony na wykorzystaniu technologii do tworzenia możliwości ekonomicznych. english.cash łączy szkolenie językowe AI z wynikami zorientowanymi na karierę.",
+      "cta": "Dowiedz się więcej o naszej misji"
+    },
     "cefr": {
       "title": "Dostosowany do Twojego Poziomu",
       "subtitle": "Nasz AI dostosowuje każde ćwiczenie do Twojego aktualnego poziomu CEFR",
@@ -99,11 +114,11 @@
       "c2": "Biegłość"
     },
     "cta": {
-      "title": "Lepszy Angielski. Lepsza Kariera. Więcej Pieniędzy.",
+      "title": "Odblokuj Swoją Globalną Przewagę Zawodową",
       "subtitle": "15 minut dziennie to wszystko, czego potrzeba. Zacznij za darmo na 3 dni.",
       "button": "Rozpocznij Swoją 365-Dniową Podróż →"
     },
-    "footer": "© 2026 english.cash · Nauka Angielskiego Oparta na AI · Lepszy Angielski = Więcej Pieniędzy"
+    "footer": "© 2026 english.cash · Angielski Oparty na AI dla Globalnych Karier · Emre Varol"
   },
   "auth": {
     "login": {
@@ -374,10 +389,20 @@
     "result": "Twój Wynik",
     "explanation": "Wyjaśnienie",
     "loginMessage": "Zaloguj się, aby ćwiczyć słuchanie.",
-    "playerDesc": "Wygeneruj fragment utworzony przez AI, posłuchaj go i odpowiedz na pytania ze zrozumienia.",
+    "playerDesc": "Posłuchaj fragmentu wygenerowanego przez AI i odpowiedz na pytania ze zrozumienia. Nie zobaczysz tekstu — trenuj swoje uszy!",
     "errorGenerate": "Nie udało się wygenerować treści. Spróbuj ponownie.",
     "errorConnection": "Błąd połączenia. Spróbuj ponownie.",
-    "level": "Poziom:"
+    "level": "Poziom:",
+    "playsRemaining": "Pozostało {count} odsłuchań",
+    "extraPlay": "Posłuchaj ponownie (−10% kara)",
+    "noPlaysLeft": "Brak darmowych odsłuchań",
+    "notes": "Twoje notatki",
+    "notesPlaceholder": "Rób notatki podczas słuchania...",
+    "timer": "Czas",
+    "listenFirst": "Najpierw posłuchaj fragmentu, zanim odpowiesz na pytania",
+    "penaltyApplied": "−{penalty}% kara za dodatkowe odsłuchania",
+    "readyToListen": "Gotowy? Naciśnij odtwórz, aby posłuchać. Masz 2 darmowe odsłuchania.",
+    "listening": "Odtwarzanie..."
   },
   "tutor": {
     "title": "Korepetytor AI",

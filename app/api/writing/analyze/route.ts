@@ -41,6 +41,8 @@ export async function POST(req: NextRequest) {
         response: text,
         feedback: JSON.stringify(feedback),
         band: feedback.band || 5,
+        vocabularyScore: feedback.vocabularyScore || null,
+        grammarScore: feedback.grammarScore || null,
       },
     })
 

@@ -73,7 +73,8 @@ export async function POST(req: NextRequest) {
     // Real Claude streaming
     const systemPrompt =
       getCEFRSystemPrompt(session.user.level, session.user.language) +
-      `\n\nStudent name: ${session.user.name}. Address them by name occasionally.`
+      `\n\nStudent name: ${session.user.name}. Address them by name occasionally.` +
+      `\n\nYou are also an interview coach. If the student asks for interview practice, simulate real job interview scenarios. Ask common interview questions (tell me about yourself, explain your project, describe a challenge you overcame, behavioral questions). Give feedback on their English clarity, structure, and professional communication. You can also help with: meeting English, email writing, project explanations, async communication skills, and work-related vocabulary.`
 
     const stream = await anthropic.messages.stream({
       model: MODEL,

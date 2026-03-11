@@ -15,7 +15,7 @@
   },
   "landing": {
     "hero": {
-      "badge": "Tiếng Anh tốt hơn = Thu nhập cao hơn",
+      "badge": "Đào tạo Ngôn ngữ AI cho Sự nghiệp Toàn cầu",
       "titleBefore": "Thành thạo tiếng Anh trong",
       "titleHighlight": "365 ngày",
       "subtitle": "Học tiếng Anh bằng AI để phát triển sự nghiệp. Chỉ 15 phút mỗi ngày — lộ trình cá nhân hóa đến sự lưu loát và thu nhập cao hơn.",
@@ -26,6 +26,16 @@
       "streakLabel": "Chuỗi hiện tại",
       "streakDays": "21 ngày",
       "levelUpLabel": "Lên cấp"
+    },
+    "problem": {
+      "title": "Khoảng Cách Cơ Hội",
+      "subtitle": "Hàng triệu chuyên gia tài năng bị khóa ngoài cơ hội toàn cầu — không phải vì thiếu kỹ năng, mà vì không thể truyền đạt chúng bằng tiếng Anh.",
+      "stat1": "75%",
+      "stat1Label": "công việc từ xa yêu cầu tiếng Anh",
+      "stat2": "30-50%",
+      "stat2Label": "lương cao hơn với tiếng Anh lưu loát",
+      "stat3": "2B+",
+      "stat3Label": "người đang học tiếng Anh trên toàn thế giới"
     },
     "howItWorks": {
       "title": "Cách hoạt động",
@@ -38,7 +48,7 @@
       "step3Desc": "Xem trình độ CEFR của bạn tăng lên, radar kỹ năng phát triển, và chuỗi ngày tăng trưởng. Bảng điều khiển hiển thị mọi tiến bộ."
     },
     "features": {
-      "title": "Mọi thứ bạn cần",
+      "title": "Xây dựng cho Phát triển Sự nghiệp",
       "subtitle": "Bốn mô-đun cốt lõi, được hỗ trợ bởi AI",
       "comingSoon": "Sắp ra mắt",
       "writing": {
@@ -59,7 +69,7 @@
       }
     },
     "pricing": {
-      "title": "Giá đơn giản",
+      "title": "Đầu tư vào Sự nghiệp của Bạn",
       "subtitle": "Đầu tư vào bản thân. Tiếng Anh tốt hơn = sự nghiệp tốt hơn = thu nhập cao hơn.",
       "free": "Miễn phí",
       "freeDesc": "3 ngày truy cập đầy đủ",
@@ -88,6 +98,11 @@
       "studentDiscount": "Sinh viên được giảm 50%!",
       "studentBtn": "Xác minh tư cách sinh viên"
     },
+    "founder": {
+      "title": "Được xây dựng bởi Emre Varol",
+      "bio": "Kỹ sư phần mềm và nhà sáng lập tập trung vào việc sử dụng công nghệ để tạo cơ hội kinh tế. english.cash kết hợp đào tạo ngôn ngữ bằng AI với kết quả hướng nghiệp.",
+      "cta": "Tìm hiểu thêm về sứ mệnh của chúng tôi"
+    },
     "cefr": {
       "title": "Thích ứng với trình độ của bạn",
       "subtitle": "AI của chúng tôi điều chỉnh mọi bài tập theo trình độ CEFR hiện tại của bạn",
@@ -99,11 +114,11 @@
       "c2": "Thành thạo"
     },
     "cta": {
-      "title": "Tiếng Anh tốt hơn. Sự nghiệp tốt hơn. Thu nhập cao hơn.",
+      "title": "Mở khóa Lợi thế Nghề nghiệp Toàn cầu của Bạn",
       "subtitle": "15 phút mỗi ngày là đủ. Bắt đầu miễn phí 3 ngày.",
       "button": "Bắt đầu hành trình 365 ngày →"
     },
-    "footer": "© 2026 english.cash · Học tiếng Anh bằng AI · Tiếng Anh tốt hơn = Thu nhập cao hơn"
+    "footer": "© 2026 english.cash · Tiếng Anh bằng AI cho Sự nghiệp Toàn cầu · Emre Varol"
   },
   "auth": {
     "login": {
@@ -374,10 +389,20 @@
     "result": "Điểm của bạn",
     "explanation": "Giải thích",
     "loginMessage": "Vui lòng đăng nhập để luyện nghe.",
-    "playerDesc": "Tạo đoạn văn bằng AI, nghe nó, và trả lời câu hỏi đọc hiểu.",
+    "playerDesc": "Nghe đoạn văn do AI tạo và trả lời câu hỏi đọc hiểu. Bạn sẽ không thấy văn bản — hãy rèn luyện đôi tai!",
     "errorGenerate": "Không thể tạo nội dung. Vui lòng thử lại.",
     "errorConnection": "Lỗi kết nối. Vui lòng thử lại.",
-    "level": "Trình độ:"
+    "level": "Trình độ:",
+    "playsRemaining": "Còn {count} lượt nghe",
+    "extraPlay": "Nghe lại (−10% trừ điểm)",
+    "noPlaysLeft": "Hết lượt nghe miễn phí",
+    "notes": "Ghi chú của bạn",
+    "notesPlaceholder": "Ghi chú trong khi nghe...",
+    "timer": "Thời gian",
+    "listenFirst": "Nghe đoạn văn trước khi trả lời câu hỏi",
+    "penaltyApplied": "−{penalty}% trừ điểm cho lượt nghe thêm",
+    "readyToListen": "Sẵn sàng chưa? Nhấn phát để nghe. Bạn có 2 lượt nghe miễn phí.",
+    "listening": "Đang nghe..."
   },
   "tutor": {
     "title": "Gia sư AI",

@@ -15,7 +15,7 @@
   },
   "landing": {
     "hero": {
-      "badge": "Icyongereza Cyiza = Amafaranga Menshi",
+      "badge": "Amahugurwa y'Ururimi ya AI ku Mwuga w'Isi",
       "titleBefore": "Menya Icyongereza mu",
       "titleHighlight": "Minsi 365",
       "subtitle": "Kwiga Icyongereza bifashijwe na AI kugira ngo umwuga wawe ukure. Iminota 15 gusa ku munsi — inzira yawe bwite yo kugera ku kuvuga neza no kwinjiza byinshi.",
@@ -26,6 +26,16 @@
       "streakLabel": "Urukurikirane",
       "streakDays": "Iminsi 21",
       "levelUpLabel": "Kuzamuka urwego"
+    },
+    "problem": {
+      "title": "Umwanya w'Amahirwe",
+      "subtitle": "Abantu benshi b'impangazimu bafite impano bahatiwe amahirwe yo ku isi — atari kubera ko badafite ubumenyi, ahubwo kubera ko badashobora kubivuga mu Cyongereza.",
+      "stat1": "75%",
+      "stat1Label": "by'akazi bya kure bisaba Icyongereza",
+      "stat2": "30-50%",
+      "stat2Label": "umushahara munini n'Icyongereza cyiza",
+      "stat3": "2B+",
+      "stat3Label": "abantu biga Icyongereza ku isi hose"
     },
     "howItWorks": {
       "title": "Uko Bikora",
@@ -38,7 +48,7 @@
       "step3Desc": "Reba urwego rwawe rwa CEFR rugenda ruzamuka, ubumenyi bwawe bugenda butera imbere, n'urukurikirane rugenda rukura. Ikibaho cyawe kigaragaza iterambere ryose."
     },
     "features": {
-      "title": "Byose Ukeneye",
+      "title": "Byubatswe ku Iterambere ry'Umwuga",
       "subtitle": "Moduli enye z'ingenzi, zifashijwe na AI",
       "comingSoon": "Biraje Vuba",
       "writing": {
@@ -59,7 +69,7 @@
       }
     },
     "pricing": {
-      "title": "Ibiciro Byoroshye",
+      "title": "Shyira Imari mu Mwuga Wawe",
       "subtitle": "Shyira imari mu bwawe. Icyongereza cyiza = umwuga mwiza = amafaranga menshi.",
       "free": "Ubuntu",
       "freeDesc": "Iminsi 3 yose",
@@ -88,6 +98,11 @@
       "studentDiscount": "Abanyeshuri babona 50% yo kugabanya!",
       "studentBtn": "Emeza ko Uri Umunyeshuri"
     },
+    "founder": {
+      "title": "Byubatswe na Emre Varol",
+      "bio": "Umuhanga mu ikoranabuhanga n'umushinganwa wibanda ku gukoresha ikoranabuhanga mu gushaka amahirwe y'ubukungu. english.cash ihuza amahugurwa y'ururimi akoreshwa na AI n'ibisubizo bijyanye n'umwuga.",
+      "cta": "Menya byinshi ku butumwa bwacu"
+    },
     "cefr": {
       "title": "Yihinduranya n'Urwego Rwawe",
       "subtitle": "AI yacu ihinduranya buri myitozo hakurikijwe urwego rwawe rwa CEFR",
@@ -99,11 +114,11 @@
       "c2": "Ubuhanga"
     },
     "cta": {
-      "title": "Icyongereza Cyiza. Umwuga Mwiza. Amafaranga Menshi.",
+      "title": "Fungura Amahirwe y'Umwuga ku Isi Hose",
       "subtitle": "Iminota 15 ku munsi ni byo gusa bisabwa. Tangira ubuntu iminsi 3.",
       "button": "Tangira Urugendo rw'Iminsi 365 →"
     },
-    "footer": "© 2026 english.cash · Kwiga Icyongereza Bifashijwe na AI · Icyongereza Cyiza = Amafaranga Menshi"
+    "footer": "© 2026 english.cash · Icyongereza Gifashijwe na AI ku Mwuga w'Isi · Emre Varol"
   },
   "auth": {
     "login": {
@@ -374,10 +389,20 @@
     "result": "Amanota Yawe",
     "explanation": "Ibisobanuro",
     "loginMessage": "Nyamuneka injira kugira ngo witoza kumva.",
-    "playerDesc": "Kumva inshamake yakozwe na AI, hanyuma usubize ibibazo by'ubumenyi.",
+    "playerDesc": "Kumva inshamake yakozwe na AI, hanyuma usubize ibibazo by'ubumenyi. Ntuzabona inyandiko — witoza amatwi yawe!",
     "errorGenerate": "Ntibyashobotse gukora ibiri muri byo. Nyamuneka gerageza nanone.",
     "errorConnection": "Ikosa ry'itumanaho. Nyamuneka gerageza nanone.",
-    "level": "Urwego:"
+    "level": "Urwego:",
+    "playsRemaining": "{count} amahirwe yo kumva asigaye",
+    "extraPlay": "Ongera Ukumve (−10% igihano)",
+    "noPlaysLeft": "Nta mahirwe yo kumva ubuntu asigaye",
+    "notes": "Inyandiko Zawe",
+    "notesPlaceholder": "Andika inyandiko uri kumva...",
+    "timer": "Igihe",
+    "listenFirst": "Kumva inshamake mbere yo gusubiza ibibazo",
+    "penaltyApplied": "−{penalty}% igihano kubera gukumva kongeye",
+    "readyToListen": "Witeguye? Kanda kumva. Ufite amahirwe 2 yo kumva ubuntu.",
+    "listening": "Uri kumva..."
   },
   "tutor": {
     "title": "Mwarimu wa AI",

@@ -149,7 +149,7 @@ export default function AssessmentPage() {
           ) : (
             <div>
               {question.hint && (
-                <p className="text-sm text-gray-400 mb-3 italic">{question.hint}</p>
+                <p className="text-sm text-gray-600 mb-3 italic">{question.hint}</p>
               )}
               <textarea
                 value={answers[question.id] || ''}

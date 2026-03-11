@@ -104,9 +104,9 @@ export default function WritingPage() {
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('history')}</h2>
             {loadingHistory ? (
-              <p className="text-gray-400 text-sm">{tc('loading')}</p>
+              <p className="text-gray-600 text-sm">{tc('loading')}</p>
             ) : history.length === 0 ? (
-              <div className="text-center py-8 text-gray-400">
+              <div className="text-center py-8 text-gray-600">
                 <div className="text-4xl mb-3">✍️</div>
                 <p>{t('noSubmissions')}</p>
               </div>
@@ -121,7 +121,7 @@ export default function WritingPage() {
                           <span className="text-xs font-medium bg-blue-100 text-blue-700 px-2 py-0.5 rounded mr-2">
                             {t('taskLabel', { n: sub.taskType === 'task1' ? 1 : 2 })}
                           </span>
-                          <span className="text-xs text-gray-400">
+                          <span className="text-xs text-gray-600">
                             {new Date(sub.createdAt).toLocaleDateString(locale)}
                           </span>
                         </div>

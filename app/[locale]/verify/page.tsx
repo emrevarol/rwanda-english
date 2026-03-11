@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useTranslations, useLocale } from 'next-intl'
+import { signIn } from 'next-auth/react'
 
 export default function VerifyPage() {
   const t = useTranslations('auth.verify')
@@ -39,6 +40,21 @@ export default function VerifyPage() {
 
       if (res.ok && data.success) {
         setSuccess(true)
+        // Auto-login: use stored password from registration
+        const pw = sessionStorage.getItem('_rp')
+        if (pw) {
+          sessionStorage.removeItem('_rp')
+          const result = await signIn('credentials', {
+            email,
+            password: pw,
+            redirect: false,
+          })
+          if (result?.ok) {
+            router.push(`/${locale}/dashboard`)
+            return
+          }
+        }
+        // Fallback: redirect to login
         setTimeout(() => router.push(`/${locale}/login?verified=true`), 2000)
       } else {
         setError(t('error'))

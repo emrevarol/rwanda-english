@@ -15,7 +15,7 @@
   },
   "landing": {
     "hero": {
-      "badge": "Besseres Englisch = Mehr Geld",
+      "badge": "KI-gestütztes professionelles Englisch",
       "titleBefore": "Englisch meistern in",
       "titleHighlight": "365 Tagen",
       "subtitle": "KI-gestütztes Englischlernen für berufliches Wachstum. Nur 15 Minuten pro Tag — Ihr persönlicher Weg zu fließendem Englisch und höherem Einkommen.",
@@ -26,6 +26,16 @@
       "streakLabel": "Aktuelle Serie",
       "streakDays": "21 Tage",
       "levelUpLabel": "Aufsteigen"
+    },
+    "problem": {
+      "title": "Die Chancenlücke",
+      "subtitle": "Millionen talentierter Fachkräfte sind von globalen Chancen ausgeschlossen — nicht wegen fehlender Fähigkeiten, sondern weil sie diese nicht auf Englisch kommunizieren können.",
+      "stat1": "75%",
+      "stat1Label": "der Remote-Jobs erfordern Englisch",
+      "stat2": "30-50%",
+      "stat2Label": "höheres Gehalt mit fließendem Englisch",
+      "stat3": "2B+",
+      "stat3Label": "Menschen lernen weltweit Englisch"
     },
     "howItWorks": {
       "title": "So funktioniert's",
@@ -38,7 +48,7 @@
       "step3Desc": "Sehen Sie, wie Ihr CEFR-Niveau steigt, sich Ihr Kompetenzradar entwickelt und Ihre Serie wächst. Ihr Dashboard zeigt jede Verbesserung."
     },
     "features": {
-      "title": "Alles, was Sie brauchen",
+      "title": "Entwickelt für berufliches Wachstum",
       "subtitle": "Vier Kernmodule, KI-gestützt",
       "comingSoon": "Demnächst",
       "writing": {
@@ -59,7 +69,7 @@
       }
     },
     "pricing": {
-      "title": "Einfache Preise",
+      "title": "Investieren Sie in Ihre Karriere",
       "subtitle": "Investieren Sie in sich selbst. Besseres Englisch = bessere Karriere = mehr Geld.",
       "free": "Kostenlos",
       "freeDesc": "3 Tage voller Zugang",
@@ -88,6 +98,11 @@
       "studentDiscount": "Studenten erhalten 50% Rabatt!",
       "studentBtn": "Studentenstatus verifizieren"
     },
+    "founder": {
+      "title": "Erstellt von Emre Varol",
+      "bio": "Software-Ingenieur und Gründer mit Fokus auf den Einsatz von Technologie zur Schaffung wirtschaftlicher Chancen. english.cash kombiniert KI-gestütztes Sprachtraining mit karriereorientierten Ergebnissen.",
+      "cta": "Mehr über unsere Mission erfahren"
+    },
     "cefr": {
       "title": "Angepasst an Ihr Niveau",
       "subtitle": "Unsere KI passt jede Übung an Ihr aktuelles CEFR-Niveau an",
@@ -99,11 +114,11 @@
       "c2": "Meisterschaft"
     },
     "cta": {
-      "title": "Besseres Englisch. Bessere Karriere. Mehr Geld.",
+      "title": "Ihr Karrierevorteil beginnt hier",
       "subtitle": "15 Minuten pro Tag sind alles, was es braucht. Starten Sie 3 Tage kostenlos.",
       "button": "Starten Sie Ihre 365-Tage-Reise →"
     },
-    "footer": "© 2026 english.cash · KI-gestütztes Englischlernen · Besseres Englisch = Mehr Geld"
+    "footer": "© 2026 english.cash · KI-gestütztes Englisch für globale Karrieren · Emre Varol"
   },
   "auth": {
     "login": {
@@ -374,10 +389,20 @@
     "result": "Ihre Punktzahl",
     "explanation": "Erklärung",
     "loginMessage": "Bitte melden Sie sich an, um Hören zu üben.",
-    "playerDesc": "Lassen Sie einen KI-erstellten Text generieren, hören Sie ihn an und beantworten Sie Verständnisfragen.",
+    "playerDesc": "Hören Sie sich eine KI-generierte Passage an und beantworten Sie Verständnisfragen. Sie werden den Text nicht sehen — trainieren Sie Ihre Ohren!",
     "errorGenerate": "Inhalt konnte nicht generiert werden. Bitte versuchen Sie es erneut.",
     "errorConnection": "Verbindungsfehler. Bitte versuchen Sie es erneut.",
-    "level": "Niveau:"
+    "level": "Niveau:",
+    "playsRemaining": "{count} Anhörungen übrig",
+    "extraPlay": "Nochmal hören (−10% Abzug)",
+    "noPlaysLeft": "Keine kostenlosen Anhörungen mehr",
+    "notes": "Ihre Notizen",
+    "notesPlaceholder": "Machen Sie sich Notizen beim Zuhören...",
+    "timer": "Zeit",
+    "listenFirst": "Hören Sie sich die Passage zuerst an, bevor Sie die Fragen beantworten",
+    "penaltyApplied": "−{penalty}% Abzug für zusätzliches Anhören",
+    "readyToListen": "Bereit? Drücken Sie Play zum Anhören. Sie haben 2 kostenlose Anhörungen.",
+    "listening": "Wird angehört..."
   },
   "tutor": {
     "title": "KI-Tutor",
@@ -456,7 +481,7 @@
     "level": "Niveau"
   },
   "pricing": {
-    "title": "Einfache Preise",
+    "title": "Investieren Sie in Ihre Karriere",
     "subtitle": "Investieren Sie in sich selbst. Besseres Englisch = bessere Karriere = mehr Geld.",
     "free": "Kostenlos",
     "freeDesc": "3 Tage voller Zugang",

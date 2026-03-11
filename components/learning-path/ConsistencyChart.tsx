@@ -102,7 +102,7 @@ export default function ConsistencyChart({ days }: { days: Day[] }) {
         <div className="inline-flex gap-1 min-w-max">
           <div className="flex flex-col gap-0.5 mr-1">
             {DAYS_OF_WEEK.map((d, i) => (
-              <div key={i} className="h-[11px] text-[9px] text-gray-400 leading-[11px] text-right pr-1">
+              <div key={i} className="h-[11px] text-[9px] text-gray-600 leading-[11px] text-right pr-1">
                 {d}
               </div>
             ))}
@@ -113,7 +113,7 @@ export default function ConsistencyChart({ days }: { days: Day[] }) {
               {weeks.map((_, col) => {
                 const label = monthLabels.find(l => l.col === col)
                 return (
-                  <div key={col} className="w-[11px] text-[9px] text-gray-400 text-center">
+                  <div key={col} className="w-[11px] text-[9px] text-gray-600 text-center">
                     {label ? label.month : ''}
                   </div>
                 )
@@ -150,14 +150,14 @@ export default function ConsistencyChart({ days }: { days: Day[] }) {
       </div>
 
       {/* Legend */}
-      <div className="flex items-center gap-2 mt-3 text-xs text-gray-400">
+      <div className="flex items-center gap-2 mt-3 text-xs text-gray-600">
         <span>{t('less')}</span>
         <div className="w-[11px] h-[11px] rounded-sm bg-gray-100" />
         <div className="w-[11px] h-[11px] rounded-sm bg-blue-300" />
         <div className="w-[11px] h-[11px] rounded-sm bg-blue-600" />
         <span>{t('more')}</span>
-        <span className="ml-2 text-gray-300">|</span>
-        <span className="text-gray-400">{t('clickForDetail')}</span>
+        <span className="ml-2 text-gray-500">|</span>
+        <span className="text-gray-600">{t('clickForDetail')}</span>
       </div>
 
       {/* Day detail popup */}
@@ -180,7 +180,7 @@ export default function ConsistencyChart({ days }: { days: Day[] }) {
                   {selectedDay.progress.task1Done ? (
                     <span className="text-xs text-green-600">✓ {t('doneCheck')}</span>
                   ) : (
-                    <span className="text-xs text-gray-400">—</span>
+                    <span className="text-xs text-gray-600">—</span>
                   )}
                   {selectedDay.progress.task1Mins > 0 && (
                     <span className="text-xs text-blue-600">{selectedDay.progress.task1Mins} {t('minutes')}</span>
@@ -194,7 +194,7 @@ export default function ConsistencyChart({ days }: { days: Day[] }) {
                   {selectedDay.progress.task2Done ? (
                     <span className="text-xs text-green-600">✓ {t('doneCheck')}</span>
                   ) : (
-                    <span className="text-xs text-gray-400">—</span>
+                    <span className="text-xs text-gray-600">—</span>
                   )}
                   {selectedDay.progress.task2Mins > 0 && (
                     <span className="text-xs text-blue-600">{selectedDay.progress.task2Mins} {t('minutes')}</span>
@@ -203,7 +203,7 @@ export default function ConsistencyChart({ days }: { days: Day[] }) {
               </div>
             </div>
           ) : (
-            <p className="text-sm text-gray-400 mb-3">{t('noSessions')}</p>
+            <p className="text-sm text-gray-600 mb-3">{t('noSessions')}</p>
           )}
 
           {/* Activities */}
@@ -229,7 +229,7 @@ export default function ConsistencyChart({ days }: { days: Day[] }) {
               </div>
             )}
             {selectedDay.activities.writing.length === 0 && selectedDay.activities.listening.length === 0 && selectedDay.activities.chatMessages === 0 && !selectedDay.progress && (
-              <div className="text-xs text-gray-400">{t('noActivityDay')}</div>
+              <div className="text-xs text-gray-600">{t('noActivityDay')}</div>
             )}
           </div>
         </div>

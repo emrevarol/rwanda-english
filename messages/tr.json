@@ -15,17 +15,27 @@
   },
   "landing": {
     "hero": {
-      "badge": "Daha İyi İngilizce = Daha Çok Para",
+      "badge": "Kariyerinize Değer Katan İngilizce",
       "titleBefore": "İngilizceyi",
       "titleHighlight": "365 Günde",
-      "subtitle": "Kariyer gelişimi için AI destekli İngilizce öğrenme. Günde sadece 15 dakika — akıcılığa ve daha yüksek kazanca giden kişisel yolunuz.",
-      "cta": "3 Gün Ücretsiz Başla →",
+      "subtitle": "Global fırsatlar arayan profesyoneller için AI destekli İngilizce eğitimi. Seviyenizi belirleyin, her gün pratik yapın, iletişim becerilerinizi kanıtlayın.",
+      "cta": "Seviye Testini Çöz",
       "login": "Giriş Yap",
       "dayProgram": "Günlük Program",
       "minDay": "dk/gün",
       "streakLabel": "Mevcut seri",
       "streakDays": "21 gün",
       "levelUpLabel": "Seviye atlama"
+    },
+    "problem": {
+      "title": "Fırsat Uçurumu",
+      "subtitle": "Milyonlarca yetenekli profesyonel, becerileri olmadığı için değil, onları İngilizce ifade edemedikleri için global fırsatlardan mahrum kalıyor.",
+      "stat1": "75%",
+      "stat1Label": "uzaktan işler İngilizce gerektirir",
+      "stat2": "30-50%",
+      "stat2Label": "akıcı İngilizce ile daha yüksek maaş",
+      "stat3": "2B+",
+      "stat3Label": "dünya genelinde İngilizce öğrenen kişi"
     },
     "howItWorks": {
       "title": "Nasıl Çalışır",
@@ -38,29 +48,29 @@
       "step3Desc": "CEFR seviyenizin yükselişini, beceri radarınızın gelişimini ve serinizin büyümesini izleyin. Gösterge paneliniz her ilerlemeyi gösterir."
     },
     "features": {
-      "title": "İhtiyacınız Olan Her Şey",
-      "subtitle": "AI ile desteklenen dört temel modül",
+      "title": "Kariyer Gelişimi İçin Tasarlandı",
+      "subtitle": "İşe hazır olmanızı sağlayan dört AI destekli modül",
       "comingSoon": "Yakında",
       "writing": {
         "title": "Yazma Pratiği",
-        "description": "IELTS tarzı makale ve veri açıklama görevleri. AI'dan bant puanları, dilbilgisi ve kelime hakkında detaylı geri bildirim ve iyileştirilmiş cümle örnekleri alın."
+        "description": "E-postalar, raporlar ve makaleler üzerinde pratik yapın. Dilbilgisi, kelime dağarcığı ve netlik konusunda anında AI geri bildirimi alın — işverenlerin aradığı beceriler."
       },
       "listening": {
         "title": "Dinleme Pratiği",
-        "description": "AI ilgili metinler oluşturur ve metin-konuşma ile seslendirir. Anlama sorularını yanıtlayın ve anında açıklama alın."
+        "description": "İş, teknoloji ve global konularda AI tarafından oluşturulan metinler. Toplantılar ve mülakatlar için gereken anlama becerilerini geliştirin."
       },
       "tutor": {
         "title": "AI Öğretmen Sohbeti",
-        "description": "7/24 erişilebilir kişisel İngilizce öğretmeniniz. Dilbilgisi soruları sorun, konuşma pratiği yapın, kelime yardımı alın. Öğretmen seviyenizi bilir ve uyum sağlar."
+        "description": "7/24 erişilebilir kişisel İngilizce koçunuz. Konuşma pratiği yapın, mülakata hazırlanın, dilbilgisi sorularınıza anında cevap alın."
       },
       "speaking": {
         "title": "Konuşma Pratiği",
-        "description": "Sesli ve yazılı giriş ile gerçek zamanlı AI geri bildirimi — akıcılık, dilbilgisi, kelime ve örnek yanıtlar."
+        "description": "Sesinizi kaydedin, akıcılık, dilbilgisi ve kelime dağarcığı hakkında AI transkripsiyon ve geri bildirim alın. Gerçek konuşmalar için güveninizi artırın."
       }
     },
     "pricing": {
-      "title": "Basit Fiyatlandırma",
-      "subtitle": "Kendinize yatırım yapın. Daha iyi İngilizce = daha iyi kariyer = daha çok para.",
+      "title": "Kariyerinize Yatırım Yapın",
+      "subtitle": "İngilizce, geliştirebileceğiniz en yüksek getirili beceridir. Ücretsiz başlayın, hazır olduğunuzda yükseltin.",
       "free": "Ücretsiz",
       "freeDesc": "3 gün tam erişim",
       "freePeriod": "3 gün boyunca",
@@ -88,6 +98,11 @@
       "studentDiscount": "Öğrencilere %50 indirim!",
       "studentBtn": "Öğrenci Durumunu Doğrula"
     },
+    "founder": {
+      "title": "Emre Varol Tarafından Geliştirildi",
+      "bio": "Teknoloji ile ekonomik fırsat yaratmaya odaklanan yazılım mühendisi ve kurucu. english.cash, AI destekli dil eğitimini kariyer odaklı sonuçlarla birleştiriyor.",
+      "cta": "Misyonumuz hakkında daha fazla bilgi"
+    },
     "cefr": {
       "title": "Seviyenize Uyum Sağlar",
       "subtitle": "AI'mız her alıştırmayı mevcut CEFR seviyenize göre uyarlar",
@@ -99,11 +114,11 @@
       "c2": "Ustalık"
     },
     "cta": {
-      "title": "Daha İyi İngilizce. Daha İyi Kariyer. Daha Çok Para.",
-      "subtitle": "Günde 15 dakika yeter. 3 gün ücretsiz başla.",
-      "button": "365 Günlük Yolculuğunuza Başlayın →"
+      "title": "İngilizceniz Kariyer Avantajınızdır",
+      "subtitle": "Günde 30 dakika. AI destekli geri bildirim. Ölçülebilir ilerleme. 3 gün ücretsiz başlayın.",
+      "button": "Ücretsiz Seviye Testine Başlayın →"
     },
-    "footer": "© 2026 english.cash · AI Destekli İngilizce Öğrenme · Daha İyi İngilizce = Daha Çok Para"
+    "footer": "© 2026 english.cash · Global Kariyerler İçin AI Destekli İngilizce · Emre Varol"
   },
   "auth": {
     "login": {
@@ -374,10 +389,20 @@
     "result": "Puanınız",
     "explanation": "Açıklama",
     "loginMessage": "Dinleme pratiği yapmak için lütfen giriş yapın.",
-    "playerDesc": "AI tarafından oluşturulmuş bir metin dinleyin ve anlama sorularını yanıtlayın.",
+    "playerDesc": "AI tarafından oluşturulmuş bir metni dinleyin ve anlama sorularını yanıtlayın. Metni görmeyeceksiniz — kulaklarınızı eğitin!",
     "errorGenerate": "İçerik oluşturulamadı. Lütfen tekrar deneyin.",
     "errorConnection": "Bağlantı hatası. Lütfen tekrar deneyin.",
-    "level": "Seviye:"
+    "level": "Seviye:",
+    "playsRemaining": "{count} dinleme hakkı kaldı",
+    "extraPlay": "Tekrar Dinle (−10% ceza)",
+    "noPlaysLeft": "Ücretsiz dinleme hakkı kalmadı",
+    "notes": "Notlarınız",
+    "notesPlaceholder": "Dinlerken not alın...",
+    "timer": "Süre",
+    "listenFirst": "Soruları yanıtlamadan önce metni dinleyin",
+    "penaltyApplied": "Ekstra dinleme için −{penalty}% ceza uygulandı",
+    "readyToListen": "Hazır mısınız? Dinlemek için oynat butonuna basın. 2 ücretsiz dinleme hakkınız var.",
+    "listening": "Dinleniyor..."
   },
   "tutor": {
     "title": "AI Öğretmen",

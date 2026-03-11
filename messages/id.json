@@ -15,7 +15,7 @@
   },
   "landing": {
     "hero": {
-      "badge": "Bahasa Inggris Lebih Baik = Penghasilan Lebih Besar",
+      "badge": "Bahasa Inggris Profesional untuk Karier Global",
       "titleBefore": "Kuasai Bahasa Inggris dalam",
       "titleHighlight": "365 Hari",
       "subtitle": "Belajar bahasa Inggris berbasis AI untuk pertumbuhan karier. Hanya 15 menit sehari — jalur personal menuju kefasihan dan penghasilan lebih tinggi.",
@@ -26,6 +26,16 @@
       "streakLabel": "Rekor berturut-turut saat ini",
       "streakDays": "21 hari",
       "levelUpLabel": "Naik level"
+    },
+    "problem": {
+      "title": "Kesenjangan Peluang",
+      "subtitle": "Jutaan profesional berbakat terkunci dari peluang global — bukan karena kurang keterampilan, tapi karena tidak bisa mengomunikasikannya dalam bahasa Inggris.",
+      "stat1": "75%",
+      "stat1Label": "pekerjaan remote membutuhkan bahasa Inggris",
+      "stat2": "30-50%",
+      "stat2Label": "gaji lebih tinggi dengan bahasa Inggris lancar",
+      "stat3": "2B+",
+      "stat3Label": "orang belajar bahasa Inggris di seluruh dunia"
     },
     "howItWorks": {
       "title": "Cara Kerjanya",
@@ -38,7 +48,7 @@
       "step3Desc": "Lihat level CEFR Anda naik, radar keterampilan berkembang, dan rekor berturut-turut bertambah. Dasbor menunjukkan setiap peningkatan."
     },
     "features": {
-      "title": "Semua yang Anda Butuhkan",
+      "title": "Dibangun untuk Pertumbuhan Karier",
       "subtitle": "Empat modul inti, didukung oleh AI",
       "comingSoon": "Segera Hadir",
       "writing": {
@@ -59,7 +69,7 @@
       }
     },
     "pricing": {
-      "title": "Harga Sederhana",
+      "title": "Investasikan pada Karier Anda",
       "subtitle": "Investasikan pada diri Anda. Bahasa Inggris lebih baik = karier lebih baik = penghasilan lebih besar.",
       "free": "Gratis",
       "freeDesc": "Akses penuh 3 hari",
@@ -88,6 +98,11 @@
       "studentDiscount": "Pelajar diskon 50%!",
       "studentBtn": "Verifikasi Status Pelajar"
     },
+    "founder": {
+      "title": "Dibuat oleh Emre Varol",
+      "bio": "Insinyur perangkat lunak dan pendiri yang fokus menggunakan teknologi untuk menciptakan peluang ekonomi. english.cash menggabungkan pelatihan bahasa bertenaga AI dengan hasil berorientasi karier.",
+      "cta": "Pelajari lebih lanjut tentang misi kami"
+    },
     "cefr": {
       "title": "Adaptif terhadap Level Anda",
       "subtitle": "AI kami menyesuaikan setiap latihan dengan level CEFR Anda saat ini",
@@ -99,11 +114,11 @@
       "c2": "Penguasaan"
     },
     "cta": {
-      "title": "Bahasa Inggris Lebih Baik. Karier Lebih Baik. Penghasilan Lebih Besar.",
+      "title": "Keunggulan Karier Anda Dimulai dengan Bahasa Inggris.",
       "subtitle": "Hanya 15 menit sehari. Mulai gratis selama 3 hari.",
       "button": "Mulai Perjalanan 365 Hari Anda →"
     },
-    "footer": "© 2026 english.cash · Belajar Bahasa Inggris Berbasis AI · Bahasa Inggris Lebih Baik = Penghasilan Lebih Besar"
+    "footer": "© 2026 english.cash · Bahasa Inggris Bertenaga AI untuk Karier Global · Emre Varol"
   },
   "auth": {
     "login": {
@@ -374,10 +389,20 @@
     "result": "Skor Anda",
     "explanation": "Penjelasan",
     "loginMessage": "Silakan masuk untuk berlatih mendengarkan.",
-    "playerDesc": "Buat bacaan yang dibuat AI, dengarkan, dan jawab pertanyaan pemahaman.",
+    "playerDesc": "Dengarkan teks yang dibuat AI dan jawab pertanyaan pemahaman. Anda tidak akan melihat teksnya — latih telinga Anda!",
     "errorGenerate": "Gagal membuat konten. Silakan coba lagi.",
     "errorConnection": "Kesalahan koneksi. Silakan coba lagi.",
-    "level": "Level:"
+    "level": "Level:",
+    "playsRemaining": "{count} kesempatan mendengar tersisa",
+    "extraPlay": "Dengar Lagi (−10% penalti)",
+    "noPlaysLeft": "Tidak ada kesempatan mendengar gratis tersisa",
+    "notes": "Catatan Anda",
+    "notesPlaceholder": "Buat catatan saat mendengarkan...",
+    "timer": "Waktu",
+    "listenFirst": "Dengarkan teks terlebih dahulu sebelum menjawab pertanyaan",
+    "penaltyApplied": "−{penalty}% penalti untuk mendengar tambahan",
+    "readyToListen": "Siap? Tekan putar untuk mendengarkan. Anda memiliki 2 kesempatan mendengar gratis.",
+    "listening": "Sedang mendengarkan..."
   },
   "tutor": {
     "title": "Tutor AI",
@@ -456,7 +481,7 @@
     "level": "Level"
   },
   "pricing": {
-    "title": "Harga Sederhana",
+    "title": "Investasikan pada Karier Anda",
     "subtitle": "Investasikan pada diri Anda. Bahasa Inggris lebih baik = karier lebih baik = penghasilan lebih besar.",
     "free": "Gratis",
     "freeDesc": "Akses penuh 3 hari",

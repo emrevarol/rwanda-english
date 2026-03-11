@@ -111,7 +111,7 @@ function BarChart({ rand }: { rand: () => number }) {
           return (
             <g key={v}>
               <line x1="50" y1={y} x2="380" y2={y} stroke="#e5e7eb" strokeWidth="0.5" />
-              <text x="45" y={y + 3} textAnchor="end" className="text-[9px] fill-gray-400">{v}%</text>
+              <text x="45" y={y + 3} textAnchor="end" className="text-[9px] fill-gray-600">{v}%</text>
             </g>
           )
         })}
@@ -166,7 +166,7 @@ function LineChart({ rand }: { rand: () => number }) {
         {[0, 25, 50, 75, 100].map((v) => (
           <g key={v}>
             <line x1="50" y1={getY(v)} x2="370" y2={getY(v)} stroke="#e5e7eb" strokeWidth="0.5" />
-            <text x="45" y={getY(v) + 3} textAnchor="end" className="text-[9px] fill-gray-400">{v}%</text>
+            <text x="45" y={getY(v) + 3} textAnchor="end" className="text-[9px] fill-gray-600">{v}%</text>
           </g>
         ))}
         {years.map((yr, i) => (

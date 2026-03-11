@@ -15,7 +15,7 @@
   },
   "landing": {
     "hero": {
-      "badge": "Meilleur anglais = Plus d'argent",
+      "badge": "Anglais professionnel propulsé par l'IA",
       "titleBefore": "Maîtrisez l'anglais en",
       "titleHighlight": "365 jours",
       "subtitle": "Apprentissage de l'anglais par IA pour progresser dans votre carrière. Seulement 15 minutes par jour — votre chemin personnalisé vers la maîtrise et de meilleurs revenus.",
@@ -26,6 +26,16 @@
       "streakLabel": "Série en cours",
       "streakDays": "21 jours",
       "levelUpLabel": "Monter de niveau"
+    },
+    "problem": {
+      "title": "Le Fossé des Opportunités",
+      "subtitle": "Des millions de professionnels talentueux sont exclus des opportunités mondiales — non par manque de compétences, mais parce qu'ils ne peuvent pas les communiquer en anglais.",
+      "stat1": "75%",
+      "stat1Label": "des emplois à distance exigent l'anglais",
+      "stat2": "30-50%",
+      "stat2Label": "de salaire en plus avec un anglais courant",
+      "stat3": "2B+",
+      "stat3Label": "de personnes apprennent l'anglais dans le monde"
     },
     "howItWorks": {
       "title": "Comment ça marche",
@@ -38,7 +48,7 @@
       "step3Desc": "Voyez votre niveau CEFR progresser, votre radar de compétences évoluer et votre série grandir. Votre tableau de bord montre chaque amélioration."
     },
     "features": {
-      "title": "Tout ce dont vous avez besoin",
+      "title": "Conçu pour la croissance professionnelle",
       "subtitle": "Quatre modules principaux, propulsés par l'IA",
       "comingSoon": "Bientôt disponible",
       "writing": {
@@ -59,7 +69,7 @@
       }
     },
     "pricing": {
-      "title": "Tarification simple",
+      "title": "Investissez dans votre carrière",
       "subtitle": "Investissez en vous-même. Meilleur anglais = meilleure carrière = plus d'argent.",
       "free": "Gratuit",
       "freeDesc": "3 jours d'accès complet",
@@ -88,6 +98,11 @@
       "studentDiscount": "Les étudiants bénéficient de 50% de réduction !",
       "studentBtn": "Vérifier le statut étudiant"
     },
+    "founder": {
+      "title": "Créé par Emre Varol",
+      "bio": "Ingénieur logiciel et fondateur focalisé sur l'utilisation de la technologie pour créer des opportunités économiques. english.cash combine formation linguistique par IA avec des résultats orientés carrière.",
+      "cta": "En savoir plus sur notre mission"
+    },
     "cefr": {
       "title": "Adapté à votre niveau",
       "subtitle": "Notre IA adapte chaque exercice à votre niveau CEFR actuel",
@@ -99,11 +114,11 @@
       "c2": "Maîtrise"
     },
     "cta": {
-      "title": "Meilleur anglais. Meilleure carrière. Plus d'argent.",
+      "title": "Votre avantage carrière commence ici",
       "subtitle": "15 minutes par jour suffisent. Commencez gratuitement pendant 3 jours.",
       "button": "Commencez votre parcours de 365 jours →"
     },
-    "footer": "© 2026 english.cash · Apprentissage de l'anglais par IA · Meilleur anglais = Plus d'argent"
+    "footer": "© 2026 english.cash · Anglais par IA pour des carrières mondiales · Emre Varol"
   },
   "auth": {
     "login": {
@@ -374,10 +389,20 @@
     "result": "Votre score",
     "explanation": "Explication",
     "loginMessage": "Veuillez vous connecter pour pratiquer l'écoute.",
-    "playerDesc": "Générez un passage créé par l'IA, écoutez-le et répondez aux questions de compréhension.",
+    "playerDesc": "Écoutez un passage généré par l'IA et répondez aux questions de compréhension. Vous ne verrez pas le texte — entraînez vos oreilles !",
     "errorGenerate": "Échec de la génération du contenu. Veuillez réessayer.",
     "errorConnection": "Erreur de connexion. Veuillez réessayer.",
-    "level": "Niveau :"
+    "level": "Niveau :",
+    "playsRemaining": "{count} écoutes restantes",
+    "extraPlay": "Réécouter (−10% pénalité)",
+    "noPlaysLeft": "Plus d'écoutes gratuites",
+    "notes": "Vos notes",
+    "notesPlaceholder": "Prenez des notes en écoutant...",
+    "timer": "Temps",
+    "listenFirst": "Écoutez le passage d'abord avant de répondre aux questions",
+    "penaltyApplied": "−{penalty}% pénalité pour écoutes supplémentaires",
+    "readyToListen": "Prêt ? Appuyez sur lecture pour écouter. Vous avez 2 écoutes gratuites.",
+    "listening": "Écoute en cours..."
   },
   "tutor": {
     "title": "Tuteur IA",
@@ -456,7 +481,7 @@
     "level": "Niveau"
   },
   "pricing": {
-    "title": "Tarification simple",
+    "title": "Investissez dans votre carrière",
     "subtitle": "Investissez en vous-même. Meilleur anglais = meilleure carrière = plus d'argent.",
     "free": "Gratuit",
     "freeDesc": "3 jours d'accès complet",

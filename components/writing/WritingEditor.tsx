@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
 import { getWritingPrompt } from '@/lib/helpers'
 import SampleChart from './SampleChart'
@@ -29,16 +29,23 @@ export default function WritingEditor({
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const generatePrompt = () => {
-    setPrompt(getWritingPrompt(taskType, level))
+  const generatePrompt = useCallback(async () => {
     setText('')
     setFeedback(null)
     setError('')
-  }
+    try {
+      const res = await fetch(`/api/content/writing-prompt?taskType=${taskType}`)
+      const data = await res.json()
+      setPrompt(data.prompt || getWritingPrompt(taskType, level))
+    } catch {
+      // Fallback to hardcoded
+      setPrompt(getWritingPrompt(taskType, level))
+    }
+  }, [taskType, level])
 
   useEffect(() => {
     generatePrompt()
-  }, [taskType, level])
+  }, [generatePrompt])
 
   const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0
 
@@ -103,7 +110,7 @@ export default function WritingEditor({
           className="w-full text-sm text-gray-800 focus:outline-none resize-none leading-relaxed"
         />
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-          <span className="text-xs text-gray-400">
+          <span className="text-xs text-gray-600">
             {wordCount} {t('wordCount')}
           </span>
           <button
@@ -131,7 +138,7 @@ export default function WritingEditor({
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-gray-900">{t('feedback.title')}</h3>
             <div className="text-center">
-              <div className="text-xs text-gray-400 mb-0.5">{t('feedback.band')}</div>
+              <div className="text-xs text-gray-600 mb-0.5">{t('feedback.band')}</div>
               <div className={`text-3xl font-bold ${bandColor(feedback.band)}`}>
                 {feedback.band}
               </div>

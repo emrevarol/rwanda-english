@@ -149,12 +149,12 @@
     "verify": {
       "title": "Verify Your Email",
       "subtitle": "We sent a 6-digit code to",
-      "placeholder": "Enter 6-digit code",
+      "placeholder": "000000",
       "submit": "Verify",
       "verifying": "Verifying...",
       "resend": "Resend Code",
       "resent": "Code resent!",
-      "success": "Email verified! Redirecting to login...",
+      "success": "Email verified! Logging you in...",
       "error": "Invalid or expired code. Please try again.",
       "devNote": "Development mode — your OTP code is:"
     }
@@ -374,10 +374,20 @@
     "result": "Your Score",
     "explanation": "Explanation",
     "loginMessage": "Please login to practice listening.",
-    "playerDesc": "Generate an AI-created passage, listen to it, and answer comprehension questions.",
+    "playerDesc": "Listen carefully to an AI-generated passage and answer comprehension questions. You won't see the text — train your ears!",
     "errorGenerate": "Failed to generate content. Please try again.",
     "errorConnection": "Connection error. Please try again.",
-    "level": "Level:"
+    "level": "Level:",
+    "playsRemaining": "{count} listens remaining",
+    "extraPlay": "Listen Again (−10% penalty)",
+    "noPlaysLeft": "No free listens left",
+    "notes": "Your Notes",
+    "notesPlaceholder": "Take notes while listening...",
+    "timer": "Time",
+    "listenFirst": "Listen to the passage first before answering",
+    "penaltyApplied": "−{penalty}% penalty applied for extra listens",
+    "readyToListen": "Ready? Press play to listen. You have 2 free listens.",
+    "listening": "Listening..."
   },
   "tutor": {
     "title": "AI Tutor",

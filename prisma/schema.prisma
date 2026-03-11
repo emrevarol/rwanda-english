@@ -46,15 +46,17 @@ model OtpCode {
 }
 
 model WritingSubmission {
-  id        String   @id @default(cuid())
-  userId    String
-  taskType  String
-  prompt    String
-  response  String
-  feedback  String
-  band      Float
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
+  id              String   @id @default(cuid())
+  userId          String
+  taskType        String
+  prompt          String
+  response        String
+  feedback        String
+  band            Float
+  vocabularyScore Float?   // 0-9 sub-score from AI feedback
+  grammarScore    Float?   // 0-9 sub-score from AI feedback
+  createdAt       DateTime @default(now())
+  user            User     @relation(fields: [userId], references: [id])
 }
 
 model SpeakingSubmission {
@@ -123,4 +125,40 @@ model DailyProgress {
   user        User     @relation(fields: [userId], references: [id])
 
   @@unique([userId, date])
+}
+
+model WritingPrompt {
+  id        String   @id @default(cuid())
+  level     String   // CEFR level
+  taskType  String   // task1 or task2
+  prompt    String   // the writing prompt text
+  topic     String   @default("general") // topic category for variety
+  usedCount Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([level, taskType])
+}
+
+model SpeakingTopic {
+  id        String   @id @default(cuid())
+  level     String   // CEFR level
+  topic     String   // the speaking topic/question
+  category  String   @default("general") // topic category
+  usedCount Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([level])
+}
+
+model ListeningContent {
+  id        String   @id @default(cuid())
+  level     String   // CEFR level: A1, A2, B1, B2, C1, C2
+  language  String   @default("en") // interface language for questions
+  passage   String   // English passage text
+  questions String   // JSON array of questions
+  topic     String   @default("general") // topic category
+  usedCount Int      @default(0) // track usage for rotation
+  createdAt DateTime @default(now())
+
+  @@index([level, language])
 }

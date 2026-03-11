@@ -17,31 +17,31 @@ export default function WeekView({ dayNumber, level }: { dayNumber: number; leve
     <div className="bg-white rounded-xl border border-gray-200 p-5">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-semibold text-gray-800">This Week</h3>
-        <span className="text-xs text-gray-400">Week {days[0]?.plan.week}</span>
+        <span className="text-xs text-gray-600">Week {days[0]?.plan.week}</span>
       </div>
       <div className="grid grid-cols-7 gap-1.5">
         {days.map(({ dayNum, plan, isToday }, i) => (
           <div key={dayNum} className="text-center">
-            <div className="text-xs text-gray-400 mb-1.5">{DAYS[i]}</div>
+            <div className="text-xs text-gray-600 mb-1.5">{DAYS[i]}</div>
             <div
               className={`rounded-lg p-2 ${
                 isToday
                   ? 'bg-blue-600 text-white shadow-md'
                   : dayNum < dayNum
-                  ? 'bg-gray-100 text-gray-400'
+                  ? 'bg-gray-100 text-gray-600'
                   : 'bg-gray-50 text-gray-600 border border-gray-100'
               }`}
             >
               <div className="text-base leading-none mb-1">{plan.task1.icon}</div>
               <div className="text-base leading-none">{plan.task2.icon}</div>
-              <div className={`text-xs mt-1 font-medium ${isToday ? 'text-blue-100' : 'text-gray-400'}`}>
+              <div className={`text-xs mt-1 font-medium ${isToday ? 'text-blue-100' : 'text-gray-600'}`}>
                 {dayNum}
               </div>
             </div>
           </div>
         ))}
       </div>
-      <div className="mt-3 flex items-center gap-4 text-xs text-gray-400">
+      <div className="mt-3 flex items-center gap-4 text-xs text-gray-600">
         <div className="flex items-center gap-1"><span className="w-2 h-2 bg-blue-600 rounded-full inline-block"></span>Today</div>
         <div className="flex items-center gap-1">✍️ Writing</div>
         <div className="flex items-center gap-1">🎧 Listening</div>

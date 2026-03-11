@@ -13,6 +13,8 @@ interface DashboardData {
   avgWriting: number
   avgSpeaking: number
   avgListening: number
+  avgVocabulary: number | null
+  avgGrammar: number | null
   writingHistory: Array<{ date: string; score: number }>
   speakingHistory: Array<{ date: string; score: number }>
   recentActivity: Array<{ type: string; date: string; score: number; detail: string }>
@@ -64,12 +66,24 @@ export default function DashboardPage() {
     C2: 'bg-purple-100 text-purple-700',
   }
 
+  // Vocabulary/grammar: use real sub-scores if available, fallback to writing band estimate
+  const vocabPct = data
+    ? data.avgVocabulary != null
+      ? (data.avgVocabulary / 9) * 100
+      : (data.avgWriting / 9) * 100
+    : 0
+  const grammarPct = data
+    ? data.avgGrammar != null
+      ? (data.avgGrammar / 9) * 100
+      : (data.avgWriting / 9) * 100
+    : 0
+
   const skillsData = [
     { subject: t('writing'), value: data ? (data.avgWriting / 9) * 100 : 0 },
     { subject: t('speaking'), value: data ? data.avgSpeaking * 10 : 0 },
     { subject: t('listening'), value: data ? data.avgListening : 0 },
-    { subject: t('vocabulary'), value: 60 },
-    { subject: t('grammar'), value: 55 },
+    { subject: t('vocabulary'), value: vocabPct },
+    { subject: t('grammar'), value: grammarPct },
   ]
 
   return (
@@ -133,14 +147,14 @@ export default function DashboardPage() {
             <div className="text-3xl font-bold text-blue-600">
               {loading ? '—' : data?.avgWriting || 0}
             </div>
-            <div className="text-xs text-gray-400">{t('bandScore')}</div>
+            <div className="text-xs text-gray-600">{t('bandScore')}</div>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
             <div className="text-sm text-gray-500 mb-2">{t('speaking')}</div>
             <div className="text-3xl font-bold text-green-600">
               {loading ? '—' : data?.avgSpeaking || 0}
             </div>
-            <div className="text-xs text-gray-400">{t('fluencyScore')}</div>
+            <div className="text-xs text-gray-600">{t('fluencyScore')}</div>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
             <div className="text-sm text-gray-500 mb-2">{t('listening')}</div>
@@ -172,9 +186,9 @@ export default function DashboardPage() {
           <div className="bg-white rounded-xl border border-gray-200 p-6 lg:col-span-2">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('recentActivity')}</h2>
             {loading ? (
-              <p className="text-gray-400 text-sm">{t('noDataYet')}</p>
+              <p className="text-gray-600 text-sm">{t('noDataYet')}</p>
             ) : data?.recentActivity.length === 0 ? (
-              <p className="text-gray-400 text-sm">{t('noActivity')}</p>
+              <p className="text-gray-600 text-sm">{t('noActivity')}</p>
             ) : (
               <div className="space-y-3">
                 {data?.recentActivity.map((item, i) => (
@@ -187,7 +201,7 @@ export default function DashboardPage() {
                         <div className="text-sm font-medium text-gray-700 capitalize">
                           {item.type} — {item.detail}
                         </div>
-                        <div className="text-xs text-gray-400">
+                        <div className="text-xs text-gray-600">
                           {new Date(item.date).toLocaleDateString(locale)}
                         </div>
                       </div>

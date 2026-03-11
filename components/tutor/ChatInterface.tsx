@@ -206,7 +206,7 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
         </div>
         <div className="flex-1 overflow-y-auto">
           {sessions.length === 0 ? (
-            <div className="p-4 text-xs text-gray-400 text-center">{t('noHistory')}</div>
+            <div className="p-4 text-xs text-gray-600 text-center">{t('noHistory')}</div>
           ) : (
             sessions
               .filter((s) => !searchQuery || s.title.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -235,18 +235,18 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
                       <div className="text-sm font-medium text-gray-800 truncate flex-1">{s.title}</div>
                       <button
                         onClick={(e) => deleteSession(s.id, e)}
-                        className="text-gray-300 hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100 text-xs flex-shrink-0"
+                        className="text-gray-500 hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100 text-xs flex-shrink-0"
                       >
                         ×
                       </button>
                     </div>
-                    <div className="text-[11px] text-gray-400 mt-0.5">{dateStr}</div>
+                    <div className="text-[11px] text-gray-600 mt-0.5">{dateStr}</div>
                   </div>
                 )
               })
           )}
           {searchQuery && sessions.filter((s) => s.title.toLowerCase().includes(searchQuery.toLowerCase())).length === 0 && (
-            <div className="p-4 text-xs text-gray-400 text-center">{t('noResults')}</div>
+            <div className="p-4 text-xs text-gray-600 text-center">{t('noResults')}</div>
           )}
         </div>
       </div>
@@ -264,7 +264,7 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
           <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center text-white text-sm font-bold">AI</div>
           <div className="flex-1">
             <div className="font-semibold text-gray-800 text-sm">{t('headerTitle')}</div>
-            <div className="text-xs text-gray-400 flex items-center gap-1">
+            <div className="text-xs text-gray-600 flex items-center gap-1">
               <span className={`w-1.5 h-1.5 rounded-full ${loading ? 'bg-yellow-400 animate-pulse' : 'bg-green-400'}`} />
               {loading ? t('typing') : t('adaptedTo', { level: userLevel })}
             </div>
@@ -326,7 +326,7 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
         {/* Suggestions — only on first message */}
         {messages.length === 1 && (
           <div className="px-4 pb-2">
-            <div className="text-xs text-gray-400 mb-2">{t('suggestions')}</div>
+            <div className="text-xs text-gray-600 mb-2">{t('suggestions')}</div>
             <div className="flex gap-2 overflow-x-auto pb-1">
               {suggestions.slice(0, 4).map((q, i) => (
                 <button
@@ -372,7 +372,7 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
               </button>
             )}
           </form>
-          <div className="text-center text-xs text-gray-300 mt-1.5">{t('poweredBy', { level: userLevel })}</div>
+          <div className="text-center text-xs text-gray-500 mt-1.5">{t('poweredBy', { level: userLevel })}</div>
         </div>
       </div>
     </div>

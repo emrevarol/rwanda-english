@@ -35,7 +35,8 @@ export default function RegisterPage() {
       if (!res.ok) {
         setError(data.error || 'Registration failed')
       } else {
-        // Redirect to OTP verification page
+        // Store password temporarily for auto-login after verify
+        sessionStorage.setItem('_rp', form.password)
         const params = new URLSearchParams({ email: form.email })
         if (data.otp) params.set('otp', data.otp) // dev mode only
         router.push(`/${locale}/verify?${params.toString()}`)

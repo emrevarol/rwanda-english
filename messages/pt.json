@@ -15,7 +15,7 @@
   },
   "landing": {
     "hero": {
-      "badge": "Melhor Inglês = Mais Dinheiro",
+      "badge": "Inglês profissional impulsionado por IA",
       "titleBefore": "Domine o inglês em",
       "titleHighlight": "365 Dias",
       "subtitle": "Aprendizado de inglês com IA para crescimento profissional. Apenas 15 minutos por dia — seu caminho personalizado para fluência e maiores ganhos.",
@@ -26,6 +26,16 @@
       "streakLabel": "Sequência atual",
       "streakDays": "21 dias",
       "levelUpLabel": "Subir de nível"
+    },
+    "problem": {
+      "title": "A Lacuna de Oportunidades",
+      "subtitle": "Milhões de profissionais talentosos estão excluídos das oportunidades globais — não por falta de habilidades, mas porque não conseguem comunicá-las em inglês.",
+      "stat1": "75%",
+      "stat1Label": "dos empregos remotos exigem inglês",
+      "stat2": "30-50%",
+      "stat2Label": "mais de salário com inglês fluente",
+      "stat3": "2B+",
+      "stat3Label": "pessoas aprendendo inglês no mundo"
     },
     "howItWorks": {
       "title": "Como Funciona",
@@ -38,7 +48,7 @@
       "step3Desc": "Veja seu nível CEFR subir, seu radar de habilidades evoluir e sua sequência crescer. Seu painel mostra cada melhoria."
     },
     "features": {
-      "title": "Tudo o Que Você Precisa",
+      "title": "Desenvolvido para o crescimento profissional",
       "subtitle": "Quatro módulos principais, impulsionados por IA",
       "comingSoon": "Em Breve",
       "writing": {
@@ -59,7 +69,7 @@
       }
     },
     "pricing": {
-      "title": "Preços Simples",
+      "title": "Invista na sua carreira",
       "subtitle": "Invista em você. Melhor inglês = melhor carreira = mais dinheiro.",
       "free": "Grátis",
       "freeDesc": "3 dias de acesso completo",
@@ -88,6 +98,11 @@
       "studentDiscount": "Estudantes ganham 50% de desconto!",
       "studentBtn": "Verificar Status de Estudante"
     },
+    "founder": {
+      "title": "Criado por Emre Varol",
+      "bio": "Engenheiro de software e fundador focado em usar tecnologia para criar oportunidades econômicas. english.cash combina treinamento linguístico com IA com resultados voltados para a carreira.",
+      "cta": "Saiba mais sobre nossa missão"
+    },
     "cefr": {
       "title": "Adaptado ao Seu Nível",
       "subtitle": "Nossa IA adapta cada exercício ao seu nível CEFR atual",
@@ -99,11 +114,11 @@
       "c2": "Maestria"
     },
     "cta": {
-      "title": "Melhor Inglês. Melhor Carreira. Mais Dinheiro.",
+      "title": "Sua vantagem profissional começa aqui",
       "subtitle": "15 minutos por dia é tudo que você precisa. Comece grátis por 3 dias.",
       "button": "Comece Sua Jornada de 365 Dias →"
     },
-    "footer": "© 2026 english.cash · Aprendizado de Inglês com IA · Melhor Inglês = Mais Dinheiro"
+    "footer": "© 2026 english.cash · Inglês com IA para carreiras globais · Emre Varol"
   },
   "auth": {
     "login": {
@@ -374,10 +389,20 @@
     "result": "Sua Pontuação",
     "explanation": "Explicação",
     "loginMessage": "Por favor faça login para praticar compreensão auditiva.",
-    "playerDesc": "Gere uma passagem criada por IA, ouça e responda perguntas de compreensão.",
+    "playerDesc": "Ouça uma passagem gerada por IA e responda às perguntas de compreensão. Você não verá o texto — treine seus ouvidos!",
     "errorGenerate": "Falha ao gerar conteúdo. Por favor tente novamente.",
     "errorConnection": "Erro de conexão. Por favor tente novamente.",
-    "level": "Nível:"
+    "level": "Nível:",
+    "playsRemaining": "{count} escutas restantes",
+    "extraPlay": "Ouvir novamente (−10% penalidade)",
+    "noPlaysLeft": "Sem escutas gratuitas restantes",
+    "notes": "Suas anotações",
+    "notesPlaceholder": "Faça anotações enquanto ouve...",
+    "timer": "Tempo",
+    "listenFirst": "Ouça a passagem primeiro antes de responder às perguntas",
+    "penaltyApplied": "−{penalty}% penalidade por escutas adicionais",
+    "readyToListen": "Pronto? Pressione play para ouvir. Você tem 2 escutas gratuitas.",
+    "listening": "Ouvindo..."
   },
   "tutor": {
     "title": "Tutor IA",
@@ -456,7 +481,7 @@
     "level": "Nível"
   },
   "pricing": {
-    "title": "Preços Simples",
+    "title": "Invista na sua carreira",
     "subtitle": "Invista em você. Melhor inglês = melhor carreira = mais dinheiro.",
     "free": "Grátis",
     "freeDesc": "3 dias de acesso completo",

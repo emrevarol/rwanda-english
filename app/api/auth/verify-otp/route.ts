@@ -18,10 +18,30 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true, alreadyVerified: true })
     }
 
+    // Debug: find ALL OTP codes for this user
+    const allCodes = await prisma.otpCode.findMany({
+      where: { userId: user.id },
+      orderBy: { createdAt: 'desc' },
+      take: 5,
+    })
+    console.log('Verify OTP debug:', {
+      email,
+      codeReceived: code,
+      codeLength: code.length,
+      codeType: typeof code,
+      now: new Date().toISOString(),
+      allCodes: allCodes.map(c => ({
+        code: c.code,
+        used: c.used,
+        expiresAt: c.expiresAt.toISOString(),
+        expired: c.expiresAt < new Date(),
+      })),
+    })
+
     const otpRecord = await prisma.otpCode.findFirst({
       where: {
         userId: user.id,
-        code,
+        code: code.trim(),
         used: false,
         expiresAt: { gt: new Date() },
       },

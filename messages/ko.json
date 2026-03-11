@@ -15,7 +15,7 @@
   },
   "landing": {
     "hero": {
-      "badge": "영어 실력 향상 = 수입 증가",
+      "badge": "글로벌 커리어를 위한 AI 영어",
       "titleBefore": "영어를 마스터하세요",
       "titleHighlight": "365일",
       "subtitle": "커리어 성장을 위한 AI 기반 영어 학습. 하루 15분이면 충분합니다 — 유창함과 높은 수입으로 가는 맞춤형 경로.",
@@ -26,6 +26,16 @@
       "streakLabel": "현재 연속 기록",
       "streakDays": "21일",
       "levelUpLabel": "레벨 업"
+    },
+    "problem": {
+      "title": "기회의 격차",
+      "subtitle": "수백만 명의 재능 있는 전문가들이 글로벌 기회에서 배제되고 있습니다 — 능력이 부족해서가 아니라, 영어로 소통할 수 없기 때문입니다.",
+      "stat1": "75%",
+      "stat1Label": "원격 근무가 영어를 요구합니다",
+      "stat2": "30-50%",
+      "stat2Label": "유창한 영어로 더 높은 급여",
+      "stat3": "20억+",
+      "stat3Label": "전 세계에서 영어를 배우는 사람들"
     },
     "howItWorks": {
       "title": "이용 방법",
@@ -38,7 +48,7 @@
       "step3Desc": "CEFR 레벨 상승, 스킬 레이더 변화, 연속 기록 성장을 확인하세요. 대시보드에서 모든 향상을 볼 수 있습니다."
     },
     "features": {
-      "title": "필요한 모든 것",
+      "title": "커리어 성장을 위해 설계",
       "subtitle": "AI 기반 4가지 핵심 모듈",
       "comingSoon": "곧 출시",
       "writing": {
@@ -59,8 +69,8 @@
       }
     },
     "pricing": {
-      "title": "간단한 요금제",
-      "subtitle": "자신에게 투자하세요. 영어 실력 향상 = 커리어 향상 = 수입 증가.",
+      "title": "커리어에 투자하세요",
+      "subtitle": "자신에게 투자하세요. 영어 실력으로 커리어 가능성을 넓히세요.",
       "free": "무료",
       "freeDesc": "3일 전체 이용",
       "freePeriod": "3일간",
@@ -88,6 +98,11 @@
       "studentDiscount": "학생 50% 할인!",
       "studentBtn": "학생 인증하기"
     },
+    "founder": {
+      "title": "Emre Varol 이 만들었습니다",
+      "bio": "기술을 활용하여 경제적 기회를 창출하는 데 집중하는 소프트웨어 엔지니어이자 창립자. english.cash는 AI 기반 언어 훈련과 커리어 중심 성과를 결합합니다.",
+      "cta": "우리의 미션에 대해 더 알아보기"
+    },
     "cefr": {
       "title": "여러분의 레벨에 맞춤",
       "subtitle": "AI가 현재 CEFR 레벨에 맞게 모든 연습 문제를 조정합니다",
@@ -99,11 +114,11 @@
       "c2": "마스터"
     },
     "cta": {
-      "title": "영어 실력 향상. 커리어 향상. 수입 증가.",
+      "title": "영어로 커리어 경쟁력을 확보하세요",
       "subtitle": "하루 15분이면 됩니다. 3일 무료로 시작하세요.",
       "button": "365일 여정 시작 →"
     },
-    "footer": "© 2026 english.cash · AI 기반 영어 학습 · 영어 실력 향상 = 수입 증가"
+    "footer": "© 2026 english.cash · 글로벌 커리어를 위한 AI 영어 · Emre Varol"
   },
   "auth": {
     "login": {
@@ -374,10 +389,20 @@
     "result": "내 점수",
     "explanation": "해설",
     "loginMessage": "듣기 연습을 하려면 로그인해 주세요.",
-    "playerDesc": "AI가 만든 지문을 생성하고, 듣고, 이해력 문제에 답하세요.",
+    "playerDesc": "AI가 생성한 지문을 듣고 이해력 문제에 답하세요. 텍스트는 보이지 않습니다 — 귀를 훈련하세요!",
     "errorGenerate": "콘텐츠 생성에 실패했습니다. 다시 시도해 주세요.",
     "errorConnection": "연결 오류입니다. 다시 시도해 주세요.",
-    "level": "레벨:"
+    "level": "레벨:",
+    "playsRemaining": "{count}회 듣기 남음",
+    "extraPlay": "다시 듣기 (−10% 감점)",
+    "noPlaysLeft": "무료 듣기 횟수가 없습니다",
+    "notes": "메모",
+    "notesPlaceholder": "들으면서 메모하세요...",
+    "timer": "시간",
+    "listenFirst": "질문에 답하기 전에 먼저 지문을 들으세요",
+    "penaltyApplied": "추가 듣기로 −{penalty}% 감점 적용됨",
+    "readyToListen": "준비되셨나요? 재생 버튼을 눌러 들으세요. 무료 듣기 2회가 있습니다.",
+    "listening": "듣는 중..."
   },
   "tutor": {
     "title": "AI 튜터",
@@ -456,8 +481,8 @@
     "level": "레벨"
   },
   "pricing": {
-    "title": "간단한 요금제",
-    "subtitle": "자신에게 투자하세요. 영어 실력 향상 = 커리어 향상 = 수입 증가.",
+    "title": "커리어에 투자하세요",
+    "subtitle": "자신에게 투자하세요. 영어 실력으로 커리어 가능성을 넓히세요.",
     "free": "무료",
     "freeDesc": "3일 전체 이용",
     "freePeriod": "3일간",

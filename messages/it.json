@@ -15,7 +15,7 @@
   },
   "landing": {
     "hero": {
-      "badge": "Inglese Migliore = Più Guadagno",
+      "badge": "Formazione Linguistica AI per Carriere Globali",
       "titleBefore": "Padroneggia l'inglese in",
       "titleHighlight": "365 Giorni",
       "subtitle": "Apprendimento dell'inglese basato sull'IA per la crescita professionale. Solo 15 minuti al giorno — il tuo percorso personalizzato verso la padronanza e guadagni più alti.",
@@ -26,6 +26,16 @@
       "streakLabel": "Serie attuale",
       "streakDays": "21 giorni",
       "levelUpLabel": "Sali di livello"
+    },
+    "problem": {
+      "title": "Il Divario delle Opportunità",
+      "subtitle": "Milioni di professionisti talentuosi sono esclusi dalle opportunità globali — non per mancanza di competenze, ma perché non riescono a comunicarle in inglese.",
+      "stat1": "75%",
+      "stat1Label": "dei lavori remoti richiede l'inglese",
+      "stat2": "30-50%",
+      "stat2Label": "stipendio più alto con inglese fluente",
+      "stat3": "2B+",
+      "stat3Label": "persone che imparano l'inglese nel mondo"
     },
     "howItWorks": {
       "title": "Come Funziona",
@@ -38,7 +48,7 @@
       "step3Desc": "Guarda il tuo livello CEFR salire, il radar delle competenze evolversi e la serie crescere. Il tuo pannello mostra ogni miglioramento."
     },
     "features": {
-      "title": "Tutto Ciò di Cui Hai Bisogno",
+      "title": "Costruito per la Crescita Professionale",
       "subtitle": "Quattro moduli principali, basati sull'IA",
       "comingSoon": "Prossimamente",
       "writing": {
@@ -59,7 +69,7 @@
       }
     },
     "pricing": {
-      "title": "Prezzi Semplici",
+      "title": "Investi nella Tua Carriera",
       "subtitle": "Investi in te stesso. Inglese migliore = carriera migliore = più guadagno.",
       "free": "Gratuito",
       "freeDesc": "3 giorni di accesso completo",
@@ -88,6 +98,11 @@
       "studentDiscount": "Gli studenti ottengono il 50% di sconto!",
       "studentBtn": "Verifica Stato Studente"
     },
+    "founder": {
+      "title": "Creato da Emre Varol",
+      "bio": "Ingegnere software e fondatore focalizzato sull'uso della tecnologia per creare opportunità economiche. english.cash combina formazione linguistica AI con risultati orientati alla carriera.",
+      "cta": "Scopri di più sulla nostra missione"
+    },
     "cefr": {
       "title": "Adattivo al Tuo Livello",
       "subtitle": "La nostra IA adatta ogni esercizio al tuo attuale livello CEFR",
@@ -99,11 +114,11 @@
       "c2": "Padronanza"
     },
     "cta": {
-      "title": "Inglese Migliore. Carriera Migliore. Più Guadagno.",
+      "title": "Sblocca il Tuo Vantaggio Professionale Globale",
       "subtitle": "Bastano 15 minuti al giorno. Inizia gratis per 3 giorni.",
       "button": "Inizia il Tuo Percorso di 365 Giorni →"
     },
-    "footer": "© 2026 english.cash · Apprendimento dell'Inglese Basato sull'IA · Inglese Migliore = Più Guadagno"
+    "footer": "© 2026 english.cash · Inglese Basato sull'IA per Carriere Globali · Emre Varol"
   },
   "auth": {
     "login": {
@@ -374,10 +389,20 @@
     "result": "Il Tuo Punteggio",
     "explanation": "Spiegazione",
     "loginMessage": "Effettua l'accesso per praticare l'ascolto.",
-    "playerDesc": "Genera un brano creato dall'IA, ascoltalo e rispondi alle domande di comprensione.",
+    "playerDesc": "Ascolta un brano generato dall'IA e rispondi alle domande di comprensione. Non vedrai il testo — allena le tue orecchie!",
     "errorGenerate": "Generazione del contenuto fallita. Riprova.",
     "errorConnection": "Errore di connessione. Riprova.",
-    "level": "Livello:"
+    "level": "Livello:",
+    "playsRemaining": "{count} ascolti rimanenti",
+    "extraPlay": "Riascolta (−10% penalità)",
+    "noPlaysLeft": "Nessun ascolto gratuito rimanente",
+    "notes": "I tuoi appunti",
+    "notesPlaceholder": "Prendi appunti mentre ascolti...",
+    "timer": "Tempo",
+    "listenFirst": "Ascolta il brano prima di rispondere alle domande",
+    "penaltyApplied": "−{penalty}% penalità per ascolti aggiuntivi",
+    "readyToListen": "Pronto? Premi play per ascoltare. Hai 2 ascolti gratuiti.",
+    "listening": "In ascolto..."
   },
   "tutor": {
     "title": "Tutor IA",

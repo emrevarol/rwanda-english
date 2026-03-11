@@ -4,6 +4,7 @@ import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
+  PolarRadiusAxis,
   Radar,
   ResponsiveContainer,
 } from 'recharts'
@@ -19,6 +20,7 @@ export default function SkillsRadar({ data }: { data: SkillData[] }) {
       <RadarChart data={data}>
         <PolarGrid />
         <PolarAngleAxis dataKey="subject" tick={{ fontSize: 12 }} />
+        <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />
         <Radar
           name="Skills"
           dataKey="value"

@@ -98,11 +98,11 @@ function TaskRow({
         <div className="flex items-start gap-3">
           <div className={`text-2xl mt-0.5 ${done ? 'opacity-50' : ''}`}>{done ? '✅' : task.icon}</div>
           <div>
-            <div className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-0.5">{label}</div>
-            <div className={`font-semibold ${done ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
+            <div className="text-xs font-medium text-gray-600 uppercase tracking-wide mb-0.5">{label}</div>
+            <div className={`font-semibold ${done ? 'text-gray-600 line-through' : 'text-gray-900'}`}>
               {t(task.titleKey)}
             </div>
-            <div className={`text-sm mt-0.5 ${done ? 'text-gray-400' : 'text-gray-600'}`}>
+            <div className={`text-sm mt-0.5 ${done ? 'text-gray-600' : 'text-gray-600'}`}>
               {task.description}
             </div>
           </div>

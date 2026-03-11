@@ -15,7 +15,7 @@
   },
   "landing": {
     "hero": {
-      "badge": "英语更好 = 收入更多",
+      "badge": "全球职业发展的AI英语",
       "titleBefore": "在",
       "titleHighlight": "365 天",
       "subtitle": "AI 驱动的英语学习，助力职业发展。每天仅需 15 分钟——为您定制的流利英语和高薪之路。",
@@ -26,6 +26,16 @@
       "streakLabel": "当前连续天数",
       "streakDays": "21 天",
       "levelUpLabel": "升级"
+    },
+    "problem": {
+      "title": "机会鸿沟",
+      "subtitle": "数百万有才华的专业人士被全球机会拒之门外——不是因为缺乏技能，而是因为无法用英语表达。",
+      "stat1": "75%",
+      "stat1Label": "远程工作需要英语",
+      "stat2": "30-50%",
+      "stat2Label": "流利英语带来更高薪资",
+      "stat3": "20亿+",
+      "stat3Label": "全球正在学习英语的人"
     },
     "howItWorks": {
       "title": "如何运作",
@@ -38,7 +48,7 @@
       "step3Desc": "看着您的 CEFR 等级提升、技能雷达图变化、连续天数增长。仪表板展示您的每一点进步。"
     },
     "features": {
-      "title": "您所需的一切",
+      "title": "专为职业成长打造",
       "subtitle": "四大核心模块，由 AI 驱动",
       "comingSoon": "即将推出",
       "writing": {
@@ -59,8 +69,8 @@
       }
     },
     "pricing": {
-      "title": "简单定价",
-      "subtitle": "投资自己。英语更好 = 职业更好 = 收入更多。",
+      "title": "投资您的职业发展",
+      "subtitle": "投资自己。用英语能力拓展职业可能性。",
       "free": "免费",
       "freeDesc": "3 天完整体验",
       "freePeriod": "3 天",
@@ -88,6 +98,11 @@
       "studentDiscount": "学生享 5 折优惠！",
       "studentBtn": "验证学生身份"
     },
+    "founder": {
+      "title": "由 Emre Varol 创建",
+      "bio": "专注于利用技术创造经济机会的软件工程师和创始人。english.cash 将AI驱动的语言培训与以职业为导向的成果相结合。",
+      "cta": "了解更多关于我们的使命"
+    },
     "cefr": {
       "title": "自适应您的水平",
       "subtitle": "我们的 AI 根据您当前的 CEFR 等级调整每项练习",
@@ -99,11 +114,11 @@
       "c2": "精通"
     },
     "cta": {
-      "title": "英语更好。职业更好。收入更多。",
+      "title": "用英语获得职业竞争优势",
       "subtitle": "每天只需 15 分钟。免费体验 3 天。",
       "button": "开始您的 365 天之旅 →"
     },
-    "footer": "© 2026 english.cash · AI 驱动的英语学习 · 英语更好 = 收入更多"
+    "footer": "© 2026 english.cash · 全球职业发展的AI英语 · Emre Varol"
   },
   "auth": {
     "login": {
@@ -374,10 +389,20 @@
     "result": "您的分数",
     "explanation": "解析",
     "loginMessage": "请登录以练习听力。",
-    "playerDesc": "生成 AI 创建的段落，聆听内容，然后回答理解题。",
+    "playerDesc": "听AI生成的段落并回答理解问题。你不会看到文字——训练你的耳朵！",
     "errorGenerate": "生成内容失败。请重试。",
     "errorConnection": "连接错误。请重试。",
-    "level": "等级："
+    "level": "等级：",
+    "playsRemaining": "剩余{count}次收听",
+    "extraPlay": "再听一次（−10%扣分）",
+    "noPlaysLeft": "没有免费收听次数了",
+    "notes": "你的笔记",
+    "notesPlaceholder": "边听边记笔记...",
+    "timer": "时间",
+    "listenFirst": "回答问题前请先听段落",
+    "penaltyApplied": "额外收听扣除−{penalty}%",
+    "readyToListen": "准备好了吗？按播放键收听。你有2次免费收听机会。",
+    "listening": "正在收听..."
   },
   "tutor": {
     "title": "AI 导师",
@@ -456,8 +481,8 @@
     "level": "等级"
   },
   "pricing": {
-    "title": "简单定价",
-    "subtitle": "投资自己。英语更好 = 职业更好 = 收入更多。",
+    "title": "投资您的职业发展",
+    "subtitle": "投资自己。用英语能力拓展职业可能性。",
     "free": "免费",
     "freeDesc": "3 天完整体验",
     "freePeriod": "3 天",

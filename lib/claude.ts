@@ -78,7 +78,9 @@ Please provide a JSON response with the following structure:
   "taskAchievement": "<feedback string>",
   "coherence": "<feedback string>",
   "vocabulary": "<feedback string>",
+  "vocabularyScore": <number 1-9, score for lexical resource>,
   "grammar": "<feedback string>",
+  "grammarScore": <number 1-9, score for grammatical range and accuracy>,
   "improvedSentences": ["<improved version of a weak sentence>", "<another improved sentence>"],
   "overallFeedback": "<2-3 sentence overall comment>"
 }
@@ -241,6 +243,116 @@ Only return valid JSON, nothing else.`,
 
   const jsonMatch = content.text.match(/\{[\s\S]*\}/)
   if (!jsonMatch) throw new Error('No JSON in assessment response')
+  return JSON.parse(jsonMatch[0])
+}
+
+// --- Bulk content generation for seeding pools ---
+
+const LEVEL_WORD_COUNTS: Record<string, { task1: string; task2: string }> = {
+  A1: { task1: '40-60 words, 3-5 simple sentences', task2: '40-60 words, 5-8 simple sentences' },
+  A2: { task1: '50-80 words, short paragraph', task2: '80-120 words, 1-2 paragraphs' },
+  B1: { task1: '150+ words with intro and conclusion', task2: '150+ words essay with intro, 2-3 body paragraphs, conclusion' },
+  B2: { task1: '200+ words analyzing data', task2: '200+ words balanced essay' },
+  C1: { task1: '250+ words with academic language', task2: '250+ words academic essay' },
+  C2: { task1: '300+ words with critical analysis', task2: '300+ words scholarly essay' },
+}
+
+const WRITING_CATEGORIES = [
+  'education', 'technology', 'health', 'environment', 'work',
+  'travel', 'culture', 'science', 'economics', 'sports',
+  'media', 'food', 'family', 'cities', 'transportation',
+  'arts', 'history', 'social issues', 'communication', 'hobbies',
+]
+
+export async function generateWritingPromptsBatch(
+  level: string,
+  taskType: string,
+  count: number,
+  existingTopics: string[] = []
+): Promise<string[]> {
+  const wc = LEVEL_WORD_COUNTS[level] || LEVEL_WORD_COUNTS['B1']
+  const wordReq = taskType === 'task1' ? wc.task1 : wc.task2
+  const taskDesc = taskType === 'task1'
+    ? 'data/chart description tasks (the student will describe a chart, table, or graph)'
+    : 'essay/opinion writing tasks'
+
+  const avoidList = existingTopics.length > 0
+    ? `\nAVOID these topics that already exist: ${existingTopics.slice(-50).join(', ')}`
+    : ''
+
+  const message = await anthropic.messages.create({
+    model: MODEL,
+    max_tokens: 4000,
+    messages: [{
+      role: 'user',
+      content: `Generate exactly ${count} unique English writing prompts for ${taskDesc} at CEFR ${level} level.
+
+Requirements per prompt:
+- Word requirement: ${wordReq}
+- Each prompt must be about a DIFFERENT topic/subject
+- Cover diverse categories: education, technology, health, environment, work, travel, culture, science, economics, sports, media, food, family, cities, etc.
+- For task1: include a reference to "the chart/table/graph below" so the student knows to describe data
+- For task2: include clear instructions on structure (intro, body, conclusion)
+- Make prompts engaging and relevant to real-world topics
+${avoidList}
+
+Return a JSON array of strings, each string is one complete prompt:
+["prompt 1 text...", "prompt 2 text...", ...]
+
+Only return valid JSON array, nothing else.`,
+    }],
+  })
+
+  const content = message.content[0]
+  if (content.type !== 'text') throw new Error('Unexpected response type')
+
+  const jsonMatch = content.text.match(/\[[\s\S]*\]/)
+  if (!jsonMatch) throw new Error('No JSON array found')
+  return JSON.parse(jsonMatch[0])
+}
+
+const SPEAKING_CATEGORIES = [
+  'personal experience', 'opinion', 'comparison', 'problem-solving',
+  'future plans', 'past events', 'hypothetical', 'description',
+  'narrative', 'debate', 'analysis', 'recommendation',
+]
+
+export async function generateSpeakingTopicsBatch(
+  level: string,
+  count: number,
+  existingTopics: string[] = []
+): Promise<string[]> {
+  const avoidList = existingTopics.length > 0
+    ? `\nAVOID these topics that already exist: ${existingTopics.slice(-50).join(', ')}`
+    : ''
+
+  const message = await anthropic.messages.create({
+    model: MODEL,
+    max_tokens: 4000,
+    messages: [{
+      role: 'user',
+      content: `Generate exactly ${count} unique English speaking practice topics/questions for CEFR ${level} level students.
+
+Requirements:
+- Each topic should be a clear question or instruction for the student to speak about
+- Cover diverse categories: personal experience, opinions, comparisons, problem-solving, future plans, hypothetical scenarios, descriptions, debates, analysis, etc.
+- Adapt complexity to ${level} level (A1=very simple, C2=highly sophisticated)
+- Topics should encourage 1-3 minutes of speaking
+- Make topics engaging, thought-provoking, and relevant to real life
+${avoidList}
+
+Return a JSON array of strings:
+["topic 1...", "topic 2...", ...]
+
+Only return valid JSON array, nothing else.`,
+    }],
+  })
+
+  const content = message.content[0]
+  if (content.type !== 'text') throw new Error('Unexpected response type')
+
+  const jsonMatch = content.text.match(/\[[\s\S]*\]/)
+  if (!jsonMatch) throw new Error('No JSON array found')
   return JSON.parse(jsonMatch[0])
 }
 

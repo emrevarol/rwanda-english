@@ -11,7 +11,7 @@ export default function StreakBanner({ streak, bothDone }: { streak: number; bot
         <span className="text-2xl">🔥</span>
         <div>
           <div className="font-semibold text-gray-700 text-sm">{t('startStreak')}</div>
-          <div className="text-xs text-gray-400">{t('startStreakDesc')}</div>
+          <div className="text-xs text-gray-600">{t('startStreakDesc')}</div>
         </div>
       </div>
     )

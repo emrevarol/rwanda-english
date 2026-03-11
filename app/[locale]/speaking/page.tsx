@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import Navigation from '@/components/shared/Navigation'
@@ -33,14 +33,24 @@ export default function SpeakingPage() {
   const chunksRef = useRef<Blob[]>([])
   const timerRef = useRef<NodeJS.Timeout | null>(null)
 
+  const fetchTopic = useCallback(async (lvl: string) => {
+    try {
+      const res = await fetch('/api/content/speaking-topic')
+      const data = await res.json()
+      setTopic(data.topic || getSpeakingTopic(lvl))
+    } catch {
+      setTopic(getSpeakingTopic(lvl))
+    }
+  }, [])
+
   useEffect(() => {
     if (session?.user?.level) {
-      setTopic(getSpeakingTopic(session.user.level))
+      fetchTopic(session.user.level)
     }
-  }, [session?.user?.level])
+  }, [session?.user?.level, fetchTopic])
 
   const newTopic = () => {
-    setTopic(getSpeakingTopic(session?.user?.level || 'B1'))
+    fetchTopic(session?.user?.level || 'B1')
     setTranscript('')
     setFeedback(null)
     setError('')

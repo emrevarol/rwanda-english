@@ -47,7 +47,7 @@ export default function FullPathView({ days, currentDay }: { days: DayEntry[]; c
     <div className="bg-white rounded-xl border border-gray-200 p-5">
       <div className="flex items-center justify-between mb-5">
         <h3 className="font-semibold text-gray-800">{t('full365')}</h3>
-        <div className="flex items-center gap-3 text-xs text-gray-400">
+        <div className="flex items-center gap-3 text-xs text-gray-600">
           <span className="flex items-center gap-1"><span className="w-3 h-3 rounded bg-green-500 inline-block" /> {t('doneLegend')}</span>
           <span className="flex items-center gap-1"><span className="w-3 h-3 rounded bg-blue-600 inline-block" /> {t('todayLegendItem')}</span>
           <span className="flex items-center gap-1"><span className="w-3 h-3 rounded bg-gray-200 inline-block" /> {t('upcoming')}</span>
@@ -57,7 +57,7 @@ export default function FullPathView({ days, currentDay }: { days: DayEntry[]; c
       <div className="max-h-[480px] overflow-y-auto space-y-3 pr-1">
         {weeks.map((week, wi) => (
           <div key={wi}>
-            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+            <div className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
               {t('weekLabel', { week: wi + 1 })}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-7 gap-1.5">
@@ -87,23 +87,23 @@ export default function FullPathView({ days, currentDay }: { days: DayEntry[]; c
                       </div>
                     )}
                     <div className="flex items-center justify-between mb-1">
-                      <div className={`text-xs font-bold ${day.isToday ? 'text-blue-600' : 'text-gray-400'}`}>
+                      <div className={`text-xs font-bold ${day.isToday ? 'text-blue-600' : 'text-gray-600'}`}>
                         {t('day')} {day.day}
                       </div>
                       {bothDone && <span className="text-green-500 text-xs">✓✓</span>}
                       {halfDone && !bothDone && <span className="text-yellow-500 text-xs">✓</span>}
                     </div>
                     {/* Theme */}
-                    <div className={`text-[10px] font-medium mb-1.5 leading-tight ${day.isToday ? 'text-blue-500' : 'text-gray-400'}`}>
+                    <div className={`text-[10px] font-medium mb-1.5 leading-tight ${day.isToday ? 'text-blue-500' : 'text-gray-600'}`}>
                       {resolveTheme(day)}
                     </div>
                     {/* Tasks */}
                     <div className="space-y-1">
-                      <div className={`text-xs flex items-center gap-1 ${day.task1Done ? 'line-through text-gray-400' : 'text-gray-700'}`}>
+                      <div className={`text-xs flex items-center gap-1 ${day.task1Done ? 'line-through text-gray-600' : 'text-gray-700'}`}>
                         <span className="flex-shrink-0">{day.task1.icon}</span>
                         <span className="truncate leading-tight">{resolveTitle(day.task1)}</span>
                       </div>
-                      <div className={`text-xs flex items-center gap-1 ${day.task2Done ? 'line-through text-gray-400' : 'text-gray-700'}`}>
+                      <div className={`text-xs flex items-center gap-1 ${day.task2Done ? 'line-through text-gray-600' : 'text-gray-700'}`}>
                         <span className="flex-shrink-0">{day.task2.icon}</span>
                         <span className="truncate leading-tight">{resolveTitle(day.task2)}</span>
                       </div>

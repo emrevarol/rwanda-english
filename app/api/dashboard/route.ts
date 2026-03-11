@@ -43,6 +43,16 @@ export async function GET(req: NextRequest) {
       ? listening.reduce((sum, l) => sum + l.score, 0) / listening.length
       : 0
 
+    // Calculate vocabulary and grammar sub-scores from writing submissions
+    const writingWithVocab = writing.filter((w) => w.vocabularyScore != null)
+    const writingWithGrammar = writing.filter((w) => w.grammarScore != null)
+    const avgVocabulary = writingWithVocab.length > 0
+      ? writingWithVocab.reduce((sum, w) => sum + (w.vocabularyScore || 0), 0) / writingWithVocab.length
+      : null
+    const avgGrammar = writingWithGrammar.length > 0
+      ? writingWithGrammar.reduce((sum, w) => sum + (w.grammarScore || 0), 0) / writingWithGrammar.length
+      : null
+
     const recentActivity = [
       ...writing.map(w => ({
         type: 'writing',
@@ -71,6 +81,8 @@ export async function GET(req: NextRequest) {
       avgWriting: Math.round(avgWriting * 10) / 10,
       avgSpeaking: Math.round(avgSpeaking * 10) / 10,
       avgListening: Math.round(avgListening * 10) / 10,
+      avgVocabulary: avgVocabulary != null ? Math.round(avgVocabulary * 10) / 10 : null,
+      avgGrammar: avgGrammar != null ? Math.round(avgGrammar * 10) / 10 : null,
       writingHistory: writing.map(w => ({ date: w.createdAt, score: w.band })),
       speakingHistory: speaking.map(s => ({ date: s.createdAt, score: s.score })),
       recentActivity,

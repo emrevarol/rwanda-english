@@ -6,7 +6,7 @@ function getResend() {
 
 export async function sendOtpEmail(to: string, code: string, name: string) {
   const { error } = await getResend().emails.send({
-    from: 'english.cash <onboarding@resend.dev>',
+    from: 'english.cash <noreply@english.cash>',
     to,
     subject: `Your verification code: ${code}`,
     html: `
