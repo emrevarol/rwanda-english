@@ -243,6 +243,7 @@
     "amazingWork": "Harika iş! Bugünkü oturumlarınızı tamamladınız. Yarın görüşürüz!",
     "doneCheck": "Tamamlandı ✓",
     "startBtn": "Başla →",
+    "reviewBtn": "Gözden Geçir →",
     "startStreak": "Serinize başlayın!",
     "startStreakDesc": "Seri başlatmak için bugün her iki oturumu da tamamlayın.",
     "legendaryStreak": "Efsanevi seri! 🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "Soruları yanıtlamadan önce metni dinleyin",
     "penaltyApplied": "Ekstra dinleme için −{penalty}% ceza uygulandı",
     "readyToListen": "Hazır mısınız? Dinlemek için oynat butonuna basın. 2 ücretsiz dinleme hakkınız var.",
-    "listening": "Dinleniyor..."
+    "listening": "Dinleniyor...",
+    "lastListen": "Bu son dinleme hakkınız!",
+    "topicGeneral": "Genel",
+    "topicBusiness": "İş Dünyası",
+    "topicTechnology": "Teknoloji",
+    "topicTravel": "Seyahat",
+    "topicScience": "Bilim",
+    "topicCulture": "Kültür",
+    "topicHealth": "Sağlık",
+    "topicEducation": "Eğitim"
   },
   "tutor": {
     "title": "AI Öğretmen",

@@ -243,6 +243,7 @@
     "amazingWork": "Tuyệt vời! Bạn đã hoàn thành các buổi học hôm nay. Hẹn gặp lại ngày mai!",
     "doneCheck": "Xong ✓",
     "startBtn": "Bắt đầu →",
+    "reviewBtn": "Xem lại →",
     "startStreak": "Bắt đầu chuỗi ngày!",
     "startStreakDesc": "Hoàn thành cả hai buổi học hôm nay để bắt đầu chuỗi ngày.",
     "legendaryStreak": "Chuỗi huyền thoại! 🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "Nghe đoạn văn trước khi trả lời câu hỏi",
     "penaltyApplied": "−{penalty}% trừ điểm cho lượt nghe thêm",
     "readyToListen": "Sẵn sàng chưa? Nhấn phát để nghe. Bạn có 2 lượt nghe miễn phí.",
-    "listening": "Đang nghe..."
+    "listening": "Đang nghe...",
+    "lastListen": "Đây là lần nghe cuối cùng của bạn!",
+    "topicGeneral": "Chung",
+    "topicBusiness": "Kinh doanh",
+    "topicTechnology": "Công nghệ",
+    "topicTravel": "Du lịch",
+    "topicScience": "Khoa học",
+    "topicCulture": "Văn hóa",
+    "topicHealth": "Sức khỏe",
+    "topicEducation": "Giáo dục"
   },
   "tutor": {
     "title": "Gia sư AI",

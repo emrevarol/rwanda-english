@@ -168,8 +168,20 @@ Only return valid JSON, nothing else.`,
   }
 }
 
-export async function generateListeningContent(level: string, language: string) {
+export async function generateListeningContent(level: string, language: string, topic: string = 'general') {
   const systemPrompt = getCEFRSystemPrompt(level, language)
+
+  const topicGuide: Record<string, string> = {
+    general: 'an educational or everyday topic',
+    business: 'a business, workplace, or corporate topic (meetings, negotiations, office life)',
+    technology: 'a technology topic (AI, apps, startups, digital trends)',
+    travel: 'a travel or tourism topic (destinations, airports, cultural experiences)',
+    science: 'a science or nature topic (discoveries, environment, health research)',
+    culture: 'a culture, arts, or entertainment topic (music, cinema, traditions)',
+    health: 'a health, fitness, or wellness topic (nutrition, exercise, mental health)',
+    education: 'an education topic (university life, studying abroad, online learning)',
+  }
+  const topicDesc = topicGuide[topic] || topicGuide.general
 
   const message = await anthropic.messages.create({
     model: MODEL,
@@ -182,7 +194,7 @@ export async function generateListeningContent(level: string, language: string) 
 
 Return a JSON object:
 {
-  "passage": "<a reading passage of 100-200 words appropriate for ${level} level, about an educational or everyday topic. The passage MUST be in English since this is an English learning exercise>",
+  "passage": "<a reading passage of 100-200 words appropriate for ${level} level, about ${topicDesc}. The passage MUST be in English since this is an English learning exercise>",
   "questions": [
     {
       "question": "<comprehension question>",

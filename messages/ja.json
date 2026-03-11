@@ -243,6 +243,7 @@
     "amazingWork": "素晴らしい！今日のセッションを完了しました。また明日！",
     "doneCheck": "完了 ✓",
     "startBtn": "開始 →",
+    "reviewBtn": "復習 →",
     "startStreak": "連続記録を始めよう！",
     "startStreakDesc": "今日両方のセッションを完了して連続記録を始めましょう。",
     "legendaryStreak": "伝説の連続記録！ 🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "質問に答える前にまずパッセージを聞いてください",
     "penaltyApplied": "追加再生により−{penalty}%ペナルティが適用されました",
     "readyToListen": "準備はいいですか？再生ボタンを押して聞きましょう。無料で2回再生できます。",
-    "listening": "再生中..."
+    "listening": "再生中...",
+    "lastListen": "これが最後の再生です！",
+    "topicGeneral": "一般",
+    "topicBusiness": "ビジネス",
+    "topicTechnology": "テクノロジー",
+    "topicTravel": "旅行",
+    "topicScience": "科学",
+    "topicCulture": "文化",
+    "topicHealth": "健康",
+    "topicEducation": "教育"
   },
   "tutor": {
     "title": "AIチューター",

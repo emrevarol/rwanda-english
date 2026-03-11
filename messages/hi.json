@@ -243,6 +243,7 @@
     "amazingWork": "शानदार काम! आपने आज के सत्र पूरे किए। कल मिलते हैं!",
     "doneCheck": "पूर्ण ✓",
     "startBtn": "शुरू करें →",
+    "reviewBtn": "समीक्षा →",
     "startStreak": "अपनी स्ट्रीक शुरू करें!",
     "startStreakDesc": "स्ट्रीक शुरू करने के लिए आज दोनों सत्र पूरे करें।",
     "legendaryStreak": "महान स्ट्रीक! 🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "सवालों का जवाब देने से पहले पहले अंश सुनें",
     "penaltyApplied": "अतिरिक्त सुनने के लिए −{penalty}% जुर्माना लागू",
     "readyToListen": "तैयार हैं? सुनने के लिए प्ले दबाएं। आपके पास 2 मुफ्त सुनने के मौके हैं।",
-    "listening": "सुन रहे हैं..."
+    "listening": "सुन रहे हैं...",
+    "lastListen": "यह आपकी आखिरी बार सुनने की है!",
+    "topicGeneral": "सामान्य",
+    "topicBusiness": "व्यवसाय",
+    "topicTechnology": "प्रौद्योगिकी",
+    "topicTravel": "यात्रा",
+    "topicScience": "विज्ञान",
+    "topicCulture": "संस्कृति",
+    "topicHealth": "स्वास्थ्य",
+    "topicEducation": "शिक्षा"
   },
   "tutor": {
     "title": "AI ट्यूटर",

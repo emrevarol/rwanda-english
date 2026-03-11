@@ -23,9 +23,8 @@ export default function TodayCard({ plan, progress, onComplete, locale }: Props)
   const router = useRouter()
   const t = useTranslations('learningPath')
 
-  const handleStart = (href: string, task: 'task1' | 'task2') => {
-    // Mark as done then navigate
-    onComplete(task)
+  const handleStart = (href: string) => {
+    // Just navigate — task is marked done only when user actually completes work
     router.push(`/${locale}${href}`)
   }
 
@@ -53,7 +52,8 @@ export default function TodayCard({ plan, progress, onComplete, locale }: Props)
           label={t('session1')}
           task={plan.task1}
           done={progress.task1Done}
-          onStart={() => handleStart(plan.task1.href, 'task1')}
+          onStart={() => handleStart(plan.task1.href)}
+          onMarkDone={() => onComplete('task1')}
           t={t}
         />
         <div className="border-t border-dashed border-gray-200" />
@@ -61,7 +61,8 @@ export default function TodayCard({ plan, progress, onComplete, locale }: Props)
           label={t('session2')}
           task={plan.task2}
           done={progress.task2Done}
-          onStart={() => handleStart(plan.task2.href, 'task2')}
+          onStart={() => handleStart(plan.task2.href)}
+          onMarkDone={() => onComplete('task2')}
           t={t}
         />
       </div>
@@ -82,12 +83,14 @@ function TaskRow({
   task,
   done,
   onStart,
+  onMarkDone,
   t,
 }: {
   label: string
   task: DayPlan['task1']
   done: boolean
   onStart: () => void
+  onMarkDone: () => void
   t: ReturnType<typeof useTranslations>
 }) {
   const c = colorMap[task.color] || colorMap.blue
@@ -96,27 +99,33 @@ function TaskRow({
     <div className={`rounded-xl border-2 p-4 transition-all ${done ? 'border-green-200 bg-green-50' : `${c.border} ${c.bg}`}`}>
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-start gap-3">
-          <div className={`text-2xl mt-0.5 ${done ? 'opacity-50' : ''}`}>{done ? '✅' : task.icon}</div>
+          {/* Checkbox to mark done manually */}
+          <button
+            onClick={done ? undefined : onMarkDone}
+            className={`mt-1 flex-shrink-0 w-6 h-6 rounded-md border-2 flex items-center justify-center transition-colors ${
+              done
+                ? 'border-green-500 bg-green-500 text-white cursor-default'
+                : 'border-gray-300 hover:border-blue-500 cursor-pointer'
+            }`}
+          >
+            {done && <span className="text-xs">✓</span>}
+          </button>
           <div>
             <div className="text-xs font-medium text-gray-600 uppercase tracking-wide mb-0.5">{label}</div>
             <div className={`font-semibold ${done ? 'text-gray-600 line-through' : 'text-gray-900'}`}>
               {t(task.titleKey)}
             </div>
-            <div className={`text-sm mt-0.5 ${done ? 'text-gray-600' : 'text-gray-600'}`}>
+            <div className="text-sm mt-0.5 text-gray-600">
               {task.description}
             </div>
           </div>
         </div>
-        {done ? (
-          <span className="flex-shrink-0 text-green-600 font-semibold text-sm whitespace-nowrap">{t('doneCheck')}</span>
-        ) : (
-          <button
-            onClick={onStart}
-            className={`flex-shrink-0 ${c.btn} text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors whitespace-nowrap`}
-          >
-            {t('startBtn')}
-          </button>
-        )}
+        <button
+          onClick={onStart}
+          className={`flex-shrink-0 ${done ? 'bg-gray-400 hover:bg-gray-500' : c.btn} text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors whitespace-nowrap`}
+        >
+          {done ? t('reviewBtn') : t('startBtn')}
+        </button>
       </div>
     </div>
   )

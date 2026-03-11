@@ -243,6 +243,7 @@
     "amazingWork": "เยี่ยมมาก! คุณเรียนครบทุกเซสชันวันนี้ พบกันพรุ่งนี้!",
     "doneCheck": "เสร็จแล้ว ✓",
     "startBtn": "เริ่ม →",
+    "reviewBtn": "ทบทวน →",
     "startStreak": "เริ่มสตรีคของคุณ!",
     "startStreakDesc": "เรียนครบทั้งสองเซสชันวันนี้เพื่อเริ่มสตรีค",
     "legendaryStreak": "สตรีคในตำนาน! 🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "ฟังเนื้อเรื่องก่อนตอบคำถาม",
     "penaltyApplied": "หักคะแนน −{penalty}% สำหรับการฟังเพิ่มเติม",
     "readyToListen": "พร้อมหรือยัง? กดเล่นเพื่อฟัง คุณมีสิทธิ์ฟังฟรี 2 ครั้ง",
-    "listening": "กำลังฟัง..."
+    "listening": "กำลังฟัง...",
+    "lastListen": "นี่คือการฟังครั้งสุดท้ายของคุณ!",
+    "topicGeneral": "ทั่วไป",
+    "topicBusiness": "ธุรกิจ",
+    "topicTechnology": "เทคโนโลยี",
+    "topicTravel": "การเดินทาง",
+    "topicScience": "วิทยาศาสตร์",
+    "topicCulture": "วัฒนธรรม",
+    "topicHealth": "สุขภาพ",
+    "topicEducation": "การศึกษา"
   },
   "tutor": {
     "title": "ติวเตอร์ AI",

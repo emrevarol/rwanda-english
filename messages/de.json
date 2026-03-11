@@ -243,6 +243,7 @@
     "amazingWork": "Hervorragend! Sie haben die heutigen Sitzungen abgeschlossen. Bis morgen!",
     "doneCheck": "Erledigt ✓",
     "startBtn": "Start →",
+    "reviewBtn": "Überprüfen →",
     "startStreak": "Starten Sie Ihre Serie!",
     "startStreakDesc": "Schließen Sie heute beide Sitzungen ab, um eine Serie zu beginnen.",
     "legendaryStreak": "Legendäre Serie! 🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "Hören Sie sich die Passage zuerst an, bevor Sie die Fragen beantworten",
     "penaltyApplied": "−{penalty}% Abzug für zusätzliches Anhören",
     "readyToListen": "Bereit? Drücken Sie Play zum Anhören. Sie haben 2 kostenlose Anhörungen.",
-    "listening": "Wird angehört..."
+    "listening": "Wird angehört...",
+    "lastListen": "Das ist Ihr letztes Anhören!",
+    "topicGeneral": "Allgemein",
+    "topicBusiness": "Business",
+    "topicTechnology": "Technologie",
+    "topicTravel": "Reisen",
+    "topicScience": "Wissenschaft",
+    "topicCulture": "Kultur",
+    "topicHealth": "Gesundheit",
+    "topicEducation": "Bildung"
   },
   "tutor": {
     "title": "KI-Tutor",

@@ -243,6 +243,7 @@
     "amazingWork": "Świetna robota! Ukończyłeś dzisiejsze sesje. Do zobaczenia jutro!",
     "doneCheck": "Gotowe ✓",
     "startBtn": "Rozpocznij →",
+    "reviewBtn": "Przejrzyj →",
     "startStreak": "Rozpocznij swoją serię!",
     "startStreakDesc": "Ukończ obie sesje dzisiaj, aby rozpocząć serię.",
     "legendaryStreak": "Legendarna seria! 🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "Najpierw posłuchaj fragmentu, zanim odpowiesz na pytania",
     "penaltyApplied": "−{penalty}% kara za dodatkowe odsłuchania",
     "readyToListen": "Gotowy? Naciśnij odtwórz, aby posłuchać. Masz 2 darmowe odsłuchania.",
-    "listening": "Odtwarzanie..."
+    "listening": "Odtwarzanie...",
+    "lastListen": "To jest Twoje ostatnie odsłuchanie!",
+    "topicGeneral": "Ogólny",
+    "topicBusiness": "Biznes",
+    "topicTechnology": "Technologia",
+    "topicTravel": "Podróże",
+    "topicScience": "Nauka",
+    "topicCulture": "Kultura",
+    "topicHealth": "Zdrowie",
+    "topicEducation": "Edukacja"
   },
   "tutor": {
     "title": "Korepetytor AI",

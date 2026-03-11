@@ -228,6 +228,7 @@
     "amazingWork": "Amazing work! You completed today's sessions. See you tomorrow!",
     "doneCheck": "Done ✓",
     "startBtn": "Start →",
+    "reviewBtn": "Review →",
     "startStreak": "Start your streak!",
     "startStreakDesc": "Complete both sessions today to begin a streak.",
     "legendaryStreak": "Legendary streak! 🏆",
@@ -387,7 +388,16 @@
     "listenFirst": "Listen to the passage first before answering",
     "penaltyApplied": "−{penalty}% penalty applied for extra listens",
     "readyToListen": "Ready? Press play to listen. You have 2 free listens.",
-    "listening": "Listening..."
+    "listening": "Listening...",
+    "lastListen": "This is your last listen!",
+    "topicGeneral": "General",
+    "topicBusiness": "Business",
+    "topicTechnology": "Technology",
+    "topicTravel": "Travel",
+    "topicScience": "Science",
+    "topicCulture": "Culture",
+    "topicHealth": "Health",
+    "topicEducation": "Education"
   },
   "tutor": {
     "title": "AI Tutor",

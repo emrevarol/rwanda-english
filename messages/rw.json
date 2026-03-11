@@ -243,6 +243,7 @@
     "amazingWork": "Umurimo mwiza! Warangije amasomo y'uyu munsi. Turabonana ejo!",
     "doneCheck": "Byarangiye ✓",
     "startBtn": "Tangira →",
+    "reviewBtn": "Ongera urebe →",
     "startStreak": "Tangira urukurikirane rwawe!",
     "startStreakDesc": "Rangiza amasomo yombi uyu munsi kugira ngo utangire urukurikirane.",
     "legendaryStreak": "Urukurikirane rw'umugani! 🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "Kumva inshamake mbere yo gusubiza ibibazo",
     "penaltyApplied": "−{penalty}% igihano kubera gukumva kongeye",
     "readyToListen": "Witeguye? Kanda kumva. Ufite amahirwe 2 yo kumva ubuntu.",
-    "listening": "Uri kumva..."
+    "listening": "Uri kumva...",
+    "lastListen": "Uyu ni umuryango wawe wa nyuma wo kumva!",
+    "topicGeneral": "Rusange",
+    "topicBusiness": "Ubucuruzi",
+    "topicTechnology": "Ikoranabuhanga",
+    "topicTravel": "Rugendo",
+    "topicScience": "Siyansi",
+    "topicCulture": "Umuco",
+    "topicHealth": "Ubuzima",
+    "topicEducation": "Uburezi"
   },
   "tutor": {
     "title": "Mwarimu wa AI",

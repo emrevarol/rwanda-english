@@ -243,6 +243,7 @@
     "amazingWork": "太棒了！您已完成今天的课程。明天见！",
     "doneCheck": "完成 ✓",
     "startBtn": "开始 →",
+    "reviewBtn": "复习 →",
     "startStreak": "开始您的连续记录！",
     "startStreakDesc": "今天完成两节课以开始连续记录。",
     "legendaryStreak": "传奇连续记录！🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "回答问题前请先听段落",
     "penaltyApplied": "额外收听扣除−{penalty}%",
     "readyToListen": "准备好了吗？按播放键收听。你有2次免费收听机会。",
-    "listening": "正在收听..."
+    "listening": "正在收听...",
+    "lastListen": "这是您最后一次收听！",
+    "topicGeneral": "通用",
+    "topicBusiness": "商业",
+    "topicTechnology": "技术",
+    "topicTravel": "旅行",
+    "topicScience": "科学",
+    "topicCulture": "文化",
+    "topicHealth": "健康",
+    "topicEducation": "教育"
   },
   "tutor": {
     "title": "AI 导师",

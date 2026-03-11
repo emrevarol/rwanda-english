@@ -243,6 +243,7 @@
     "amazingWork": "Kerja luar biasa! Anda menyelesaikan sesi hari ini. Sampai jumpa besok!",
     "doneCheck": "Selesai ✓",
     "startBtn": "Mulai →",
+    "reviewBtn": "Tinjau →",
     "startStreak": "Mulai rekor Anda!",
     "startStreakDesc": "Selesaikan kedua sesi hari ini untuk memulai rekor berturut-turut.",
     "legendaryStreak": "Rekor legendaris! 🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "Dengarkan teks terlebih dahulu sebelum menjawab pertanyaan",
     "penaltyApplied": "−{penalty}% penalti untuk mendengar tambahan",
     "readyToListen": "Siap? Tekan putar untuk mendengarkan. Anda memiliki 2 kesempatan mendengar gratis.",
-    "listening": "Sedang mendengarkan..."
+    "listening": "Sedang mendengarkan...",
+    "lastListen": "Ini adalah pendengaran terakhir Anda!",
+    "topicGeneral": "Umum",
+    "topicBusiness": "Bisnis",
+    "topicTechnology": "Teknologi",
+    "topicTravel": "Perjalanan",
+    "topicScience": "Sains",
+    "topicCulture": "Budaya",
+    "topicHealth": "Kesehatan",
+    "topicEducation": "Pendidikan"
   },
   "tutor": {
     "title": "Tutor AI",

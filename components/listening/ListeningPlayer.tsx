@@ -45,8 +45,22 @@ function getBestVoice(): SpeechSynthesisVoice | null {
 const FREE_PLAYS = 2
 const PENALTY_PER_EXTRA = 10
 
+const TOPICS = [
+  { key: 'topicGeneral', value: 'general' },
+  { key: 'topicBusiness', value: 'business' },
+  { key: 'topicTechnology', value: 'technology' },
+  { key: 'topicTravel', value: 'travel' },
+  { key: 'topicScience', value: 'science' },
+  { key: 'topicCulture', value: 'culture' },
+  { key: 'topicHealth', value: 'health' },
+  { key: 'topicEducation', value: 'education' },
+]
+
 export default function ListeningPlayer() {
   const t = useTranslations('listening')
+
+  // Topic selection
+  const [selectedTopic, setSelectedTopic] = useState('general')
 
   // Content state
   const [content, setContent] = useState<Content | null>(null)
@@ -56,7 +70,6 @@ export default function ListeningPlayer() {
   // Playback state
   const [isPlaying, setIsPlaying] = useState(false)
   const [playsUsed, setPlaysUsed] = useState(0)
-  const [hasListenedOnce, setHasListenedOnce] = useState(false)
 
   // Answers state
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({})
@@ -137,13 +150,12 @@ export default function ListeningPlayer() {
     setError('')
     setPlaysUsed(0)
     setExtraPlays(0)
-    setHasListenedOnce(false)
     setNotes('')
     setElapsed(0)
     setTimerRunning(false)
 
     try {
-      const res = await fetch('/api/listening/generate')
+      const res = await fetch(`/api/listening/generate?topic=${selectedTopic}`)
       const data = await res.json()
       if (!res.ok || data.error) {
         setError(data.detail || data.error || t('errorGenerate'))
@@ -171,6 +183,9 @@ export default function ListeningPlayer() {
     const totalAllowed = FREE_PLAYS + extraPlays
     if (playsUsed >= totalAllowed) return
 
+    // Update play count BEFORE starting (user sees remaining count drop immediately)
+    setPlaysUsed(prev => prev + 1)
+
     const utterance = new SpeechSynthesisUtterance(content.passage)
     utterance.lang = 'en-US'
     utterance.rate = 0.88
@@ -184,8 +199,6 @@ export default function ListeningPlayer() {
 
     utterance.onend = () => {
       setIsPlaying(false)
-      setPlaysUsed(prev => prev + 1)
-      setHasListenedOnce(true)
     }
     utterance.onerror = () => {
       setIsPlaying(false)
@@ -246,6 +259,23 @@ export default function ListeningPlayer() {
         <p className="text-gray-500 text-sm mb-6">
           {t('playerDesc')}
         </p>
+        {/* Topic selector */}
+        <div className="flex flex-wrap justify-center gap-2 mb-4">
+          {TOPICS.map((topic) => (
+            <button
+              key={topic.value}
+              onClick={() => setSelectedTopic(topic.value)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                selectedTopic === topic.value
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              {t(topic.key)}
+            </button>
+          ))}
+        </div>
+
         <button
           onClick={generate}
           disabled={loading}
@@ -295,9 +325,16 @@ export default function ListeningPlayer() {
           {/* Audio player (NO text shown!) */}
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <div className="flex flex-col items-center gap-4">
-              {!hasListenedOnce && (
+              {playsUsed === 0 && (
                 <p className="text-sm text-gray-500 text-center">
                   {t('readyToListen')}
+                </p>
+              )}
+
+              {/* Last listen warning */}
+              {playsRemaining === 1 && !isPlaying && (
+                <p className="text-xs text-amber-600 font-medium">
+                  {t('lastListen')}
                 </p>
               )}
 
@@ -354,95 +391,86 @@ export default function ListeningPlayer() {
             />
           </div>
 
-          {/* Questions — only show after first listen */}
-          {hasListenedOnce && (
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
-              <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-4">
-                {t('questions')}
-              </h3>
-              <div className="space-y-6">
-                {content.questions.map((q, qi) => (
-                  <div key={qi}>
-                    <p className="text-sm font-medium text-gray-900 mb-3">
-                      {qi + 1}. {q.question}
-                    </p>
-                    <div className="space-y-2">
-                      {q.options.map((opt, oi) => {
-                        const isSelected = selectedAnswers[qi] === oi
-                        const isCorrect = submitted && oi === q.correct
-                        const isWrong = submitted && isSelected && oi !== q.correct
+          {/* Questions — visible from the start */}
+          <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-4">
+              {t('questions')}
+            </h3>
+            <div className="space-y-6">
+              {content.questions.map((q, qi) => (
+                <div key={qi}>
+                  <p className="text-sm font-medium text-gray-900 mb-3">
+                    {qi + 1}. {q.question}
+                  </p>
+                  <div className="space-y-2">
+                    {q.options.map((opt, oi) => {
+                      const isSelected = selectedAnswers[qi] === oi
+                      const isCorrect = submitted && oi === q.correct
+                      const isWrong = submitted && isSelected && oi !== q.correct
 
-                        return (
-                          <button
-                            key={oi}
-                            onClick={() => !submitted && setSelectedAnswers({ ...selectedAnswers, [qi]: oi })}
-                            disabled={submitted}
-                            className={`w-full text-left px-4 py-2.5 rounded-lg border-2 text-sm transition-all ${
-                              isCorrect
-                                ? 'border-green-500 bg-green-50 text-green-700'
-                                : isWrong
-                                ? 'border-red-400 bg-red-50 text-red-700'
-                                : isSelected
-                                ? 'border-blue-500 bg-blue-50 text-blue-700'
-                                : 'border-gray-200 text-gray-700 hover:border-gray-300'
-                            }`}
-                          >
-                            <span className="font-medium mr-2">{String.fromCharCode(65 + oi)}.</span>
-                            {opt}
-                            {isCorrect && ' ✓'}
-                            {isWrong && ' ✗'}
-                          </button>
-                        )
-                      })}
+                      return (
+                        <button
+                          key={oi}
+                          onClick={() => !submitted && setSelectedAnswers({ ...selectedAnswers, [qi]: oi })}
+                          disabled={submitted}
+                          className={`w-full text-left px-4 py-2.5 rounded-lg border-2 text-sm transition-all ${
+                            isCorrect
+                              ? 'border-green-500 bg-green-50 text-green-700'
+                              : isWrong
+                              ? 'border-red-400 bg-red-50 text-red-700'
+                              : isSelected
+                              ? 'border-blue-500 bg-blue-50 text-blue-700'
+                              : 'border-gray-200 text-gray-700 hover:border-gray-300'
+                          }`}
+                        >
+                          <span className="font-medium mr-2">{String.fromCharCode(65 + oi)}.</span>
+                          {opt}
+                          {isCorrect && ' ✓'}
+                          {isWrong && ' ✗'}
+                        </button>
+                      )
+                    })}
+                  </div>
+                  {submitted && (
+                    <div className="mt-2 text-xs text-gray-500 bg-gray-50 rounded-lg p-3">
+                      <span className="font-medium">{t('explanation')}:</span> {q.explanation}
                     </div>
-                    {submitted && (
-                      <div className="mt-2 text-xs text-gray-500 bg-gray-50 rounded-lg p-3">
-                        <span className="font-medium">{t('explanation')}:</span> {q.explanation}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              {!submitted ? (
-                <button
-                  onClick={handleSubmit}
-                  disabled={!answeredAll}
-                  className="mt-6 w-full bg-blue-600 text-white py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors disabled:opacity-50"
-                >
-                  {t('submit')}
-                </button>
-              ) : (
-                <div className="mt-6 text-center bg-blue-50 border border-blue-200 rounded-xl p-6">
-                  <div className="text-sm text-gray-500 mb-1">{t('result')}</div>
-                  <div className={`text-4xl font-bold ${score! >= 70 ? 'text-green-600' : score! >= 50 ? 'text-yellow-600' : 'text-red-600'}`}>
-                    {score}%
-                  </div>
-                  {extraPlays > 0 && (
-                    <p className="text-xs text-amber-600 mt-1">
-                      {t('penaltyApplied', { penalty: extraPlays * PENALTY_PER_EXTRA })}
-                    </p>
                   )}
-                  <div className="text-xs text-gray-400 mt-2">
-                    ⏱ {formatTime(elapsed)}
-                  </div>
-                  <button
-                    onClick={generate}
-                    className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
-                  >
-                    {t('generate')}
-                  </button>
                 </div>
-              )}
+              ))}
             </div>
-          )}
 
-          {/* Prompt to listen first if haven't yet */}
-          {!hasListenedOnce && (
-            <div className="text-center text-sm text-gray-400 py-4">
-              {t('listenFirst')}
-            </div>
-          )}
+            {!submitted ? (
+              <button
+                onClick={handleSubmit}
+                disabled={!answeredAll}
+                className="mt-6 w-full bg-blue-600 text-white py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors disabled:opacity-50"
+              >
+                {t('submit')}
+              </button>
+            ) : (
+              <div className="mt-6 text-center bg-blue-50 border border-blue-200 rounded-xl p-6">
+                <div className="text-sm text-gray-500 mb-1">{t('result')}</div>
+                <div className={`text-4xl font-bold ${score! >= 70 ? 'text-green-600' : score! >= 50 ? 'text-yellow-600' : 'text-red-600'}`}>
+                  {score}%
+                </div>
+                {extraPlays > 0 && (
+                  <p className="text-xs text-amber-600 mt-1">
+                    {t('penaltyApplied', { penalty: extraPlays * PENALTY_PER_EXTRA })}
+                  </p>
+                )}
+                <div className="text-xs text-gray-400 mt-2">
+                  ⏱ {formatTime(elapsed)}
+                </div>
+                <button
+                  onClick={generate}
+                  className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+                >
+                  {t('generate')}
+                </button>
+              </div>
+            )}
+          </div>
         </>
       )}
     </div>

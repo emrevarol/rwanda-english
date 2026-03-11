@@ -23,10 +23,11 @@ export async function GET(req: NextRequest) {
 
     const level = session.user.level || 'B1'
     const language = session.user.language || 'en'
+    const topic = req.nextUrl.searchParams.get('topic') || 'general'
 
     // Try to get pre-generated content from pool (least used first)
     const pooled = await prisma.listeningContent.findFirst({
-      where: { level, language },
+      where: { level, language, topic },
       orderBy: { usedCount: 'asc' },
     })
 
@@ -43,7 +44,7 @@ export async function GET(req: NextRequest) {
     }
 
     // No pooled content — generate on-the-fly and save to pool
-    const content = await generateListeningContent(level, language)
+    const content = await generateListeningContent(level, language, topic)
 
     await prisma.listeningContent.create({
       data: {
@@ -51,7 +52,7 @@ export async function GET(req: NextRequest) {
         language,
         passage: content.passage,
         questions: JSON.stringify(content.questions),
-        topic: 'general',
+        topic,
         usedCount: 1,
       },
     })

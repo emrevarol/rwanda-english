@@ -243,6 +243,7 @@
     "amazingWork": "Excellent travail ! Vous avez terminé les sessions d'aujourd'hui. À demain !",
     "doneCheck": "Fait ✓",
     "startBtn": "Commencer →",
+    "reviewBtn": "Revoir →",
     "startStreak": "Commencez votre série !",
     "startStreakDesc": "Terminez les deux sessions aujourd'hui pour commencer une série.",
     "legendaryStreak": "Série légendaire ! 🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "Écoutez le passage d'abord avant de répondre aux questions",
     "penaltyApplied": "−{penalty}% pénalité pour écoutes supplémentaires",
     "readyToListen": "Prêt ? Appuyez sur lecture pour écouter. Vous avez 2 écoutes gratuites.",
-    "listening": "Écoute en cours..."
+    "listening": "Écoute en cours...",
+    "lastListen": "C'est votre dernière écoute !",
+    "topicGeneral": "Général",
+    "topicBusiness": "Affaires",
+    "topicTechnology": "Technologie",
+    "topicTravel": "Voyage",
+    "topicScience": "Science",
+    "topicCulture": "Culture",
+    "topicHealth": "Santé",
+    "topicEducation": "Éducation"
   },
   "tutor": {
     "title": "Tuteur IA",

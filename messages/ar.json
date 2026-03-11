@@ -243,6 +243,7 @@
     "amazingWork": "عمل رائع! أكملت جلسات اليوم. نراك غداً!",
     "doneCheck": "تم ✓",
     "startBtn": "ابدأ →",
+    "reviewBtn": "مراجعة →",
     "startStreak": "ابدأ سلسلتك!",
     "startStreakDesc": "أكمل كلتا الجلستين اليوم لبدء سلسلة.",
     "legendaryStreak": "سلسلة أسطورية! 🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "استمع للنص أولاً قبل الإجابة على الأسئلة",
     "penaltyApplied": "−{penalty}% خصم بسبب الاستماع الإضافي",
     "readyToListen": "مستعد؟ اضغط تشغيل للاستماع. لديك استماعتان مجانيتان.",
-    "listening": "جارٍ الاستماع..."
+    "listening": "جارٍ الاستماع...",
+    "lastListen": "هذه آخر فرصة للاستماع!",
+    "topicGeneral": "عام",
+    "topicBusiness": "أعمال",
+    "topicTechnology": "تكنولوجيا",
+    "topicTravel": "سفر",
+    "topicScience": "علوم",
+    "topicCulture": "ثقافة",
+    "topicHealth": "صحة",
+    "topicEducation": "تعليم"
   },
   "tutor": {
     "title": "المعلم الذكي",

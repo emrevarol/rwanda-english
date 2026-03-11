@@ -243,6 +243,7 @@
     "amazingWork": "훌륭합니다! 오늘의 세션을 완료했습니다. 내일 만나요!",
     "doneCheck": "완료 ✓",
     "startBtn": "시작 →",
+    "reviewBtn": "복습 →",
     "startStreak": "연속 기록을 시작하세요!",
     "startStreakDesc": "오늘 두 세션을 모두 완료하여 연속 기록을 시작하세요.",
     "legendaryStreak": "전설적인 연속 기록! 🏆",
@@ -402,7 +403,16 @@
     "listenFirst": "질문에 답하기 전에 먼저 지문을 들으세요",
     "penaltyApplied": "추가 듣기로 −{penalty}% 감점 적용됨",
     "readyToListen": "준비되셨나요? 재생 버튼을 눌러 들으세요. 무료 듣기 2회가 있습니다.",
-    "listening": "듣는 중..."
+    "listening": "듣는 중...",
+    "lastListen": "마지막 청취 기회입니다!",
+    "topicGeneral": "일반",
+    "topicBusiness": "비즈니스",
+    "topicTechnology": "기술",
+    "topicTravel": "여행",
+    "topicScience": "과학",
+    "topicCulture": "문화",
+    "topicHealth": "건강",
+    "topicEducation": "교육"
   },
   "tutor": {
     "title": "AI 튜터",
