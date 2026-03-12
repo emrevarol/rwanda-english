@@ -55,22 +55,33 @@ export async function GET(req: NextRequest) {
 
     const recentActivity = [
       ...writing.map(w => ({
-        type: 'writing',
+        id: w.id,
+        type: 'writing' as const,
         date: w.createdAt,
         score: w.band,
         detail: w.taskType,
+        prompt: w.prompt,
+        response: w.response,
+        feedback: w.feedback,
+        vocabularyScore: w.vocabularyScore,
+        grammarScore: w.grammarScore,
       })),
       ...speaking.map(s => ({
-        type: 'speaking',
+        id: s.id,
+        type: 'speaking' as const,
         date: s.createdAt,
         score: s.score,
         detail: 'Speaking exercise',
+        transcript: s.transcript,
+        feedback: s.feedback,
       })),
       ...listening.map(l => ({
-        type: 'listening',
+        id: l.id,
+        type: 'listening' as const,
         date: l.createdAt,
         score: l.score,
         detail: 'Listening exercise',
+        passage: l.passage,
       })),
     ]
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -85,6 +96,7 @@ export async function GET(req: NextRequest) {
       avgGrammar: avgGrammar != null ? Math.round(avgGrammar * 10) / 10 : null,
       writingHistory: writing.map(w => ({ date: w.createdAt, score: w.band })),
       speakingHistory: speaking.map(s => ({ date: s.createdAt, score: s.score })),
+      listeningHistory: listening.map(l => ({ date: l.createdAt, score: l.score })),
       recentActivity,
     })
   } catch (error) {

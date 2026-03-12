@@ -8,6 +8,24 @@ import Navigation from '@/components/shared/Navigation'
 import SkillsRadar from '@/components/dashboard/SkillsRadar'
 import ScoreChart from '@/components/dashboard/ScoreChart'
 
+interface ActivityItem {
+  id: string
+  type: string
+  date: string
+  score: number
+  detail: string
+  // Writing fields
+  prompt?: string
+  response?: string
+  feedback?: string
+  vocabularyScore?: number | null
+  grammarScore?: number | null
+  // Speaking fields
+  transcript?: string
+  // Listening fields
+  passage?: string
+}
+
 interface DashboardData {
   level: string
   avgWriting: number
@@ -17,7 +35,8 @@ interface DashboardData {
   avgGrammar: number | null
   writingHistory: Array<{ date: string; score: number }>
   speakingHistory: Array<{ date: string; score: number }>
-  recentActivity: Array<{ type: string; date: string; score: number; detail: string }>
+  listeningHistory: Array<{ date: string; score: number }>
+  recentActivity: ActivityItem[]
 }
 
 interface TodayPlan {
@@ -35,6 +54,7 @@ export default function DashboardPage() {
   const [data, setData] = useState<DashboardData | null>(null)
   const [todayPlan, setTodayPlan] = useState<TodayPlan | null>(null)
   const [loading, setLoading] = useState(true)
+  const [selectedActivity, setSelectedActivity] = useState<ActivityItem | null>(null)
 
   useEffect(() => {
     if (status === 'authenticated') {
@@ -142,25 +162,26 @@ export default function DashboardPage() {
               {level}
             </div>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center group relative" title="IELTS-style band score from 1 (lowest) to 9 (highest)">
             <div className="text-sm text-gray-500 mb-2">{t('writing')}</div>
             <div className="text-3xl font-bold text-blue-600">
               {loading ? '—' : data?.avgWriting || 0}
             </div>
-            <div className="text-xs text-gray-600">{t('bandScore')}</div>
+            <div className="text-xs text-gray-600">{t('bandScore')} (1-9)</div>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center" title="Fluency score from AI analysis, out of 10">
             <div className="text-sm text-gray-500 mb-2">{t('speaking')}</div>
             <div className="text-3xl font-bold text-green-600">
               {loading ? '—' : data?.avgSpeaking || 0}
             </div>
-            <div className="text-xs text-gray-600">{t('fluencyScore')}</div>
+            <div className="text-xs text-gray-600">{t('fluencyScore')} (/10)</div>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center" title="Average percentage of correct answers in listening comprehension">
             <div className="text-sm text-gray-500 mb-2">{t('listening')}</div>
             <div className="text-3xl font-bold text-purple-600">
               {loading ? '—' : data?.avgListening || 0}%
             </div>
+            <div className="text-xs text-gray-600">% correct</div>
           </div>
         </div>
 
@@ -177,6 +198,7 @@ export default function DashboardPage() {
             <ScoreChart
               writingData={data?.writingHistory || []}
               speakingData={data?.speakingHistory || []}
+              listeningData={data?.listeningHistory || []}
             />
           </div>
         </div>
@@ -192,7 +214,11 @@ export default function DashboardPage() {
             ) : (
               <div className="space-y-3">
                 {data?.recentActivity.map((item, i) => (
-                  <div key={i} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0">
+                  <button
+                    key={i}
+                    onClick={() => setSelectedActivity(item)}
+                    className="w-full flex items-center justify-between py-2 border-b border-gray-100 last:border-0 hover:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors cursor-pointer text-left"
+                  >
                     <div className="flex items-center gap-3">
                       <span className="text-lg">
                         {item.type === 'writing' ? '✍️' : item.type === 'speaking' ? '🎙️' : '🎧'}
@@ -206,10 +232,13 @@ export default function DashboardPage() {
                         </div>
                       </div>
                     </div>
-                    <span className="text-sm font-semibold text-blue-600">
-                      {item.type === 'writing' ? `Band ${item.score}` : `${item.score}${item.type === 'listening' ? '%' : '/10'}`}
-                    </span>
-                  </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-blue-600" title={item.type === 'writing' ? 'Band score (1-9)' : item.type === 'speaking' ? 'Score out of 10' : 'Percentage correct'}>
+                        {item.type === 'writing' ? `Band ${item.score}/9` : `${item.score}${item.type === 'listening' ? '%' : '/10'}`}
+                      </span>
+                      <span className="text-gray-300 text-xs">›</span>
+                    </div>
+                  </button>
                 ))}
               </div>
             )}
@@ -252,6 +281,118 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
+
+        {/* Activity Detail Modal */}
+        {selectedActivity && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setSelectedActivity(null)}>
+            <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-xl" onClick={e => e.stopPropagation()}>
+              {/* Modal header */}
+              <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between rounded-t-2xl">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">
+                    {selectedActivity.type === 'writing' ? '✍️' : selectedActivity.type === 'speaking' ? '🎙️' : '🎧'}
+                  </span>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 capitalize">{selectedActivity.type} — {selectedActivity.detail}</h3>
+                    <p className="text-xs text-gray-500">{new Date(selectedActivity.date).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+                  </div>
+                </div>
+                <button onClick={() => setSelectedActivity(null)} className="text-gray-400 hover:text-gray-600 text-2xl font-light">×</button>
+              </div>
+
+              <div className="px-6 py-5 space-y-5">
+                {/* Score summary */}
+                <div className="flex items-center gap-4">
+                  <div className={`text-3xl font-bold ${selectedActivity.score >= 7 || selectedActivity.score >= 70 ? 'text-green-600' : selectedActivity.score >= 5 || selectedActivity.score >= 50 ? 'text-yellow-600' : 'text-red-600'}`}>
+                    {selectedActivity.type === 'writing'
+                      ? `Band ${selectedActivity.score}/9`
+                      : selectedActivity.type === 'speaking'
+                      ? `${selectedActivity.score}/10`
+                      : `${selectedActivity.score}%`}
+                  </div>
+                  {selectedActivity.type === 'writing' && (selectedActivity.vocabularyScore || selectedActivity.grammarScore) && (
+                    <div className="flex gap-3 text-sm">
+                      {selectedActivity.vocabularyScore != null && (
+                        <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">{t('vocabulary')}: {selectedActivity.vocabularyScore}/9</span>
+                      )}
+                      {selectedActivity.grammarScore != null && (
+                        <span className="bg-purple-50 text-purple-700 px-2 py-1 rounded">{t('grammar')}: {selectedActivity.grammarScore}/9</span>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {/* Writing detail */}
+                {selectedActivity.type === 'writing' && (
+                  <>
+                    {selectedActivity.prompt && (
+                      <div>
+                        <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Prompt</h4>
+                        <p className="text-sm text-gray-700 bg-gray-50 rounded-lg p-4">{selectedActivity.prompt}</p>
+                      </div>
+                    )}
+                    {selectedActivity.response && (
+                      <div>
+                        <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Your Response</h4>
+                        <p className="text-sm text-gray-700 bg-blue-50 rounded-lg p-4 whitespace-pre-wrap">{selectedActivity.response}</p>
+                      </div>
+                    )}
+                    {selectedActivity.feedback && (
+                      <div>
+                        <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">AI Feedback</h4>
+                        <div className="text-sm text-gray-700 bg-green-50 rounded-lg p-4 whitespace-pre-wrap">
+                          {(() => {
+                            try {
+                              const fb = JSON.parse(selectedActivity.feedback!)
+                              return typeof fb === 'string' ? fb : fb.feedback || fb.overall || JSON.stringify(fb, null, 2)
+                            } catch { return selectedActivity.feedback }
+                          })()}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {/* Speaking detail */}
+                {selectedActivity.type === 'speaking' && (
+                  <>
+                    {selectedActivity.transcript && (
+                      <div>
+                        <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Your Transcript</h4>
+                        <p className="text-sm text-gray-700 bg-blue-50 rounded-lg p-4 whitespace-pre-wrap">{selectedActivity.transcript}</p>
+                      </div>
+                    )}
+                    {selectedActivity.feedback && (
+                      <div>
+                        <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">AI Feedback</h4>
+                        <div className="text-sm text-gray-700 bg-green-50 rounded-lg p-4 whitespace-pre-wrap">
+                          {(() => {
+                            try {
+                              const fb = JSON.parse(selectedActivity.feedback!)
+                              return typeof fb === 'string' ? fb : fb.feedback || fb.overall || JSON.stringify(fb, null, 2)
+                            } catch { return selectedActivity.feedback }
+                          })()}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {/* Listening detail */}
+                {selectedActivity.type === 'listening' && (
+                  <>
+                    {selectedActivity.passage && (
+                      <div>
+                        <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Passage</h4>
+                        <p className="text-sm text-gray-700 bg-gray-50 rounded-lg p-4 whitespace-pre-wrap">{selectedActivity.passage}</p>
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
