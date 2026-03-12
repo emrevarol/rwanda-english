@@ -115,13 +115,40 @@ export async function analyzeSpeaking(
   transcript: string,
   topic: string,
   level: string,
-  language: string
+  language: string,
+  analytics?: {
+    totalWords?: number
+    durationSec?: number
+    wpm?: number
+    avgConfidence?: number
+    fillerWords?: string[]
+    fillerCount?: number
+    longPauses?: Array<{ after: string; duration: number }>
+    lowConfidenceWords?: Array<{ word: string; confidence: number }>
+  }
 ) {
   const systemPrompt = getCEFRSystemPrompt(level, language)
 
+  // Build analytics context if available
+  let analyticsSection = ''
+  if (analytics) {
+    analyticsSection = `
+
+SPEECH ANALYTICS (from audio analysis):
+- Total words: ${analytics.totalWords || 'N/A'}
+- Duration: ${analytics.durationSec || 'N/A'} seconds
+- Speaking pace: ${analytics.wpm || 'N/A'} words per minute (native speakers average 120-150 wpm; below 90 is slow, above 170 is rushing)
+- Average pronunciation confidence: ${analytics.avgConfidence || 'N/A'}% (below 70% suggests pronunciation issues)
+- Filler words detected: ${analytics.fillerCount || 0} (${analytics.fillerWords?.join(', ') || 'none'})
+- Long pauses (>1.5s): ${analytics.longPauses?.length ? analytics.longPauses.map(p => `${p.duration}s after "${p.after}"`).join(', ') : 'none'}
+- Low confidence words (potential mispronunciations): ${analytics.lowConfidenceWords?.length ? analytics.lowConfidenceWords.map(w => `"${w.word}" (${w.confidence}%)`).join(', ') : 'none'}
+
+Use this data to give specific, data-driven feedback on pronunciation, pacing, and fluency.`
+  }
+
   const message = await anthropic.messages.create({
     model: MODEL,
-    max_tokens: 1200,
+    max_tokens: 1500,
     system: systemPrompt,
     messages: [
       {
@@ -132,15 +159,17 @@ Speaking topic: "${topic}"
 
 Transcript of what was said:
 "${transcript}"
+${analyticsSection}
 
 Provide a JSON response:
 {
   "score": <number 1-10>,
-  "fluency": "<feedback on fluency and pronunciation patterns>",
-  "grammar": "<specific grammar issues found>",
-  "vocabulary": "<vocabulary suggestions and improvements>",
+  "fluency": "<feedback on fluency, pacing, and natural flow. Reference specific filler words, pauses, and speaking pace if analytics are available>",
+  "pronunciation": "<feedback on pronunciation. Reference low-confidence words and confidence scores if available. Suggest how to improve specific sounds>",
+  "grammar": "<specific grammar issues found in the transcript>",
+  "vocabulary": "<vocabulary range assessment and suggestions for improvement>",
   "modelAnswer": "<a model answer at ${level} level for this topic>",
-  "overallFeedback": "<encouraging overall comment>"
+  "overallFeedback": "<encouraging overall comment with 1-2 specific improvement goals>"
 }
 
 IMPORTANT: All feedback text values must be written in ${LANG_NAMES[language] || 'English'}. The "modelAnswer" should be in English (since they're learning English), but all explanatory feedback must be in ${LANG_NAMES[language] || 'English'}.

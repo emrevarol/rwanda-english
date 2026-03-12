@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Subscription required', code: 'SUBSCRIPTION_REQUIRED' }, { status: 403 })
     }
 
-    const { transcript, topic } = await req.json()
+    const { transcript, topic, analytics } = await req.json()
 
     if (!transcript || !topic) {
       return NextResponse.json({ error: 'Missing fields' }, { status: 400 })
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 
     const feedback = isMockMode()
       ? mockSpeakingFeedback
-      : await analyzeSpeaking(transcript, topic, session.user.level, session.user.language)
+      : await analyzeSpeaking(transcript, topic, session.user.level, session.user.language, analytics)
 
     await prisma.speakingSubmission.create({
       data: {
