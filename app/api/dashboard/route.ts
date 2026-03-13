@@ -35,18 +35,12 @@ export async function GET(req: NextRequest) {
     let vocabTotal = 0
     let vocabMastered = 0
     let vocabAccuracy: number | null = null
-    let vocabRecent: Array<{ id: string; word: string; mastery: number; lastSeen: Date }> = []
     let vocabAllProgress: Array<{ mastery: number; lastSeen: Date; correct: number; incorrect: number }> = []
+    let vocabSessions: Array<{ date: Date; words: number; correct: number; incorrect: number; accuracy: number }> = []
     try {
-      const [vt, vm, vr, vAll] = await Promise.all([
+      const [vt, vm, vAll] = await Promise.all([
         prisma.vocabularyProgress.count({ where: { userId: session.user.id } }),
         prisma.vocabularyProgress.count({ where: { userId: session.user.id, mastery: { gte: 3 } } }),
-        prisma.vocabularyProgress.findMany({
-          where: { userId: session.user.id },
-          orderBy: { lastSeen: 'desc' },
-          take: 5,
-          select: { id: true, word: true, mastery: true, lastSeen: true },
-        }),
         prisma.vocabularyProgress.findMany({
           where: { userId: session.user.id },
           select: { mastery: true, lastSeen: true, correct: true, incorrect: true },
@@ -54,8 +48,24 @@ export async function GET(req: NextRequest) {
       ])
       vocabTotal = vt
       vocabMastered = vm
-      vocabRecent = vr
       vocabAllProgress = vAll
+
+      // Group vocab entries by date into "sessions"
+      const sessionMap = new Map<string, { date: Date; words: number; correct: number; incorrect: number }>()
+      for (const v of vAll) {
+        const dateKey = v.lastSeen.toISOString().split('T')[0]
+        const entry = sessionMap.get(dateKey) || { date: v.lastSeen, words: 0, correct: 0, incorrect: 0 }
+        entry.words++
+        entry.correct += v.correct || 0
+        entry.incorrect += v.incorrect || 0
+        if (v.lastSeen > entry.date) entry.date = v.lastSeen
+        sessionMap.set(dateKey, entry)
+      }
+      vocabSessions = Array.from(sessionMap.values())
+        .filter(s => (s.correct + s.incorrect) > 0)
+        .map(s => ({ ...s, accuracy: Math.round((s.correct / (s.correct + s.incorrect)) * 100) }))
+        .sort((a, b) => b.date.getTime() - a.date.getTime())
+        .slice(0, 3)
 
       // Calculate accuracy from correct/incorrect answers
       const totalCorrect = vAll.reduce((s, v) => s + (v.correct || 0), 0)
@@ -140,12 +150,12 @@ export async function GET(req: NextRequest) {
         detail: 'Listening exercise',
         passage: l.passage,
       })),
-      ...vocabRecent.map(v => ({
-        id: v.id,
+      ...vocabSessions.map((s, i) => ({
+        id: `vocab-session-${i}`,
         type: 'vocabulary' as const,
-        date: v.lastSeen,
-        score: v.mastery,
-        detail: v.word,
+        date: s.date,
+        score: s.accuracy,
+        detail: `${s.words} words · ${s.correct}/${s.correct + s.incorrect} correct`,
       })),
     ]
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())

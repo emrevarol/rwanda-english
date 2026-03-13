@@ -264,9 +264,9 @@ export default function DashboardPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold text-blue-600" title={item.type === 'writing' ? 'Band score (1-9)' : item.type === 'speaking' ? 'Score out of 10' : item.type === 'vocabulary' ? 'Mastery level' : 'Percentage correct'}>
+                      <span className="text-sm font-semibold text-blue-600" title={item.type === 'writing' ? 'Band score (1-9)' : item.type === 'speaking' ? 'Score out of 10' : item.type === 'vocabulary' ? 'Accuracy' : 'Percentage correct'}>
                         {item.type === 'writing' ? `Band ${item.score}/9`
-                          : item.type === 'vocabulary' ? ['New', 'Learning', 'Reviewing', 'Mastered'][item.score] || 'New'
+                          : item.type === 'vocabulary' ? `${item.score}%`
                           : `${item.score}${item.type === 'listening' ? '%' : '/10'}`}
                       </span>
                       <span className="text-gray-300 text-xs">›</span>
