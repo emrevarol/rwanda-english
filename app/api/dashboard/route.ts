@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const [writing, speaking, listening, user, vocabTotal, vocabMastered, vocabRecent] = await Promise.all([
+    const [writing, speaking, listening, user] = await Promise.all([
       prisma.writingSubmission.findMany({
         where: { userId: session.user.id },
         orderBy: { createdAt: 'desc' },
@@ -29,14 +29,29 @@ export async function GET(req: NextRequest) {
       prisma.user.findUnique({
         where: { id: session.user.id },
       }),
-      prisma.vocabularyProgress.count({ where: { userId: session.user.id } }),
-      prisma.vocabularyProgress.count({ where: { userId: session.user.id, mastery: { gte: 3 } } }),
-      prisma.vocabularyProgress.findMany({
-        where: { userId: session.user.id },
-        orderBy: { lastSeen: 'desc' },
-        take: 5,
-      }),
     ])
+
+    // Vocab queries — isolated so they can't break the main dashboard
+    let vocabTotal = 0
+    let vocabMastered = 0
+    let vocabRecent: Array<{ id: string; word: string; mastery: number; lastSeen: Date }> = []
+    try {
+      const [vt, vm, vr] = await Promise.all([
+        prisma.vocabularyProgress.count({ where: { userId: session.user.id } }),
+        prisma.vocabularyProgress.count({ where: { userId: session.user.id, mastery: { gte: 3 } } }),
+        prisma.vocabularyProgress.findMany({
+          where: { userId: session.user.id },
+          orderBy: { lastSeen: 'desc' },
+          take: 5,
+          select: { id: true, word: true, mastery: true, lastSeen: true },
+        }),
+      ])
+      vocabTotal = vt
+      vocabMastered = vm
+      vocabRecent = vr
+    } catch (vocabErr) {
+      console.error('Dashboard vocab query error:', vocabErr)
+    }
 
     const avgWriting = writing.length > 0
       ? writing.reduce((sum, w) => sum + w.band, 0) / writing.length
