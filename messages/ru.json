@@ -12,7 +12,8 @@
     "logout": "Выйти",
     "dailyPlan": "Дневной План",
     "friends": "Друзья",
-    "vocabulary": "Словарь"
+    "vocabulary": "Словарь",
+    "grammar": "Грамматика"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "Практика грамматики",
+    "subtitle": "Освойте английскую грамматику с помощью интерактивных упражнений",
+    "startExercise": "Начать упражнение",
+    "checkAnswer": "Проверить ответ",
+    "nextQuestion": "Следующий вопрос",
+    "correct": "Правильно!",
+    "incorrect": "Не совсем верно",
+    "explanation": "Объяснение",
+    "score": "Баллы",
+    "questionsCompleted": "Вопросов выполнено",
+    "exerciseComplete": "Упражнение завершено!",
+    "tryAgain": "Попробовать снова",
+    "newExercise": "Новое упражнение",
+    "difficulty": "Сложность",
+    "topic": "Тема",
+    "fillBlank": "Заполнить пропуск",
+    "errorCorrection": "Исправление ошибок",
+    "sentenceReorder": "Перестановка слов",
+    "multipleChoice": "Множественный выбор",
+    "topicTenses": "Времена",
+    "topicArticles": "Артикли и определители",
+    "topicPrepositions": "Предлоги",
+    "topicConditionals": "Условные предложения",
+    "topicPassive": "Страдательный залог",
+    "topicRelative": "Относительные придаточные",
+    "topicModals": "Модальные глаголы",
+    "topicReported": "Косвенная речь",
+    "topicGeneral": "Общее",
+    "generating": "Создание упражнения...",
+    "errorGenerate": "Не удалось создать упражнение. Попробуйте снова.",
+    "errorConnection": "Ошибка соединения. Проверьте подключение к интернету."
   }
 }

@@ -12,7 +12,8 @@
     "logout": "Keluar",
     "dailyPlan": "Rencana Harian",
     "friends": "Teman",
-    "vocabulary": "Kosakata"
+    "vocabulary": "Kosakata",
+    "grammar": "Tata Bahasa"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "Latihan Tata Bahasa",
+    "subtitle": "Kuasai tata bahasa Inggris melalui latihan interaktif",
+    "startExercise": "Mulai Latihan",
+    "checkAnswer": "Periksa Jawaban",
+    "nextQuestion": "Pertanyaan Berikutnya",
+    "correct": "Benar!",
+    "incorrect": "Belum tepat",
+    "explanation": "Penjelasan",
+    "score": "Skor",
+    "questionsCompleted": "Pertanyaan Selesai",
+    "exerciseComplete": "Latihan Selesai!",
+    "tryAgain": "Coba Lagi",
+    "newExercise": "Latihan Baru",
+    "difficulty": "Kesulitan",
+    "topic": "Topik",
+    "fillBlank": "Isi Bagian Kosong",
+    "errorCorrection": "Koreksi Kesalahan",
+    "sentenceReorder": "Susun Ulang Kalimat",
+    "multipleChoice": "Pilihan Ganda",
+    "topicTenses": "Tenses",
+    "topicArticles": "Artikel & Penentu",
+    "topicPrepositions": "Preposisi",
+    "topicConditionals": "Kalimat Kondisional",
+    "topicPassive": "Kalimat Pasif",
+    "topicRelative": "Klausa Relatif",
+    "topicModals": "Kata Kerja Modal",
+    "topicReported": "Kalimat Tidak Langsung",
+    "topicGeneral": "Umum",
+    "generating": "Membuat latihan...",
+    "errorGenerate": "Gagal membuat latihan. Silakan coba lagi.",
+    "errorConnection": "Kesalahan koneksi. Periksa internet Anda."
   }
 }

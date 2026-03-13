@@ -12,7 +12,8 @@
     "logout": "ออกจากระบบ",
     "dailyPlan": "แผนประจำวัน",
     "friends": "เพื่อน",
-    "vocabulary": "คำศัพท์"
+    "vocabulary": "คำศัพท์",
+    "grammar": "ไวยากรณ์"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "ฝึกไวยากรณ์",
+    "subtitle": "เชี่ยวชาญไวยากรณ์ภาษาอังกฤษผ่านแบบฝึกหัดเชิงโต้ตอบ",
+    "startExercise": "เริ่มแบบฝึกหัด",
+    "checkAnswer": "ตรวจคำตอบ",
+    "nextQuestion": "คำถามถัดไป",
+    "correct": "ถูกต้อง!",
+    "incorrect": "ยังไม่ถูก",
+    "explanation": "คำอธิบาย",
+    "score": "คะแนน",
+    "questionsCompleted": "คำถามที่ทำเสร็จ",
+    "exerciseComplete": "แบบฝึกหัดเสร็จสมบูรณ์!",
+    "tryAgain": "ลองอีกครั้ง",
+    "newExercise": "แบบฝึกหัดใหม่",
+    "difficulty": "ระดับความยาก",
+    "topic": "หัวข้อ",
+    "fillBlank": "เติมคำในช่องว่าง",
+    "errorCorrection": "แก้ไขข้อผิดพลาด",
+    "sentenceReorder": "จัดเรียงประโยค",
+    "multipleChoice": "ตัวเลือก",
+    "topicTenses": "กาล",
+    "topicArticles": "คำนำหน้านาม",
+    "topicPrepositions": "คำบุพบท",
+    "topicConditionals": "ประโยคเงื่อนไข",
+    "topicPassive": "ประโยคถูกกระทำ",
+    "topicRelative": "อนุประโยคขยายความ",
+    "topicModals": "กริยาช่วย",
+    "topicReported": "ประโยคบอกเล่า",
+    "topicGeneral": "ทั่วไป",
+    "generating": "กำลังสร้างแบบฝึกหัด...",
+    "errorGenerate": "สร้างแบบฝึกหัดไม่สำเร็จ กรุณาลองอีกครั้ง",
+    "errorConnection": "ข้อผิดพลาดการเชื่อมต่อ กรุณาตรวจสอบอินเทอร์เน็ต"
   }
 }

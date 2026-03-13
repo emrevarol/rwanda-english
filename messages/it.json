@@ -12,7 +12,8 @@
     "logout": "Esci",
     "dailyPlan": "Piano Giornaliero",
     "friends": "Amici",
-    "vocabulary": "Vocabolario"
+    "vocabulary": "Vocabolario",
+    "grammar": "Grammatica"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "Pratica di Grammatica",
+    "subtitle": "Padroneggia la grammatica inglese con esercizi interattivi",
+    "startExercise": "Inizia esercizio",
+    "checkAnswer": "Verifica risposta",
+    "nextQuestion": "Prossima domanda",
+    "correct": "Corretto!",
+    "incorrect": "Non del tutto",
+    "explanation": "Spiegazione",
+    "score": "Punteggio",
+    "questionsCompleted": "Domande completate",
+    "exerciseComplete": "Esercizio completato!",
+    "tryAgain": "Riprova",
+    "newExercise": "Nuovo esercizio",
+    "difficulty": "Difficoltà",
+    "topic": "Argomento",
+    "fillBlank": "Riempi lo spazio",
+    "errorCorrection": "Correzione errori",
+    "sentenceReorder": "Riordina la frase",
+    "multipleChoice": "Scelta multipla",
+    "topicTenses": "Tempi verbali",
+    "topicArticles": "Articoli e determinanti",
+    "topicPrepositions": "Preposizioni",
+    "topicConditionals": "Condizionali",
+    "topicPassive": "Voce passiva",
+    "topicRelative": "Proposizioni relative",
+    "topicModals": "Verbi modali",
+    "topicReported": "Discorso indiretto",
+    "topicGeneral": "Generale",
+    "generating": "Generazione esercizio...",
+    "errorGenerate": "Generazione fallita. Riprova.",
+    "errorConnection": "Errore di connessione. Controlla la tua connessione."
   }
 }

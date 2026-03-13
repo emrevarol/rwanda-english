@@ -12,7 +12,8 @@
     "logout": "ログアウト",
     "dailyPlan": "デイリープラン",
     "friends": "フレンド",
-    "vocabulary": "語彙"
+    "vocabulary": "語彙",
+    "grammar": "文法"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "文法練習",
+    "subtitle": "インタラクティブな演習で英語の文法をマスターしよう",
+    "startExercise": "演習を開始",
+    "checkAnswer": "回答を確認",
+    "nextQuestion": "次の問題",
+    "correct": "正解！",
+    "incorrect": "惜しい",
+    "explanation": "解説",
+    "score": "スコア",
+    "questionsCompleted": "完了した問題",
+    "exerciseComplete": "演習完了！",
+    "tryAgain": "もう一度",
+    "newExercise": "新しい演習",
+    "difficulty": "難易度",
+    "topic": "トピック",
+    "fillBlank": "空欄補充",
+    "errorCorrection": "誤り訂正",
+    "sentenceReorder": "語順並べ替え",
+    "multipleChoice": "選択問題",
+    "topicTenses": "時制",
+    "topicArticles": "冠詞・限定詞",
+    "topicPrepositions": "前置詞",
+    "topicConditionals": "条件文",
+    "topicPassive": "受動態",
+    "topicRelative": "関係詞節",
+    "topicModals": "助動詞",
+    "topicReported": "間接話法",
+    "topicGeneral": "一般",
+    "generating": "演習を生成中...",
+    "errorGenerate": "演習の生成に失敗しました。もう一度お試しください。",
+    "errorConnection": "接続エラー。インターネット接続を確認してください。"
   }
 }

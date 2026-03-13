@@ -12,7 +12,8 @@
     "logout": "로그아웃",
     "dailyPlan": "일일 플랜",
     "friends": "친구",
-    "vocabulary": "어휘"
+    "vocabulary": "어휘",
+    "grammar": "문법"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "문법 연습",
+    "subtitle": "대화형 연습을 통해 영어 문법을 마스터하세요",
+    "startExercise": "연습 시작",
+    "checkAnswer": "정답 확인",
+    "nextQuestion": "다음 문제",
+    "correct": "정답!",
+    "incorrect": "아쉽습니다",
+    "explanation": "해설",
+    "score": "점수",
+    "questionsCompleted": "완료된 문제",
+    "exerciseComplete": "연습 완료!",
+    "tryAgain": "다시 시도",
+    "newExercise": "새 연습",
+    "difficulty": "난이도",
+    "topic": "주제",
+    "fillBlank": "빈칸 채우기",
+    "errorCorrection": "오류 수정",
+    "sentenceReorder": "문장 재배열",
+    "multipleChoice": "객관식",
+    "topicTenses": "시제",
+    "topicArticles": "관사 & 한정사",
+    "topicPrepositions": "전치사",
+    "topicConditionals": "조건문",
+    "topicPassive": "수동태",
+    "topicRelative": "관계절",
+    "topicModals": "조동사",
+    "topicReported": "간접화법",
+    "topicGeneral": "일반",
+    "generating": "연습 생성 중...",
+    "errorGenerate": "연습 생성에 실패했습니다. 다시 시도해 주세요.",
+    "errorConnection": "연결 오류. 인터넷을 확인해 주세요."
   }
 }

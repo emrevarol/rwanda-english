@@ -20,6 +20,7 @@ export default function Navigation() {
         { href: '/listening', label: t('listening') },
         { href: '/speaking', label: t('speaking') },
         { href: '/vocabulary', label: t('vocabulary') },
+        { href: '/grammar', label: '📝 ' + t('grammar') },
         { href: '/tutor', label: t('tutor') },
         { href: '/friends', label: t('friends') },
       ]

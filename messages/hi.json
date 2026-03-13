@@ -12,7 +12,8 @@
     "logout": "लॉगआउट",
     "dailyPlan": "दैनिक योजना",
     "friends": "मित्र",
-    "vocabulary": "शब्दावली"
+    "vocabulary": "शब्दावली",
+    "grammar": "व्याकरण"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "व्याकरण अभ्यास",
+    "subtitle": "इंटरैक्टिव अभ्यासों के माध्यम से अंग्रेजी व्याकरण में महारत हासिल करें",
+    "startExercise": "अभ्यास शुरू करें",
+    "checkAnswer": "उत्तर जांचें",
+    "nextQuestion": "अगला प्रश्न",
+    "correct": "सही!",
+    "incorrect": "बिल्कुल सही नहीं",
+    "explanation": "व्याख्या",
+    "score": "अंक",
+    "questionsCompleted": "पूर्ण प्रश्न",
+    "exerciseComplete": "अभ्यास पूर्ण!",
+    "tryAgain": "फिर से प्रयास करें",
+    "newExercise": "नया अभ्यास",
+    "difficulty": "कठिनाई",
+    "topic": "विषय",
+    "fillBlank": "रिक्त स्थान भरें",
+    "errorCorrection": "त्रुटि सुधार",
+    "sentenceReorder": "वाक्य पुनर्व्यवस्थित करें",
+    "multipleChoice": "बहुविकल्पीय",
+    "topicTenses": "काल",
+    "topicArticles": "उपपद और निर्धारक",
+    "topicPrepositions": "पूर्वसर्ग",
+    "topicConditionals": "शर्तीय वाक्य",
+    "topicPassive": "कर्मवाच्य",
+    "topicRelative": "संबंधवाचक उपवाक्य",
+    "topicModals": "विधि क्रियाएँ",
+    "topicReported": "अप्रत्यक्ष कथन",
+    "topicGeneral": "सामान्य",
+    "generating": "अभ्यास बनाया जा रहा है...",
+    "errorGenerate": "अभ्यास बनाने में विफल। कृपया पुनः प्रयास करें।",
+    "errorConnection": "कनेक्शन त्रुटि। कृपया अपना इंटरनेट जांचें।"
   }
 }

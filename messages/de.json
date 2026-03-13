@@ -12,7 +12,8 @@
     "logout": "Abmelden",
     "dailyPlan": "Tagesplan",
     "friends": "Freunde",
-    "vocabulary": "Vokabeln"
+    "vocabulary": "Vokabeln",
+    "grammar": "Grammatik"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "Grammatikübungen",
+    "subtitle": "Meistere englische Grammatik durch interaktive Übungen",
+    "startExercise": "Übung starten",
+    "checkAnswer": "Antwort prüfen",
+    "nextQuestion": "Nächste Frage",
+    "correct": "Richtig!",
+    "incorrect": "Nicht ganz richtig",
+    "explanation": "Erklärung",
+    "score": "Punktzahl",
+    "questionsCompleted": "Fragen abgeschlossen",
+    "exerciseComplete": "Übung abgeschlossen!",
+    "tryAgain": "Nochmal versuchen",
+    "newExercise": "Neue Übung",
+    "difficulty": "Schwierigkeit",
+    "topic": "Thema",
+    "fillBlank": "Lückentext",
+    "errorCorrection": "Fehlerkorrektur",
+    "sentenceReorder": "Satzumstellung",
+    "multipleChoice": "Multiple Choice",
+    "topicTenses": "Zeitformen",
+    "topicArticles": "Artikel & Determinatoren",
+    "topicPrepositions": "Präpositionen",
+    "topicConditionals": "Bedingungssätze",
+    "topicPassive": "Passiv",
+    "topicRelative": "Relativsätze",
+    "topicModals": "Modalverben",
+    "topicReported": "Indirekte Rede",
+    "topicGeneral": "Allgemein",
+    "generating": "Übung wird generiert...",
+    "errorGenerate": "Übung konnte nicht generiert werden. Bitte erneut versuchen.",
+    "errorConnection": "Verbindungsfehler. Bitte Internet überprüfen."
   }
 }

@@ -311,6 +311,12 @@ export default function DashboardPage() {
                 )}
               </Link>
               <Link
+                href="/grammar"
+                className="block bg-white/10 hover:bg-white/20 text-white text-sm px-4 py-3 rounded-lg transition-colors"
+              >
+                📝 {t('grammar')}
+              </Link>
+              <Link
                 href="/tutor"
                 className="block bg-white/10 hover:bg-white/20 text-white text-sm px-4 py-3 rounded-lg transition-colors"
               >

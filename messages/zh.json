@@ -12,7 +12,8 @@
     "logout": "退出",
     "dailyPlan": "每日计划",
     "friends": "好友",
-    "vocabulary": "词汇"
+    "vocabulary": "词汇",
+    "grammar": "语法"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "语法练习",
+    "subtitle": "通过互动练习掌握英语语法",
+    "startExercise": "开始练习",
+    "checkAnswer": "检查答案",
+    "nextQuestion": "下一题",
+    "correct": "正确！",
+    "incorrect": "不太对",
+    "explanation": "解释",
+    "score": "分数",
+    "questionsCompleted": "已完成题目",
+    "exerciseComplete": "练习完成！",
+    "tryAgain": "再试一次",
+    "newExercise": "新练习",
+    "difficulty": "难度",
+    "topic": "主题",
+    "fillBlank": "填空",
+    "errorCorrection": "纠错",
+    "sentenceReorder": "句子重排",
+    "multipleChoice": "选择题",
+    "topicTenses": "时态",
+    "topicArticles": "冠词与限定词",
+    "topicPrepositions": "介词",
+    "topicConditionals": "条件句",
+    "topicPassive": "被动语态",
+    "topicRelative": "关系从句",
+    "topicModals": "情态动词",
+    "topicReported": "间接引语",
+    "topicGeneral": "综合",
+    "generating": "正在生成练习...",
+    "errorGenerate": "生成练习失败，请重试。",
+    "errorConnection": "连接错误，请检查网络。"
   }
 }

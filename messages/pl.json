@@ -12,7 +12,8 @@
     "logout": "Wyloguj się",
     "dailyPlan": "Plan Dnia",
     "friends": "Znajomi",
-    "vocabulary": "Słownictwo"
+    "vocabulary": "Słownictwo",
+    "grammar": "Gramatyka"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "Ćwiczenia gramatyczne",
+    "subtitle": "Opanuj angielską gramatykę dzięki interaktywnym ćwiczeniom",
+    "startExercise": "Rozpocznij ćwiczenie",
+    "checkAnswer": "Sprawdź odpowiedź",
+    "nextQuestion": "Następne pytanie",
+    "correct": "Poprawnie!",
+    "incorrect": "Nie do końca",
+    "explanation": "Wyjaśnienie",
+    "score": "Wynik",
+    "questionsCompleted": "Ukończone pytania",
+    "exerciseComplete": "Ćwiczenie ukończone!",
+    "tryAgain": "Spróbuj ponownie",
+    "newExercise": "Nowe ćwiczenie",
+    "difficulty": "Trudność",
+    "topic": "Temat",
+    "fillBlank": "Uzupełnij lukę",
+    "errorCorrection": "Korekta błędów",
+    "sentenceReorder": "Zmiana kolejności zdania",
+    "multipleChoice": "Wielokrotny wybór",
+    "topicTenses": "Czasy",
+    "topicArticles": "Przedimki i określniki",
+    "topicPrepositions": "Przyimki",
+    "topicConditionals": "Tryb warunkowy",
+    "topicPassive": "Strona bierna",
+    "topicRelative": "Zdania względne",
+    "topicModals": "Czasowniki modalne",
+    "topicReported": "Mowa zależna",
+    "topicGeneral": "Ogólne",
+    "generating": "Generowanie ćwiczenia...",
+    "errorGenerate": "Nie udało się wygenerować ćwiczenia. Spróbuj ponownie.",
+    "errorConnection": "Błąd połączenia. Sprawdź swoje połączenie internetowe."
   }
 }

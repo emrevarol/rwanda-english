@@ -12,7 +12,8 @@
     "logout": "Cerrar Sesión",
     "dailyPlan": "Plan Diario",
     "friends": "Amigos",
-    "vocabulary": "Vocabulario"
+    "vocabulary": "Vocabulario",
+    "grammar": "Gramática"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "Práctica de Gramática",
+    "subtitle": "Domina la gramática inglesa con ejercicios interactivos",
+    "startExercise": "Iniciar ejercicio",
+    "checkAnswer": "Verificar respuesta",
+    "nextQuestion": "Siguiente pregunta",
+    "correct": "¡Correcto!",
+    "incorrect": "No del todo",
+    "explanation": "Explicación",
+    "score": "Puntuación",
+    "questionsCompleted": "Preguntas completadas",
+    "exerciseComplete": "¡Ejercicio completado!",
+    "tryAgain": "Intentar de nuevo",
+    "newExercise": "Nuevo ejercicio",
+    "difficulty": "Dificultad",
+    "topic": "Tema",
+    "fillBlank": "Completar el espacio",
+    "errorCorrection": "Corrección de errores",
+    "sentenceReorder": "Reordenar oración",
+    "multipleChoice": "Opción múltiple",
+    "topicTenses": "Tiempos verbales",
+    "topicArticles": "Artículos y determinantes",
+    "topicPrepositions": "Preposiciones",
+    "topicConditionals": "Condicionales",
+    "topicPassive": "Voz pasiva",
+    "topicRelative": "Cláusulas relativas",
+    "topicModals": "Verbos modales",
+    "topicReported": "Estilo indirecto",
+    "topicGeneral": "General",
+    "generating": "Generando ejercicio...",
+    "errorGenerate": "Error al generar el ejercicio. Inténtalo de nuevo.",
+    "errorConnection": "Error de conexión. Comprueba tu internet."
   }
 }

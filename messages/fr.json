@@ -12,7 +12,8 @@
     "logout": "Déconnexion",
     "dailyPlan": "Plan du jour",
     "friends": "Amis",
-    "vocabulary": "Vocabulaire"
+    "vocabulary": "Vocabulaire",
+    "grammar": "Grammaire"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "Pratique de Grammaire",
+    "subtitle": "Maîtrisez la grammaire anglaise grâce à des exercices interactifs",
+    "startExercise": "Commencer l'exercice",
+    "checkAnswer": "Vérifier la réponse",
+    "nextQuestion": "Question suivante",
+    "correct": "Correct !",
+    "incorrect": "Pas tout à fait",
+    "explanation": "Explication",
+    "score": "Score",
+    "questionsCompleted": "Questions complétées",
+    "exerciseComplete": "Exercice terminé !",
+    "tryAgain": "Réessayer",
+    "newExercise": "Nouvel exercice",
+    "difficulty": "Difficulté",
+    "topic": "Sujet",
+    "fillBlank": "Compléter le blanc",
+    "errorCorrection": "Correction d'erreurs",
+    "sentenceReorder": "Réorganiser la phrase",
+    "multipleChoice": "Choix multiple",
+    "topicTenses": "Temps",
+    "topicArticles": "Articles et déterminants",
+    "topicPrepositions": "Prépositions",
+    "topicConditionals": "Conditionnel",
+    "topicPassive": "Voix passive",
+    "topicRelative": "Propositions relatives",
+    "topicModals": "Verbes modaux",
+    "topicReported": "Discours rapporté",
+    "topicGeneral": "Général",
+    "generating": "Génération de l'exercice...",
+    "errorGenerate": "Échec de la génération. Veuillez réessayer.",
+    "errorConnection": "Erreur de connexion. Vérifiez votre internet."
   }
 }

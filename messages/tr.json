@@ -12,7 +12,8 @@
     "logout": "Çıkış Yap",
     "dailyPlan": "Günlük Plan",
     "friends": "Arkadaşlar",
-    "vocabulary": "Kelime"
+    "vocabulary": "Kelime",
+    "grammar": "Dilbilgisi"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "Dilbilgisi Pratiği",
+    "subtitle": "İnteraktif alıştırmalarla İngilizce dilbilgisinde ustalaş",
+    "startExercise": "Alıştırmaya Başla",
+    "checkAnswer": "Cevabı Kontrol Et",
+    "nextQuestion": "Sonraki Soru",
+    "correct": "Doğru!",
+    "incorrect": "Tam doğru değil",
+    "explanation": "Açıklama",
+    "score": "Puan",
+    "questionsCompleted": "Tamamlanan Sorular",
+    "exerciseComplete": "Alıştırma Tamamlandı!",
+    "tryAgain": "Tekrar Dene",
+    "newExercise": "Yeni Alıştırma",
+    "difficulty": "Zorluk",
+    "topic": "Konu",
+    "fillBlank": "Boşluk Doldurma",
+    "errorCorrection": "Hata Düzeltme",
+    "sentenceReorder": "Cümle Sıralama",
+    "multipleChoice": "Çoktan Seçmeli",
+    "topicTenses": "Zamanlar",
+    "topicArticles": "Artikeller ve Belirleyiciler",
+    "topicPrepositions": "Edatlar",
+    "topicConditionals": "Koşul Cümleleri",
+    "topicPassive": "Edilgen Çatı",
+    "topicRelative": "İlgi Cümleleri",
+    "topicModals": "Kiplik Fiiller",
+    "topicReported": "Dolaylı Anlatım",
+    "topicGeneral": "Genel",
+    "generating": "Alıştırma oluşturuluyor...",
+    "errorGenerate": "Alıştırma oluşturulamadı. Lütfen tekrar deneyin.",
+    "errorConnection": "Bağlantı hatası. Lütfen internetinizi kontrol edin."
   }
 }

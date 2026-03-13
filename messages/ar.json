@@ -12,7 +12,8 @@
     "logout": "تسجيل الخروج",
     "dailyPlan": "الخطة اليومية",
     "friends": "الأصدقاء",
-    "vocabulary": "مفردات"
+    "vocabulary": "مفردات",
+    "grammar": "القواعد"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "تمارين القواعد",
+    "subtitle": "أتقن قواعد اللغة الإنجليزية من خلال تمارين تفاعلية",
+    "startExercise": "ابدأ التمرين",
+    "checkAnswer": "تحقق من الإجابة",
+    "nextQuestion": "السؤال التالي",
+    "correct": "صحيح!",
+    "incorrect": "ليس صحيحاً تماماً",
+    "explanation": "الشرح",
+    "score": "النتيجة",
+    "questionsCompleted": "الأسئلة المكتملة",
+    "exerciseComplete": "اكتمل التمرين!",
+    "tryAgain": "حاول مرة أخرى",
+    "newExercise": "تمرين جديد",
+    "difficulty": "الصعوبة",
+    "topic": "الموضوع",
+    "fillBlank": "املأ الفراغ",
+    "errorCorrection": "تصحيح الأخطاء",
+    "sentenceReorder": "إعادة ترتيب الجملة",
+    "multipleChoice": "اختيار من متعدد",
+    "topicTenses": "الأزمنة",
+    "topicArticles": "أدوات التعريف والتنكير",
+    "topicPrepositions": "حروف الجر",
+    "topicConditionals": "الجمل الشرطية",
+    "topicPassive": "المبني للمجهول",
+    "topicRelative": "جمل الوصل",
+    "topicModals": "الأفعال المساعدة",
+    "topicReported": "الكلام المنقول",
+    "topicGeneral": "عام",
+    "generating": "جاري إنشاء التمرين...",
+    "errorGenerate": "فشل في إنشاء التمرين. يرجى المحاولة مرة أخرى.",
+    "errorConnection": "خطأ في الاتصال. يرجى التحقق من الإنترنت."
   }
 }

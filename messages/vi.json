@@ -12,7 +12,8 @@
     "logout": "Đăng xuất",
     "dailyPlan": "Kế hoạch hàng ngày",
     "friends": "Bạn bè",
-    "vocabulary": "Từ vựng"
+    "vocabulary": "Từ vựng",
+    "grammar": "Ngữ pháp"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "Luyện Ngữ pháp",
+    "subtitle": "Thành thạo ngữ pháp tiếng Anh qua các bài tập tương tác",
+    "startExercise": "Bắt đầu bài tập",
+    "checkAnswer": "Kiểm tra đáp án",
+    "nextQuestion": "Câu hỏi tiếp theo",
+    "correct": "Chính xác!",
+    "incorrect": "Chưa đúng",
+    "explanation": "Giải thích",
+    "score": "Điểm",
+    "questionsCompleted": "Câu hỏi đã hoàn thành",
+    "exerciseComplete": "Hoàn thành bài tập!",
+    "tryAgain": "Thử lại",
+    "newExercise": "Bài tập mới",
+    "difficulty": "Độ khó",
+    "topic": "Chủ đề",
+    "fillBlank": "Điền vào chỗ trống",
+    "errorCorrection": "Sửa lỗi",
+    "sentenceReorder": "Sắp xếp câu",
+    "multipleChoice": "Trắc nghiệm",
+    "topicTenses": "Thì",
+    "topicArticles": "Mạo từ & Từ hạn định",
+    "topicPrepositions": "Giới từ",
+    "topicConditionals": "Câu điều kiện",
+    "topicPassive": "Câu bị động",
+    "topicRelative": "Mệnh đề quan hệ",
+    "topicModals": "Động từ khuyết thiếu",
+    "topicReported": "Câu tường thuật",
+    "topicGeneral": "Tổng hợp",
+    "generating": "Đang tạo bài tập...",
+    "errorGenerate": "Không thể tạo bài tập. Vui lòng thử lại.",
+    "errorConnection": "Lỗi kết nối. Vui lòng kiểm tra internet."
   }
 }

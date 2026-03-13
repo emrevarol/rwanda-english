@@ -12,7 +12,8 @@
     "logout": "Sair",
     "dailyPlan": "Plano Diário",
     "friends": "Amigos",
-    "vocabulary": "Vocabulário"
+    "vocabulary": "Vocabulário",
+    "grammar": "Gramática"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "Prática de Gramática",
+    "subtitle": "Domine a gramática inglesa com exercícios interativos",
+    "startExercise": "Iniciar exercício",
+    "checkAnswer": "Verificar resposta",
+    "nextQuestion": "Próxima pergunta",
+    "correct": "Correto!",
+    "incorrect": "Não está bem",
+    "explanation": "Explicação",
+    "score": "Pontuação",
+    "questionsCompleted": "Perguntas concluídas",
+    "exerciseComplete": "Exercício concluído!",
+    "tryAgain": "Tentar novamente",
+    "newExercise": "Novo exercício",
+    "difficulty": "Dificuldade",
+    "topic": "Tópico",
+    "fillBlank": "Preencher o espaço",
+    "errorCorrection": "Correção de erros",
+    "sentenceReorder": "Reordenar frase",
+    "multipleChoice": "Múltipla escolha",
+    "topicTenses": "Tempos verbais",
+    "topicArticles": "Artigos e determinantes",
+    "topicPrepositions": "Preposições",
+    "topicConditionals": "Condicionais",
+    "topicPassive": "Voz passiva",
+    "topicRelative": "Orações relativas",
+    "topicModals": "Verbos modais",
+    "topicReported": "Discurso indireto",
+    "topicGeneral": "Geral",
+    "generating": "Gerando exercício...",
+    "errorGenerate": "Falha ao gerar exercício. Tente novamente.",
+    "errorConnection": "Erro de conexão. Verifique sua internet."
   }
 }

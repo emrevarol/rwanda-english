@@ -12,7 +12,8 @@
     "logout": "Logout",
     "dailyPlan": "Daily Plan",
     "friends": "Friends",
-    "vocabulary": "Vocab"
+    "vocabulary": "Vocab",
+    "grammar": "Grammar"
   },
   "landing": {
     "hero": {
@@ -594,5 +595,38 @@
     "subscriptionExpiredDesc": "Upgrade your plan to continue using AI-powered features like writing feedback, speaking analysis, vocabulary practice, and more.",
     "viewPlans": "View Plans & Pricing",
     "startTrial": "Start Free Trial"
+  },
+  "grammar": {
+    "title": "Grammar Practice",
+    "subtitle": "Master English grammar through interactive exercises",
+    "startExercise": "Start Exercise",
+    "checkAnswer": "Check Answer",
+    "nextQuestion": "Next Question",
+    "correct": "Correct!",
+    "incorrect": "Not quite right",
+    "explanation": "Explanation",
+    "score": "Score",
+    "questionsCompleted": "Questions Completed",
+    "exerciseComplete": "Exercise Complete!",
+    "tryAgain": "Try Again",
+    "newExercise": "New Exercise",
+    "difficulty": "Difficulty",
+    "topic": "Topic",
+    "fillBlank": "Fill in the Blank",
+    "errorCorrection": "Error Correction",
+    "sentenceReorder": "Sentence Reorder",
+    "multipleChoice": "Multiple Choice",
+    "topicTenses": "Tenses",
+    "topicArticles": "Articles & Determiners",
+    "topicPrepositions": "Prepositions",
+    "topicConditionals": "Conditionals",
+    "topicPassive": "Passive Voice",
+    "topicRelative": "Relative Clauses",
+    "topicModals": "Modal Verbs",
+    "topicReported": "Reported Speech",
+    "topicGeneral": "General",
+    "generating": "Generating exercise...",
+    "errorGenerate": "Failed to generate exercise. Please try again.",
+    "errorConnection": "Connection error. Please check your internet."
   }
 }

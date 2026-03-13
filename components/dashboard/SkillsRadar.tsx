@@ -27,18 +27,23 @@ function ColoredTick(props: any) {
   const dx = x - cx
   const dy = y - cy
   const dist = Math.sqrt(dx * dx + dy * dy)
-  const offset = 14
+  const offset = 22
   const nx = x + (dx / dist) * offset
   const ny = y + (dy / dist) * offset
+
+  // Determine text anchor based on position relative to center
+  let anchor: 'start' | 'middle' | 'end' = 'middle'
+  if (dx > 10) anchor = 'start'
+  else if (dx < -10) anchor = 'end'
 
   return (
     <text
       x={nx}
       y={ny}
-      textAnchor="middle"
+      textAnchor={anchor}
       dominantBaseline="central"
       fill={color}
-      fontSize={12}
+      fontSize={11}
       fontWeight={600}
     >
       {payload.value}
@@ -51,7 +56,7 @@ export default function SkillsRadar({ data }: { data: SkillData[] }) {
 
   return (
     <ResponsiveContainer width="100%" height={280}>
-      <RadarChart data={data} outerRadius="65%">
+      <RadarChart data={data} outerRadius="58%">
         <PolarGrid />
         <PolarAngleAxis
           dataKey="subject"

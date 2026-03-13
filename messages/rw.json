@@ -12,7 +12,8 @@
     "logout": "Sohoka",
     "dailyPlan": "Gahunda y'Umunsi",
     "friends": "Inshuti",
-    "vocabulary": "Amagambo"
+    "vocabulary": "Amagambo",
+    "grammar": "Ikigambi"
   },
   "landing": {
     "hero": {
@@ -609,5 +610,38 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "grammar": {
+    "title": "Imyitozo y'Ikigambi",
+    "subtitle": "Wige ikigambi cy'Icyongereza binyuze mu myitozo",
+    "startExercise": "Tangira Imyitozo",
+    "checkAnswer": "Suzuma Igisubizo",
+    "nextQuestion": "Ikibazo Gikurikira",
+    "correct": "Nibyo!",
+    "incorrect": "Ntabwo ari byo neza",
+    "explanation": "Ibisobanuro",
+    "score": "Amanota",
+    "questionsCompleted": "Ibibazo Byarangiye",
+    "exerciseComplete": "Imyitozo Yarangiye!",
+    "tryAgain": "Ongera Ugerageze",
+    "newExercise": "Imyitozo Nshya",
+    "difficulty": "Urwego",
+    "topic": "Insanganyamatsiko",
+    "fillBlank": "Uzuza Umwanya",
+    "errorCorrection": "Gukosora Ikosa",
+    "sentenceReorder": "Gushyira Interuro mu Murongo",
+    "multipleChoice": "Guhitamo Byinshi",
+    "topicTenses": "Ibihe",
+    "topicArticles": "Ingingo n'Ibimenyetso",
+    "topicPrepositions": "Imbanziriza-magambo",
+    "topicConditionals": "Ibishingiye ku Mushinga",
+    "topicPassive": "Ijwi ry'Ikikorwa",
+    "topicRelative": "Interuro z'Isano",
+    "topicModals": "Inshinga z'Ubushobozi",
+    "topicReported": "Ijambo ry'Umuntu",
+    "topicGeneral": "Rusange",
+    "generating": "Gutegura imyitozo...",
+    "errorGenerate": "Byanze gutegura imyitozo. Ongera ugerageze.",
+    "errorConnection": "Ikibazo cy'Imiyoboro. Suzuma interineti yawe."
   }
 }
