@@ -66,20 +66,21 @@ export async function GET(req: NextRequest) {
       console.error('Dashboard vocab query error:', vocabErr)
     }
 
-    // Aggregate vocab mastery by date for progress chart
-    const vocabByDate = new Map<string, { total: number; sum: number }>()
+    // Aggregate vocab accuracy by date for progress chart (correct / total attempts → 0-10)
+    const vocabByDate = new Map<string, { correct: number; total: number }>()
     for (const v of vocabAllProgress) {
       const dateKey = v.lastSeen.toISOString().split('T')[0]
-      const entry = vocabByDate.get(dateKey) || { total: 0, sum: 0 }
-      entry.total++
-      entry.sum += v.mastery
+      const entry = vocabByDate.get(dateKey) || { correct: 0, total: 0 }
+      entry.correct += v.correct || 0
+      entry.total += (v.correct || 0) + (v.incorrect || 0)
       vocabByDate.set(dateKey, entry)
     }
     const vocabHistoryData = Array.from(vocabByDate.entries())
+      .filter(([, { total }]) => total > 0)
       .sort(([a], [b]) => a.localeCompare(b))
-      .map(([date, { total, sum }]) => ({
+      .map(([date, { correct, total }]) => ({
         date: new Date(date).toISOString(),
-        score: (sum / total / 3) * 10, // normalize to 0-10 scale
+        score: Math.round((correct / total) * 100) / 10, // accuracy as 0-10 scale
       }))
 
     const avgWriting = writing.length > 0
