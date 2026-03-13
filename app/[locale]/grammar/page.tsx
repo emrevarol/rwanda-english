@@ -117,10 +117,12 @@ export default function GrammarPage() {
 
     let correct = false
     if (currentQ.type === 'error-correction') {
-      correct = userAnswer.trim().toLowerCase() === (currentQ.corrected || '').trim().toLowerCase()
+      const normalize = (s: string) => s.toLowerCase().replace(/[.!?,;:'"]/g, '').replace(/\s+/g, ' ').trim()
+      correct = normalize(userAnswer) === normalize(currentQ.corrected || '')
     } else if (currentQ.type === 'sentence-reorder') {
-      const joined = reorderWords.join(' ')
-      correct = joined.toLowerCase().replace(/[.!?]/g, '').trim() === currentQ.answer.toLowerCase().replace(/[.!?]/g, '').trim()
+      const normalize = (s: string) => s.toLowerCase().replace(/[.!?,;:'"]/g, '').replace(/\s+/g, ' ').trim()
+      const joined = userAnswer || reorderWords.join(' ')
+      correct = normalize(joined) === normalize(currentQ.answer)
     } else {
       correct = userAnswer.trim().toLowerCase() === currentQ.answer.trim().toLowerCase()
     }
