@@ -561,7 +561,11 @@
     "back": "Zurück",
     "save": "Speichern",
     "cancel": "Abbrechen",
-    "level": "Niveau"
+    "level": "Niveau",
+    "subscriptionExpired": "Ihr Abonnement ist abgelaufen",
+    "subscriptionExpiredDesc": "Upgraden Sie Ihren Plan, um weiterhin KI-gestützte Funktionen wie Schreibfeedback, Sprachanalyse, Vokabelübungen und mehr zu nutzen.",
+    "viewPlans": "Pläne und Preise ansehen",
+    "startTrial": "Kostenlose Testversion starten"
   },
   "pricing": {
     "title": "Investieren Sie in Ihre Karriere",

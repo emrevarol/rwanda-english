@@ -561,7 +561,11 @@
     "back": "戻る",
     "save": "保存",
     "cancel": "キャンセル",
-    "level": "レベル"
+    "level": "レベル",
+    "subscriptionExpired": "サブスクリプションの有効期限が切れました",
+    "subscriptionExpiredDesc": "ライティングフィードバック、スピーキング分析、語彙練習などのAI搭載機能を引き続き使用するには、プランをアップグレードしてください。",
+    "viewPlans": "プランと料金を見る",
+    "startTrial": "無料トライアルを始める"
   },
   "pricing": {
     "title": "キャリアへの投資",

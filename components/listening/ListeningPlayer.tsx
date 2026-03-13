@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { markDailyTaskDone } from '@/lib/dailyComplete'
+import SubscriptionPaywall from '@/components/shared/SubscriptionPaywall'
 
 interface Question {
   question: string
@@ -69,6 +70,7 @@ export default function ListeningPlayer({ locale }: { locale?: string }) {
   const [content, setContent] = useState<Content | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [showPaywall, setShowPaywall] = useState(false)
 
   // Playback state
   const [isPlaying, setIsPlaying] = useState(false)
@@ -160,7 +162,9 @@ export default function ListeningPlayer({ locale }: { locale?: string }) {
     try {
       const res = await fetch(`/api/listening/generate?topic=${selectedTopic}`)
       const data = await res.json()
-      if (!res.ok || data.error) {
+      if (data.code === 'SUBSCRIPTION_REQUIRED') {
+        setShowPaywall(true)
+      } else if (!res.ok || data.error) {
         setError(data.detail || data.error || t('errorGenerate'))
       } else {
         setContent(data)
@@ -289,7 +293,8 @@ export default function ListeningPlayer({ locale }: { locale?: string }) {
         >
           {loading ? t('generating') : t('generate')}
         </button>
-        {error && (
+        {showPaywall && <SubscriptionPaywall />}
+        {error && !showPaywall && (
           <div className="mt-4 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-700 flex items-center gap-2">
             <span>⚠️</span> {error}
             <button onClick={() => setError('')} className="ml-auto font-bold text-red-400 hover:text-red-600">×</button>

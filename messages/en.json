@@ -588,6 +588,10 @@
     "back": "Back",
     "save": "Save",
     "cancel": "Cancel",
-    "level": "Level"
+    "level": "Level",
+    "subscriptionExpired": "Your subscription has expired",
+    "subscriptionExpiredDesc": "Upgrade your plan to continue using AI-powered features like writing feedback, speaking analysis, vocabulary practice, and more.",
+    "viewPlans": "View Plans & Pricing",
+    "startTrial": "Start Free Trial"
   }
 }

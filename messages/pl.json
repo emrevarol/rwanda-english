@@ -561,7 +561,11 @@
     "back": "Wstecz",
     "save": "Zapisz",
     "cancel": "Anuluj",
-    "level": "Poziom"
+    "level": "Poziom",
+    "subscriptionExpired": "Twoja subskrypcja wygasła",
+    "subscriptionExpiredDesc": "Ulepsz swój plan, aby nadal korzystać z funkcji opartych na AI, takich jak ocena pisania, analiza mówienia, ćwiczenia ze słownictwa i wiele więcej.",
+    "viewPlans": "Zobacz Plany i Ceny",
+    "startTrial": "Rozpocznij Bezpłatny Okres Próbny"
   },
   "pricing": {
     "title": "Proste Ceny",

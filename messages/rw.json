@@ -561,7 +561,11 @@
     "back": "Subira",
     "save": "Bika",
     "cancel": "Hagarika",
-    "level": "Urwego"
+    "level": "Urwego",
+    "subscriptionExpired": "Kwiyandikisha kwawe kwarangiye",
+    "subscriptionExpiredDesc": "Kugira ngo ukomeze gukoresha ibikorwa bikoreshwa na AI nk'igisubizo cy'abanditsi, isesengura ry'imvugo, imyitozo y'amagambo, n'ibindi byinshi, hagurura gahunda yawe.",
+    "viewPlans": "Reba Gahunda n'Ibiciro",
+    "startTrial": "Tangira Igerageza ry'Ubuntu"
   },
   "pricing": {
     "title": "Ibiciro Byoroshye",

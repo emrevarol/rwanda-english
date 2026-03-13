@@ -561,7 +561,11 @@
     "back": "Voltar",
     "save": "Salvar",
     "cancel": "Cancelar",
-    "level": "Nível"
+    "level": "Nível",
+    "subscriptionExpired": "Sua assinatura expirou",
+    "subscriptionExpiredDesc": "Atualize seu plano para continuar usando recursos com IA, como feedback de escrita, análise de fala, prática de vocabulário e muito mais.",
+    "viewPlans": "Ver Planos e Preços",
+    "startTrial": "Iniciar Teste Gratuito"
   },
   "pricing": {
     "title": "Invista na sua carreira",

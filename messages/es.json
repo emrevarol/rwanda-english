@@ -561,7 +561,11 @@
     "back": "Volver",
     "save": "Guardar",
     "cancel": "Cancelar",
-    "level": "Nivel"
+    "level": "Nivel",
+    "subscriptionExpired": "Tu suscripción ha expirado",
+    "subscriptionExpiredDesc": "Mejora tu plan para seguir usando funciones impulsadas por IA como retroalimentación de escritura, análisis del habla, práctica de vocabulario y más.",
+    "viewPlans": "Ver Planes y Precios",
+    "startTrial": "Iniciar Prueba Gratuita"
   },
   "pricing": {
     "title": "Invierte en tu carrera",

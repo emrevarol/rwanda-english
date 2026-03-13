@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import Navigation from '@/components/shared/Navigation'
+import SubscriptionPaywall from '@/components/shared/SubscriptionPaywall'
 import { getAssessmentQuestions } from '@/lib/helpers'
 
 const questions = getAssessmentQuestions()
@@ -20,6 +21,7 @@ export default function AssessmentPage() {
   const [answers, setAnswers] = useState<Record<number, string>>({})
   const [result, setResult] = useState<{ level: string; score: number; feedback: string } | null>(null)
   const [loading, setLoading] = useState(false)
+  const [showPaywall, setShowPaywall] = useState(false)
 
   if (!session) {
     return (
@@ -55,11 +57,26 @@ export default function AssessmentPage() {
       })
 
       const data = await res.json()
-      setResult(data)
+      if (data.code === 'SUBSCRIPTION_REQUIRED') {
+        setShowPaywall(true)
+      } else {
+        setResult(data)
+      }
     } catch {
       alert('Failed to grade assessment')
     }
     setLoading(false)
+  }
+
+  if (showPaywall) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <Navigation />
+        <div className="max-w-2xl mx-auto px-4 py-16">
+          <SubscriptionPaywall />
+        </div>
+      </div>
+    )
   }
 
   if (result) {

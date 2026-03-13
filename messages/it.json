@@ -561,7 +561,11 @@
     "back": "Indietro",
     "save": "Salva",
     "cancel": "Annulla",
-    "level": "Livello"
+    "level": "Livello",
+    "subscriptionExpired": "Il tuo abbonamento è scaduto",
+    "subscriptionExpiredDesc": "Aggiorna il tuo piano per continuare a utilizzare le funzionalità basate sull'IA come feedback sulla scrittura, analisi del parlato, pratica del vocabolario e altro ancora.",
+    "viewPlans": "Visualizza Piani e Prezzi",
+    "startTrial": "Inizia la Prova Gratuita"
   },
   "pricing": {
     "title": "Prezzi Semplici",

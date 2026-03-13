@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { getSpeakingTopic } from '@/lib/helpers'
+import SubscriptionPaywall from '@/components/shared/SubscriptionPaywall'
 
 interface Analytics {
   totalWords: number
@@ -43,6 +44,7 @@ export default function SpeakingRecorder({ level }: { level: string }) {
   const [loading, setLoading] = useState(false)
   const [transcribing, setTranscribing] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
+  const [showPaywall, setShowPaywall] = useState(false)
 
   // Timer
   const [elapsed, setElapsed] = useState(0)
@@ -190,6 +192,7 @@ export default function SpeakingRecorder({ level }: { level: string }) {
         body: formData,
       })
       const data = await res.json()
+      if (data.code === 'SUBSCRIPTION_REQUIRED') { setShowPaywall(true); return }
       if (data.error) throw new Error(data.error)
 
       setTranscript(data.transcript)
@@ -220,6 +223,7 @@ export default function SpeakingRecorder({ level }: { level: string }) {
         body: JSON.stringify({ transcript: finalText, topic, analytics }),
       })
       const data = await res.json()
+      if (data.code === 'SUBSCRIPTION_REQUIRED') { setShowPaywall(true); setLoading(false); return }
       if (data.error) throw new Error(data.error)
       setFeedback(data)
       setTimerRunning(false)
@@ -292,8 +296,11 @@ export default function SpeakingRecorder({ level }: { level: string }) {
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 p-6">
+        {/* Paywall */}
+        {showPaywall && <SubscriptionPaywall />}
+
         {/* Error banner */}
-        {errorMsg && (
+        {errorMsg && !showPaywall && (
           <div className="mb-4 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-sm text-amber-800 flex items-start gap-2">
             <span className="mt-0.5">⚠️</span>
             <span className="flex-1">{errorMsg}</span>

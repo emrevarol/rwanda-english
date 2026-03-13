@@ -561,7 +561,11 @@
     "back": "Quay lại",
     "save": "Lưu",
     "cancel": "Hủy",
-    "level": "Trình độ"
+    "level": "Trình độ",
+    "subscriptionExpired": "Gói đăng ký của bạn đã hết hạn",
+    "subscriptionExpiredDesc": "Nâng cấp gói của bạn để tiếp tục sử dụng các tính năng AI như phản hồi viết, phân tích nói, luyện từ vựng và nhiều hơn nữa.",
+    "viewPlans": "Xem Gói và Giá",
+    "startTrial": "Bắt đầu Dùng thử Miễn phí"
   },
   "pricing": {
     "title": "Giá đơn giản",

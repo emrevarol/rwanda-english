@@ -561,7 +561,11 @@
     "back": "Kembali",
     "save": "Simpan",
     "cancel": "Batal",
-    "level": "Level"
+    "level": "Level",
+    "subscriptionExpired": "Langganan Anda telah berakhir",
+    "subscriptionExpiredDesc": "Tingkatkan paket Anda untuk terus menggunakan fitur bertenaga AI seperti umpan balik menulis, analisis berbicara, latihan kosakata, dan lainnya.",
+    "viewPlans": "Lihat Paket dan Harga",
+    "startTrial": "Mulai Uji Coba Gratis"
   },
   "pricing": {
     "title": "Investasikan pada Karier Anda",

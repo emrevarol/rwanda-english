@@ -561,7 +561,11 @@
     "back": "뒤로",
     "save": "저장",
     "cancel": "취소",
-    "level": "레벨"
+    "level": "레벨",
+    "subscriptionExpired": "구독이 만료되었습니다",
+    "subscriptionExpiredDesc": "작문 피드백, 말하기 분석, 어휘 연습 등 AI 기반 기능을 계속 사용하려면 플랜을 업그레이드하세요.",
+    "viewPlans": "플랜 및 요금 보기",
+    "startTrial": "무료 체험 시작"
   },
   "pricing": {
     "title": "커리어에 투자하세요",

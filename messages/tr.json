@@ -561,7 +561,11 @@
     "back": "Geri",
     "save": "Kaydet",
     "cancel": "İptal",
-    "level": "Seviye"
+    "level": "Seviye",
+    "subscriptionExpired": "Aboneliginiz sona erdi",
+    "subscriptionExpiredDesc": "Yazma geri bildirimi, konusma analizi, kelime pratiği ve daha fazlasını kullanmaya devam etmek icin planınızı yükseltin.",
+    "viewPlans": "Planları ve Fiyatları Gör",
+    "startTrial": "Ücretsiz Denemeyi Başlat"
   },
   "pricing": {
     "title": "Basit Fiyatlandırma",

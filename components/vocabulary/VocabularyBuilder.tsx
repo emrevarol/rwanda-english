@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { markDailyTaskDone } from '@/lib/dailyComplete'
+import SubscriptionPaywall from '@/components/shared/SubscriptionPaywall'
 
 interface Word {
   word: string
@@ -30,6 +31,7 @@ export default function VocabularyBuilder({ userLevel, initialCategory }: { user
   const [loading, setLoading] = useState(false)
   const [stats, setStats] = useState({ total: 0, mastered: 0, learning: 0, new_words: 0 })
   const [error, setError] = useState('')
+  const [showPaywall, setShowPaywall] = useState(false)
   const [elapsed, setElapsed] = useState(0)
   const sessionStartRef = useRef<Date>(new Date())
 
@@ -110,7 +112,7 @@ export default function VocabularyBuilder({ userLevel, initialCategory }: { user
       }
       const data = await res.json().catch(() => ({}))
       if (data.code === 'SUBSCRIPTION_REQUIRED') {
-        setError(t('subscriptionRequired'))
+        setShowPaywall(true)
       } else {
         setError(data.error || t('generateError'))
       }
@@ -811,7 +813,9 @@ export default function VocabularyBuilder({ userLevel, initialCategory }: { user
         </div>
       )}
 
-      {error && (
+      {showPaywall && <SubscriptionPaywall />}
+
+      {error && !showPaywall && (
         <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700 flex items-center gap-2">
           <span>{error}</span>
           <button onClick={() => setError('')} className="ml-auto text-red-400 hover:text-red-600 font-bold">×</button>

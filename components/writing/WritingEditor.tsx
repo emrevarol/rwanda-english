@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { getWritingPrompt } from '@/lib/helpers'
 import { markDailyTaskDone } from '@/lib/dailyComplete'
 import SampleChart from './SampleChart'
+import SubscriptionPaywall from '@/components/shared/SubscriptionPaywall'
 
 interface Feedback {
   band: number
@@ -29,6 +30,7 @@ export default function WritingEditor({
   const [feedback, setFeedback] = useState<Feedback | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [showPaywall, setShowPaywall] = useState(false)
   const [timer, setTimer] = useState(0)
   const [timerActive, setTimerActive] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -84,7 +86,9 @@ export default function WritingEditor({
         body: JSON.stringify({ text, prompt, taskType }),
       })
       const data = await res.json()
-      if (!res.ok || data.error) {
+      if (data.code === 'SUBSCRIPTION_REQUIRED') {
+        setShowPaywall(true)
+      } else if (!res.ok || data.error) {
         setError(data.error || 'Failed to get feedback. Please try again.')
       } else {
         setFeedback(data)
@@ -154,8 +158,11 @@ export default function WritingEditor({
         </div>
       </div>
 
+      {/* Paywall */}
+      {showPaywall && <SubscriptionPaywall />}
+
       {/* Error */}
-      {error && (
+      {error && !showPaywall && (
         <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700 flex items-center gap-2">
           <span>⚠️</span>
           <span>{error}</span>

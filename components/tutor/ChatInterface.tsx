@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { markDailyTaskDone } from '@/lib/dailyComplete'
+import SubscriptionPaywall from '@/components/shared/SubscriptionPaywall'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -50,6 +51,7 @@ export default function ChatInterface({ userName, userLevel, dailyContext }: { u
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [showPaywall, setShowPaywall] = useState(false)
   const [lastFailedText, setLastFailedText] = useState('')
   const [sessionId, setSessionId] = useState<string | null>(null)
   const [sessions, setSessions] = useState<ChatSessionItem[]>([])
@@ -159,7 +161,12 @@ export default function ChatInterface({ userName, userLevel, dailyContext }: { u
       })
 
       if (!res.ok) {
-        const err = await res.json()
+        const err = await res.json().catch(() => ({}))
+        if (err.code === 'SUBSCRIPTION_REQUIRED') {
+          setShowPaywall(true)
+          setMessages(prev => prev.slice(0, -1))
+          return
+        }
         throw new Error(err.error || 'Failed to get response')
       }
 
@@ -353,7 +360,9 @@ export default function ChatInterface({ userName, userLevel, dailyContext }: { u
             </div>
           ))}
 
-          {error && (
+          {showPaywall && <SubscriptionPaywall />}
+
+          {error && !showPaywall && (
             <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-700 flex items-center gap-2">
               <span>⚠️</span> {error}
               {lastFailedText && (

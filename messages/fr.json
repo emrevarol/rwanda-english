@@ -561,7 +561,11 @@
     "back": "Retour",
     "save": "Enregistrer",
     "cancel": "Annuler",
-    "level": "Niveau"
+    "level": "Niveau",
+    "subscriptionExpired": "Votre abonnement a expiré",
+    "subscriptionExpiredDesc": "Mettez à niveau votre plan pour continuer à utiliser les fonctionnalités alimentées par l'IA comme les commentaires d'écriture, l'analyse de la parole, la pratique du vocabulaire, et plus encore.",
+    "viewPlans": "Voir les Plans et Tarifs",
+    "startTrial": "Commencer l'Essai Gratuit"
   },
   "pricing": {
     "title": "Investissez dans votre carrière",

@@ -561,7 +561,11 @@
     "back": "返回",
     "save": "保存",
     "cancel": "取消",
-    "level": "等级"
+    "level": "等级",
+    "subscriptionExpired": "您的订阅已过期",
+    "subscriptionExpiredDesc": "升级您的计划以继续使用AI驱动的功能，如写作反馈、口语分析、词汇练习等。",
+    "viewPlans": "查看计划和价格",
+    "startTrial": "开始免费试用"
   },
   "pricing": {
     "title": "投资您的职业发展",

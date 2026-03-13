@@ -36,7 +36,9 @@ export async function POST(req: NextRequest) {
               subscriptionId,
               subscriptionStatus: 'active',
               subscriptionPlan: plan,
-              subscriptionEnd: new Date((sub.current_period_end || 0) * 1000),
+              subscriptionEnd: sub.current_period_end
+                ? new Date(sub.current_period_end * 1000)
+                : new Date(Date.now() + (plan === 'daily' ? 86400000 : 30 * 86400000)),
             },
           })
 
@@ -90,7 +92,9 @@ export async function POST(req: NextRequest) {
             where: { subscriptionId },
             data: {
               subscriptionStatus: 'active',
-              subscriptionEnd: new Date((sub.current_period_end || 0) * 1000),
+              subscriptionEnd: sub.current_period_end
+                ? new Date(sub.current_period_end * 1000)
+                : new Date(Date.now() + 30 * 86400000),
             },
           })
         }
@@ -103,7 +107,9 @@ export async function POST(req: NextRequest) {
           where: { subscriptionId: sub.id },
           data: {
             subscriptionStatus: sub.status,
-            subscriptionEnd: new Date((sub.current_period_end || 0) * 1000),
+            subscriptionEnd: sub.current_period_end
+              ? new Date(sub.current_period_end * 1000)
+              : new Date(Date.now() + 30 * 86400000),
           },
         })
         break
