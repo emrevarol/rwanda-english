@@ -211,6 +211,7 @@
     "noActivity": "최근 활동이 없습니다. 학습을 시작하세요!",
     "bandScore": "밴드 점수",
     "fluencyScore": "유창성 점수",
+    "accuracy": "정확도",
     "dayOf": "{day}일차 / 365일",
     "allDone": "완료!",
     "halfDone": "절반 완료",

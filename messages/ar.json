@@ -211,6 +211,7 @@
     "noActivity": "لا يوجد نشاط حديث. ابدأ التعلم!",
     "bandScore": "درجة الفرقة",
     "fluencyScore": "درجة الطلاقة",
+    "accuracy": "الدقة",
     "dayOf": "اليوم {day} من 365",
     "allDone": "تم!",
     "halfDone": "½ تم",

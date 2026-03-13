@@ -211,6 +211,7 @@
     "noActivity": "最近のアクティビティはありません。学習を始めましょう！",
     "bandScore": "バンドスコア",
     "fluencyScore": "流暢さスコア",
+    "accuracy": "正答率",
     "dayOf": "{day}日目 / 365日",
     "allDone": "完了！",
     "halfDone": "半分完了",

@@ -211,6 +211,7 @@
     "noActivity": "Keine Aktivität vorhanden. Fangen Sie an zu lernen!",
     "bandScore": "Bandpunktzahl",
     "fluencyScore": "Flüssigkeitspunktzahl",
+    "accuracy": "Genauigkeit",
     "dayOf": "Tag {day} von 365",
     "allDone": "Fertig!",
     "halfDone": "Halb fertig",

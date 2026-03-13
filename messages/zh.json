@@ -211,6 +211,7 @@
     "noActivity": "暂无活动。开始学习吧！",
     "bandScore": "评分",
     "fluencyScore": "流利度评分",
+    "accuracy": "准确率",
     "dayOf": "第 {day} 天，共 365 天",
     "allDone": "完成！",
     "halfDone": "完成一半",

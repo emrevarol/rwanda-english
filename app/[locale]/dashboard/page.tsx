@@ -176,8 +176,8 @@ export default function DashboardPage() {
         )}
 
         {/* Level badge */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center col-span-1">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center col-span-2 md:col-span-1">
             <div className="text-sm text-gray-500 mb-2">{t('level')}</div>
             <div
               className={`text-4xl font-bold rounded-xl py-3 ${levelColors[level] || 'bg-gray-100 text-gray-700'}`}
@@ -185,7 +185,7 @@ export default function DashboardPage() {
               {level}
             </div>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center group relative" title="IELTS-style band score from 1 (lowest) to 9 (highest)">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center" title="IELTS-style band score from 1 (lowest) to 9 (highest)">
             <div className="text-sm text-gray-500 mb-2">{t('writing')}</div>
             <div className="text-3xl font-bold text-blue-600">
               {loading ? '—' : data?.avgWriting || 0}
@@ -205,6 +205,13 @@ export default function DashboardPage() {
               {loading ? '—' : data?.avgListening || 0}%
             </div>
             <div className="text-xs text-gray-600">% correct</div>
+          </div>
+          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center" title="Vocabulary accuracy from practice sessions">
+            <div className="text-sm text-gray-500 mb-2">{t('vocabulary')}</div>
+            <div className="text-3xl font-bold text-amber-600">
+              {loading ? '—' : data?.vocabAccuracy != null ? `${data.vocabAccuracy}%` : '—'}
+            </div>
+            <div className="text-xs text-gray-600">{t('accuracy')}</div>
           </div>
         </div>
 
