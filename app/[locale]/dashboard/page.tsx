@@ -64,11 +64,13 @@ export default function DashboardPage() {
   useEffect(() => {
     if (status === 'authenticated') {
       Promise.all([
-        fetch('/api/dashboard').then((r) => r.json()),
-        fetch('/api/learning-path/today').then((r) => r.json()),
+        fetch('/api/dashboard').then((r) => { if (!r.ok) throw new Error(`Dashboard API ${r.status}`); return r.json() }),
+        fetch('/api/learning-path/today').then((r) => r.json()).catch(() => null),
       ]).then(([dash, plan]) => {
         setData(dash)
-        setTodayPlan(plan)
+        if (plan) setTodayPlan(plan)
+      }).catch((err) => {
+        console.error('Dashboard fetch error:', err)
       }).finally(() => setLoading(false))
     }
   }, [status])
