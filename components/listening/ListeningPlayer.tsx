@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
+import { useRouter } from 'next/navigation'
+import { markDailyTaskDone } from '@/lib/dailyComplete'
 
 interface Question {
   question: string
@@ -56,8 +58,9 @@ const TOPICS = [
   { key: 'topicEducation', value: 'education' },
 ]
 
-export default function ListeningPlayer() {
+export default function ListeningPlayer({ locale }: { locale?: string }) {
   const t = useTranslations('listening')
+  const router = useRouter()
 
   // Topic selection
   const [selectedTopic, setSelectedTopic] = useState('general')
@@ -243,6 +246,9 @@ export default function ListeningPlayer() {
         extraPlays,
       }),
     })
+
+    // Auto-mark daily plan task as done
+    markDailyTaskDone('listening')
   }
 
   const answeredAll = content ? Object.keys(selectedAnswers).length === content.questions.length : false
@@ -462,12 +468,20 @@ export default function ListeningPlayer() {
                 <div className="text-xs text-gray-400 mt-2">
                   ⏱ {formatTime(elapsed)}
                 </div>
-                <button
-                  onClick={generate}
-                  className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
-                >
-                  {t('generate')}
-                </button>
+                <div className="flex gap-3 justify-center mt-4">
+                  <button
+                    onClick={() => router.push(`/${locale || 'en'}/learning-path`)}
+                    className="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors"
+                  >
+                    {t('backToPlan')}
+                  </button>
+                  <button
+                    onClick={generate}
+                    className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+                  >
+                    {t('generate')}
+                  </button>
+                </div>
               </div>
             )}
           </div>

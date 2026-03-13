@@ -13,14 +13,18 @@ interface Analytics {
   fillerCount: number
   longPauses: Array<{ after: string; duration: number }>
   lowConfidenceWords: Array<{ word: string; confidence: number }>
+  utterancePaces?: Array<{ text: string; wpm: number; duration: number }>
+  paceVariance?: number
 }
 
 interface Feedback {
   score: number
   fluency: string
-  pronunciation?: string
+  pronunciation: string
+  intonation?: string
   grammar: string
   vocabulary: string
+  fillerAnalysis?: string
   modelAnswer: string
   overallFeedback: string
 }
@@ -369,6 +373,12 @@ export default function SpeakingRecorder({ level }: { level: string }) {
                   <div className="text-lg font-bold text-gray-700">{analytics.durationSec}s</div>
                   <div className="text-xs text-gray-600">duration</div>
                 </div>
+                {analytics.paceVariance !== undefined && (
+                  <div className={`rounded-lg p-3 text-center ${analytics.paceVariance < 10 ? 'bg-amber-50' : analytics.paceVariance <= 30 ? 'bg-green-50' : 'bg-red-50'}`}>
+                    <div className={`text-lg font-bold ${analytics.paceVariance < 10 ? 'text-amber-700' : analytics.paceVariance <= 30 ? 'text-green-700' : 'text-red-700'}`}>{analytics.paceVariance}</div>
+                    <div className={`text-xs ${analytics.paceVariance < 10 ? 'text-amber-600' : analytics.paceVariance <= 30 ? 'text-green-600' : 'text-red-600'}`}>rhythm</div>
+                  </div>
+                )}
               </div>
             )}
           </>
@@ -421,12 +431,16 @@ export default function SpeakingRecorder({ level }: { level: string }) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <FeedbackCard title={t('feedback.fluency')} content={feedback.fluency} />
-            {feedback.pronunciation && (
-              <FeedbackCard title="Pronunciation" content={feedback.pronunciation} color="purple" />
+            <FeedbackCard title={t('feedback.fluency')} content={feedback.fluency} color="blue" />
+            <FeedbackCard title={t('feedback.pronunciation')} content={feedback.pronunciation} color="purple" />
+            {feedback.intonation && (
+              <FeedbackCard title={t('feedback.intonation')} content={feedback.intonation} color="teal" />
             )}
-            <FeedbackCard title={t('feedback.grammar')} content={feedback.grammar} />
-            <FeedbackCard title={t('feedback.vocabulary')} content={feedback.vocabulary} />
+            {feedback.fillerAnalysis && (
+              <FeedbackCard title={t('feedback.fillerAnalysis')} content={feedback.fillerAnalysis} color="amber" />
+            )}
+            <FeedbackCard title={t('feedback.grammar')} content={feedback.grammar} color="green" />
+            <FeedbackCard title={t('feedback.vocabulary')} content={feedback.vocabulary} color="indigo" />
           </div>
 
           {/* Analytics detail in feedback */}
@@ -448,6 +462,12 @@ export default function SpeakingRecorder({ level }: { level: string }) {
                 <div className="text-lg font-bold text-gray-700">{analytics.totalWords}</div>
                 <div className="text-xs text-gray-600">total words</div>
               </div>
+              {analytics.paceVariance !== undefined && (
+                <div className={`rounded-lg p-3 text-center ${analytics.paceVariance < 10 ? 'bg-amber-50' : analytics.paceVariance <= 30 ? 'bg-green-50' : 'bg-red-50'}`}>
+                  <div className={`text-lg font-bold ${analytics.paceVariance < 10 ? 'text-amber-700' : analytics.paceVariance <= 30 ? 'text-green-700' : 'text-red-700'}`}>{analytics.paceVariance}</div>
+                  <div className={`text-xs ${analytics.paceVariance < 10 ? 'text-amber-600' : analytics.paceVariance <= 30 ? 'text-green-600' : 'text-red-600'}`}>rhythm</div>
+                </div>
+              )}
             </div>
           )}
 
@@ -490,6 +510,10 @@ function FeedbackCard({ title, content, color = 'blue' }: { title: string; conte
   const colors: Record<string, string> = {
     blue: 'bg-blue-50 border-blue-100 text-blue-600',
     purple: 'bg-purple-50 border-purple-100 text-purple-600',
+    green: 'bg-green-50 border-green-100 text-green-600',
+    amber: 'bg-amber-50 border-amber-100 text-amber-600',
+    teal: 'bg-teal-50 border-teal-100 text-teal-600',
+    indigo: 'bg-indigo-50 border-indigo-100 text-indigo-600',
   }
   const c = colors[color] || colors.blue
   return (

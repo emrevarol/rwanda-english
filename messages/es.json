@@ -11,7 +11,8 @@
     "register": "Registrarse",
     "logout": "Cerrar Sesión",
     "dailyPlan": "Plan Diario",
-    "friends": "Amigos"
+    "friends": "Amigos",
+    "vocabulary": "Vocabulario"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "Código de referido (opcional)",
+      "referralPlaceholder": "ej. A3F2B1C9"
     },
     "verify": {
       "title": "Verifica Tu Correo Electrónico",
@@ -371,11 +374,14 @@
     "feedback": {
       "title": "Retroalimentación IA",
       "score": "Puntuación de Fluidez",
-      "fluency": "Fluidez",
+      "fluency": "Fluidez y ritmo",
       "grammar": "Gramática",
       "vocabulary": "Vocabulario",
       "model": "Respuesta Modelo",
-      "overall": "Retroalimentación General"
+      "overall": "Retroalimentación General",
+      "pronunciation": "Pronunciación",
+      "intonation": "Entonación y ritmo",
+      "fillerAnalysis": "Análisis de muletillas"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "Ciencia",
     "topicCulture": "Cultura",
     "topicHealth": "Salud",
-    "topicEducation": "Educación"
+    "topicEducation": "Educación",
+    "backToPlan": "Volver al plan"
   },
   "tutor": {
     "title": "Tutor IA",
@@ -479,7 +486,72 @@
     "listening": "Comprensión Auditiva",
     "downloadImage": "Guardar Imagen",
     "copyText": "Copiar Texto",
-    "copied": "¡Copiado!"
+    "copied": "¡Copiado!",
+    "inviteTitle": "¡Invita amigos y gana días gratis!",
+    "inviteSubtitle": "Comparte tu código. Cuando un amigo se hace premium, ¡ganas 7 días gratis!",
+    "invited": "Invitados",
+    "daysEarned": "Días ganados",
+    "copyLink": "Copiar enlace",
+    "totalLearners": "estudiantes",
+    "noResults": "No se encontraron usuarios.",
+    "prev": "Anterior",
+    "next": "Siguiente"
+  },
+  "vocabulary": {
+    "title": "Constructor de Vocabulario",
+    "subtitle": "Aprende nuevas palabras con juegos divertidos",
+    "loginMessage": "Inicia sesión para practicar vocabulario.",
+    "totalWords": "Total de Palabras",
+    "mastered": "Dominadas",
+    "learning": "Aprendiendo",
+    "newWords": "Nuevas",
+    "new": "Nueva",
+    "chooseCategory": "Elige Categoría",
+    "catGeneral": "General",
+    "catAcademic": "Académico",
+    "catBusiness": "Negocios",
+    "catIdioms": "Modismos",
+    "catPhrasal": "Verbos Frasales",
+    "catTravel": "Viajes",
+    "flashcards": "Tarjetas",
+    "flashcardsDesc": "Aprende palabras volteando tarjetas.",
+    "wordMatch": "Emparejar",
+    "wordMatchDesc": "¡Empareja palabras con sus definiciones!",
+    "fillInBlank": "Completar",
+    "fillInBlankDesc": "Completa oraciones con la palabra correcta.",
+    "spellingBee": "Deletreo",
+    "spellingBeeDesc": "¡Escucha la palabra y deletréala!",
+    "generatingWords": "Generando palabras para tu nivel...",
+    "backToMenu": "← Volver",
+    "tapToFlip": "Toca para ver la definición",
+    "stillLearning": "Aún Aprendiendo",
+    "knowIt": "¡Lo Sé!",
+    "matched": "emparejadas",
+    "allMatched": "¡Todas Emparejadas!",
+    "matchScore": "¡Emparejaste {score} de {total}!",
+    "words": "Palabras",
+    "definitions": "Definiciones",
+    "completeTheSentence": "Completa la oración:",
+    "correct": "¡Correcto!",
+    "incorrectAnswer": "Incorrecto. La respuesta es: {answer}",
+    "next": "Siguiente →",
+    "finish": "Terminar",
+    "score": "Puntuación",
+    "listenAndSpell": "Escucha y deletrea",
+    "definition": "Definición",
+    "typeTheWord": "Escribe la palabra...",
+    "check": "Verificar",
+    "correctSpelling": "Ortografía correcta",
+    "perfectSpelling": "¡Ortografía perfecta!",
+    "yourWordBank": "Tu Banco de Palabras",
+    "typeDefinition": "Qué significa esta palabra?",
+    "typeYourAnswer": "Escribe la definición...",
+    "notQuite": "No del todo — ve la respuesta correcta abajo",
+    "subscriptionRequired": "Se requiere suscripción activa para generar palabras. ¡Inicia tu prueba gratuita desde el panel!",
+    "generateError": "Error al generar palabras. Inténtalo de nuevo.",
+    "exampleUsage": "Ejemplo de uso",
+    "catSports": "Deportes",
+    "catFood": "Comida & Cocina"
   },
   "common": {
     "loading": "Cargando...",

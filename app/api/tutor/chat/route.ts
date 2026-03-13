@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
-import { anthropic, MODEL, getCEFRSystemPrompt } from '@/lib/claude'
+import { anthropic, getCEFRSystemPrompt } from '@/lib/claude'
 import { prisma } from '@/lib/db'
 import { isMockMode, mockTutorResponse } from '@/lib/mock'
 import { hasActiveAccess } from '@/lib/stripe'
+import { checkDailyLimit } from '@/lib/rateLimit'
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,6 +16,17 @@ export async function POST(req: NextRequest) {
 
     if (!(await hasActiveAccess(session.user.id))) {
       return NextResponse.json({ error: 'Subscription required', code: 'SUBSCRIPTION_REQUIRED' }, { status: 403 })
+    }
+
+    // Check daily AI usage limit
+    const rateCheck = await checkDailyLimit(session.user.id)
+    if (!rateCheck.allowed) {
+      return NextResponse.json({
+        error: `Daily AI limit reached (${rateCheck.limit} actions). ${rateCheck.tier === 'free' ? 'Upgrade for more!' : 'Limit resets tomorrow.'}`,
+        code: 'DAILY_LIMIT',
+        remaining: 0,
+        limit: rateCheck.limit,
+      }, { status: 429 })
     }
 
     const { messages, sessionId } = await req.json()
@@ -70,14 +82,26 @@ export async function POST(req: NextRequest) {
       })
     }
 
+    // Fetch recent context from previous sessions for cross-session memory
+    const recentHistory = await prisma.chatMessage.findMany({
+      where: { userId: session.user.id, sessionId: { not: chatSessionId } },
+      orderBy: { createdAt: 'desc' },
+      take: 10,
+      select: { role: true, content: true },
+    })
+    const memoryContext = recentHistory.length > 0
+      ? `\n\nPREVIOUS CONVERSATION CONTEXT (from earlier sessions — use this to personalize your responses, remember topics discussed, and build rapport):\n${recentHistory.reverse().map(m => `${m.role}: ${m.content.slice(0, 200)}`).join('\n')}`
+      : ''
+
     // Real Claude streaming
     const systemPrompt =
       getCEFRSystemPrompt(session.user.level, session.user.language) +
-      `\n\nStudent name: ${session.user.name}. Address them by name occasionally.` +
-      `\n\nYou are also an interview coach. If the student asks for interview practice, simulate real job interview scenarios. Ask common interview questions (tell me about yourself, explain your project, describe a challenge you overcame, behavioral questions). Give feedback on their English clarity, structure, and professional communication. You can also help with: meeting English, email writing, project explanations, async communication skills, and work-related vocabulary.`
+      `\n\nStudent name: ${session.user.name}. Address them by name occasionally. Remember what they've discussed in previous sessions and reference it naturally when relevant.` +
+      `\n\nYou are also an interview coach. If the student asks for interview practice, simulate real job interview scenarios. Ask common interview questions (tell me about yourself, explain your project, describe a challenge you overcame, behavioral questions). Give feedback on their English clarity, structure, and professional communication. You can also help with: meeting English, email writing, project explanations, async communication skills, and work-related vocabulary.` +
+      memoryContext
 
     const stream = await anthropic.messages.stream({
-      model: MODEL,
+      model: rateCheck.model,
       max_tokens: 1000,
       system: systemPrompt,
       messages: messages.map((m: any) => ({ role: m.role, content: m.content })),

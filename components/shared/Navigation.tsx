@@ -19,6 +19,7 @@ export default function Navigation() {
         { href: '/writing', label: t('writing') },
         { href: '/listening', label: t('listening') },
         { href: '/speaking', label: t('speaking') },
+        { href: '/vocabulary', label: t('vocabulary') },
         { href: '/tutor', label: t('tutor') },
         { href: '/friends', label: t('friends') },
       ]

@@ -61,7 +61,8 @@ export async function POST(req: NextRequest) {
 
     // Extract speech analytics
     const totalWords = words.length
-    const fillerWords = words.filter((w: any) => ['um', 'uh', 'hmm', 'like', 'you know', 'so', 'actually', 'basically', 'literally'].includes(w.word?.toLowerCase()))
+    const FILLER_SET = new Set(['um', 'uh', 'uh-huh', 'uhh', 'hmm', 'hmm-hmm', 'like', 'you know', 'so', 'actually', 'basically', 'literally', 'well', 'right', 'i mean', 'kind of', 'sort of', 'okay', 'anyway', 'honestly'])
+    const fillerWords = words.filter((w: any) => FILLER_SET.has(w.word?.toLowerCase()))
     const avgConfidence = totalWords > 0
       ? words.reduce((sum: number, w: any) => sum + (w.confidence || 0), 0) / totalWords
       : 0
@@ -86,6 +87,28 @@ export async function POST(req: NextRequest) {
       .filter((w: any) => w.confidence < 0.7 && w.word?.length > 2)
       .map((w: any) => ({ word: w.word, confidence: Math.round(w.confidence * 100) }))
 
+    // Utterance-level pace analysis (speaking rhythm / intonation proxy)
+    const utterances = result.results?.utterances || []
+    const utterancePaces: Array<{ text: string; wpm: number; duration: number }> = []
+    for (const utt of utterances) {
+      const uttDuration = (utt.end || 0) - (utt.start || 0)
+      const uttWordCount = (utt.transcript || '').split(/\s+/).filter(Boolean).length
+      if (uttDuration > 0) {
+        utterancePaces.push({
+          text: utt.transcript?.slice(0, 60) || '',
+          wpm: Math.round((uttWordCount / uttDuration) * 60),
+          duration: Math.round(uttDuration * 10) / 10,
+        })
+      }
+    }
+
+    // Pace variance (monotone vs dynamic delivery)
+    const paceValues = utterancePaces.map(u => u.wpm)
+    const avgPace = paceValues.length > 0 ? paceValues.reduce((a, b) => a + b, 0) / paceValues.length : 0
+    const paceVariance = paceValues.length > 1
+      ? Math.round(Math.sqrt(paceValues.reduce((sum, v) => sum + (v - avgPace) ** 2, 0) / paceValues.length))
+      : 0
+
     return NextResponse.json({
       transcript,
       analytics: {
@@ -97,6 +120,8 @@ export async function POST(req: NextRequest) {
         fillerCount: fillerWords.length,
         longPauses,
         lowConfidenceWords: lowConfidenceWords.slice(0, 10),
+        utterancePaces: utterancePaces.slice(0, 10),
+        paceVariance,
       },
     })
   } catch (error) {

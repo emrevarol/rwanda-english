@@ -39,6 +39,44 @@ export async function POST(req: NextRequest) {
               subscriptionEnd: new Date((sub.current_period_end || 0) * 1000),
             },
           })
+
+          // Grant referral bonus: +7 days to the referrer
+          const referral = await prisma.referral.findUnique({
+            where: { referredId: userId },
+          })
+          if (referral && !referral.bonusGranted) {
+            const referrer = await prisma.user.findUnique({
+              where: { id: referral.referrerId },
+              select: { subscriptionEnd: true, trialEndsAt: true, subscriptionStatus: true },
+            })
+            if (referrer) {
+              const sevenDays = 7 * 24 * 60 * 60 * 1000
+              const now = new Date()
+              // Extend whichever is active: subscription or trial
+              if (referrer.subscriptionStatus === 'active' && referrer.subscriptionEnd) {
+                await prisma.user.update({
+                  where: { id: referral.referrerId },
+                  data: { subscriptionEnd: new Date(referrer.subscriptionEnd.getTime() + sevenDays) },
+                })
+              } else if (referrer.trialEndsAt) {
+                const base = referrer.trialEndsAt > now ? referrer.trialEndsAt : now
+                await prisma.user.update({
+                  where: { id: referral.referrerId },
+                  data: { trialEndsAt: new Date(base.getTime() + sevenDays) },
+                })
+              } else {
+                // No active sub — give 7 days trial
+                await prisma.user.update({
+                  where: { id: referral.referrerId },
+                  data: { trialEndsAt: new Date(now.getTime() + sevenDays) },
+                })
+              }
+              await prisma.referral.update({
+                where: { id: referral.id },
+                data: { bonusGranted: true },
+              })
+            }
+          }
         }
         break
       }

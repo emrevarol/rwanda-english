@@ -11,7 +11,8 @@
     "register": "Регистрация",
     "logout": "Выйти",
     "dailyPlan": "Дневной План",
-    "friends": "Друзья"
+    "friends": "Друзья",
+    "vocabulary": "Словарь"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "Реферальный код (необязательно)",
+      "referralPlaceholder": "напр. A3F2B1C9"
     },
     "verify": {
       "title": "Подтвердите Вашу Почту",
@@ -375,7 +378,10 @@
       "grammar": "Грамматика",
       "vocabulary": "Лексика",
       "model": "Образцовый Ответ",
-      "overall": "Общий Отзыв"
+      "overall": "Общий Отзыв",
+      "pronunciation": "Pronunciation",
+      "intonation": "Intonation & Rhythm",
+      "fillerAnalysis": "Filler Word Analysis"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "Наука",
     "topicCulture": "Культура",
     "topicHealth": "Здоровье",
-    "topicEducation": "Образование"
+    "topicEducation": "Образование",
+    "backToPlan": "Back to Plan"
   },
   "tutor": {
     "title": "ИИ-репетитор",
@@ -479,7 +486,72 @@
     "listening": "Аудирование",
     "downloadImage": "Сохранить Изображение",
     "copyText": "Копировать Текст",
-    "copied": "Скопировано!"
+    "copied": "Скопировано!",
+    "inviteTitle": "Пригласите друзей — получите бесплатные дни!",
+    "inviteSubtitle": "Поделитесь кодом. Когда друг станет премиум, вы получите 7 дней бесплатно!",
+    "invited": "Приглашено",
+    "daysEarned": "Заработано дней",
+    "copyLink": "Копировать ссылку",
+    "totalLearners": "учеников",
+    "noResults": "Пользователи не найдены.",
+    "prev": "Назад",
+    "next": "Далее"
+  },
+  "vocabulary": {
+    "title": "Словарный Запас",
+    "subtitle": "Учи новые слова с увлекательными играми",
+    "loginMessage": "Войдите для практики словарного запаса.",
+    "totalWords": "Всего Слов",
+    "mastered": "Освоено",
+    "learning": "Изучается",
+    "newWords": "Новые",
+    "new": "Новое",
+    "chooseCategory": "Выберите Категорию",
+    "catGeneral": "Общее",
+    "catAcademic": "Академическое",
+    "catBusiness": "Бизнес",
+    "catIdioms": "Идиомы",
+    "catPhrasal": "Фразовые глаголы",
+    "catTravel": "Путешествия",
+    "flashcards": "Карточки",
+    "flashcardsDesc": "Учи слова переворачивая карточки.",
+    "wordMatch": "Сопоставление",
+    "wordMatchDesc": "Сопоставь слова с определениями!",
+    "fillInBlank": "Заполни пропуск",
+    "fillInBlankDesc": "Дополни предложения правильным словом.",
+    "spellingBee": "Правописание",
+    "spellingBeeDesc": "Послушай слово и напиши правильно!",
+    "generatingWords": "Генерируем слова для твоего уровня...",
+    "backToMenu": "← Назад",
+    "tapToFlip": "Нажми чтобы увидеть определение",
+    "stillLearning": "Ещё учу",
+    "knowIt": "Я знаю!",
+    "matched": "сопоставлено",
+    "allMatched": "Всё сопоставлено!",
+    "matchScore": "Ты сопоставил {score} из {total}!",
+    "words": "Слова",
+    "definitions": "Определения",
+    "completeTheSentence": "Дополни предложение:",
+    "correct": "Правильно!",
+    "incorrectAnswer": "Неправильно. Ответ: {answer}",
+    "next": "Далее →",
+    "finish": "Закончить",
+    "score": "Счёт",
+    "listenAndSpell": "Слушай и пиши",
+    "definition": "Определение",
+    "typeTheWord": "Введи слово...",
+    "check": "Проверить",
+    "correctSpelling": "Правильное написание",
+    "perfectSpelling": "Идеальное написание!",
+    "yourWordBank": "Твой Банк Слов",
+    "typeDefinition": "What does this word mean?",
+    "typeYourAnswer": "Type the definition...",
+    "notQuite": "Not quite — see the correct answer below",
+    "subscriptionRequired": "Active subscription required to generate vocabulary words. Start your free trial from the dashboard!",
+    "generateError": "Failed to generate words. Please try again.",
+    "exampleUsage": "Example Usage",
+    "catSports": "Спорт",
+    "catFood": "Еда и Кухня"
   },
   "common": {
     "loading": "Загрузка...",

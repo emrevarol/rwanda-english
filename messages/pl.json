@@ -11,7 +11,8 @@
     "register": "Zarejestruj się",
     "logout": "Wyloguj się",
     "dailyPlan": "Plan Dnia",
-    "friends": "Znajomi"
+    "friends": "Znajomi",
+    "vocabulary": "Słownictwo"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "Kod polecenia (opcjonalnie)",
+      "referralPlaceholder": "np. A3F2B1C9"
     },
     "verify": {
       "title": "Zweryfikuj Swój Email",
@@ -375,7 +378,10 @@
       "grammar": "Gramatyka",
       "vocabulary": "Słownictwo",
       "model": "Wzorcowa Odpowiedź",
-      "overall": "Ogólna Informacja Zwrotna"
+      "overall": "Ogólna Informacja Zwrotna",
+      "pronunciation": "Pronunciation",
+      "intonation": "Intonation & Rhythm",
+      "fillerAnalysis": "Filler Word Analysis"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "Nauka",
     "topicCulture": "Kultura",
     "topicHealth": "Zdrowie",
-    "topicEducation": "Edukacja"
+    "topicEducation": "Edukacja",
+    "backToPlan": "Back to Plan"
   },
   "tutor": {
     "title": "Korepetytor AI",
@@ -479,7 +486,72 @@
     "listening": "Słuchanie",
     "downloadImage": "Zapisz Obraz",
     "copyText": "Kopiuj Tekst",
-    "copied": "Skopiowano!"
+    "copied": "Skopiowano!",
+    "inviteTitle": "Zaproś znajomych i zdobądź darmowe dni!",
+    "inviteSubtitle": "Udostępnij swój kod. Gdy znajomy wykupi premium, dostajesz 7 dni gratis!",
+    "invited": "Zaproszeni",
+    "daysEarned": "Zdobyte dni",
+    "copyLink": "Kopiuj link",
+    "totalLearners": "uczniów",
+    "noResults": "Nie znaleziono użytkowników.",
+    "prev": "Poprzedni",
+    "next": "Następny"
+  },
+  "vocabulary": {
+    "title": "Budowanie Słownictwa",
+    "subtitle": "Ucz się nowych słów przez zabawę",
+    "loginMessage": "Zaloguj się aby ćwiczyć słownictwo.",
+    "totalWords": "Łącznie Słów",
+    "mastered": "Opanowane",
+    "learning": "W nauce",
+    "newWords": "Nowe",
+    "new": "Nowe",
+    "chooseCategory": "Wybierz Kategorię",
+    "catGeneral": "Ogólne",
+    "catAcademic": "Akademickie",
+    "catBusiness": "Biznes",
+    "catIdioms": "Idiomy",
+    "catPhrasal": "Czasowniki frazowe",
+    "catTravel": "Podróże",
+    "flashcards": "Fiszki",
+    "flashcardsDesc": "Ucz się słów odwracając fiszki.",
+    "wordMatch": "Dopasuj Słowa",
+    "wordMatchDesc": "Dopasuj słowa do ich definicji!",
+    "fillInBlank": "Uzupełnij Lukę",
+    "fillInBlankDesc": "Uzupełnij zdania właściwym słowem.",
+    "spellingBee": "Pisownia",
+    "spellingBeeDesc": "Posłuchaj słowa i napisz je poprawnie!",
+    "generatingWords": "Generowanie słów na twój poziom...",
+    "backToMenu": "← Powrót",
+    "tapToFlip": "Kliknij aby zobaczyć definicję",
+    "stillLearning": "Jeszcze się uczę",
+    "knowIt": "Wiem!",
+    "matched": "dopasowane",
+    "allMatched": "Wszystko dopasowane!",
+    "matchScore": "Dopasowałeś {score} z {total}!",
+    "words": "Słowa",
+    "definitions": "Definicje",
+    "completeTheSentence": "Uzupełnij zdanie:",
+    "correct": "Poprawnie!",
+    "incorrectAnswer": "Niepoprawnie. Odpowiedź to: {answer}",
+    "next": "Dalej →",
+    "finish": "Zakończ",
+    "score": "Wynik",
+    "listenAndSpell": "Słuchaj i pisz",
+    "definition": "Definicja",
+    "typeTheWord": "Wpisz słowo...",
+    "check": "Sprawdź",
+    "correctSpelling": "Poprawna pisownia",
+    "perfectSpelling": "Idealna pisownia!",
+    "yourWordBank": "Twój Bank Słów",
+    "typeDefinition": "What does this word mean?",
+    "typeYourAnswer": "Type the definition...",
+    "notQuite": "Not quite — see the correct answer below",
+    "subscriptionRequired": "Active subscription required to generate vocabulary words. Start your free trial from the dashboard!",
+    "generateError": "Failed to generate words. Please try again.",
+    "exampleUsage": "Example Usage",
+    "catSports": "Sport",
+    "catFood": "Jedzenie i Kuchnia"
   },
   "common": {
     "loading": "Ładowanie...",

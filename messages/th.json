@@ -11,7 +11,8 @@
     "register": "สมัครสมาชิก",
     "logout": "ออกจากระบบ",
     "dailyPlan": "แผนประจำวัน",
-    "friends": "เพื่อน"
+    "friends": "เพื่อน",
+    "vocabulary": "คำศัพท์"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "รหัสแนะนำ (ไม่บังคับ)",
+      "referralPlaceholder": "เช่น A3F2B1C9"
     },
     "verify": {
       "title": "ยืนยันอีเมลของคุณ",
@@ -375,7 +378,10 @@
       "grammar": "ไวยากรณ์",
       "vocabulary": "คำศัพท์",
       "model": "คำตอบแบบอย่าง",
-      "overall": "ข้อเสนอแนะโดยรวม"
+      "overall": "ข้อเสนอแนะโดยรวม",
+      "pronunciation": "Pronunciation",
+      "intonation": "Intonation & Rhythm",
+      "fillerAnalysis": "Filler Word Analysis"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "วิทยาศาสตร์",
     "topicCulture": "วัฒนธรรม",
     "topicHealth": "สุขภาพ",
-    "topicEducation": "การศึกษา"
+    "topicEducation": "การศึกษา",
+    "backToPlan": "Back to Plan"
   },
   "tutor": {
     "title": "ติวเตอร์ AI",
@@ -479,7 +486,72 @@
     "listening": "การฟัง",
     "downloadImage": "บันทึกรูปภาพ",
     "copyText": "คัดลอกข้อความ",
-    "copied": "คัดลอกแล้ว!"
+    "copied": "คัดลอกแล้ว!",
+    "inviteTitle": "เชิญเพื่อน รับวันฟรี!",
+    "inviteSubtitle": "แชร์โค้ดของคุณ เมื่อเพื่อนสมัครพรีเมียม คุณจะได้ 7 วันฟรี!",
+    "invited": "เชิญแล้ว",
+    "daysEarned": "วันที่ได้รับ",
+    "copyLink": "คัดลอกลิงก์",
+    "totalLearners": "ผู้เรียน",
+    "noResults": "ไม่พบผู้ใช้",
+    "prev": "ก่อนหน้า",
+    "next": "ถัดไป"
+  },
+  "vocabulary": {
+    "title": "สร้างคำศัพท์",
+    "subtitle": "เรียนคำศัพท์ใหม่ด้วยเกมสนุก",
+    "loginMessage": "เข้าสู่ระบบเพื่อฝึกคำศัพท์",
+    "totalWords": "คำศัพท์ทั้งหมด",
+    "mastered": "เชี่ยวชาญ",
+    "learning": "กำลังเรียน",
+    "newWords": "ใหม่",
+    "new": "ใหม่",
+    "chooseCategory": "เลือกหมวดหมู่",
+    "catGeneral": "ทั่วไป",
+    "catAcademic": "วิชาการ",
+    "catBusiness": "ธุรกิจ",
+    "catIdioms": "สำนวน",
+    "catPhrasal": "กริยาวลี",
+    "catTravel": "การเดินทาง",
+    "flashcards": "แฟลชการ์ด",
+    "flashcardsDesc": "เรียนรู้คำศัพท์โดยพลิกการ์ด",
+    "wordMatch": "จับคู่คำ",
+    "wordMatchDesc": "จับคู่คำกับความหมาย!",
+    "fillInBlank": "เติมคำ",
+    "fillInBlankDesc": "เติมคำที่ถูกต้องลงในประโยค",
+    "spellingBee": "สะกดคำ",
+    "spellingBeeDesc": "ฟังคำแล้วสะกดให้ถูกต้อง!",
+    "generatingWords": "กำลังสร้างคำสำหรับระดับของคุณ...",
+    "backToMenu": "← กลับ",
+    "tapToFlip": "แตะเพื่อดูความหมาย",
+    "stillLearning": "ยังเรียนอยู่",
+    "knowIt": "รู้แล้ว!",
+    "matched": "จับคู่แล้ว",
+    "allMatched": "จับคู่ครบ!",
+    "matchScore": "คุณจับคู่ได้ {score} จาก {total}!",
+    "words": "คำศัพท์",
+    "definitions": "ความหมาย",
+    "completeTheSentence": "เติมประโยคให้สมบูรณ์:",
+    "correct": "ถูกต้อง!",
+    "incorrectAnswer": "ผิด คำตอบคือ: {answer}",
+    "next": "ถัดไป →",
+    "finish": "เสร็จ",
+    "score": "คะแนน",
+    "listenAndSpell": "ฟังแล้วสะกด",
+    "definition": "ความหมาย",
+    "typeTheWord": "พิมพ์คำ...",
+    "check": "ตรวจ",
+    "correctSpelling": "สะกดถูก",
+    "perfectSpelling": "สะกดได้สมบูรณ์!",
+    "yourWordBank": "คลังคำของคุณ",
+    "typeDefinition": "What does this word mean?",
+    "typeYourAnswer": "Type the definition...",
+    "notQuite": "Not quite — see the correct answer below",
+    "subscriptionRequired": "Active subscription required to generate vocabulary words. Start your free trial from the dashboard!",
+    "generateError": "Failed to generate words. Please try again.",
+    "exampleUsage": "Example Usage",
+    "catSports": "กีฬา",
+    "catFood": "อาหารและครัว"
   },
   "common": {
     "loading": "กำลังโหลด...",

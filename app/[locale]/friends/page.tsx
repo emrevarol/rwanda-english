@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import Navigation from '@/components/shared/Navigation'
 import RadarCompare from '@/components/social/RadarCompare'
 import ShareCard from '@/components/social/ShareCard'
@@ -23,26 +23,43 @@ interface CompareData {
   friend: { id: string; name: string; level: string; stats: Record<string, number>; raw: Record<string, number> }
 }
 
+interface ReferralData {
+  referralCode: string
+  totalReferred: number
+  premiumReferred: number
+  bonusDaysEarned: number
+  referrals: Array<{ name: string; isPremium: boolean; date: string }>
+}
+
 export default function FriendsPage() {
   const t = useTranslations('social')
+  const locale = useLocale()
   const { data: session, status } = useSession()
   const [search, setSearch] = useState('')
   const [results, setResults] = useState<UserResult[]>([])
+  const [totalUsers, setTotalUsers] = useState(0)
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
   const [friends, setFriends] = useState<FriendItem[]>([])
   const [pendingSent, setPendingSent] = useState<FriendItem[]>([])
   const [pendingReceived, setPendingReceived] = useState<FriendItem[]>([])
   const [compareData, setCompareData] = useState<CompareData | null>(null)
   const [comparingId, setComparingId] = useState<string | null>(null)
   const [showShare, setShowShare] = useState(false)
+  const [referral, setReferral] = useState<ReferralData | null>(null)
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
-    if (status === 'authenticated') fetchFriends()
+    if (status === 'authenticated') {
+      fetchFriends()
+      fetchReferral()
+    }
   }, [status])
 
+  // Load all users on mount + search with debounce
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (search.length >= 2) searchUsers()
-      else setResults([])
+      searchUsers(1)
     }, 300)
     return () => clearTimeout(timer)
   }, [search])
@@ -57,9 +74,22 @@ export default function FriendsPage() {
     }
   }
 
-  const searchUsers = async () => {
-    const res = await fetch(`/api/users/search?q=${encodeURIComponent(search)}`)
-    if (res.ok) setResults(await res.json())
+  const fetchReferral = async () => {
+    const res = await fetch('/api/referral')
+    if (res.ok) setReferral(await res.json())
+  }
+
+  const searchUsers = async (p: number) => {
+    const params = new URLSearchParams({ page: String(p) })
+    if (search.length >= 2) params.set('q', search)
+    const res = await fetch(`/api/users/search?${params}`)
+    if (res.ok) {
+      const data = await res.json()
+      setResults(data.users)
+      setTotalUsers(data.total)
+      setPage(data.page)
+      setTotalPages(data.totalPages)
+    }
   }
 
   const addFriend = async (friendId: string) => {
@@ -69,8 +99,6 @@ export default function FriendsPage() {
       body: JSON.stringify({ friendId }),
     })
     fetchFriends()
-    setSearch('')
-    setResults([])
   }
 
   const respondRequest = async (friendshipId: string, action: 'accept' | 'reject') => {
@@ -95,6 +123,14 @@ export default function FriendsPage() {
       setCompareData(await res.json())
     }
     setComparingId(null)
+  }
+
+  const copyReferralLink = () => {
+    if (!referral) return
+    const link = `${window.location.origin}/${locale}/register?ref=${referral.referralCode}`
+    navigator.clipboard.writeText(link)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   if (status === 'unauthenticated') {
@@ -145,9 +181,54 @@ export default function FriendsPage() {
           />
         )}
 
-        {/* Search */}
+        {/* Invite & Referral */}
+        {referral && (
+          <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl p-5 text-white">
+            <div className="flex items-start justify-between gap-4 flex-wrap">
+              <div>
+                <h3 className="font-bold text-lg">{t('inviteTitle')}</h3>
+                <p className="text-emerald-100 text-sm mt-1">{t('inviteSubtitle')}</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="bg-white/20 backdrop-blur rounded-lg px-4 py-2 text-center">
+                  <div className="text-2xl font-bold">{referral.totalReferred}</div>
+                  <div className="text-xs text-emerald-200">{t('invited')}</div>
+                </div>
+                <div className="bg-white/20 backdrop-blur rounded-lg px-4 py-2 text-center">
+                  <div className="text-2xl font-bold">{referral.bonusDaysEarned}</div>
+                  <div className="text-xs text-emerald-200">{t('daysEarned')}</div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 flex items-center gap-2">
+              <div className="flex-1 bg-white/10 backdrop-blur rounded-lg px-4 py-2.5 font-mono text-sm tracking-wider">
+                {referral.referralCode}
+              </div>
+              <button
+                onClick={copyReferralLink}
+                className="bg-white text-emerald-700 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-emerald-50 transition-colors whitespace-nowrap"
+              >
+                {copied ? t('copied') : t('copyLink')}
+              </button>
+            </div>
+            {referral.referrals.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {referral.referrals.map((r, i) => (
+                  <span key={i} className={`text-xs px-2 py-1 rounded-full ${r.isPremium ? 'bg-yellow-400 text-yellow-900' : 'bg-white/20'}`}>
+                    {r.name} {r.isPremium ? '(+7 days)' : ''}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Search & Browse Users */}
         <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <h3 className="font-semibold text-gray-800 mb-3">{t('findFriends')}</h3>
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-semibold text-gray-800">{t('findFriends')}</h3>
+            <span className="text-xs text-gray-400">{totalUsers} {t('totalLearners')}</span>
+          </div>
           <input
             type="text"
             value={search}
@@ -155,34 +236,55 @@ export default function FriendsPage() {
             placeholder={t('searchPlaceholder')}
             className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          {results.length > 0 && (
-            <div className="mt-3 space-y-2">
-              {results.map((u) => (
-                <div key={u.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                      {u.name.charAt(0).toUpperCase()}
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium text-gray-800">{u.name}</div>
-                      <div className="text-xs text-gray-400">{u.email}</div>
-                    </div>
-                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${levelColors[u.level] || 'bg-gray-100 text-gray-600'}`}>
-                      {u.level}
-                    </span>
+          <div className="mt-3 space-y-2">
+            {results.map((u) => (
+              <div key={u.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                    {u.name.charAt(0).toUpperCase()}
                   </div>
-                  {isAlreadyFriend(u.id) ? (
-                    <span className="text-xs text-gray-400">{t('alreadyAdded')}</span>
-                  ) : (
-                    <button
-                      onClick={() => addFriend(u.id)}
-                      className="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition-colors"
-                    >
-                      {t('addFriend')}
-                    </button>
-                  )}
+                  <div>
+                    <div className="text-sm font-medium text-gray-800">{u.name}</div>
+                    <div className="text-xs text-gray-400">{u.email}</div>
+                  </div>
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${levelColors[u.level] || 'bg-gray-100 text-gray-600'}`}>
+                    {u.level}
+                  </span>
                 </div>
-              ))}
+                {isAlreadyFriend(u.id) ? (
+                  <span className="text-xs text-gray-400">{t('alreadyAdded')}</span>
+                ) : (
+                  <button
+                    onClick={() => addFriend(u.id)}
+                    className="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    {t('addFriend')}
+                  </button>
+                )}
+              </div>
+            ))}
+            {results.length === 0 && (
+              <p className="text-sm text-gray-400 text-center py-4">{t('noResults')}</p>
+            )}
+          </div>
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-2 mt-4">
+              <button
+                onClick={() => searchUsers(page - 1)}
+                disabled={page <= 1}
+                className="text-xs px-3 py-1.5 rounded-lg border border-gray-200 disabled:opacity-30 hover:bg-gray-50"
+              >
+                {t('prev')}
+              </button>
+              <span className="text-xs text-gray-500">{page} / {totalPages}</span>
+              <button
+                onClick={() => searchUsers(page + 1)}
+                disabled={page >= totalPages}
+                className="text-xs px-3 py-1.5 rounded-lg border border-gray-200 disabled:opacity-30 hover:bg-gray-50"
+              >
+                {t('next')}
+              </button>
             </div>
           )}
         </div>

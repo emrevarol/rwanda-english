@@ -11,7 +11,8 @@
     "register": "إنشاء حساب",
     "logout": "تسجيل الخروج",
     "dailyPlan": "الخطة اليومية",
-    "friends": "الأصدقاء"
+    "friends": "الأصدقاء",
+    "vocabulary": "مفردات"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "رمز الإحالة (اختياري)",
+      "referralPlaceholder": "مثلاً A3F2B1C9"
     },
     "verify": {
       "title": "تحقق من بريدك الإلكتروني",
@@ -371,11 +374,14 @@
     "feedback": {
       "title": "ملاحظات الذكاء الاصطناعي",
       "score": "درجة الطلاقة",
-      "fluency": "الطلاقة",
+      "fluency": "الطلاقة والإيقاع",
       "grammar": "القواعد",
       "vocabulary": "المفردات",
       "model": "الإجابة النموذجية",
-      "overall": "الملاحظات العامة"
+      "overall": "الملاحظات العامة",
+      "pronunciation": "النطق",
+      "intonation": "التنغيم والإيقاع",
+      "fillerAnalysis": "تحليل الكلمات الحشوية"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "علوم",
     "topicCulture": "ثقافة",
     "topicHealth": "صحة",
-    "topicEducation": "تعليم"
+    "topicEducation": "تعليم",
+    "backToPlan": "العودة للخطة"
   },
   "tutor": {
     "title": "المعلم الذكي",
@@ -479,7 +486,72 @@
     "listening": "الاستماع",
     "downloadImage": "حفظ الصورة",
     "copyText": "نسخ النص",
-    "copied": "تم النسخ!"
+    "copied": "تم النسخ!",
+    "inviteTitle": "ادعُ أصدقاءك واكسب أيام مجانية!",
+    "inviteSubtitle": "شارك رمز الإحالة. عندما يشترك صديقك بالبريميوم، تحصل على 7 أيام مجانية!",
+    "invited": "مدعوون",
+    "daysEarned": "أيام مكتسبة",
+    "copyLink": "نسخ الرابط",
+    "totalLearners": "متعلمين",
+    "noResults": "لم يتم العثور على مستخدمين.",
+    "prev": "السابق",
+    "next": "التالي"
+  },
+  "vocabulary": {
+    "title": "بناء المفردات",
+    "subtitle": "تعلم كلمات جديدة بألعاب ممتعة",
+    "loginMessage": "سجل الدخول لممارسة المفردات.",
+    "totalWords": "إجمالي الكلمات",
+    "mastered": "تم إتقانها",
+    "learning": "قيد التعلم",
+    "newWords": "جديدة",
+    "new": "جديد",
+    "chooseCategory": "اختر الفئة",
+    "catGeneral": "عام",
+    "catAcademic": "أكاديمي",
+    "catBusiness": "أعمال",
+    "catIdioms": "تعبيرات",
+    "catPhrasal": "أفعال مركبة",
+    "catTravel": "سفر",
+    "flashcards": "بطاقات تعليمية",
+    "flashcardsDesc": "تعلم الكلمات بقلب البطاقات.",
+    "wordMatch": "مطابقة الكلمات",
+    "wordMatchDesc": "طابق الكلمات بتعريفاتها!",
+    "fillInBlank": "املأ الفراغ",
+    "fillInBlankDesc": "أكمل الجمل بالكلمة الصحيحة.",
+    "spellingBee": "تهجئة",
+    "spellingBeeDesc": "استمع للكلمة واكتبها بشكل صحيح!",
+    "generatingWords": "جارٍ إنشاء كلمات لمستواك...",
+    "backToMenu": "← رجوع",
+    "tapToFlip": "انقر لكشف التعريف",
+    "stillLearning": "ما زلت أتعلم",
+    "knowIt": "أعرفها!",
+    "matched": "تمت المطابقة",
+    "allMatched": "تمت جميع المطابقات!",
+    "matchScore": "طابقت {score} من {total}!",
+    "words": "كلمات",
+    "definitions": "تعريفات",
+    "completeTheSentence": "أكمل الجملة:",
+    "correct": "صحيح!",
+    "incorrectAnswer": "خطأ. الإجابة هي: {answer}",
+    "next": "التالي →",
+    "finish": "إنهاء",
+    "score": "النتيجة",
+    "listenAndSpell": "استمع للكلمة واكتبها",
+    "definition": "التعريف",
+    "typeTheWord": "اكتب الكلمة...",
+    "check": "تحقق",
+    "correctSpelling": "التهجئة الصحيحة",
+    "perfectSpelling": "تهجئة مثالية!",
+    "yourWordBank": "بنك كلماتك",
+    "typeDefinition": "ما معنى هذه الكلمة؟",
+    "typeYourAnswer": "اكتب التعريف...",
+    "notQuite": "ليس تماماً — انظر الإجابة الصحيحة أدناه",
+    "subscriptionRequired": "يتطلب اشتراك نشط لتوليد الكلمات. ابدأ تجربتك المجانية من لوحة التحكم!",
+    "generateError": "فشل في توليد الكلمات. يرجى المحاولة مرة أخرى.",
+    "exampleUsage": "مثال على الاستخدام",
+    "catSports": "رياضة",
+    "catFood": "طعام ومطبخ"
   },
   "common": {
     "loading": "جارٍ التحميل...",

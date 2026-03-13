@@ -11,7 +11,8 @@
     "register": "Registrieren",
     "logout": "Abmelden",
     "dailyPlan": "Tagesplan",
-    "friends": "Freunde"
+    "friends": "Freunde",
+    "vocabulary": "Vokabeln"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "Empfehlungscode (optional)",
+      "referralPlaceholder": "z.B. A3F2B1C9"
     },
     "verify": {
       "title": "E-Mail verifizieren",
@@ -371,11 +374,14 @@
     "feedback": {
       "title": "KI-Feedback",
       "score": "Flüssigkeitspunktzahl",
-      "fluency": "Flüssigkeit",
+      "fluency": "Flüssigkeit und Tempo",
       "grammar": "Grammatik",
       "vocabulary": "Wortschatz",
       "model": "Musterantwort",
-      "overall": "Gesamtfeedback"
+      "overall": "Gesamtfeedback",
+      "pronunciation": "Aussprache",
+      "intonation": "Intonation und Rhythmus",
+      "fillerAnalysis": "Füllwort-Analyse"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "Wissenschaft",
     "topicCulture": "Kultur",
     "topicHealth": "Gesundheit",
-    "topicEducation": "Bildung"
+    "topicEducation": "Bildung",
+    "backToPlan": "Zurück zum Plan"
   },
   "tutor": {
     "title": "KI-Tutor",
@@ -479,7 +486,72 @@
     "listening": "Hören",
     "downloadImage": "Bild speichern",
     "copyText": "Text kopieren",
-    "copied": "Kopiert!"
+    "copied": "Kopiert!",
+    "inviteTitle": "Freunde einladen, Gratis-Tage verdienen!",
+    "inviteSubtitle": "Teile deinen Code. Wird ein Freund Premium, bekommst du 7 Gratis-Tage!",
+    "invited": "Eingeladen",
+    "daysEarned": "Verdiente Tage",
+    "copyLink": "Link kopieren",
+    "totalLearners": "Lernende",
+    "noResults": "Keine Benutzer gefunden.",
+    "prev": "Zurück",
+    "next": "Weiter"
+  },
+  "vocabulary": {
+    "title": "Vokabeltrainer",
+    "subtitle": "Lerne neue Wörter mit lustigen Spielen",
+    "loginMessage": "Bitte anmelden um Vokabeln zu üben.",
+    "totalWords": "Gesamte Wörter",
+    "mastered": "Gemeistert",
+    "learning": "Lernend",
+    "newWords": "Neu",
+    "new": "Neu",
+    "chooseCategory": "Kategorie wählen",
+    "catGeneral": "Allgemein",
+    "catAcademic": "Akademisch",
+    "catBusiness": "Business",
+    "catIdioms": "Redewendungen",
+    "catPhrasal": "Phrasale Verben",
+    "catTravel": "Reisen",
+    "flashcards": "Karteikarten",
+    "flashcardsDesc": "Lerne Wörter durch Umdrehen der Karten.",
+    "wordMatch": "Wort-Zuordnung",
+    "wordMatchDesc": "Ordne Wörter ihren Definitionen zu!",
+    "fillInBlank": "Lückentext",
+    "fillInBlankDesc": "Vervollständige Sätze mit dem richtigen Wort.",
+    "spellingBee": "Buchstabieren",
+    "spellingBeeDesc": "Höre das Wort und buchstabiere es richtig!",
+    "generatingWords": "Wörter für dein Level werden generiert...",
+    "backToMenu": "← Zurück",
+    "tapToFlip": "Tippen um Definition anzuzeigen",
+    "stillLearning": "Noch am Lernen",
+    "knowIt": "Ich weiß es!",
+    "matched": "zugeordnet",
+    "allMatched": "Alle zugeordnet!",
+    "matchScore": "Du hast {score} von {total} zugeordnet!",
+    "words": "Wörter",
+    "definitions": "Definitionen",
+    "completeTheSentence": "Vervollständige den Satz:",
+    "correct": "Richtig!",
+    "incorrectAnswer": "Falsch. Die Antwort ist: {answer}",
+    "next": "Weiter →",
+    "finish": "Fertig",
+    "score": "Punktzahl",
+    "listenAndSpell": "Höre und buchstabiere",
+    "definition": "Definition",
+    "typeTheWord": "Wort eingeben...",
+    "check": "Prüfen",
+    "correctSpelling": "Richtige Schreibweise",
+    "perfectSpelling": "Perfekte Schreibweise!",
+    "yourWordBank": "Deine Wortbank",
+    "typeDefinition": "Was bedeutet dieses Wort?",
+    "typeYourAnswer": "Geben Sie die Definition ein...",
+    "notQuite": "Nicht ganz — siehe richtige Antwort unten",
+    "subscriptionRequired": "Aktives Abonnement erforderlich. Starten Sie Ihre kostenlose Testversion vom Dashboard!",
+    "generateError": "Wortgenerierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "exampleUsage": "Beispielverwendung",
+    "catSports": "Sport",
+    "catFood": "Essen & Küche"
   },
   "common": {
     "loading": "Wird geladen...",

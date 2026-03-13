@@ -11,7 +11,8 @@
     "register": "Kayıt Ol",
     "logout": "Çıkış Yap",
     "dailyPlan": "Günlük Plan",
-    "friends": "Arkadaşlar"
+    "friends": "Arkadaşlar",
+    "vocabulary": "Kelime"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "Davet Kodu (opsiyonel)",
+      "referralPlaceholder": "ör. A3F2B1C9"
     },
     "verify": {
       "title": "E-postanızı Doğrulayın",
@@ -371,11 +374,14 @@
     "feedback": {
       "title": "AI Geri Bildirimi",
       "score": "Akıcılık Puanı",
-      "fluency": "Akıcılık",
+      "fluency": "Akıcılık ve Hız",
       "grammar": "Dilbilgisi",
       "vocabulary": "Kelime Bilgisi",
       "model": "Model Cevap",
-      "overall": "Genel Geri Bildirim"
+      "overall": "Genel Geri Bildirim",
+      "pronunciation": "Telaffuz",
+      "intonation": "Tonlama ve Ritim",
+      "fillerAnalysis": "Dolgu Kelime Analizi"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "Bilim",
     "topicCulture": "Kültür",
     "topicHealth": "Sağlık",
-    "topicEducation": "Eğitim"
+    "topicEducation": "Eğitim",
+    "backToPlan": "Plana Dön"
   },
   "tutor": {
     "title": "AI Öğretmen",
@@ -479,7 +486,72 @@
     "listening": "Dinleme",
     "downloadImage": "Resmi Kaydet",
     "copyText": "Metni Kopyala",
-    "copied": "Kopyalandı!"
+    "copied": "Kopyalandı!",
+    "inviteTitle": "Arkadaşlarını Davet Et, Bedava Gün Kazan!",
+    "inviteSubtitle": "Referans kodunu paylaş. Arkadaşın premium olunca 7 gün bedava!",
+    "invited": "Davetli",
+    "daysEarned": "Kazanılan Gün",
+    "copyLink": "Linki Kopyala",
+    "totalLearners": "öğrenci",
+    "noResults": "Kullanıcı bulunamadı.",
+    "prev": "Önceki",
+    "next": "Sonraki"
+  },
+  "vocabulary": {
+    "title": "Kelime Hazinesi",
+    "subtitle": "Eğlenceli oyunlarla yeni kelimeler öğren",
+    "loginMessage": "Kelime çalışması için giriş yapın.",
+    "totalWords": "Toplam Kelime",
+    "mastered": "Öğrenildi",
+    "learning": "Öğreniliyor",
+    "newWords": "Yeni",
+    "new": "Yeni",
+    "chooseCategory": "Kategori Seç",
+    "catGeneral": "Genel",
+    "catAcademic": "Akademik",
+    "catBusiness": "İş",
+    "catIdioms": "Deyimler",
+    "catPhrasal": "Phrasal Fiiller",
+    "catTravel": "Seyahat",
+    "flashcards": "Kelime Kartları",
+    "flashcardsDesc": "Kartları çevirerek kelime öğren. Bildiklerini ve tekrar etmen gerekenleri işaretle.",
+    "wordMatch": "Kelime Eşleştir",
+    "wordMatchDesc": "Kelimeleri anlamlarıyla eşleştir. Hafızanı test et!",
+    "fillInBlank": "Boşluk Doldur",
+    "fillInBlankDesc": "Cümleleri seçeneklerden doğru kelimeyle tamamla.",
+    "spellingBee": "Heceleme",
+    "spellingBeeDesc": "Kelimeyi dinle ve doğru yaz. Kulaklarını eğit!",
+    "generatingWords": "Seviyene uygun kelimeler oluşturuluyor...",
+    "backToMenu": "← Geri",
+    "tapToFlip": "Anlamı görmek için dokun",
+    "stillLearning": "Hâlâ Öğreniyorum",
+    "knowIt": "Biliyorum!",
+    "matched": "eşleşti",
+    "allMatched": "Hepsi Eşleşti!",
+    "matchScore": "{total} üzerinden {score} eşleştirdin!",
+    "words": "Kelimeler",
+    "definitions": "Tanımlar",
+    "completeTheSentence": "Cümleyi tamamla:",
+    "correct": "Doğru!",
+    "incorrectAnswer": "Yanlış. Doğru cevap: {answer}",
+    "next": "Sonraki →",
+    "finish": "Bitir",
+    "score": "Puan",
+    "listenAndSpell": "Kelimeyi dinle ve yaz",
+    "definition": "Tanım",
+    "typeTheWord": "Kelimeyi yaz...",
+    "check": "Kontrol Et",
+    "correctSpelling": "Doğru yazılış",
+    "perfectSpelling": "Mükemmel yazılış!",
+    "yourWordBank": "Kelime Bankam",
+    "typeDefinition": "Bu kelimenin anlamı nedir?",
+    "typeYourAnswer": "Tanımı yazın...",
+    "notQuite": "Tam değil — doğru cevabı aşağıda gör",
+    "subscriptionRequired": "Kelime oluşturmak için aktif abonelik gerekli. Panelden ücretsiz denemenizi başlatın!",
+    "generateError": "Kelime oluşturulamadı. Lütfen tekrar deneyin.",
+    "exampleUsage": "Örnek Kullanım",
+    "catSports": "Spor",
+    "catFood": "Yemek & Mutfak"
   },
   "common": {
     "loading": "Yükleniyor...",

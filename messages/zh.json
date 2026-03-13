@@ -11,7 +11,8 @@
     "register": "注册",
     "logout": "退出",
     "dailyPlan": "每日计划",
-    "friends": "好友"
+    "friends": "好友",
+    "vocabulary": "词汇"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "推荐码（可选）",
+      "referralPlaceholder": "例如 A3F2B1C9"
     },
     "verify": {
       "title": "验证您的邮箱",
@@ -371,11 +374,14 @@
     "feedback": {
       "title": "AI 反馈",
       "score": "流利度评分",
-      "fluency": "流利度",
+      "fluency": "流利度与节奏",
       "grammar": "语法",
       "vocabulary": "词汇",
       "model": "范文答案",
-      "overall": "总体反馈"
+      "overall": "总体反馈",
+      "pronunciation": "发音",
+      "intonation": "语调与节奏",
+      "fillerAnalysis": "填充词分析"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "科学",
     "topicCulture": "文化",
     "topicHealth": "健康",
-    "topicEducation": "教育"
+    "topicEducation": "教育",
+    "backToPlan": "返回计划"
   },
   "tutor": {
     "title": "AI 导师",
@@ -479,7 +486,72 @@
     "listening": "听力",
     "downloadImage": "保存图片",
     "copyText": "复制文本",
-    "copied": "已复制！"
+    "copied": "已复制！",
+    "inviteTitle": "邀请朋友，赚取免费天数！",
+    "inviteSubtitle": "分享你的推荐码。朋友成为高级会员时，你获得7天免费！",
+    "invited": "已邀请",
+    "daysEarned": "获得天数",
+    "copyLink": "复制链接",
+    "totalLearners": "学习者",
+    "noResults": "未找到用户。",
+    "prev": "上一页",
+    "next": "下一页"
+  },
+  "vocabulary": {
+    "title": "词汇学习",
+    "subtitle": "用有趣的游戏学习新单词",
+    "loginMessage": "请登录以练习词汇。",
+    "totalWords": "总单词数",
+    "mastered": "已掌握",
+    "learning": "学习中",
+    "newWords": "新词",
+    "new": "新",
+    "chooseCategory": "选择类别",
+    "catGeneral": "通用",
+    "catAcademic": "学术",
+    "catBusiness": "商务",
+    "catIdioms": "习语",
+    "catPhrasal": "短语动词",
+    "catTravel": "旅行",
+    "flashcards": "闪卡",
+    "flashcardsDesc": "翻转卡片学习单词，标记已知和需复习的。",
+    "wordMatch": "单词匹配",
+    "wordMatchDesc": "将单词与定义匹配，测试记忆力！",
+    "fillInBlank": "填空",
+    "fillInBlankDesc": "从选项中选择正确的单词完成句子。",
+    "spellingBee": "拼写",
+    "spellingBeeDesc": "听单词并正确拼写，训练听力！",
+    "generatingWords": "正在为您的级别生成单词...",
+    "backToMenu": "← 返回",
+    "tapToFlip": "点击查看释义",
+    "stillLearning": "还在学",
+    "knowIt": "我知道了！",
+    "matched": "已匹配",
+    "allMatched": "全部匹配！",
+    "matchScore": "你匹配了{total}个中的{score}个！",
+    "words": "单词",
+    "definitions": "释义",
+    "completeTheSentence": "完成句子：",
+    "correct": "正确！",
+    "incorrectAnswer": "错误。答案是：{answer}",
+    "next": "下一个 →",
+    "finish": "完成",
+    "score": "分数",
+    "listenAndSpell": "听单词并拼写",
+    "definition": "释义",
+    "typeTheWord": "输入单词...",
+    "check": "检查",
+    "correctSpelling": "正确拼写",
+    "perfectSpelling": "拼写完美！",
+    "yourWordBank": "我的词库",
+    "typeDefinition": "这个词是什么意思？",
+    "typeYourAnswer": "输入定义...",
+    "notQuite": "不太对 — 查看下方正确答案",
+    "subscriptionRequired": "需要有效订阅才能生成词汇。从仪表板开始免费试用！",
+    "generateError": "生成词汇失败。请重试。",
+    "exampleUsage": "用法示例",
+    "catSports": "体育",
+    "catFood": "美食与厨房"
   },
   "common": {
     "loading": "加载中...",

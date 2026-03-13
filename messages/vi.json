@@ -11,7 +11,8 @@
     "register": "Đăng ký",
     "logout": "Đăng xuất",
     "dailyPlan": "Kế hoạch hàng ngày",
-    "friends": "Bạn bè"
+    "friends": "Bạn bè",
+    "vocabulary": "Từ vựng"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "Mã giới thiệu (tùy chọn)",
+      "referralPlaceholder": "vd. A3F2B1C9"
     },
     "verify": {
       "title": "Xác minh email của bạn",
@@ -375,7 +378,10 @@
       "grammar": "Ngữ pháp",
       "vocabulary": "Từ vựng",
       "model": "Câu trả lời mẫu",
-      "overall": "Phản hồi tổng thể"
+      "overall": "Phản hồi tổng thể",
+      "pronunciation": "Pronunciation",
+      "intonation": "Intonation & Rhythm",
+      "fillerAnalysis": "Filler Word Analysis"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "Khoa học",
     "topicCulture": "Văn hóa",
     "topicHealth": "Sức khỏe",
-    "topicEducation": "Giáo dục"
+    "topicEducation": "Giáo dục",
+    "backToPlan": "Back to Plan"
   },
   "tutor": {
     "title": "Gia sư AI",
@@ -479,7 +486,72 @@
     "listening": "Nghe",
     "downloadImage": "Lưu ảnh",
     "copyText": "Sao chép văn bản",
-    "copied": "Đã sao chép!"
+    "copied": "Đã sao chép!",
+    "inviteTitle": "Mời bạn bè, nhận ngày miễn phí!",
+    "inviteSubtitle": "Chia sẻ mã của bạn. Khi bạn bè mua premium, bạn được 7 ngày miễn phí!",
+    "invited": "Đã mời",
+    "daysEarned": "Ngày đã nhận",
+    "copyLink": "Sao chép liên kết",
+    "totalLearners": "học viên",
+    "noResults": "Không tìm thấy người dùng.",
+    "prev": "Trước",
+    "next": "Sau"
+  },
+  "vocabulary": {
+    "title": "Xây Dựng Từ Vựng",
+    "subtitle": "Học từ mới qua trò chơi thú vị",
+    "loginMessage": "Đăng nhập để luyện từ vựng.",
+    "totalWords": "Tổng Từ",
+    "mastered": "Thành thạo",
+    "learning": "Đang học",
+    "newWords": "Mới",
+    "new": "Mới",
+    "chooseCategory": "Chọn Danh Mục",
+    "catGeneral": "Chung",
+    "catAcademic": "Học thuật",
+    "catBusiness": "Kinh doanh",
+    "catIdioms": "Thành ngữ",
+    "catPhrasal": "Cụm động từ",
+    "catTravel": "Du lịch",
+    "flashcards": "Thẻ ghi nhớ",
+    "flashcardsDesc": "Học từ bằng cách lật thẻ.",
+    "wordMatch": "Ghép từ",
+    "wordMatchDesc": "Ghép từ với nghĩa của chúng!",
+    "fillInBlank": "Điền vào chỗ trống",
+    "fillInBlankDesc": "Hoàn thành câu bằng từ đúng.",
+    "spellingBee": "Đánh vần",
+    "spellingBeeDesc": "Nghe từ và viết đúng chính tả!",
+    "generatingWords": "Đang tạo từ cho cấp độ của bạn...",
+    "backToMenu": "← Quay lại",
+    "tapToFlip": "Chạm để xem nghĩa",
+    "stillLearning": "Vẫn đang học",
+    "knowIt": "Tôi biết rồi!",
+    "matched": "đã ghép",
+    "allMatched": "Đã ghép hết!",
+    "matchScore": "Bạn đã ghép {score} trên {total}!",
+    "words": "Từ",
+    "definitions": "Nghĩa",
+    "completeTheSentence": "Hoàn thành câu:",
+    "correct": "Đúng!",
+    "incorrectAnswer": "Sai. Đáp án là: {answer}",
+    "next": "Tiếp →",
+    "finish": "Hoàn thành",
+    "score": "Điểm",
+    "listenAndSpell": "Nghe và viết",
+    "definition": "Nghĩa",
+    "typeTheWord": "Nhập từ...",
+    "check": "Kiểm tra",
+    "correctSpelling": "Chính tả đúng",
+    "perfectSpelling": "Chính tả hoàn hảo!",
+    "yourWordBank": "Kho Từ Của Bạn",
+    "typeDefinition": "What does this word mean?",
+    "typeYourAnswer": "Type the definition...",
+    "notQuite": "Not quite — see the correct answer below",
+    "subscriptionRequired": "Active subscription required to generate vocabulary words. Start your free trial from the dashboard!",
+    "generateError": "Failed to generate words. Please try again.",
+    "exampleUsage": "Example Usage",
+    "catSports": "Thể thao",
+    "catFood": "Ẩm thực"
   },
   "common": {
     "loading": "Đang tải...",

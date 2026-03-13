@@ -53,12 +53,13 @@ export async function analyzeWriting(
   prompt: string,
   taskType: string,
   level: string,
-  language: string
+  language: string,
+  modelOverride?: string
 ) {
   const systemPrompt = getCEFRSystemPrompt(level, language)
 
   const message = await anthropic.messages.create({
-    model: MODEL,
+    model: modelOverride || MODEL,
     max_tokens: 1500,
     system: systemPrompt,
     messages: [
@@ -125,29 +126,41 @@ export async function analyzeSpeaking(
     fillerCount?: number
     longPauses?: Array<{ after: string; duration: number }>
     lowConfidenceWords?: Array<{ word: string; confidence: number }>
-  }
+  },
+  modelOverride?: string
 ) {
   const systemPrompt = getCEFRSystemPrompt(level, language)
 
   // Build analytics context if available
   let analyticsSection = ''
   if (analytics) {
+    const uttPaces = (analytics as any).utterancePaces as Array<{ text: string; wpm: number; duration: number }> | undefined
+    const paceVariance = (analytics as any).paceVariance as number | undefined
+
     analyticsSection = `
 
-SPEECH ANALYTICS (from audio analysis):
+SPEECH ANALYTICS (from Deepgram audio analysis — this is REAL measured data, not estimates):
 - Total words: ${analytics.totalWords || 'N/A'}
 - Duration: ${analytics.durationSec || 'N/A'} seconds
 - Speaking pace: ${analytics.wpm || 'N/A'} words per minute (native speakers average 120-150 wpm; below 90 is slow, above 170 is rushing)
-- Average pronunciation confidence: ${analytics.avgConfidence || 'N/A'}% (below 70% suggests pronunciation issues)
+- Average pronunciation confidence: ${analytics.avgConfidence || 'N/A'}% (below 70% suggests pronunciation issues; below 85% means noticeable accent or unclear articulation)
 - Filler words detected: ${analytics.fillerCount || 0} (${analytics.fillerWords?.join(', ') || 'none'})
+  → 0-2 fillers = excellent, 3-5 = acceptable, 6+ = needs work
 - Long pauses (>1.5s): ${analytics.longPauses?.length ? analytics.longPauses.map(p => `${p.duration}s after "${p.after}"`).join(', ') : 'none'}
-- Low confidence words (potential mispronunciations): ${analytics.lowConfidenceWords?.length ? analytics.lowConfidenceWords.map(w => `"${w.word}" (${w.confidence}%)`).join(', ') : 'none'}
+  → Long pauses suggest hesitation, word-finding difficulty, or lack of preparation
+- Low confidence words (likely mispronounced): ${analytics.lowConfidenceWords?.length ? analytics.lowConfidenceWords.map(w => `"${w.word}" (${w.confidence}%)`).join(', ') : 'none'}
+  → These words were unclear to the AI speech recognizer — the student likely needs pronunciation practice on these specific words
+${uttPaces && uttPaces.length > 0 ? `- Utterance-level pacing: ${uttPaces.map(u => `"${u.text}..." at ${u.wpm} wpm`).join('; ')}` : ''}
+${paceVariance !== undefined ? `- Pace variance (speech rhythm): ${paceVariance} (below 10 = monotone/robotic delivery; 15-30 = natural variation; above 40 = erratic/nervous pacing)` : ''}
 
-Use this data to give specific, data-driven feedback on pronunciation, pacing, and fluency.`
+IMPORTANT: Use this analytics data extensively in your feedback. Be specific:
+- In "pronunciation": Name the EXACT low-confidence words, explain what sounds are likely wrong, suggest how to practice them. If confidence is high, praise clear articulation.
+- In "fluency": Reference the EXACT filler words found, the pauses and where they occurred, and the pace. Compare to native speaker norms.
+- Comment on speech rhythm/intonation based on pace variance.`
   }
 
   const message = await anthropic.messages.create({
-    model: MODEL,
+    model: modelOverride || MODEL,
     max_tokens: 1500,
     system: systemPrompt,
     messages: [
@@ -164,12 +177,14 @@ ${analyticsSection}
 Provide a JSON response:
 {
   "score": <number 1-10>,
-  "fluency": "<feedback on fluency, pacing, and natural flow. Reference specific filler words, pauses, and speaking pace if analytics are available>",
-  "pronunciation": "<feedback on pronunciation. Reference low-confidence words and confidence scores if available. Suggest how to improve specific sounds>",
-  "grammar": "<specific grammar issues found in the transcript>",
+  "fluency": "<feedback on fluency, pacing, and natural flow. MUST reference: exact filler words detected (with count), pauses (where and how long), speaking pace (wpm vs native norms), and speech rhythm. Be specific with numbers.>",
+  "pronunciation": "<feedback on pronunciation and clarity. MUST reference: specific words that were unclear (from low-confidence list), explain what sounds are likely wrong (e.g., 'th' as 'd', vowel confusion), suggest specific practice tips. If no analytics, still assess based on word choices that suggest pronunciation avoidance.>",
+  "intonation": "<feedback on speech rhythm, stress patterns, and natural English intonation. Reference pace variance data. Note if delivery sounds monotone, robotic, or naturally varied. Suggest improvements for sentence stress and emphasis.>",
+  "grammar": "<specific grammar issues found in the transcript with corrections>",
   "vocabulary": "<vocabulary range assessment and suggestions for improvement>",
+  "fillerAnalysis": "<detailed analysis of filler word usage: which fillers were used, how often, where they appeared (beginning of sentences? mid-thought?), and specific strategies to reduce them>",
   "modelAnswer": "<a model answer at ${level} level for this topic>",
-  "overallFeedback": "<encouraging overall comment with 1-2 specific improvement goals>"
+  "overallFeedback": "<encouraging overall comment with 2-3 specific, actionable improvement goals ranked by priority>"
 }
 
 IMPORTANT: All feedback text values must be written in ${LANG_NAMES[language] || 'English'}. The "modelAnswer" should be in English (since they're learning English), but all explanatory feedback must be in ${LANG_NAMES[language] || 'English'}.

@@ -11,7 +11,8 @@
     "register": "Iyandikishe",
     "logout": "Sohoka",
     "dailyPlan": "Gahunda y'Umunsi",
-    "friends": "Inshuti"
+    "friends": "Inshuti",
+    "vocabulary": "Amagambo"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "Kode y'Itumira (ntibisabwa)",
+      "referralPlaceholder": "urugero A3F2B1C9"
     },
     "verify": {
       "title": "Emeza Imeyili Yawe",
@@ -371,11 +374,14 @@
     "feedback": {
       "title": "Igisubizo cya AI",
       "score": "Amanota yo Kuvuga",
-      "fluency": "Ubungubu",
+      "fluency": "Kuvuga neza n'Umuvuduko",
       "grammar": "Giramariki",
       "vocabulary": "Amagambo",
       "model": "Igisubizo cy'Akarorero",
-      "overall": "Igisubizo Rusange"
+      "overall": "Igisubizo Rusange",
+      "pronunciation": "Imvugo",
+      "intonation": "Amajwi n'Umuvuduko",
+      "fillerAnalysis": "Isesengura ry'amagambo y'ubusa"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "Siyansi",
     "topicCulture": "Umuco",
     "topicHealth": "Ubuzima",
-    "topicEducation": "Uburezi"
+    "topicEducation": "Uburezi",
+    "backToPlan": "Subira ku gahunda"
   },
   "tutor": {
     "title": "Mwarimu wa AI",
@@ -479,7 +486,72 @@
     "listening": "Kumva",
     "downloadImage": "Bika Ifoto",
     "copyText": "Koporora Inyandiko",
-    "copied": "Byakopowewe!"
+    "copied": "Byakopowewe!",
+    "inviteTitle": "Tumira Inshuti, Ubonere Iminsi y'Ubuntu!",
+    "inviteSubtitle": "Sangira kode yawe. Inshuti yawe nibagura premium, ubona iminsi 7 y'ubuntu!",
+    "invited": "Batumiye",
+    "daysEarned": "Iminsi Yabonye",
+    "copyLink": "Gukoporora Link",
+    "totalLearners": "abiga",
+    "noResults": "Nta mukoresha ubonetse.",
+    "prev": "Ibanza",
+    "next": "Ibikurikira"
+  },
+  "vocabulary": {
+    "title": "Kubaka Amagambo",
+    "subtitle": "Iga amagambo mashya ukoresheje imikino",
+    "loginMessage": "Injira kugirango ubyigishe amagambo.",
+    "totalWords": "Amagambo Yose",
+    "mastered": "Byigishijwe",
+    "learning": "Birimo kwigwa",
+    "newWords": "Bishya",
+    "new": "Gishya",
+    "chooseCategory": "Hitamo Icyiciro",
+    "catGeneral": "Rusange",
+    "catAcademic": "Akademiki",
+    "catBusiness": "Ubucuruzi",
+    "catIdioms": "Imvugo",
+    "catPhrasal": "Inshinga zifitanye",
+    "catTravel": "Urugendo",
+    "flashcards": "Amakarita",
+    "flashcardsDesc": "Iga amagambo uhinduza amakarita.",
+    "wordMatch": "Guhuza Amagambo",
+    "wordMatchDesc": "Huza amagambo n'ibisobanuro byayo.",
+    "fillInBlank": "Uzuza Umwanya",
+    "fillInBlankDesc": "Uzuza interuro ugkoresheje ijambo ryiza.",
+    "spellingBee": "Imyandikire",
+    "spellingBeeDesc": "Umva ijambo uryandike neza.",
+    "generatingWords": "Gutegura amagambo ku rwego rwawe...",
+    "backToMenu": "← Subira",
+    "tapToFlip": "Kanda kugirango urebe igisobanuro",
+    "stillLearning": "Ndacyiga",
+    "knowIt": "Ndabizi!",
+    "matched": "byahuye",
+    "allMatched": "Byose Byahuye!",
+    "matchScore": "Wahuze {score} kuri {total}!",
+    "words": "Amagambo",
+    "definitions": "Ibisobanuro",
+    "completeTheSentence": "Uzuza interuro:",
+    "correct": "Nibyo!",
+    "incorrectAnswer": "Sibyo. Igisubizo ni: {answer}",
+    "next": "Ibikurikira →",
+    "finish": "Rangiza",
+    "score": "Amanota",
+    "listenAndSpell": "Umva ijambo uryandike",
+    "definition": "Igisobanuro",
+    "typeTheWord": "Andika ijambo...",
+    "check": "Suzuma",
+    "correctSpelling": "Imyandikire iboneye",
+    "perfectSpelling": "Imyandikire yuzuye!",
+    "yourWordBank": "Ububiko bw'Amagambo",
+    "typeDefinition": "Ijambo iri risobanura iki?",
+    "typeYourAnswer": "Andika igisobanuro...",
+    "notQuite": "Si byo neza — reba igisubizo ukuri hasi",
+    "subscriptionRequired": "Abonnemani ikora irakenewe kugirango ubone amagambo. Tangira icyiciro cy'ubusa ku dashboard!",
+    "generateError": "Ntibishoboye gukora amagambo. Ongera ugerageze.",
+    "exampleUsage": "Urugero rwo gukoresha",
+    "catSports": "Siporo",
+    "catFood": "Ibiribwa & Kuziniya"
   },
   "common": {
     "loading": "Gutegereza...",

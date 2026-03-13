@@ -11,7 +11,8 @@
     "register": "साइन अप",
     "logout": "लॉगआउट",
     "dailyPlan": "दैनिक योजना",
-    "friends": "मित्र"
+    "friends": "मित्र",
+    "vocabulary": "शब्दावली"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "रेफरल कोड (वैकल्पिक)",
+      "referralPlaceholder": "जैसे A3F2B1C9"
     },
     "verify": {
       "title": "अपना ईमेल सत्यापित करें",
@@ -371,11 +374,14 @@
     "feedback": {
       "title": "AI प्रतिक्रिया",
       "score": "प्रवाह स्कोर",
-      "fluency": "प्रवाह",
+      "fluency": "प्रवाह और गति",
       "grammar": "व्याकरण",
       "vocabulary": "शब्दावली",
       "model": "मॉडल उत्तर",
-      "overall": "समग्र प्रतिक्रिया"
+      "overall": "समग्र प्रतिक्रिया",
+      "pronunciation": "उच्चारण",
+      "intonation": "स्वरमान और लय",
+      "fillerAnalysis": "भराव शब्द विश्लेषण"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "विज्ञान",
     "topicCulture": "संस्कृति",
     "topicHealth": "स्वास्थ्य",
-    "topicEducation": "शिक्षा"
+    "topicEducation": "शिक्षा",
+    "backToPlan": "योजना पर वापस जाएं"
   },
   "tutor": {
     "title": "AI ट्यूटर",
@@ -479,7 +486,72 @@
     "listening": "सुनना",
     "downloadImage": "छवि सहेजें",
     "copyText": "टेक्स्ट कॉपी करें",
-    "copied": "कॉपी हो गया!"
+    "copied": "कॉपी हो गया!",
+    "inviteTitle": "दोस्तों को आमंत्रित करें, मुफ़्त दिन कमाएं!",
+    "inviteSubtitle": "अपना कोड शेयर करें। जब दोस्त प्रीमियम बने, आपको 7 दिन मुफ़्त!",
+    "invited": "आमंत्रित",
+    "daysEarned": "कमाए गए दिन",
+    "copyLink": "लिंक कॉपी करें",
+    "totalLearners": "छात्र",
+    "noResults": "कोई उपयोगकर्ता नहीं मिला।",
+    "prev": "पिछला",
+    "next": "अगला"
+  },
+  "vocabulary": {
+    "title": "शब्दावली निर्माता",
+    "subtitle": "मज़ेदार खेलों से नए शब्द सीखें",
+    "loginMessage": "शब्दावली अभ्यास के लिए लॉगिन करें।",
+    "totalWords": "कुल शब्द",
+    "mastered": "सीखे",
+    "learning": "सीख रहे हैं",
+    "newWords": "नए",
+    "new": "नया",
+    "chooseCategory": "श्रेणी चुनें",
+    "catGeneral": "सामान्य",
+    "catAcademic": "शैक्षणिक",
+    "catBusiness": "व्यवसाय",
+    "catIdioms": "मुहावरे",
+    "catPhrasal": "वाक्यांश क्रिया",
+    "catTravel": "यात्रा",
+    "flashcards": "फ्लैशकार्ड",
+    "flashcardsDesc": "कार्ड पलटकर शब्द सीखें।",
+    "wordMatch": "शब्द मिलान",
+    "wordMatchDesc": "शब्दों को उनके अर्थों से मिलाएं!",
+    "fillInBlank": "रिक्त स्थान भरें",
+    "fillInBlankDesc": "सही शब्द से वाक्य पूरा करें।",
+    "spellingBee": "वर्तनी",
+    "spellingBeeDesc": "शब्द सुनें और सही लिखें!",
+    "generatingWords": "आपके स्तर के शब्द बना रहे हैं...",
+    "backToMenu": "← वापस",
+    "tapToFlip": "अर्थ देखने के लिए टैप करें",
+    "stillLearning": "अभी सीख रहा हूं",
+    "knowIt": "मुझे पता है!",
+    "matched": "मिलान",
+    "allMatched": "सब मिलान हुए!",
+    "matchScore": "आपने {total} में से {score} मिलाए!",
+    "words": "शब्द",
+    "definitions": "परिभाषाएं",
+    "completeTheSentence": "वाक्य पूरा करें:",
+    "correct": "सही!",
+    "incorrectAnswer": "गलत। उत्तर है: {answer}",
+    "next": "अगला →",
+    "finish": "समाप्त",
+    "score": "स्कोर",
+    "listenAndSpell": "सुनें और लिखें",
+    "definition": "परिभाषा",
+    "typeTheWord": "शब्द टाइप करें...",
+    "check": "जाँचें",
+    "correctSpelling": "सही वर्तनी",
+    "perfectSpelling": "बिल्कुल सही!",
+    "yourWordBank": "आपका शब्द भंडार",
+    "typeDefinition": "इस शब्द का क्या अर्थ है?",
+    "typeYourAnswer": "परिभाषा लिखें...",
+    "notQuite": "बिल्कुल नहीं — नीचे सही उत्तर देखें",
+    "subscriptionRequired": "शब्द बनाने के लिए सक्रिय सदस्यता आवश्यक है। डैशबोर्ड से निःशुल्क परीक्षण शुरू करें!",
+    "generateError": "शब्द बनाने में विफल। कृपया पुनः प्रयास करें।",
+    "exampleUsage": "उपयोग का उदाहरण",
+    "catSports": "खेल",
+    "catFood": "खाना और रसोई"
   },
   "common": {
     "loading": "लोड हो रहा है...",

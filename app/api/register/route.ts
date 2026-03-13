@@ -9,7 +9,7 @@ function generateOtp(): string {
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, password, language } = await req.json()
+    const { name, email, password, language, referralCode } = await req.json()
 
     if (!name || !email || !password) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
@@ -22,11 +22,21 @@ export async function POST(req: NextRequest) {
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
+    // Look up referrer if code provided
+    let referrerId: string | null = null
+    if (referralCode) {
+      const referrer = await prisma.user.findUnique({
+        where: { referralCode: referralCode.toUpperCase() },
+        select: { id: true },
+      })
+      if (referrer) referrerId = referrer.id
+    }
+
     // If user exists but not verified, update their info
     const user = existing
       ? await prisma.user.update({
           where: { email },
-          data: { name, password: hashedPassword, language: language || 'en' },
+          data: { name, password: hashedPassword, language: language || 'en', referredBy: referrerId },
         })
       : await prisma.user.create({
           data: {
@@ -37,8 +47,18 @@ export async function POST(req: NextRequest) {
             level: 'B1',
             emailVerified: false,
             trialEndsAt: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // 3-day free trial
+            referredBy: referrerId,
           },
         })
+
+    // Create referral record if referred
+    if (referrerId) {
+      await prisma.referral.upsert({
+        where: { referredId: user.id },
+        create: { referrerId, referredId: user.id },
+        update: {},
+      })
+    }
 
     // Invalidate old OTP codes
     await prisma.otpCode.updateMany({

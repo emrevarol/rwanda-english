@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 
@@ -9,11 +9,13 @@ export default function RegisterPage() {
   const t = useTranslations('auth.register')
   const locale = useLocale()
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [form, setForm] = useState({
     name: '',
     email: '',
     password: '',
     language: 'en',
+    referralCode: searchParams.get('ref') || '',
   })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -119,6 +121,18 @@ export default function RegisterPage() {
                 <option value="rw">Kinyarwanda</option>
                 <option value="tr">Türkçe</option>
               </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                {t('referralCode')}
+              </label>
+              <input
+                type="text"
+                value={form.referralCode}
+                onChange={(e) => setForm({ ...form, referralCode: e.target.value.toUpperCase() })}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder={t('referralPlaceholder')}
+              />
             </div>
             <button
               type="submit"

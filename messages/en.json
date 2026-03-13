@@ -11,7 +11,8 @@
     "register": "Sign Up",
     "logout": "Logout",
     "dailyPlan": "Daily Plan",
-    "friends": "Friends"
+    "friends": "Friends",
+    "vocabulary": "Vocab"
   },
   "landing": {
     "hero": {
@@ -144,7 +145,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "Referral Code (optional)",
+      "referralPlaceholder": "e.g. A3F2B1C9"
     },
     "verify": {
       "title": "Verify Your Email",
@@ -356,7 +359,10 @@
     "feedback": {
       "title": "AI Feedback",
       "score": "Fluency Score",
-      "fluency": "Fluency",
+      "fluency": "Fluency & Pacing",
+      "pronunciation": "Pronunciation",
+      "intonation": "Intonation & Rhythm",
+      "fillerAnalysis": "Filler Word Analysis",
       "grammar": "Grammar",
       "vocabulary": "Vocabulary",
       "model": "Model Answer",
@@ -397,7 +403,8 @@
     "topicScience": "Science",
     "topicCulture": "Culture",
     "topicHealth": "Health",
-    "topicEducation": "Education"
+    "topicEducation": "Education",
+    "backToPlan": "Back to Plan"
   },
   "tutor": {
     "title": "AI Tutor",
@@ -464,7 +471,16 @@
     "listening": "Listening",
     "downloadImage": "Save Image",
     "copyText": "Copy Text",
-    "copied": "Copied!"
+    "copied": "Copied!",
+    "inviteTitle": "Invite Friends, Earn Free Days!",
+    "inviteSubtitle": "Share your referral code. When a friend goes premium, you get 7 free days!",
+    "invited": "Invited",
+    "daysEarned": "Days Earned",
+    "copyLink": "Copy Link",
+    "totalLearners": "learners",
+    "noResults": "No users found.",
+    "prev": "Previous",
+    "next": "Next"
   },
   "pricing": {
     "title": "Simple Pricing",
@@ -507,6 +523,62 @@
     "paywall": "Subscribe to unlock AI features",
     "paywallDesc": "Your free trial has ended. Choose a plan to continue learning.",
     "paywallBtn": "View Plans"
+  },
+  "vocabulary": {
+    "title": "Vocabulary Builder",
+    "subtitle": "Learn new words with fun games",
+    "loginMessage": "Please login to practice vocabulary.",
+    "totalWords": "Total Words",
+    "mastered": "Mastered",
+    "learning": "Learning",
+    "newWords": "New",
+    "new": "New",
+    "chooseCategory": "Choose Category",
+    "catGeneral": "General",
+    "catAcademic": "Academic",
+    "catBusiness": "Business",
+    "catIdioms": "Idioms",
+    "catPhrasal": "Phrasal Verbs",
+    "catTravel": "Travel",
+    "flashcards": "Flashcards",
+    "flashcardsDesc": "See a word, type the definition. The system checks if you know it!",
+    "wordMatch": "Word Match",
+    "wordMatchDesc": "Match words with their definitions. Test your memory!",
+    "fillInBlank": "Fill in the Blank",
+    "fillInBlankDesc": "Complete sentences with the right word from the options.",
+    "spellingBee": "Spelling Bee",
+    "spellingBeeDesc": "Listen to the word and spell it correctly. Train your ears!",
+    "generatingWords": "Generating words for your level...",
+    "backToMenu": "← Back",
+    "tapToFlip": "Tap to reveal definition",
+    "stillLearning": "Still Learning",
+    "knowIt": "I Know It!",
+    "typeDefinition": "What does this word mean?",
+    "typeYourAnswer": "Type the definition...",
+    "notQuite": "Not quite — see the correct answer below",
+    "matched": "matched",
+    "allMatched": "All Matched!",
+    "matchScore": "You matched {score} out of {total}!",
+    "words": "Words",
+    "definitions": "Definitions",
+    "completeTheSentence": "Complete the sentence:",
+    "correct": "Correct!",
+    "incorrectAnswer": "Incorrect. The answer is: {answer}",
+    "next": "Next →",
+    "finish": "Finish",
+    "score": "Score",
+    "listenAndSpell": "Listen to the word and spell it",
+    "definition": "Definition",
+    "typeTheWord": "Type the word...",
+    "check": "Check",
+    "correctSpelling": "Correct spelling",
+    "perfectSpelling": "Perfect spelling!",
+    "exampleUsage": "Example Usage",
+    "yourWordBank": "Your Word Bank",
+    "subscriptionRequired": "Active subscription required to generate vocabulary words. Start your free trial from the dashboard!",
+    "generateError": "Failed to generate words. Please try again.",
+    "catSports": "Sports",
+    "catFood": "Food & Kitchen"
   },
   "common": {
     "loading": "Loading...",

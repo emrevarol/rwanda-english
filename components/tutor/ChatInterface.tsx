@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
+import { markDailyTaskDone } from '@/lib/dailyComplete'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -51,11 +52,34 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
   const [showHistory, setShowHistory] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const messagesContainerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const abortRef = useRef<AbortController | null>(null)
+  const prevMessagesLenRef = useRef(1)
 
+  // Smart scroll: new user message → scroll to bottom;
+  // streaming assistant response → only scroll if user was already near bottom
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    const container = messagesContainerRef.current
+    if (!container) return
+
+    const isNewMessage = messages.length > prevMessagesLenRef.current
+    prevMessagesLenRef.current = messages.length
+
+    if (isNewMessage) {
+      // New message added — scroll to show the start of it
+      const lastMsg = container.querySelector('[data-msg]:last-child')
+      if (lastMsg) {
+        lastMsg.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    } else {
+      // Streaming update — only auto-scroll if user is near bottom
+      const { scrollTop, scrollHeight, clientHeight } = container
+      const isNearBottom = scrollHeight - scrollTop - clientHeight < 150
+      if (isNearBottom) {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
   }, [messages])
 
   useEffect(() => {
@@ -153,6 +177,8 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
       }
       // Refresh sessions list
       fetchSessions()
+      // Auto-mark daily plan task as done
+      markDailyTaskDone('tutor')
     } catch (err: any) {
       if (err.name === 'AbortError') return
       setError(err.message || 'Connection error. Please try again.')
@@ -182,7 +208,7 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
   }
 
   return (
-    <div className="flex gap-3 h-[620px]">
+    <div className="flex gap-3 h-[calc(100vh-12rem)]">
       {/* History sidebar */}
       <div className={`${showHistory ? 'flex' : 'hidden'} md:flex flex-col w-64 bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden flex-shrink-0`}>
         <div className="p-3 border-b border-gray-100">
@@ -277,9 +303,9 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        <div ref={messagesContainerRef} className="flex-1 overflow-y-auto p-4 space-y-4">
           {messages.map((msg, i) => (
-            <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} gap-2`}>
+            <div key={i} data-msg className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} gap-2`}>
               {msg.role === 'assistant' && (
                 <div className="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-0.5">AI</div>
               )}

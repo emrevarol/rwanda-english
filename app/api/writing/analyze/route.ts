@@ -5,6 +5,7 @@ import { analyzeWriting } from '@/lib/claude'
 import { prisma } from '@/lib/db'
 import { isMockMode, mockWritingFeedback } from '@/lib/mock'
 import { hasActiveAccess } from '@/lib/stripe'
+import { checkDailyLimit } from '@/lib/rateLimit'
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,6 +16,14 @@ export async function POST(req: NextRequest) {
 
     if (!(await hasActiveAccess(session.user.id))) {
       return NextResponse.json({ error: 'Subscription required', code: 'SUBSCRIPTION_REQUIRED' }, { status: 403 })
+    }
+
+    const rateCheck = await checkDailyLimit(session.user.id)
+    if (!rateCheck.allowed) {
+      return NextResponse.json({
+        error: `Daily AI limit reached (${rateCheck.limit} actions). ${rateCheck.tier === 'free' ? 'Upgrade for more!' : 'Limit resets tomorrow.'}`,
+        code: 'DAILY_LIMIT',
+      }, { status: 429 })
     }
 
     const { text, prompt, taskType } = await req.json()
@@ -31,7 +40,7 @@ export async function POST(req: NextRequest) {
 
     const feedback = isMockMode()
       ? mockWritingFeedback
-      : await analyzeWriting(text, prompt, taskType, session.user.level, session.user.language)
+      : await analyzeWriting(text, prompt, taskType, session.user.level, session.user.language, rateCheck.model)
 
     await prisma.writingSubmission.create({
       data: {

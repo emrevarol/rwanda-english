@@ -28,14 +28,19 @@ interface ActivityItem {
 
 interface DashboardData {
   level: string
+  levelUp?: { from: string; to: string } | null
   avgWriting: number
   avgSpeaking: number
   avgListening: number
   avgVocabulary: number | null
   avgGrammar: number | null
+  vocabMasteryPct: number | null
+  vocabTotal: number
+  vocabMastered: number
   writingHistory: Array<{ date: string; score: number }>
   speakingHistory: Array<{ date: string; score: number }>
   listeningHistory: Array<{ date: string; score: number }>
+  vocabHistory: Array<{ date: string; score: number }>
   recentActivity: ActivityItem[]
 }
 
@@ -86,11 +91,13 @@ export default function DashboardPage() {
     C2: 'bg-purple-100 text-purple-700',
   }
 
-  // Vocabulary/grammar: use real sub-scores if available, fallback to writing band estimate
+  // Vocabulary: prefer vocab practice mastery, then writing sub-score, then writing band
   const vocabPct = data
-    ? data.avgVocabulary != null
-      ? (data.avgVocabulary / 9) * 100
-      : (data.avgWriting / 9) * 100
+    ? data.vocabMasteryPct != null
+      ? data.vocabMasteryPct
+      : data.avgVocabulary != null
+        ? (data.avgVocabulary / 9) * 100
+        : (data.avgWriting / 9) * 100
     : 0
   const grammarPct = data
     ? data.avgGrammar != null
@@ -117,6 +124,17 @@ export default function DashboardPage() {
           </h1>
           <p className="text-gray-500 mt-1">{t('title')}</p>
         </div>
+
+        {/* Level Up Banner */}
+        {data?.levelUp && (
+          <div className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-5 mb-6 text-white flex items-center gap-4 shadow-md animate-pulse">
+            <div className="text-4xl">🎉</div>
+            <div>
+              <div className="font-bold text-lg">Level Up! {data.levelUp.from} → {data.levelUp.to}</div>
+              <div className="text-sm text-yellow-100">Congratulations! Your skills have improved and you've been promoted to {data.levelUp.to} level.</div>
+            </div>
+          </div>
+        )}
 
         {/* Today's Plan Banner */}
         {todayPlan && (
@@ -199,6 +217,7 @@ export default function DashboardPage() {
               writingData={data?.writingHistory || []}
               speakingData={data?.speakingHistory || []}
               listeningData={data?.listeningHistory || []}
+              vocabData={data?.vocabHistory || []}
             />
           </div>
         </div>
@@ -221,7 +240,7 @@ export default function DashboardPage() {
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-lg">
-                        {item.type === 'writing' ? '✍️' : item.type === 'speaking' ? '🎙️' : '🎧'}
+                        {item.type === 'writing' ? '✍️' : item.type === 'speaking' ? '🎙️' : item.type === 'vocabulary' ? '📚' : '🎧'}
                       </span>
                       <div>
                         <div className="text-sm font-medium text-gray-700 capitalize">
@@ -233,8 +252,10 @@ export default function DashboardPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold text-blue-600" title={item.type === 'writing' ? 'Band score (1-9)' : item.type === 'speaking' ? 'Score out of 10' : 'Percentage correct'}>
-                        {item.type === 'writing' ? `Band ${item.score}/9` : `${item.score}${item.type === 'listening' ? '%' : '/10'}`}
+                      <span className="text-sm font-semibold text-blue-600" title={item.type === 'writing' ? 'Band score (1-9)' : item.type === 'speaking' ? 'Score out of 10' : item.type === 'vocabulary' ? 'Mastery level' : 'Percentage correct'}>
+                        {item.type === 'writing' ? `Band ${item.score}/9`
+                          : item.type === 'vocabulary' ? ['New', 'Learning', 'Reviewing', 'Mastered'][item.score] || 'New'
+                          : `${item.score}${item.type === 'listening' ? '%' : '/10'}`}
                       </span>
                       <span className="text-gray-300 text-xs">›</span>
                     </div>
@@ -265,6 +286,15 @@ export default function DashboardPage() {
                 className="block bg-white/10 hover:bg-white/20 text-white text-sm px-4 py-3 rounded-lg transition-colors"
               >
                 🎧 {t('listening')}
+              </Link>
+              <Link
+                href="/vocabulary"
+                className="block bg-white/10 hover:bg-white/20 text-white text-sm px-4 py-3 rounded-lg transition-colors"
+              >
+                📚 {t('vocabulary')}
+                {data && data.vocabTotal > 0 && (
+                  <span className="text-blue-200 text-xs ml-2">({data.vocabMastered}/{data.vocabTotal})</span>
+                )}
               </Link>
               <Link
                 href="/tutor"

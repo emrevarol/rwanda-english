@@ -16,11 +16,11 @@ interface SkillData {
 
 export default function SkillsRadar({ data }: { data: SkillData[] }) {
   return (
-    <ResponsiveContainer width="100%" height={250}>
-      <RadarChart data={data}>
+    <ResponsiveContainer width="100%" height={280}>
+      <RadarChart data={data} outerRadius="70%">
         <PolarGrid />
-        <PolarAngleAxis dataKey="subject" tick={{ fontSize: 12 }} />
-        <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />
+        <PolarAngleAxis dataKey="subject" tick={{ fontSize: 12, fill: '#374151' }} tickLine={false} />
+        <PolarRadiusAxis domain={[0, 100]} tickCount={6} tick={{ fontSize: 9, fill: '#9ca3af' }} axisLine={false} />
         <Radar
           name="Skills"
           dataKey="value"

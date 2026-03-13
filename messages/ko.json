@@ -11,7 +11,8 @@
     "register": "회원가입",
     "logout": "로그아웃",
     "dailyPlan": "일일 플랜",
-    "friends": "친구"
+    "friends": "친구",
+    "vocabulary": "어휘"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "추천 코드 (선택)",
+      "referralPlaceholder": "예: A3F2B1C9"
     },
     "verify": {
       "title": "이메일 인증",
@@ -371,11 +374,14 @@
     "feedback": {
       "title": "AI 피드백",
       "score": "유창성 점수",
-      "fluency": "유창성",
+      "fluency": "유창성과 속도",
       "grammar": "문법",
       "vocabulary": "어휘",
       "model": "모범 답안",
-      "overall": "종합 피드백"
+      "overall": "종합 피드백",
+      "pronunciation": "발음",
+      "intonation": "억양과 리듬",
+      "fillerAnalysis": "추임새 분석"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "과학",
     "topicCulture": "문화",
     "topicHealth": "건강",
-    "topicEducation": "교육"
+    "topicEducation": "교육",
+    "backToPlan": "계획으로 돌아가기"
   },
   "tutor": {
     "title": "AI 튜터",
@@ -479,7 +486,72 @@
     "listening": "듣기",
     "downloadImage": "이미지 저장",
     "copyText": "텍스트 복사",
-    "copied": "복사되었습니다!"
+    "copied": "복사되었습니다!",
+    "inviteTitle": "친구 초대하고 무료 일수 받기!",
+    "inviteSubtitle": "코드를 공유하세요. 친구가 프리미엄이 되면 7일 무료!",
+    "invited": "초대됨",
+    "daysEarned": "획득 일수",
+    "copyLink": "링크 복사",
+    "totalLearners": "학습자",
+    "noResults": "사용자를 찾을 수 없습니다.",
+    "prev": "이전",
+    "next": "다음"
+  },
+  "vocabulary": {
+    "title": "어휘 학습",
+    "subtitle": "재미있는 게임으로 새로운 단어를 배우세요",
+    "loginMessage": "어휘 연습을 위해 로그인하세요.",
+    "totalWords": "전체 단어",
+    "mastered": "마스터",
+    "learning": "학습 중",
+    "newWords": "새 단어",
+    "new": "새것",
+    "chooseCategory": "카테고리 선택",
+    "catGeneral": "일반",
+    "catAcademic": "학술",
+    "catBusiness": "비즈니스",
+    "catIdioms": "관용어",
+    "catPhrasal": "구동사",
+    "catTravel": "여행",
+    "flashcards": "플래시카드",
+    "flashcardsDesc": "카드를 뒤집어 단어를 학습하세요.",
+    "wordMatch": "단어 매칭",
+    "wordMatchDesc": "단어와 뜻을 매칭하세요!",
+    "fillInBlank": "빈칸 채우기",
+    "fillInBlankDesc": "올바른 단어로 문장을 완성하세요.",
+    "spellingBee": "스펠링 비",
+    "spellingBeeDesc": "단어를 듣고 올바르게 쓰세요!",
+    "generatingWords": "레벨에 맞는 단어 생성 중...",
+    "backToMenu": "← 돌아가기",
+    "tapToFlip": "탭하여 뜻 보기",
+    "stillLearning": "아직 학습 중",
+    "knowIt": "알고 있어요!",
+    "matched": "매칭됨",
+    "allMatched": "모두 매칭!",
+    "matchScore": "{total}개 중 {score}개 매칭!",
+    "words": "단어",
+    "definitions": "정의",
+    "completeTheSentence": "문장을 완성하세요:",
+    "correct": "정답!",
+    "incorrectAnswer": "오답. 정답: {answer}",
+    "next": "다음 →",
+    "finish": "완료",
+    "score": "점수",
+    "listenAndSpell": "듣고 쓰기",
+    "definition": "정의",
+    "typeTheWord": "단어를 입력...",
+    "check": "확인",
+    "correctSpelling": "올바른 철자",
+    "perfectSpelling": "완벽한 철자!",
+    "yourWordBank": "나의 단어장",
+    "typeDefinition": "이 단어의 뜻은?",
+    "typeYourAnswer": "정의를 입력하세요...",
+    "notQuite": "아쉬워요 — 아래에서 정답을 확인하세요",
+    "subscriptionRequired": "단어 생성에는 활성 구독이 필요합니다. 대시보드에서 무료 체험을 시작하세요!",
+    "generateError": "단어 생성에 실패했습니다. 다시 시도해 주세요.",
+    "exampleUsage": "사용 예시",
+    "catSports": "스포츠",
+    "catFood": "음식 & 요리"
   },
   "common": {
     "loading": "로딩 중...",

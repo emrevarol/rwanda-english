@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { getWritingPrompt } from '@/lib/helpers'
+import { markDailyTaskDone } from '@/lib/dailyComplete'
 import SampleChart from './SampleChart'
 
 interface Feedback {
@@ -28,11 +29,34 @@ export default function WritingEditor({
   const [feedback, setFeedback] = useState<Feedback | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [timer, setTimer] = useState(0)
+  const [timerActive, setTimerActive] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  // Timer: starts when user begins typing, pauses on page hide
+  useEffect(() => {
+    if (timerActive) {
+      timerRef.current = setInterval(() => setTimer(t => t + 1), 1000)
+    } else if (timerRef.current) {
+      clearInterval(timerRef.current)
+    }
+    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+  }, [timerActive])
+
+  useEffect(() => {
+    const onVis = () => { if (document.hidden) setTimerActive(false); else if (text.length > 0 && !feedback) setTimerActive(true) }
+    document.addEventListener('visibilitychange', onVis)
+    return () => document.removeEventListener('visibilitychange', onVis)
+  }, [text, feedback])
+
+  const formatTime = (s: number) => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`
 
   const generatePrompt = useCallback(async () => {
     setText('')
     setFeedback(null)
     setError('')
+    setTimer(0)
+    setTimerActive(false)
     try {
       const res = await fetch(`/api/content/writing-prompt?taskType=${taskType}`)
       const data = await res.json()
@@ -64,6 +88,8 @@ export default function WritingEditor({
         setError(data.error || 'Failed to get feedback. Please try again.')
       } else {
         setFeedback(data)
+        setTimerActive(false)
+        markDailyTaskDone(taskType === 'task1' ? 'writing-chart' : 'writing-essay')
       }
     } catch {
       setError('Connection error. Please check your internet and try again.')
@@ -104,15 +130,20 @@ export default function WritingEditor({
       <div className="bg-white rounded-xl border border-gray-200 p-4">
         <textarea
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={(e) => { setText(e.target.value); if (!timerActive && !feedback) setTimerActive(true) }}
           placeholder={t('placeholder')}
           rows={10}
           className="w-full text-sm text-gray-800 focus:outline-none resize-none leading-relaxed"
         />
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-          <span className="text-xs text-gray-600">
-            {wordCount} {t('wordCount')}
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-gray-600">{wordCount} {t('wordCount')}</span>
+            {(timerActive || timer > 0) && (
+              <span className="text-xs text-gray-500 font-mono bg-gray-100 px-2 py-0.5 rounded">
+                {formatTime(timer)}
+              </span>
+            )}
+          </div>
           <button
             onClick={handleSubmit}
             disabled={loading || wordCount < 5}

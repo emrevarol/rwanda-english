@@ -24,6 +24,10 @@ model User {
   subscriptionEnd     DateTime?
   isStudent           Boolean              @default(false)
   trialEndsAt         DateTime?
+  referralCode        String?              @unique
+  referredBy          String?
+  referralsSent       Referral[]           @relation("referralsSent")
+  referralsReceived   Referral[]           @relation("referralsReceived")
   writingSubmissions  WritingSubmission[]
   speakingSubmissions SpeakingSubmission[]
   listeningSessions   ListeningSession[]
@@ -33,6 +37,17 @@ model User {
   otpCodes            OtpCode[]
   sentFriendships     Friendship[]         @relation("sentFriendships")
   receivedFriendships Friendship[]         @relation("receivedFriendships")
+  vocabularyProgress  VocabularyProgress[]
+}
+
+model Referral {
+  id          String   @id @default(cuid())
+  referrerId  String
+  referredId  String   @unique
+  bonusGranted Boolean @default(false)
+  createdAt   DateTime @default(now())
+  referrer    User     @relation("referralsSent", fields: [referrerId], references: [id])
+  referred    User     @relation("referralsReceived", fields: [referredId], references: [id])
 }
 
 model OtpCode {
@@ -161,4 +176,37 @@ model ListeningContent {
   createdAt DateTime @default(now())
 
   @@index([level, language])
+}
+
+model VocabularyWord {
+  id         String   @id @default(cuid())
+  word       String
+  definition String
+  example    String
+  level      String   // CEFR level: A1, A2, B1, B2, C1, C2
+  category   String   @default("general")
+  usedCount  Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  @@unique([word, level, category])
+  @@index([level, category])
+}
+
+model VocabularyProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  word      String
+  definition String
+  example   String
+  level     String   // CEFR level
+  category  String   @default("general")
+  mastery   Int      @default(0) // 0=new, 1=learning, 2=reviewing, 3=mastered
+  correct   Int      @default(0) // times answered correctly
+  incorrect Int      @default(0) // times answered incorrectly
+  lastSeen  DateTime @default(now())
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, word])
+  @@index([userId, mastery])
 }

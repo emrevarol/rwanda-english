@@ -11,7 +11,8 @@
     "register": "Daftar",
     "logout": "Keluar",
     "dailyPlan": "Rencana Harian",
-    "friends": "Teman"
+    "friends": "Teman",
+    "vocabulary": "Kosakata"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "Kode Referral (opsional)",
+      "referralPlaceholder": "cth. A3F2B1C9"
     },
     "verify": {
       "title": "Verifikasi Email Anda",
@@ -375,7 +378,10 @@
       "grammar": "Tata Bahasa",
       "vocabulary": "Kosakata",
       "model": "Jawaban Model",
-      "overall": "Umpan Balik Keseluruhan"
+      "overall": "Umpan Balik Keseluruhan",
+      "pronunciation": "Pronunciation",
+      "intonation": "Intonation & Rhythm",
+      "fillerAnalysis": "Filler Word Analysis"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "Sains",
     "topicCulture": "Budaya",
     "topicHealth": "Kesehatan",
-    "topicEducation": "Pendidikan"
+    "topicEducation": "Pendidikan",
+    "backToPlan": "Back to Plan"
   },
   "tutor": {
     "title": "Tutor AI",
@@ -479,7 +486,72 @@
     "listening": "Mendengarkan",
     "downloadImage": "Simpan Gambar",
     "copyText": "Salin Teks",
-    "copied": "Disalin!"
+    "copied": "Disalin!",
+    "inviteTitle": "Undang Teman, Dapatkan Hari Gratis!",
+    "inviteSubtitle": "Bagikan kode Anda. Saat teman jadi premium, Anda dapat 7 hari gratis!",
+    "invited": "Diundang",
+    "daysEarned": "Hari Diperoleh",
+    "copyLink": "Salin Tautan",
+    "totalLearners": "pelajar",
+    "noResults": "Pengguna tidak ditemukan.",
+    "prev": "Sebelumnya",
+    "next": "Selanjutnya"
+  },
+  "vocabulary": {
+    "title": "Pembangun Kosakata",
+    "subtitle": "Pelajari kata baru dengan permainan seru",
+    "loginMessage": "Masuk untuk berlatih kosakata.",
+    "totalWords": "Total Kata",
+    "mastered": "Dikuasai",
+    "learning": "Sedang Dipelajari",
+    "newWords": "Baru",
+    "new": "Baru",
+    "chooseCategory": "Pilih Kategori",
+    "catGeneral": "Umum",
+    "catAcademic": "Akademik",
+    "catBusiness": "Bisnis",
+    "catIdioms": "Idiom",
+    "catPhrasal": "Phrasal Verb",
+    "catTravel": "Perjalanan",
+    "flashcards": "Kartu Flash",
+    "flashcardsDesc": "Belajar kata dengan membalik kartu.",
+    "wordMatch": "Cocokkan Kata",
+    "wordMatchDesc": "Cocokkan kata dengan definisinya!",
+    "fillInBlank": "Isi Bagian Kosong",
+    "fillInBlankDesc": "Lengkapi kalimat dengan kata yang tepat.",
+    "spellingBee": "Ejaan",
+    "spellingBeeDesc": "Dengarkan kata dan eja dengan benar!",
+    "generatingWords": "Membuat kata untuk levelmu...",
+    "backToMenu": "← Kembali",
+    "tapToFlip": "Ketuk untuk lihat definisi",
+    "stillLearning": "Masih Belajar",
+    "knowIt": "Saya Tahu!",
+    "matched": "dicocokkan",
+    "allMatched": "Semua Cocok!",
+    "matchScore": "Kamu mencocokkan {score} dari {total}!",
+    "words": "Kata",
+    "definitions": "Definisi",
+    "completeTheSentence": "Lengkapi kalimat:",
+    "correct": "Benar!",
+    "incorrectAnswer": "Salah. Jawabannya: {answer}",
+    "next": "Selanjutnya →",
+    "finish": "Selesai",
+    "score": "Skor",
+    "listenAndSpell": "Dengar dan eja",
+    "definition": "Definisi",
+    "typeTheWord": "Ketik kata...",
+    "check": "Periksa",
+    "correctSpelling": "Ejaan benar",
+    "perfectSpelling": "Ejaan sempurna!",
+    "yourWordBank": "Bank Katamu",
+    "typeDefinition": "What does this word mean?",
+    "typeYourAnswer": "Type the definition...",
+    "notQuite": "Not quite — see the correct answer below",
+    "subscriptionRequired": "Active subscription required to generate vocabulary words. Start your free trial from the dashboard!",
+    "generateError": "Failed to generate words. Please try again.",
+    "exampleUsage": "Example Usage",
+    "catSports": "Olahraga",
+    "catFood": "Makanan & Dapur"
   },
   "common": {
     "loading": "Memuat...",

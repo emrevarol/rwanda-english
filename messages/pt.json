@@ -11,7 +11,8 @@
     "register": "Cadastrar",
     "logout": "Sair",
     "dailyPlan": "Plano Diário",
-    "friends": "Amigos"
+    "friends": "Amigos",
+    "vocabulary": "Vocabulário"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "Código de indicação (opcional)",
+      "referralPlaceholder": "ex. A3F2B1C9"
     },
     "verify": {
       "title": "Verifique Seu E-mail",
@@ -371,11 +374,14 @@
     "feedback": {
       "title": "Feedback da IA",
       "score": "Nota de Fluência",
-      "fluency": "Fluência",
+      "fluency": "Fluência e ritmo",
       "grammar": "Gramática",
       "vocabulary": "Vocabulário",
       "model": "Resposta Modelo",
-      "overall": "Feedback Geral"
+      "overall": "Feedback Geral",
+      "pronunciation": "Pronúncia",
+      "intonation": "Entonação e ritmo",
+      "fillerAnalysis": "Análise de palavras de preenchimento"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "Ciência",
     "topicCulture": "Cultura",
     "topicHealth": "Saúde",
-    "topicEducation": "Educação"
+    "topicEducation": "Educação",
+    "backToPlan": "Voltar ao plano"
   },
   "tutor": {
     "title": "Tutor IA",
@@ -479,7 +486,72 @@
     "listening": "Compreensão Auditiva",
     "downloadImage": "Salvar Imagem",
     "copyText": "Copiar Texto",
-    "copied": "Copiado!"
+    "copied": "Copiado!",
+    "inviteTitle": "Convide amigos, ganhe dias grátis!",
+    "inviteSubtitle": "Compartilhe seu código. Quando um amigo vira premium, você ganha 7 dias!",
+    "invited": "Convidados",
+    "daysEarned": "Dias ganhos",
+    "copyLink": "Copiar link",
+    "totalLearners": "alunos",
+    "noResults": "Nenhum usuário encontrado.",
+    "prev": "Anterior",
+    "next": "Próximo"
+  },
+  "vocabulary": {
+    "title": "Construtor de Vocabulário",
+    "subtitle": "Aprenda novas palavras com jogos divertidos",
+    "loginMessage": "Faça login para praticar vocabulário.",
+    "totalWords": "Total de Palavras",
+    "mastered": "Dominadas",
+    "learning": "Aprendendo",
+    "newWords": "Novas",
+    "new": "Nova",
+    "chooseCategory": "Escolha a Categoria",
+    "catGeneral": "Geral",
+    "catAcademic": "Acadêmico",
+    "catBusiness": "Negócios",
+    "catIdioms": "Expressões",
+    "catPhrasal": "Phrasal Verbs",
+    "catTravel": "Viagens",
+    "flashcards": "Flashcards",
+    "flashcardsDesc": "Aprenda palavras virando cartões.",
+    "wordMatch": "Combinar",
+    "wordMatchDesc": "Combine palavras com suas definições!",
+    "fillInBlank": "Preencher",
+    "fillInBlankDesc": "Complete frases com a palavra correta.",
+    "spellingBee": "Soletrar",
+    "spellingBeeDesc": "Ouça a palavra e soletre corretamente!",
+    "generatingWords": "Gerando palavras para seu nível...",
+    "backToMenu": "← Voltar",
+    "tapToFlip": "Toque para ver a definição",
+    "stillLearning": "Ainda Aprendendo",
+    "knowIt": "Eu Sei!",
+    "matched": "combinadas",
+    "allMatched": "Todas Combinadas!",
+    "matchScore": "Você combinou {score} de {total}!",
+    "words": "Palavras",
+    "definitions": "Definições",
+    "completeTheSentence": "Complete a frase:",
+    "correct": "Correto!",
+    "incorrectAnswer": "Incorreto. A resposta é: {answer}",
+    "next": "Próximo →",
+    "finish": "Finalizar",
+    "score": "Pontuação",
+    "listenAndSpell": "Ouça e soletre",
+    "definition": "Definição",
+    "typeTheWord": "Digite a palavra...",
+    "check": "Verificar",
+    "correctSpelling": "Ortografia correta",
+    "perfectSpelling": "Ortografia perfeita!",
+    "yourWordBank": "Seu Banco de Palavras",
+    "typeDefinition": "O que esta palavra significa?",
+    "typeYourAnswer": "Digite a definição...",
+    "notQuite": "Não exatamente — veja a resposta correta abaixo",
+    "subscriptionRequired": "Assinatura ativa necessária para gerar palavras. Inicie seu teste gratuito no painel!",
+    "generateError": "Falha ao gerar palavras. Tente novamente.",
+    "exampleUsage": "Exemplo de uso",
+    "catSports": "Esportes",
+    "catFood": "Comida & Cozinha"
   },
   "common": {
     "loading": "Carregando...",

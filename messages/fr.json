@@ -11,7 +11,8 @@
     "register": "S'inscrire",
     "logout": "Déconnexion",
     "dailyPlan": "Plan du jour",
-    "friends": "Amis"
+    "friends": "Amis",
+    "vocabulary": "Vocabulaire"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "Code de parrainage (optionnel)",
+      "referralPlaceholder": "ex. A3F2B1C9"
     },
     "verify": {
       "title": "Vérifiez votre e-mail",
@@ -371,11 +374,14 @@
     "feedback": {
       "title": "Retours IA",
       "score": "Score de fluidité",
-      "fluency": "Fluidité",
+      "fluency": "Fluidité et rythme",
       "grammar": "Grammaire",
       "vocabulary": "Vocabulaire",
       "model": "Réponse modèle",
-      "overall": "Retour global"
+      "overall": "Retour global",
+      "pronunciation": "Prononciation",
+      "intonation": "Intonation et rythme",
+      "fillerAnalysis": "Analyse des mots de remplissage"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "Science",
     "topicCulture": "Culture",
     "topicHealth": "Santé",
-    "topicEducation": "Éducation"
+    "topicEducation": "Éducation",
+    "backToPlan": "Retour au plan"
   },
   "tutor": {
     "title": "Tuteur IA",
@@ -479,7 +486,72 @@
     "listening": "Compréhension orale",
     "downloadImage": "Enregistrer l'image",
     "copyText": "Copier le texte",
-    "copied": "Copié !"
+    "copied": "Copié !",
+    "inviteTitle": "Invitez des amis, gagnez des jours gratuits !",
+    "inviteSubtitle": "Partagez votre code. Quand un ami passe premium, vous gagnez 7 jours !",
+    "invited": "Invités",
+    "daysEarned": "Jours gagnés",
+    "copyLink": "Copier le lien",
+    "totalLearners": "apprenants",
+    "noResults": "Aucun utilisateur trouvé.",
+    "prev": "Précédent",
+    "next": "Suivant"
+  },
+  "vocabulary": {
+    "title": "Constructeur de Vocabulaire",
+    "subtitle": "Apprends de nouveaux mots avec des jeux amusants",
+    "loginMessage": "Connectez-vous pour pratiquer le vocabulaire.",
+    "totalWords": "Total des Mots",
+    "mastered": "Maîtrisés",
+    "learning": "En apprentissage",
+    "newWords": "Nouveaux",
+    "new": "Nouveau",
+    "chooseCategory": "Choisir la Catégorie",
+    "catGeneral": "Général",
+    "catAcademic": "Académique",
+    "catBusiness": "Affaires",
+    "catIdioms": "Expressions",
+    "catPhrasal": "Verbes à Particule",
+    "catTravel": "Voyage",
+    "flashcards": "Cartes Flash",
+    "flashcardsDesc": "Apprends des mots en retournant des cartes.",
+    "wordMatch": "Associer",
+    "wordMatchDesc": "Associe les mots à leurs définitions !",
+    "fillInBlank": "Trous à Compléter",
+    "fillInBlankDesc": "Complète les phrases avec le bon mot.",
+    "spellingBee": "Orthographe",
+    "spellingBeeDesc": "Écoute le mot et épelle-le correctement !",
+    "generatingWords": "Génération de mots pour ton niveau...",
+    "backToMenu": "← Retour",
+    "tapToFlip": "Appuie pour voir la définition",
+    "stillLearning": "Encore en apprentissage",
+    "knowIt": "Je le sais !",
+    "matched": "associés",
+    "allMatched": "Tous associés !",
+    "matchScore": "Tu as associé {score} sur {total} !",
+    "words": "Mots",
+    "definitions": "Définitions",
+    "completeTheSentence": "Complète la phrase :",
+    "correct": "Correct !",
+    "incorrectAnswer": "Incorrect. La réponse est : {answer}",
+    "next": "Suivant →",
+    "finish": "Terminer",
+    "score": "Score",
+    "listenAndSpell": "Écoute et épelle",
+    "definition": "Définition",
+    "typeTheWord": "Tape le mot...",
+    "check": "Vérifier",
+    "correctSpelling": "Orthographe correcte",
+    "perfectSpelling": "Orthographe parfaite !",
+    "yourWordBank": "Ta Banque de Mots",
+    "typeDefinition": "Que signifie ce mot ?",
+    "typeYourAnswer": "Tapez la définition...",
+    "notQuite": "Pas tout à fait — voir la bonne réponse ci-dessous",
+    "subscriptionRequired": "Abonnement actif requis pour générer des mots. Commencez votre essai gratuit depuis le tableau de bord !",
+    "generateError": "Échec de la génération de mots. Veuillez réessayer.",
+    "exampleUsage": "Exemple d'utilisation",
+    "catSports": "Sports",
+    "catFood": "Cuisine & Alimentation"
   },
   "common": {
     "loading": "Chargement...",

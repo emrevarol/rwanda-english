@@ -11,7 +11,8 @@
     "register": "新規登録",
     "logout": "ログアウト",
     "dailyPlan": "デイリープラン",
-    "friends": "フレンド"
+    "friends": "フレンド",
+    "vocabulary": "語彙"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "紹介コード（任意）",
+      "referralPlaceholder": "例 A3F2B1C9"
     },
     "verify": {
       "title": "メールアドレスを確認",
@@ -371,11 +374,14 @@
     "feedback": {
       "title": "AIフィードバック",
       "score": "流暢さスコア",
-      "fluency": "流暢さ",
+      "fluency": "流暢さとペース",
       "grammar": "文法",
       "vocabulary": "語彙",
       "model": "模範解答",
-      "overall": "総合フィードバック"
+      "overall": "総合フィードバック",
+      "pronunciation": "発音",
+      "intonation": "イントネーションとリズム",
+      "fillerAnalysis": "フィラーワード分析"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "科学",
     "topicCulture": "文化",
     "topicHealth": "健康",
-    "topicEducation": "教育"
+    "topicEducation": "教育",
+    "backToPlan": "プランに戻る"
   },
   "tutor": {
     "title": "AIチューター",
@@ -479,7 +486,72 @@
     "listening": "リスニング",
     "downloadImage": "画像を保存",
     "copyText": "テキストをコピー",
-    "copied": "コピーしました！"
+    "copied": "コピーしました！",
+    "inviteTitle": "友達を招待して無料日数を獲得！",
+    "inviteSubtitle": "コードを共有。友達がプレミアムになると7日間無料！",
+    "invited": "招待済み",
+    "daysEarned": "獲得日数",
+    "copyLink": "リンクをコピー",
+    "totalLearners": "学習者",
+    "noResults": "ユーザーが見つかりません。",
+    "prev": "前へ",
+    "next": "次へ"
+  },
+  "vocabulary": {
+    "title": "語彙ビルダー",
+    "subtitle": "楽しいゲームで新しい単語を学ぼう",
+    "loginMessage": "ログインして語彙を練習してください。",
+    "totalWords": "総単語数",
+    "mastered": "習得済み",
+    "learning": "学習中",
+    "newWords": "新規",
+    "new": "新規",
+    "chooseCategory": "カテゴリを選択",
+    "catGeneral": "一般",
+    "catAcademic": "アカデミック",
+    "catBusiness": "ビジネス",
+    "catIdioms": "イディオム",
+    "catPhrasal": "句動詞",
+    "catTravel": "旅行",
+    "flashcards": "フラッシュカード",
+    "flashcardsDesc": "カードをめくって単語を学習。",
+    "wordMatch": "単語マッチ",
+    "wordMatchDesc": "単語と定義をマッチさせよう！",
+    "fillInBlank": "穴埋め",
+    "fillInBlankDesc": "正しい単語で文を完成させよう。",
+    "spellingBee": "スペリング",
+    "spellingBeeDesc": "単語を聞いて正しくスペルしよう！",
+    "generatingWords": "レベルに合った単語を生成中...",
+    "backToMenu": "← 戻る",
+    "tapToFlip": "タップして定義を表示",
+    "stillLearning": "まだ学習中",
+    "knowIt": "知ってる！",
+    "matched": "マッチ",
+    "allMatched": "全てマッチ！",
+    "matchScore": "{total}個中{score}個マッチ！",
+    "words": "単語",
+    "definitions": "定義",
+    "completeTheSentence": "文を完成させてください：",
+    "correct": "正解！",
+    "incorrectAnswer": "不正解。答えは：{answer}",
+    "next": "次へ →",
+    "finish": "終了",
+    "score": "スコア",
+    "listenAndSpell": "聞いてスペルしよう",
+    "definition": "定義",
+    "typeTheWord": "単語を入力...",
+    "check": "チェック",
+    "correctSpelling": "正しいスペル",
+    "perfectSpelling": "完璧なスペル！",
+    "yourWordBank": "マイ単語帳",
+    "typeDefinition": "この単語の意味は？",
+    "typeYourAnswer": "定義を入力...",
+    "notQuite": "惜しい！正解は下をご覧ください",
+    "subscriptionRequired": "単語を生成するにはアクティブなサブスクリプションが必要です。ダッシュボードから無料トライアルを開始！",
+    "generateError": "単語の生成に失敗しました。もう一度お試しください。",
+    "exampleUsage": "使用例",
+    "catSports": "スポーツ",
+    "catFood": "食べ物と料理"
   },
   "common": {
     "loading": "読み込み中...",

@@ -11,7 +11,8 @@
     "register": "Registrati",
     "logout": "Esci",
     "dailyPlan": "Piano Giornaliero",
-    "friends": "Amici"
+    "friends": "Amici",
+    "vocabulary": "Vocabolario"
   },
   "landing": {
     "hero": {
@@ -159,7 +160,9 @@
       "langFrench": "Français",
       "langItalian": "Italiano",
       "langRussian": "Русский",
-      "langPolish": "Polski"
+      "langPolish": "Polski",
+      "referralCode": "Codice referral (opzionale)",
+      "referralPlaceholder": "es. A3F2B1C9"
     },
     "verify": {
       "title": "Verifica la Tua Email",
@@ -375,7 +378,10 @@
       "grammar": "Grammatica",
       "vocabulary": "Vocabolario",
       "model": "Risposta Modello",
-      "overall": "Feedback Complessivo"
+      "overall": "Feedback Complessivo",
+      "pronunciation": "Pronunciation",
+      "intonation": "Intonation & Rhythm",
+      "fillerAnalysis": "Filler Word Analysis"
     }
   },
   "listening": {
@@ -412,7 +418,8 @@
     "topicScience": "Scienza",
     "topicCulture": "Cultura",
     "topicHealth": "Salute",
-    "topicEducation": "Istruzione"
+    "topicEducation": "Istruzione",
+    "backToPlan": "Back to Plan"
   },
   "tutor": {
     "title": "Tutor IA",
@@ -479,7 +486,72 @@
     "listening": "Ascolto",
     "downloadImage": "Salva Immagine",
     "copyText": "Copia Testo",
-    "copied": "Copiato!"
+    "copied": "Copiato!",
+    "inviteTitle": "Invita amici, guadagna giorni gratis!",
+    "inviteSubtitle": "Condividi il tuo codice. Quando un amico diventa premium, ottieni 7 giorni gratis!",
+    "invited": "Invitati",
+    "daysEarned": "Giorni guadagnati",
+    "copyLink": "Copia link",
+    "totalLearners": "studenti",
+    "noResults": "Nessun utente trovato.",
+    "prev": "Precedente",
+    "next": "Successivo"
+  },
+  "vocabulary": {
+    "title": "Costruttore di Vocabolario",
+    "subtitle": "Impara nuove parole con giochi divertenti",
+    "loginMessage": "Accedi per praticare il vocabolario.",
+    "totalWords": "Parole Totali",
+    "mastered": "Padroneggiato",
+    "learning": "In apprendimento",
+    "newWords": "Nuove",
+    "new": "Nuova",
+    "chooseCategory": "Scegli Categoria",
+    "catGeneral": "Generale",
+    "catAcademic": "Accademico",
+    "catBusiness": "Business",
+    "catIdioms": "Modi di dire",
+    "catPhrasal": "Phrasal Verbs",
+    "catTravel": "Viaggio",
+    "flashcards": "Flashcard",
+    "flashcardsDesc": "Impara le parole girando le carte.",
+    "wordMatch": "Abbinamento",
+    "wordMatchDesc": "Abbina le parole alle definizioni!",
+    "fillInBlank": "Riempi gli Spazi",
+    "fillInBlankDesc": "Completa le frasi con la parola giusta.",
+    "spellingBee": "Ortografia",
+    "spellingBeeDesc": "Ascolta la parola e scrivila correttamente!",
+    "generatingWords": "Generazione parole per il tuo livello...",
+    "backToMenu": "← Indietro",
+    "tapToFlip": "Tocca per vedere la definizione",
+    "stillLearning": "Ancora in apprendimento",
+    "knowIt": "Lo So!",
+    "matched": "abbinati",
+    "allMatched": "Tutti Abbinati!",
+    "matchScore": "Hai abbinato {score} su {total}!",
+    "words": "Parole",
+    "definitions": "Definizioni",
+    "completeTheSentence": "Completa la frase:",
+    "correct": "Corretto!",
+    "incorrectAnswer": "Sbagliato. La risposta è: {answer}",
+    "next": "Avanti →",
+    "finish": "Fine",
+    "score": "Punteggio",
+    "listenAndSpell": "Ascolta e scrivi",
+    "definition": "Definizione",
+    "typeTheWord": "Scrivi la parola...",
+    "check": "Controlla",
+    "correctSpelling": "Ortografia corretta",
+    "perfectSpelling": "Ortografia perfetta!",
+    "yourWordBank": "La Tua Banca Parole",
+    "typeDefinition": "What does this word mean?",
+    "typeYourAnswer": "Type the definition...",
+    "notQuite": "Not quite — see the correct answer below",
+    "subscriptionRequired": "Active subscription required to generate vocabulary words. Start your free trial from the dashboard!",
+    "generateError": "Failed to generate words. Please try again.",
+    "exampleUsage": "Example Usage",
+    "catSports": "Sport",
+    "catFood": "Cibo & Cucina"
   },
   "common": {
     "loading": "Caricamento...",

@@ -22,7 +22,7 @@ export default function TutorPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <Navigation />
-      <div className="flex-1 max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 flex flex-col">
+      <div className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 flex flex-col">
         <div className="mb-4">
           <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
           <p className="text-gray-500 text-sm">

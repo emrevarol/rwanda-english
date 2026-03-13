@@ -1,13 +1,14 @@
 'use client'
 
 import { useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import Navigation from '@/components/shared/Navigation'
 import ListeningPlayer from '@/components/listening/ListeningPlayer'
 
 export default function ListeningPage() {
   const t = useTranslations('listening')
+  const locale = useLocale()
   const { data: session, status } = useSession()
 
   if (status === 'unauthenticated') {
@@ -28,7 +29,7 @@ export default function ListeningPage() {
             {t('level')} <span className="font-medium text-blue-600">{session?.user?.level}</span>
           </p>
         </div>
-        <ListeningPlayer />
+        <ListeningPlayer locale={locale} />
       </div>
     </div>
   )

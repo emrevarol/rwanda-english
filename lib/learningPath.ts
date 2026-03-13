@@ -70,7 +70,7 @@ const TASK_POOL: Record<TaskType, TaskPoolEntry> = {
     type: 'vocabulary',
     titleKey: 'taskTitles.vocabulary',
     duration: 15,
-    href: '/tutor',
+    href: '/vocabulary',
     icon: '📚',
     color: 'orange',
   },
@@ -126,17 +126,32 @@ const TASK_DESCRIPTIONS: Record<TaskType, (day: number, level: string) => string
     return t[day % t.length]
   },
   vocabulary: (day, level) => {
-    const sessions: Record<string, string[]> = {
-      A1: ['Learn 5 everyday words', 'Practice common verbs'],
-      A2: ['Learn workplace vocabulary', 'Practice adjectives'],
-      B1: ['Academic word list — Group ' + ((day % 10) + 1), 'Connective phrases for essays'],
-      B2: ['Advanced business vocabulary', 'Idiomatic expressions for professionals'],
-      C1: ['Technical vocabulary for your field', 'Rhetorical devices and discourse markers'],
-      C2: ['Nuanced academic register', 'Collocations and fixed phrases'],
+    // Each entry: [description, category for query param]
+    const sessions: Record<string, Array<[string, string]>> = {
+      A1: [['Learn 5 everyday words', 'general'], ['Practice common verbs', 'general']],
+      A2: [['Learn workplace vocabulary', 'business'], ['Practice travel phrases', 'travel']],
+      B1: [['Academic vocabulary practice', 'academic'], ['Phrasal verbs workout', 'phrasal']],
+      B2: [['Business vocabulary builder', 'business'], ['Idiomatic expressions', 'idioms']],
+      C1: [['Advanced academic vocabulary', 'academic'], ['Professional idioms & expressions', 'idioms']],
+      C2: [['Nuanced academic register', 'academic'], ['Advanced idiomatic expressions', 'idioms']],
     }
     const t = sessions[level] || sessions['B1']
-    return t[day % t.length]
+    return t[day % t.length][0]
   },
+}
+
+// Get vocabulary category for a given day/level (used for query params)
+export function getVocabCategory(day: number, level: string): string {
+  const sessions: Record<string, Array<[string, string]>> = {
+    A1: [['', 'general'], ['', 'general']],
+    A2: [['', 'business'], ['', 'travel']],
+    B1: [['', 'academic'], ['', 'phrasal']],
+    B2: [['', 'business'], ['', 'idioms']],
+    C1: [['', 'academic'], ['', 'idioms']],
+    C2: [['', 'academic'], ['', 'idioms']],
+  }
+  const t = sessions[level] || sessions['B1']
+  return t[day % t.length][1]
 }
 
 export function getDayPlan(dayNumber: number, level: string): DayPlan {
@@ -144,10 +159,16 @@ export function getDayPlan(dayNumber: number, level: string): DayPlan {
   const pattern = WEEKLY_PATTERNS[weekIndex]
   const week = Math.ceil(dayNumber / 7)
 
-  const makeTask = (type: TaskType): DayTask => ({
-    ...TASK_POOL[type],
-    description: TASK_DESCRIPTIONS[type](dayNumber, level),
-  })
+  const makeTask = (type: TaskType): DayTask => {
+    const base = {
+      ...TASK_POOL[type],
+      description: TASK_DESCRIPTIONS[type](dayNumber, level),
+    }
+    if (type === 'vocabulary') {
+      base.href = `/vocabulary?category=${getVocabCategory(dayNumber, level)}`
+    }
+    return base
+  }
 
   return {
     day: dayNumber,
