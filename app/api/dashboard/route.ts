@@ -34,8 +34,9 @@ export async function GET(req: NextRequest) {
     // Vocab queries — isolated so they can't break the main dashboard
     let vocabTotal = 0
     let vocabMastered = 0
+    let vocabAccuracy: number | null = null
     let vocabRecent: Array<{ id: string; word: string; mastery: number; lastSeen: Date }> = []
-    let vocabAllProgress: Array<{ mastery: number; lastSeen: Date }> = []
+    let vocabAllProgress: Array<{ mastery: number; lastSeen: Date; correct: number; incorrect: number }> = []
     try {
       const [vt, vm, vr, vAll] = await Promise.all([
         prisma.vocabularyProgress.count({ where: { userId: session.user.id } }),
@@ -48,13 +49,19 @@ export async function GET(req: NextRequest) {
         }),
         prisma.vocabularyProgress.findMany({
           where: { userId: session.user.id },
-          select: { mastery: true, lastSeen: true },
+          select: { mastery: true, lastSeen: true, correct: true, incorrect: true },
         }),
       ])
       vocabTotal = vt
       vocabMastered = vm
       vocabRecent = vr
       vocabAllProgress = vAll
+
+      // Calculate accuracy from correct/incorrect answers
+      const totalCorrect = vAll.reduce((s, v) => s + (v.correct || 0), 0)
+      const totalIncorrect = vAll.reduce((s, v) => s + (v.incorrect || 0), 0)
+      const totalAttempts = totalCorrect + totalIncorrect
+      vocabAccuracy = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : null
     } catch (vocabErr) {
       console.error('Dashboard vocab query error:', vocabErr)
     }
@@ -169,6 +176,7 @@ export async function GET(req: NextRequest) {
       avgListening: Math.round(avgListening * 10) / 10,
       avgVocabulary: avgVocabularyWriting != null ? Math.round(avgVocabularyWriting * 10) / 10 : null,
       vocabMasteryPct,
+      vocabAccuracy,
       vocabTotal,
       vocabMastered,
       avgGrammar: avgGrammar != null ? Math.round(avgGrammar * 10) / 10 : null,

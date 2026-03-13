@@ -35,6 +35,7 @@ interface DashboardData {
   avgVocabulary: number | null
   avgGrammar: number | null
   vocabMasteryPct: number | null
+  vocabAccuracy: number | null
   vocabTotal: number
   vocabMastered: number
   writingHistory: Array<{ date: string; score: number }>
@@ -93,13 +94,15 @@ export default function DashboardPage() {
     C2: 'bg-purple-100 text-purple-700',
   }
 
-  // Vocabulary: prefer vocab practice mastery, then writing sub-score, then writing band
+  // Vocabulary: prefer accuracy (correct/total answers), then mastery, then writing sub-score
   const vocabPct = data
-    ? data.vocabMasteryPct != null
-      ? data.vocabMasteryPct
-      : data.avgVocabulary != null
-        ? (data.avgVocabulary / 9) * 100
-        : (data.avgWriting / 9) * 100
+    ? data.vocabAccuracy != null
+      ? data.vocabAccuracy
+      : data.vocabMasteryPct != null
+        ? data.vocabMasteryPct
+        : data.avgVocabulary != null
+          ? (data.avgVocabulary / 9) * 100
+          : (data.avgWriting / 9) * 100
     : 0
   const grammarPct = data
     ? data.avgGrammar != null
