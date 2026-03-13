@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+import { sendFriendRequestEmail } from '@/lib/email'
 
 // GET: list friends (accepted) + pending requests
 export async function GET() {
@@ -51,9 +52,18 @@ export async function POST(req: NextRequest) {
   })
   if (existing) return NextResponse.json({ error: 'Already exists' }, { status: 400 })
 
-  const friendship = await prisma.friendship.create({
-    data: { userId: session.user.id, friendId },
-  })
+  const [friendship, friend, sender] = await Promise.all([
+    prisma.friendship.create({
+      data: { userId: session.user.id, friendId },
+    }),
+    prisma.user.findUnique({ where: { id: friendId }, select: { email: true, name: true } }),
+    prisma.user.findUnique({ where: { id: session.user.id }, select: { name: true } }),
+  ])
+
+  // Send email notification (fire & forget)
+  if (friend?.email && sender?.name) {
+    sendFriendRequestEmail(friend.email, friend.name, sender.name)
+  }
 
   return NextResponse.json(friendship)
 }
