@@ -35,8 +35,9 @@ export async function GET(req: NextRequest) {
     let vocabTotal = 0
     let vocabMastered = 0
     let vocabRecent: Array<{ id: string; word: string; mastery: number; lastSeen: Date }> = []
+    let vocabAllProgress: Array<{ mastery: number; lastSeen: Date }> = []
     try {
-      const [vt, vm, vr] = await Promise.all([
+      const [vt, vm, vr, vAll] = await Promise.all([
         prisma.vocabularyProgress.count({ where: { userId: session.user.id } }),
         prisma.vocabularyProgress.count({ where: { userId: session.user.id, mastery: { gte: 3 } } }),
         prisma.vocabularyProgress.findMany({
@@ -45,13 +46,34 @@ export async function GET(req: NextRequest) {
           take: 5,
           select: { id: true, word: true, mastery: true, lastSeen: true },
         }),
+        prisma.vocabularyProgress.findMany({
+          where: { userId: session.user.id },
+          select: { mastery: true, lastSeen: true },
+        }),
       ])
       vocabTotal = vt
       vocabMastered = vm
       vocabRecent = vr
+      vocabAllProgress = vAll
     } catch (vocabErr) {
       console.error('Dashboard vocab query error:', vocabErr)
     }
+
+    // Aggregate vocab mastery by date for progress chart
+    const vocabByDate = new Map<string, { total: number; sum: number }>()
+    for (const v of vocabAllProgress) {
+      const dateKey = v.lastSeen.toISOString().split('T')[0]
+      const entry = vocabByDate.get(dateKey) || { total: 0, sum: 0 }
+      entry.total++
+      entry.sum += v.mastery
+      vocabByDate.set(dateKey, entry)
+    }
+    const vocabHistoryData = Array.from(vocabByDate.entries())
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([date, { total, sum }]) => ({
+        date: new Date(date).toISOString(),
+        score: (sum / total / 3) * 10, // normalize to 0-10 scale
+      }))
 
     const avgWriting = writing.length > 0
       ? writing.reduce((sum, w) => sum + w.band, 0) / writing.length
@@ -153,7 +175,7 @@ export async function GET(req: NextRequest) {
       writingHistory: writing.map(w => ({ date: w.createdAt, score: w.band })),
       speakingHistory: speaking.map(s => ({ date: s.createdAt, score: s.score })),
       listeningHistory: listening.map(l => ({ date: l.createdAt, score: l.score })),
-      vocabHistory: vocabRecent.map(v => ({ date: v.lastSeen, score: (v.mastery / 3) * 10 })),
+      vocabHistory: vocabHistoryData,
       recentActivity,
     })
   } catch (error) {
