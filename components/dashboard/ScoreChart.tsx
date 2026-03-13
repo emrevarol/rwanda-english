@@ -22,13 +22,14 @@ interface Props {
   speakingData: ScoreEntry[]
   listeningData?: ScoreEntry[]
   vocabData?: ScoreEntry[]
+  grammarData?: ScoreEntry[]
 }
 
-export default function ScoreChart({ writingData, speakingData, listeningData = [], vocabData = [] }: Props) {
+export default function ScoreChart({ writingData, speakingData, listeningData = [], vocabData = [], grammarData = [] }: Props) {
   const t = useTranslations('dashboard')
   const locale = useLocale()
 
-  if (writingData.length === 0 && speakingData.length === 0 && listeningData.length === 0 && vocabData.length === 0) {
+  if (writingData.length === 0 && speakingData.length === 0 && listeningData.length === 0 && vocabData.length === 0 && grammarData.length === 0) {
     return (
       <div className="h-48 flex items-center justify-center text-gray-400 text-sm">
         {t('noDataYet')}
@@ -37,7 +38,7 @@ export default function ScoreChart({ writingData, speakingData, listeningData = 
   }
 
   // Merge all dates and create a timeline
-  const dateMap = new Map<string, { writing?: number; speaking?: number; listening?: number; vocab?: number }>()
+  const dateMap = new Map<string, { writing?: number; speaking?: number; listening?: number; vocab?: number; grammar?: number }>()
 
   for (const w of writingData) {
     const dateStr = new Date(w.date).toLocaleDateString(locale, { day: 'numeric', month: 'short' })
@@ -63,8 +64,14 @@ export default function ScoreChart({ writingData, speakingData, listeningData = 
     existing.vocab = v.score
     dateMap.set(dateStr, existing)
   }
+  for (const g of grammarData) {
+    const dateStr = new Date(g.date).toLocaleDateString(locale, { day: 'numeric', month: 'short' })
+    const existing = dateMap.get(dateStr) || {}
+    existing.grammar = g.score
+    dateMap.set(dateStr, existing)
+  }
 
-  const allEntries: Array<{ date: string; writing?: number; speaking?: number; listening?: number; vocab?: number }> = []
+  const allEntries: Array<{ date: string; writing?: number; speaking?: number; listening?: number; vocab?: number; grammar?: number }> = []
   for (const [date, scores] of dateMap) {
     allEntries.push({ date, ...scores })
   }
@@ -75,6 +82,7 @@ export default function ScoreChart({ writingData, speakingData, listeningData = 
     ...speakingData.map(s => s.date),
     ...listeningData.map(l => l.date),
     ...vocabData.map(v => v.date),
+    ...grammarData.map(g => g.date),
   ].sort()
   const sortedEntries = allEntries.sort((a, b) => {
     const aIdx = allDates.findIndex(d => new Date(d).toLocaleDateString(locale, { day: 'numeric', month: 'short' }) === a.date)
@@ -86,6 +94,7 @@ export default function ScoreChart({ writingData, speakingData, listeningData = 
   const speakingLabel = `${t('speaking')} (/10)`
   const listeningLabel = `${t('listening')} (%)`
   const vocabLabel = `${t('vocabulary')} (/10)`
+  const grammarLabel = `${t('grammar')} (/9)`
 
   const combined = sortedEntries.map((entry) => ({
     date: entry.date,
@@ -93,6 +102,7 @@ export default function ScoreChart({ writingData, speakingData, listeningData = 
     [speakingLabel]: entry.speaking,
     [listeningLabel]: entry.listening != null ? Math.round(entry.listening / 10) : undefined,
     [vocabLabel]: entry.vocab != null ? Math.round(entry.vocab * 10) / 10 : undefined,
+    [grammarLabel]: entry.grammar,
   }))
 
   return (
@@ -114,6 +124,7 @@ export default function ScoreChart({ writingData, speakingData, listeningData = 
           formatter={(value, name) => {
             if (typeof name === 'string' && name.includes('%')) return [`${Number(value) * 10}%`, t('listening')]
             if (typeof name === 'string' && name.includes(t('vocabulary'))) return [`${value}/10`, t('vocabulary')]
+            if (typeof name === 'string' && name.includes(t('grammar'))) return [`${value}/9`, t('grammar')]
             return [value, name]
           }}
         />
@@ -122,6 +133,7 @@ export default function ScoreChart({ writingData, speakingData, listeningData = 
         <Line type="monotone" dataKey={speakingLabel} stroke="#16a34a" strokeWidth={2} dot={{ r: 4 }} connectNulls />
         <Line type="monotone" dataKey={listeningLabel} stroke="#9333ea" strokeWidth={2} dot={{ r: 4 }} connectNulls />
         <Line type="monotone" dataKey={vocabLabel} stroke="#f59e0b" strokeWidth={2} dot={{ r: 4 }} connectNulls />
+        <Line type="monotone" dataKey={grammarLabel} stroke="#ef4444" strokeWidth={2} dot={{ r: 4 }} connectNulls />
       </LineChart>
     </ResponsiveContainer>
   )

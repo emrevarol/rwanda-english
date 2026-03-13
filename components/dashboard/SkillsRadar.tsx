@@ -12,33 +12,52 @@ import {
 interface SkillData {
   subject: string
   value: number
-  color?: string
+  color: string
 }
 
-const SKILL_COLORS: Record<string, string> = {
-  Writing: '#2563eb',
-  Speaking: '#16a34a',
-  Listening: '#9333ea',
-  Vocabulary: '#f59e0b',
-  Grammar: '#ef4444',
-  Vocab: '#f59e0b',
-}
+function ColoredTick(props: any) {
+  const { x, y, payload, index } = props
+  // Access color from the data via the chart's data prop
+  const colors = props.colors || []
+  const color = colors[index] || '#374151'
 
-function ColoredTick({ x, y, payload }: { x: number; y: number; payload: { value: string } }) {
-  const color = SKILL_COLORS[payload.value] || '#374151'
+  // Push labels outward from center
+  const cx = props.cx || 0
+  const cy = props.cy || 0
+  const dx = x - cx
+  const dy = y - cy
+  const dist = Math.sqrt(dx * dx + dy * dy)
+  const offset = 14
+  const nx = x + (dx / dist) * offset
+  const ny = y + (dy / dist) * offset
+
   return (
-    <text x={x} y={y} textAnchor="middle" fill={color} fontSize={12} fontWeight={600}>
+    <text
+      x={nx}
+      y={ny}
+      textAnchor="middle"
+      dominantBaseline="central"
+      fill={color}
+      fontSize={12}
+      fontWeight={600}
+    >
       {payload.value}
     </text>
   )
 }
 
 export default function SkillsRadar({ data }: { data: SkillData[] }) {
+  const colors = data.map(d => d.color)
+
   return (
     <ResponsiveContainer width="100%" height={280}>
-      <RadarChart data={data} outerRadius="70%">
+      <RadarChart data={data} outerRadius="65%">
         <PolarGrid />
-        <PolarAngleAxis dataKey="subject" tick={ColoredTick as any} tickLine={false} />
+        <PolarAngleAxis
+          dataKey="subject"
+          tick={(props: any) => <ColoredTick {...props} colors={colors} />}
+          tickLine={false}
+        />
         <PolarRadiusAxis domain={[0, 100]} tickCount={6} tick={{ fontSize: 9, fill: '#9ca3af' }} axisLine={false} />
         <Radar
           name="Skills"

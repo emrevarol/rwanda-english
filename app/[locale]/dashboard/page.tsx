@@ -42,6 +42,7 @@ interface DashboardData {
   speakingHistory: Array<{ date: string; score: number }>
   listeningHistory: Array<{ date: string; score: number }>
   vocabHistory: Array<{ date: string; score: number }>
+  grammarHistory: Array<{ date: string; score: number }>
   recentActivity: ActivityItem[]
 }
 
@@ -111,11 +112,11 @@ export default function DashboardPage() {
     : 0
 
   const skillsData = [
-    { subject: t('writing'), value: data ? (data.avgWriting / 9) * 100 : 0 },
-    { subject: t('speaking'), value: data ? data.avgSpeaking * 10 : 0 },
-    { subject: t('listening'), value: data ? data.avgListening : 0 },
-    { subject: t('vocabulary'), value: vocabPct },
-    { subject: t('grammar'), value: grammarPct },
+    { subject: t('writing'), value: data ? (data.avgWriting / 9) * 100 : 0, color: '#2563eb' },
+    { subject: t('speaking'), value: data ? data.avgSpeaking * 10 : 0, color: '#16a34a' },
+    { subject: t('listening'), value: data ? data.avgListening : 0, color: '#9333ea' },
+    { subject: t('vocabulary'), value: vocabPct, color: '#f59e0b' },
+    { subject: t('grammar'), value: grammarPct, color: '#ef4444' },
   ]
 
   return (
@@ -230,6 +231,7 @@ export default function DashboardPage() {
               speakingData={data?.speakingHistory || []}
               listeningData={data?.listeningHistory || []}
               vocabData={data?.vocabHistory || []}
+              grammarData={data?.grammarHistory || []}
             />
           </div>
         </div>

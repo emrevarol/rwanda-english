@@ -195,6 +195,9 @@ export async function GET(req: NextRequest) {
       speakingHistory: speaking.map(s => ({ date: s.createdAt, score: s.score })),
       listeningHistory: listening.map(l => ({ date: l.createdAt, score: l.score })),
       vocabHistory: vocabHistoryData,
+      grammarHistory: writing
+        .filter(w => w.grammarScore != null)
+        .map(w => ({ date: w.createdAt, score: w.grammarScore! })),
       recentActivity,
     })
   } catch (error) {
