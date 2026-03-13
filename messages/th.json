@@ -449,7 +449,8 @@
     "retry": "ลองอีกครั้ง",
     "searchChats": "ค้นหาแชท...",
     "yesterday": "เมื่อวาน",
-    "noResults": "ไม่พบแชท"
+    "noResults": "ไม่พบแชท",
+    "todaysFocus": "โฟกัสวันนี้"
   },
   "social": {
     "title": "เพื่อน & สังคม",

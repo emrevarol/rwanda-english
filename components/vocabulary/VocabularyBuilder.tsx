@@ -30,6 +30,8 @@ export default function VocabularyBuilder({ userLevel, initialCategory }: { user
   const [loading, setLoading] = useState(false)
   const [stats, setStats] = useState({ total: 0, mastered: 0, learning: 0, new_words: 0 })
   const [error, setError] = useState('')
+  const [elapsed, setElapsed] = useState(0)
+  const sessionStartRef = useRef<Date>(new Date())
 
   // Flashcard quiz state
   const [flashIndex, setFlashIndex] = useState(0)
@@ -129,7 +131,16 @@ export default function VocabularyBuilder({ userLevel, initialCategory }: { user
     } catch {}
   }
 
-  const onGameComplete = () => markDailyTaskDone('vocabulary')
+  // Timer
+  useEffect(() => {
+    sessionStartRef.current = new Date()
+    const timer = setInterval(() => {
+      setElapsed(Math.floor((Date.now() - sessionStartRef.current.getTime()) / 1000))
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const onGameComplete = () => markDailyTaskDone('vocabulary', Math.round(elapsed / 60))
 
   // --- FLASHCARDS (Quiz Mode) ---
   const startFlashcards = async () => {

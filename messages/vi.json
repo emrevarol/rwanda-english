@@ -449,7 +449,8 @@
     "retry": "Thử lại",
     "searchChats": "Tìm kiếm cuộc trò chuyện...",
     "yesterday": "Hôm qua",
-    "noResults": "Không tìm thấy cuộc trò chuyện nào."
+    "noResults": "Không tìm thấy cuộc trò chuyện nào.",
+    "todaysFocus": "Trọng tâm hôm nay"
   },
   "social": {
     "title": "Bạn bè & Xã hội",

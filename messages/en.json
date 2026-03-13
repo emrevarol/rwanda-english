@@ -434,7 +434,8 @@
     "retry": "Retry",
     "searchChats": "Search chats...",
     "yesterday": "Yesterday",
-    "noResults": "No chats found."
+    "noResults": "No chats found.",
+    "todaysFocus": "Today's Focus"
   },
   "social": {
     "title": "Friends & Social",

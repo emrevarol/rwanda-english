@@ -449,7 +449,8 @@
     "retry": "Erneut versuchen",
     "searchChats": "Chats durchsuchen...",
     "yesterday": "Gestern",
-    "noResults": "Keine Chats gefunden."
+    "noResults": "Keine Chats gefunden.",
+    "todaysFocus": "Heutiger Fokus"
   },
   "social": {
     "title": "Freunde & Soziales",

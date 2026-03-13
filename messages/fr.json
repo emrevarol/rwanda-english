@@ -449,7 +449,8 @@
     "retry": "Réessayer",
     "searchChats": "Rechercher des chats...",
     "yesterday": "Hier",
-    "noResults": "Aucun chat trouvé."
+    "noResults": "Aucun chat trouvé.",
+    "todaysFocus": "Focus du Jour"
   },
   "social": {
     "title": "Amis & Social",

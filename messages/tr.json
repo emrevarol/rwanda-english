@@ -449,7 +449,8 @@
     "retry": "Tekrar Dene",
     "searchChats": "Sohbetlerde ara...",
     "yesterday": "Dün",
-    "noResults": "Sohbet bulunamadı."
+    "noResults": "Sohbet bulunamadı.",
+    "todaysFocus": "Bugünün Odağı"
   },
   "social": {
     "title": "Arkadaşlar & Sosyal",

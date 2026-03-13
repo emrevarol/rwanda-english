@@ -449,7 +449,8 @@
     "retry": "再試行",
     "searchChats": "チャットを検索...",
     "yesterday": "昨日",
-    "noResults": "チャットが見つかりませんでした。"
+    "noResults": "チャットが見つかりませんでした。",
+    "todaysFocus": "今日のフォーカス"
   },
   "social": {
     "title": "フレンドとソーシャル",

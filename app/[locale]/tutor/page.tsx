@@ -1,8 +1,9 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { Link } from '@/i18n/navigation'
+import { useSearchParams } from 'next/navigation'
 import Navigation from '@/components/shared/Navigation'
 import ChatInterface from '@/components/tutor/ChatInterface'
 
@@ -10,6 +11,29 @@ export default function TutorPage() {
   const t = useTranslations('tutor')
   const tc = useTranslations('common')
   const { data: session, status } = useSession()
+  const searchParams = useSearchParams()
+  const [dailyContext, setDailyContext] = useState<string | null>(null)
+
+  // Get daily plan context if coming from learning path
+  useEffect(() => {
+    const ctx = searchParams.get('context')
+    if (ctx) {
+      setDailyContext(decodeURIComponent(ctx))
+    } else {
+      // Auto-fetch today's tutor task description
+      fetch('/api/learning-path/today')
+        .then(r => r.json())
+        .then(data => {
+          const plan = data.plan
+          if (plan?.task1?.type === 'tutor') {
+            setDailyContext(plan.task1.description)
+          } else if (plan?.task2?.type === 'tutor') {
+            setDailyContext(plan.task2.description)
+          }
+        })
+        .catch(() => {})
+    }
+  }, [searchParams])
 
   if (status === 'unauthenticated') {
     return (
@@ -34,6 +58,7 @@ export default function TutorPage() {
           <ChatInterface
             userName={session?.user?.name || 'Teacher'}
             userLevel={session?.user?.level || 'B1'}
+            dailyContext={dailyContext}
           />
         </div>
       </div>

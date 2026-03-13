@@ -248,7 +248,7 @@ export default function ListeningPlayer({ locale }: { locale?: string }) {
     })
 
     // Auto-mark daily plan task as done
-    markDailyTaskDone('listening')
+    markDailyTaskDone('listening', Math.round(elapsed / 60))
   }
 
   const answeredAll = content ? Object.keys(selectedAnswers).length === content.questions.length : false

@@ -449,7 +449,8 @@
     "retry": "재시도",
     "searchChats": "채팅 검색...",
     "yesterday": "어제",
-    "noResults": "채팅을 찾을 수 없습니다."
+    "noResults": "채팅을 찾을 수 없습니다.",
+    "todaysFocus": "오늘의 집중"
   },
   "social": {
     "title": "친구 및 소셜",

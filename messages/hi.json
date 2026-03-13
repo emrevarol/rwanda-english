@@ -449,7 +449,8 @@
     "retry": "पुनः प्रयास",
     "searchChats": "चैट खोजें...",
     "yesterday": "कल",
-    "noResults": "कोई चैट नहीं मिली।"
+    "noResults": "कोई चैट नहीं मिली।",
+    "todaysFocus": "आज का फोकस"
   },
   "social": {
     "title": "मित्र और सामाजिक",

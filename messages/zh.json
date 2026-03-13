@@ -449,7 +449,8 @@
     "retry": "重试",
     "searchChats": "搜索聊天...",
     "yesterday": "昨天",
-    "noResults": "未找到聊天记录。"
+    "noResults": "未找到聊天记录。",
+    "todaysFocus": "今日重点"
   },
   "social": {
     "title": "好友与社交",

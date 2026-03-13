@@ -89,7 +89,7 @@ export default function WritingEditor({
       } else {
         setFeedback(data)
         setTimerActive(false)
-        markDailyTaskDone(taskType === 'task1' ? 'writing-chart' : 'writing-essay')
+        markDailyTaskDone(taskType === 'task1' ? 'writing-chart' : 'writing-essay', Math.round(timer / 60))
       }
     } catch {
       setError('Connection error. Please check your internet and try again.')

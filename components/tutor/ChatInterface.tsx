@@ -29,17 +29,21 @@ function renderMarkdown(text: string) {
     .replace(/\n/g, '<br/>')
 }
 
-export default function ChatInterface({ userName, userLevel }: { userName: string; userLevel: string }) {
+export default function ChatInterface({ userName, userLevel, dailyContext }: { userName: string; userLevel: string; dailyContext?: string | null }) {
   const t = useTranslations('tutor')
 
-  const suggestions = [
-    t('suggestion1'), t('suggestion2'), t('suggestion3'), t('suggestion4'),
-    t('suggestion5'), t('suggestion6'), t('suggestion7'), t('suggestion8'),
-  ]
+  const suggestions = dailyContext
+    ? [dailyContext, t('suggestion1'), t('suggestion2'), t('suggestion3')]
+    : [t('suggestion1'), t('suggestion2'), t('suggestion3'), t('suggestion4'),
+       t('suggestion5'), t('suggestion6'), t('suggestion7'), t('suggestion8')]
+
+  const greetingText = dailyContext
+    ? t('greeting', { name: userName, level: userLevel }) + `\n\n**${t('todaysFocus')}:** ${dailyContext}`
+    : t('greeting', { name: userName, level: userLevel })
 
   const greeting: Message = {
     role: 'assistant',
-    content: t('greeting', { name: userName, level: userLevel }),
+    content: greetingText,
   }
 
   const [messages, setMessages] = useState<Message[]>([greeting])
@@ -51,11 +55,14 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
   const [sessions, setSessions] = useState<ChatSessionItem[]>([])
   const [showHistory, setShowHistory] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [elapsedSeconds, setElapsedSeconds] = useState(0)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const messagesContainerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const abortRef = useRef<AbortController | null>(null)
   const prevMessagesLenRef = useRef(1)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const sessionStartRef = useRef<Date>(new Date())
 
   // Smart scroll: new user message → scroll to bottom;
   // streaming assistant response → only scroll if user was already near bottom
@@ -81,6 +88,15 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
       }
     }
   }, [messages])
+
+  // Session timer
+  useEffect(() => {
+    sessionStartRef.current = new Date()
+    timerRef.current = setInterval(() => {
+      setElapsedSeconds(Math.floor((Date.now() - sessionStartRef.current.getTime()) / 1000))
+    }, 1000)
+    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+  }, [])
 
   useEffect(() => {
     fetchSessions()
@@ -138,7 +154,7 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
       const res = await fetch('/api/tutor/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: history, sessionId }),
+        body: JSON.stringify({ messages: history, sessionId, dailyContext }),
         signal: abortRef.current.signal,
       })
 
@@ -177,8 +193,9 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
       }
       // Refresh sessions list
       fetchSessions()
-      // Auto-mark daily plan task as done
-      markDailyTaskDone('tutor')
+      // Auto-mark daily plan task as done with elapsed minutes
+      const mins = Math.round(elapsedSeconds / 60)
+      markDailyTaskDone('tutor', mins)
     } catch (err: any) {
       if (err.name === 'AbortError') return
       setError(err.message || 'Connection error. Please try again.')
@@ -295,11 +312,16 @@ export default function ChatInterface({ userName, userLevel }: { userName: strin
               {loading ? t('typing') : t('adaptedTo', { level: userLevel })}
             </div>
           </div>
-          {sessionId && (
-            <button onClick={startNewChat} className="text-xs text-blue-600 hover:text-blue-800 font-medium">
-              + {t('newChat')}
-            </button>
-          )}
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-mono text-gray-400 bg-gray-100 px-2 py-1 rounded-lg">
+              {String(Math.floor(elapsedSeconds / 60)).padStart(2, '0')}:{String(elapsedSeconds % 60).padStart(2, '0')}
+            </span>
+            {sessionId && (
+              <button onClick={startNewChat} className="text-xs text-blue-600 hover:text-blue-800 font-medium">
+                + {t('newChat')}
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Messages */}

@@ -449,7 +449,8 @@
     "retry": "Riprova",
     "searchChats": "Cerca nelle chat...",
     "yesterday": "Ieri",
-    "noResults": "Nessuna chat trovata."
+    "noResults": "Nessuna chat trovata.",
+    "todaysFocus": "Focus di Oggi"
   },
   "social": {
     "title": "Amici e Social",

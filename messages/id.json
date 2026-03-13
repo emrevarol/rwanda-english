@@ -449,7 +449,8 @@
     "retry": "Coba Lagi",
     "searchChats": "Cari chat...",
     "yesterday": "Kemarin",
-    "noResults": "Chat tidak ditemukan."
+    "noResults": "Chat tidak ditemukan.",
+    "todaysFocus": "Fokus Hari Ini"
   },
   "social": {
     "title": "Teman & Sosial",

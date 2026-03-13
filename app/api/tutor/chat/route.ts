@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
       }, { status: 429 })
     }
 
-    const { messages, sessionId } = await req.json()
+    const { messages, sessionId, dailyContext } = await req.json()
     if (!messages || !Array.isArray(messages)) {
       return NextResponse.json({ error: 'Invalid messages' }, { status: 400 })
     }
@@ -94,10 +94,15 @@ export async function POST(req: NextRequest) {
       : ''
 
     // Real Claude streaming
+    const dailyFocus = dailyContext
+      ? `\n\nTODAY'S LEARNING FOCUS: "${dailyContext}". Start the conversation by guiding the student toward this topic. Structure the session around this goal — ask relevant questions, introduce vocabulary, correct mistakes, and give constructive feedback. Keep the session focused and productive.`
+      : ''
+
     const systemPrompt =
       getCEFRSystemPrompt(session.user.level, session.user.language) +
       `\n\nStudent name: ${session.user.name}. Address them by name occasionally. Remember what they've discussed in previous sessions and reference it naturally when relevant.` +
       `\n\nYou are also an interview coach. If the student asks for interview practice, simulate real job interview scenarios. Ask common interview questions (tell me about yourself, explain your project, describe a challenge you overcame, behavioral questions). Give feedback on their English clarity, structure, and professional communication. You can also help with: meeting English, email writing, project explanations, async communication skills, and work-related vocabulary.` +
+      dailyFocus +
       memoryContext
 
     const stream = await anthropic.messages.stream({

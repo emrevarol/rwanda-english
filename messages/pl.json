@@ -449,7 +449,8 @@
     "retry": "Ponów",
     "searchChats": "Szukaj czatów...",
     "yesterday": "Wczoraj",
-    "noResults": "Nie znaleziono czatów."
+    "noResults": "Nie znaleziono czatów.",
+    "todaysFocus": "Dzisiejszy Fokus"
   },
   "social": {
     "title": "Znajomi i Social",

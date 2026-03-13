@@ -449,7 +449,8 @@
     "retry": "Повторить",
     "searchChats": "Поиск чатов...",
     "yesterday": "Вчера",
-    "noResults": "Чаты не найдены."
+    "noResults": "Чаты не найдены.",
+    "todaysFocus": "Фокус дня"
   },
   "social": {
     "title": "Друзья и Общение",
