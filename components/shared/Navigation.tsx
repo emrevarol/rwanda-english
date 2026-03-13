@@ -14,15 +14,15 @@ export default function Navigation() {
 
   const navLinks = session
     ? [
-        { href: '/learning-path', label: '🗓 ' + t('dailyPlan') },
-        { href: '/dashboard', label: t('dashboard') },
-        { href: '/writing', label: t('writing') },
-        { href: '/listening', label: t('listening') },
-        { href: '/speaking', label: t('speaking') },
-        { href: '/vocabulary', label: t('vocabulary') },
-        { href: '/grammar', label: '📝 ' + t('grammar') },
-        { href: '/tutor', label: t('tutor') },
-        { href: '/friends', label: t('friends') },
+        { href: '/learning-path', label: t('dailyPlan'), color: '' },
+        { href: '/dashboard', label: t('dashboard'), color: '' },
+        { href: '/writing', label: t('writing'), color: '#2563eb' },
+        { href: '/listening', label: t('listening'), color: '#9333ea' },
+        { href: '/speaking', label: t('speaking'), color: '#16a34a' },
+        { href: '/vocabulary', label: t('vocabulary'), color: '#f59e0b' },
+        { href: '/grammar', label: t('grammar'), color: '#ef4444' },
+        { href: '/tutor', label: t('tutor'), color: '' },
+        { href: '/friends', label: t('friends'), color: '' },
       ]
     : []
 
@@ -42,13 +42,20 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
                   pathname === link.href
-                    ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 shadow-sm'
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
+                    ? 'bg-blue-50 dark:bg-blue-900/50 shadow-sm'
+                    : 'hover:bg-gray-50 dark:hover:bg-gray-800'
                 }`}
+                style={link.color ? {
+                  color: pathname === link.href ? link.color : undefined,
+                } : undefined}
               >
-                {link.label}
+                {link.color ? (
+                  <span style={{ color: link.color }}>{link.label}</span>
+                ) : (
+                  <span className={pathname === link.href ? 'text-blue-700 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300'}>{link.label}</span>
+                )}
               </Link>
             ))}
           </div>
@@ -99,13 +106,17 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap ${
                   pathname === link.href
-                    ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300'
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+                    ? 'bg-blue-50 dark:bg-blue-900/50'
+                    : 'hover:bg-gray-50 dark:hover:bg-gray-800'
                 }`}
               >
-                {link.label}
+                {link.color ? (
+                  <span style={{ color: link.color }}>{link.label}</span>
+                ) : (
+                  <span className={pathname === link.href ? 'text-blue-700 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300'}>{link.label}</span>
+                )}
               </Link>
             ))}
           </div>
