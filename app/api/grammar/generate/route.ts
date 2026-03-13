@@ -146,6 +146,17 @@ Only return valid JSON, nothing else.`,
     if (!jsonMatch) throw new Error('No JSON found')
     const data = JSON.parse(jsonMatch[0])
 
+    // Fix sentence-reorder: ensure words array matches the answer exactly
+    if (data.questions) {
+      for (const q of data.questions) {
+        if (q.type === 'sentence-reorder' && q.answer) {
+          // Always regenerate words from the answer to prevent mismatches
+          const answerWords = q.answer.replace(/[.!?,;:'"]/g, '').trim().split(/\s+/)
+          q.words = answerWords
+        }
+      }
+    }
+
     return NextResponse.json(data)
   } catch (error: unknown) {
     console.error('Grammar generate error:', error)
