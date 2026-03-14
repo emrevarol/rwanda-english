@@ -351,9 +351,9 @@ export default function DashboardPage() {
         {/* Activity Detail Modal */}
         {selectedActivity && (
           <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setSelectedActivity(null)}>
-            <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-xl" onClick={e => e.stopPropagation()}>
+            <div className="bg-white dark:bg-gray-900 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-xl" onClick={e => e.stopPropagation()}>
               {/* Modal header */}
-              <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between rounded-t-2xl">
+              <div className="sticky top-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex items-center justify-between rounded-t-2xl">
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">
                     {selectedActivity.type === 'writing' ? '✍️' : selectedActivity.type === 'speaking' ? '🎙️' : '🎧'}
@@ -411,10 +411,10 @@ export default function DashboardPage() {
                             const fb = JSON.parse(selectedActivity.feedback!)
                             if (typeof fb === 'string') return <p className="text-sm text-gray-700 bg-green-50 rounded-lg p-4">{fb}</p>
                             const wCards = [
-                              { key: 'taskAchievement', label: 'Task Achievement', bg: '#eff6ff', border: '#bfdbfe', title: '#1d4ed8', body: '#1e3a5f' },
-                              { key: 'coherence', label: 'Coherence & Cohesion', bg: '#eef2ff', border: '#c7d2fe', title: '#4338ca', body: '#312e81' },
-                              { key: 'vocabulary', label: 'Vocabulary', bg: '#f0fdf4', border: '#bbf7d0', title: '#15803d', body: '#14532d' },
-                              { key: 'grammar', label: 'Grammar', bg: '#faf5ff', border: '#d8b4fe', title: '#7e22ce', body: '#3b0764' },
+                              { key: 'taskAchievement', label: 'Task Achievement', bg: '#1e3a5f', border: '#2563eb', title: '#93c5fd', body: '#dbeafe' },
+                              { key: 'coherence', label: 'Coherence & Cohesion', bg: '#312e81', border: '#6366f1', title: '#a5b4fc', body: '#e0e7ff' },
+                              { key: 'vocabulary', label: 'Vocabulary', bg: '#14532d', border: '#22c55e', title: '#86efac', body: '#dcfce7' },
+                              { key: 'grammar', label: 'Grammar', bg: '#3b0764', border: '#a855f7', title: '#c084fc', body: '#e9d5ff' },
                             ]
                             return (
                               <>
@@ -427,15 +427,15 @@ export default function DashboardPage() {
                                   ))}
                                 </div>
                                 {fb.improvedSentences && (
-                                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
-                                    <div className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-1">Improved Sentences</div>
-                                    <p className="text-sm text-amber-700 leading-relaxed whitespace-pre-wrap">{Array.isArray(fb.improvedSentences) ? fb.improvedSentences.join('\n') : fb.improvedSentences}</p>
+                                  <div className="rounded-lg p-3" style={{ backgroundColor: '#422006', border: '1px solid #d97706' }}>
+                                    <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#fbbf24' }}>Improved Sentences</div>
+                                    <p className="text-sm leading-relaxed whitespace-pre-wrap" style={{ color: '#fef3c7' }}>{Array.isArray(fb.improvedSentences) ? fb.improvedSentences.join('\n') : fb.improvedSentences}</p>
                                   </div>
                                 )}
                                 {fb.overallFeedback && (
-                                  <div className="rounded-lg p-3" style={{ backgroundColor: '#f1f5f9', border: '1px solid #cbd5e1' }}>
-                                    <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#1e293b' }}>Overall</div>
-                                    <p className="text-sm leading-relaxed" style={{ color: '#334155' }}>{fb.overallFeedback}</p>
+                                  <div className="rounded-lg p-3" style={{ backgroundColor: '#1e293b', border: '1px solid #475569' }}>
+                                    <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#94a3b8' }}>Overall</div>
+                                    <p className="text-sm leading-relaxed" style={{ color: '#e2e8f0' }}>{fb.overallFeedback}</p>
                                   </div>
                                 )}
                               </>
@@ -502,52 +502,52 @@ export default function DashboardPage() {
                                 )}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                   {fb.fluency && fb.fluency !== 'See above' && (
-                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#eff6ff', border: '1px solid #bfdbfe' }}>
-                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#1d4ed8' }}>Fluency</div>
-                                      <p className="text-sm leading-relaxed" style={{ color: '#1e3a5f' }}>{fb.fluency}</p>
+                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#1e3a5f', border: '1px solid #2563eb' }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#93c5fd' }}>Fluency</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: '#dbeafe' }}>{fb.fluency}</p>
                                     </div>
                                   )}
                                   {fb.pronunciation && fb.pronunciation !== 'See above' && (
-                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#eef2ff', border: '1px solid #c7d2fe' }}>
-                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#4338ca' }}>Pronunciation</div>
-                                      <p className="text-sm leading-relaxed" style={{ color: '#312e81' }}>{fb.pronunciation}</p>
+                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#312e81', border: '1px solid #6366f1' }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#a5b4fc' }}>Pronunciation</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: '#e0e7ff' }}>{fb.pronunciation}</p>
                                     </div>
                                   )}
                                   {fb.intonation && fb.intonation !== 'See above' && (
-                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#ecfeff', border: '1px solid #a5f3fc' }}>
-                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#0e7490' }}>Intonation</div>
-                                      <p className="text-sm leading-relaxed" style={{ color: '#164e63' }}>{fb.intonation}</p>
+                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#164e63', border: '1px solid #06b6d4' }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#67e8f9' }}>Intonation</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: '#cffafe' }}>{fb.intonation}</p>
                                     </div>
                                   )}
                                   {fb.grammar && fb.grammar !== 'See above' && (
-                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#faf5ff', border: '1px solid #d8b4fe' }}>
-                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#7e22ce' }}>Grammar</div>
-                                      <p className="text-sm leading-relaxed" style={{ color: '#3b0764' }}>{fb.grammar}</p>
+                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#3b0764', border: '1px solid #a855f7' }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#c084fc' }}>Grammar</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: '#e9d5ff' }}>{fb.grammar}</p>
                                     </div>
                                   )}
                                   {fb.vocabulary && fb.vocabulary !== 'See above' && (
-                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0' }}>
-                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#15803d' }}>Vocabulary</div>
-                                      <p className="text-sm leading-relaxed" style={{ color: '#14532d' }}>{fb.vocabulary}</p>
+                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#14532d', border: '1px solid #22c55e' }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#86efac' }}>Vocabulary</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: '#dcfce7' }}>{fb.vocabulary}</p>
                                     </div>
                                   )}
                                   {fb.fillerAnalysis && fb.fillerAnalysis !== 'See above' && (
-                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#fff7ed', border: '1px solid #fed7aa' }}>
-                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#c2410c' }}>Filler Analysis</div>
-                                      <p className="text-sm leading-relaxed" style={{ color: '#7c2d12' }}>{fb.fillerAnalysis}</p>
+                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#7c2d12', border: '1px solid #f97316' }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#fdba74' }}>Filler Analysis</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: '#ffedd5' }}>{fb.fillerAnalysis}</p>
                                     </div>
                                   )}
                                 </div>
                                 {fb.modelAnswer && (
-                                  <div className="rounded-lg p-3" style={{ backgroundColor: '#fffbeb', border: '1px solid #fcd34d' }}>
-                                    <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#92400e' }}>Model Answer</div>
-                                    <p className="text-sm leading-relaxed italic" style={{ color: '#78350f' }}>&quot;{fb.modelAnswer}&quot;</p>
+                                  <div className="rounded-lg p-3" style={{ backgroundColor: '#78350f', border: '1px solid #f59e0b' }}>
+                                    <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#fcd34d' }}>Model Answer</div>
+                                    <p className="text-sm leading-relaxed italic" style={{ color: '#fef3c7' }}>&quot;{fb.modelAnswer}&quot;</p>
                                   </div>
                                 )}
                                 {fb.overallFeedback && !fb.overallFeedback.includes('"score"') && (
-                                  <div className="rounded-lg p-3" style={{ backgroundColor: '#f1f5f9', border: '1px solid #cbd5e1' }}>
-                                    <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#1e293b' }}>Overall</div>
-                                    <p className="text-sm leading-relaxed" style={{ color: '#334155' }}>{fb.overallFeedback}</p>
+                                  <div className="rounded-lg p-3" style={{ backgroundColor: '#1e293b', border: '1px solid #475569' }}>
+                                    <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#94a3b8' }}>Overall</div>
+                                    <p className="text-sm leading-relaxed" style={{ color: '#e2e8f0' }}>{fb.overallFeedback}</p>
                                   </div>
                                 )}
                               </>
