@@ -48,6 +48,8 @@ const TYPE_ICONS: Record<string, string> = {
   'sentence-reorder': '1-2',
 }
 
+const JOKERS_PER_EXERCISE = 3
+
 export default function GrammarPage() {
   const t = useTranslations('grammar')
   const { status } = useSession()
@@ -68,6 +70,9 @@ export default function GrammarPage() {
   const [timer, setTimer] = useState(0)
   const [timerRunning, setTimerRunning] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const [jokersLeft, setJokersLeft] = useState(JOKERS_PER_EXERCISE)
+  const [jokerUsed, setJokerUsed] = useState(false)
+  const [jokersUsedTotal, setJokersUsedTotal] = useState(0)
 
   // Timer
   useEffect(() => {
@@ -89,6 +94,9 @@ export default function GrammarPage() {
     setUserAnswer('')
     setReorderWords([])
     setTimer(0)
+    setJokersLeft(JOKERS_PER_EXERCISE)
+    setJokerUsed(false)
+    setJokersUsedTotal(0)
 
     try {
       const res = await fetch(`/api/grammar/generate?topic=${topic}`)
@@ -112,6 +120,45 @@ export default function GrammarPage() {
   }
 
   const currentQ = questions[currentIdx]
+
+  const useJoker = () => {
+    if (!currentQ || checked || jokersLeft <= 0 || jokerUsed) return
+
+    if (currentQ.type === 'sentence-reorder') {
+      // Place the next correct word in the answer
+      const answerWords = currentQ.answer.replace(/[.!?,;:'"]/g, '').split(/\s+/)
+      const currentWords = userAnswer ? userAnswer.split(' ') : []
+      const nextWordIdx = currentWords.length
+      if (nextWordIdx < answerWords.length) {
+        const nextWord = answerWords[nextWordIdx]
+        // Find the word in available pool (case-insensitive match)
+        const poolIdx = reorderWords.findIndex(w =>
+          w.toLowerCase().replace(/[.!?,;:'"]/g, '') === nextWord.toLowerCase()
+        )
+        if (poolIdx !== -1) {
+          const word = reorderWords[poolIdx]
+          setReorderWords(prev => prev.filter((_, i) => i !== poolIdx))
+          setUserAnswer(prev => (prev ? prev + ' ' + word : word))
+        }
+      }
+    } else if (currentQ.type === 'fill-blank' || currentQ.type === 'multiple-choice') {
+      // Reveal the answer
+      setUserAnswer(currentQ.answer)
+      if (currentQ.options) {
+        const optIdx = currentQ.options.findIndex(o => o.toLowerCase() === currentQ.answer.toLowerCase())
+        if (optIdx !== -1) setSelectedOptIdx(optIdx)
+      }
+    } else if (currentQ.type === 'error-correction') {
+      // Show first few characters as hint
+      const corrected = currentQ.corrected || currentQ.answer
+      const hintLen = Math.min(Math.ceil(corrected.length * 0.4), 20)
+      setUserAnswer(corrected.slice(0, hintLen) + '...')
+    }
+
+    setJokersLeft(j => j - 1)
+    setJokerUsed(true)
+    setJokersUsedTotal(j => j + 1)
+  }
 
   const checkAnswer = () => {
     if (!currentQ || checked) return
@@ -153,6 +200,7 @@ export default function GrammarPage() {
     setIsCorrect(false)
     setUserAnswer('')
     setSelectedOptIdx(-1)
+    setJokerUsed(false)
     // Initialize reorder words for next question
     if (questions[nextIdx]?.type === 'sentence-reorder' && questions[nextIdx].words) {
       setReorderWords([...questions[nextIdx].words!].sort(() => Math.random() - 0.5))
@@ -215,7 +263,7 @@ export default function GrammarPage() {
                     key={tp}
                     onClick={() => setTopic(tp)}
                     className={`text-xs px-3 py-2 rounded-lg border transition-colors ${topic === tp
-                      ? 'bg-red-50 border-red-300 text-red-700 font-semibold'
+                      ? 'bg-pink-50 border-pink-300 text-pink-700 font-semibold'
                       : 'bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100'
                     }`}
                   >
@@ -228,13 +276,16 @@ export default function GrammarPage() {
             <button
               onClick={generate}
               disabled={loading}
-              className="w-full bg-red-600 text-white py-3 rounded-xl font-medium hover:bg-red-700 transition-colors disabled:opacity-50"
+              className="w-full text-white py-3 rounded-xl font-medium transition-colors disabled:opacity-50"
+              style={{ backgroundColor: '#d4798a' }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c06b7c')}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#d4798a')}
             >
               {loading ? t('generating') : t('startExercise')}
             </button>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-700">
+              <div className="bg-pink-50 border border-pink-200 rounded-lg px-4 py-3 text-sm text-pink-700">
                 {error}
               </div>
             )}
@@ -244,7 +295,7 @@ export default function GrammarPage() {
         {/* Exercise in progress */}
         {currentQ && !finished && (
           <div className="space-y-4">
-            {/* Progress bar */}
+            {/* Progress bar + joker counter */}
             <div className="bg-white rounded-xl border border-gray-200 p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <span className="text-sm font-medium text-gray-600">
@@ -252,8 +303,8 @@ export default function GrammarPage() {
                 </span>
                 <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-red-500 rounded-full transition-all"
-                    style={{ width: `${((currentIdx + 1) / questions.length) * 100}%` }}
+                    className="h-full rounded-full transition-all"
+                    style={{ width: `${((currentIdx + 1) / questions.length) * 100}%`, backgroundColor: '#d4798a' }}
                   />
                 </div>
               </div>
@@ -265,11 +316,32 @@ export default function GrammarPage() {
 
             {/* Question card */}
             <div className="bg-white rounded-xl border border-gray-200 p-6 space-y-4">
-              {/* Type badge */}
-              <div className="flex items-center gap-2">
-                <span className="text-xs bg-red-100 text-red-700 px-2.5 py-1 rounded-full font-medium">
+              {/* Type badge + Joker button */}
+              <div className="flex items-center justify-between">
+                <span className="text-xs px-2.5 py-1 rounded-full font-medium" style={{ backgroundColor: '#fce4ec', color: '#c06b7c' }}>
                   {TYPE_ICONS[currentQ.type]} {t(TYPE_KEYS[currentQ.type])}
                 </span>
+                {!checked && jokersLeft > 0 && (
+                  <button
+                    onClick={useJoker}
+                    disabled={jokerUsed}
+                    className={`flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full border transition-all ${
+                      jokerUsed
+                        ? 'bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed'
+                        : 'bg-amber-50 border-amber-300 text-amber-700 hover:bg-amber-100 hover:shadow-sm'
+                    }`}
+                    title={t('jokerTooltip')}
+                  >
+                    <span className="text-base">🃏</span>
+                    {jokerUsed ? t('jokerUsedLabel') : t('jokerLabel')}
+                    <span className="bg-amber-200 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded-full ml-0.5">
+                      {jokersLeft}
+                    </span>
+                  </button>
+                )}
+                {!checked && jokersLeft === 0 && (
+                  <span className="text-xs text-gray-400">{t('noJokersLeft')}</span>
+                )}
               </div>
 
               {/* Question content based on type */}
@@ -280,7 +352,7 @@ export default function GrammarPage() {
                       <span key={i}>
                         {part}
                         {i < arr.length - 1 && (
-                          <span className="inline-block mx-1 border-b-2 border-red-400 min-w-[80px] text-center font-semibold text-red-600">
+                          <span className="inline-block mx-1 border-b-2 min-w-[80px] text-center font-semibold" style={{ borderColor: '#d4798a', color: '#c06b7c' }}>
                             {checked ? currentQ.answer : userAnswer || '___'}
                           </span>
                         )}
@@ -294,7 +366,7 @@ export default function GrammarPage() {
                           key={i}
                           onClick={() => { setUserAnswer(opt); setSelectedOptIdx(i) }}
                           className={`text-sm px-4 py-2.5 rounded-lg border transition-colors ${selectedOptIdx === i
-                            ? 'bg-red-50 border-red-300 text-red-700 font-semibold'
+                            ? 'bg-pink-50 border-pink-300 text-pink-700 font-semibold'
                             : 'bg-gray-50 border-gray-200 text-gray-700 hover:bg-gray-100'
                           }`}
                         >
@@ -313,7 +385,7 @@ export default function GrammarPage() {
                       <span key={i}>
                         {part}
                         {i < arr.length - 1 && (
-                          <span className="inline-block mx-1 border-b-2 border-red-400 min-w-[80px] text-center font-semibold text-red-600">
+                          <span className="inline-block mx-1 border-b-2 min-w-[80px] text-center font-semibold" style={{ borderColor: '#d4798a', color: '#c06b7c' }}>
                             {checked ? currentQ.answer : userAnswer || '___'}
                           </span>
                         )}
@@ -327,7 +399,7 @@ export default function GrammarPage() {
                           key={i}
                           onClick={() => { setUserAnswer(opt); setSelectedOptIdx(i) }}
                           className={`text-sm px-4 py-2.5 rounded-lg border transition-colors ${selectedOptIdx === i
-                            ? 'bg-red-50 border-red-300 text-red-700 font-semibold'
+                            ? 'bg-pink-50 border-pink-300 text-pink-700 font-semibold'
                             : 'bg-gray-50 border-gray-200 text-gray-700 hover:bg-gray-100'
                           }`}
                         >
@@ -341,8 +413,8 @@ export default function GrammarPage() {
 
               {currentQ.type === 'error-correction' && (
                 <div className="space-y-4">
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                    <p className="text-sm text-red-600 font-medium mb-1">Find and fix the error:</p>
+                  <div className="bg-pink-50 border border-pink-200 rounded-lg p-4">
+                    <p className="text-sm font-medium mb-1" style={{ color: '#c06b7c' }}>Find and fix the error:</p>
                     <p className="text-lg text-gray-800">{currentQ.sentence}</p>
                   </div>
                   {!checked && (
@@ -351,7 +423,8 @@ export default function GrammarPage() {
                       value={userAnswer}
                       onChange={(e) => setUserAnswer(e.target.value)}
                       placeholder="Type the corrected sentence..."
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2"
+                      style={{ '--tw-ring-color': '#d4798a' } as React.CSSProperties}
                     />
                   )}
                 </div>
@@ -368,7 +441,8 @@ export default function GrammarPage() {
                         key={i}
                         onClick={() => removeFromAnswer(i)}
                         disabled={checked}
-                        className="text-sm bg-red-100 text-red-700 px-3 py-1.5 rounded-lg font-medium hover:bg-red-200 transition-colors disabled:opacity-70"
+                        className="text-sm px-3 py-1.5 rounded-lg font-medium transition-colors disabled:opacity-70"
+                        style={{ backgroundColor: '#fce4ec', color: '#c06b7c' }}
                       >
                         {w}
                       </button>
@@ -423,14 +497,20 @@ export default function GrammarPage() {
                   <button
                     onClick={checkAnswer}
                     disabled={!userAnswer.trim()}
-                    className="flex-1 bg-red-600 text-white py-3 rounded-xl font-medium hover:bg-red-700 transition-colors disabled:opacity-50"
+                    className="flex-1 text-white py-3 rounded-xl font-medium transition-colors disabled:opacity-50"
+                    style={{ backgroundColor: '#d4798a' }}
+                    onMouseEnter={e => { if (!e.currentTarget.disabled) e.currentTarget.style.backgroundColor = '#c06b7c' }}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#d4798a')}
                   >
                     {t('checkAnswer')}
                   </button>
                 ) : (
                   <button
                     onClick={nextQuestion}
-                    className="flex-1 bg-red-600 text-white py-3 rounded-xl font-medium hover:bg-red-700 transition-colors"
+                    className="flex-1 text-white py-3 rounded-xl font-medium transition-colors"
+                    style={{ backgroundColor: '#d4798a' }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c06b7c')}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#d4798a')}
                   >
                     {currentIdx + 1 >= questions.length ? t('exerciseComplete') : t('nextQuestion')}
                   </button>
@@ -447,7 +527,7 @@ export default function GrammarPage() {
             <h2 className="text-xl font-bold text-gray-900">{t('exerciseComplete')}</h2>
             <div className="flex justify-center gap-8">
               <div>
-                <div className="text-3xl font-bold text-red-600">{score}/{totalAnswered}</div>
+                <div className="text-3xl font-bold" style={{ color: '#d4798a' }}>{score}/{totalAnswered}</div>
                 <div className="text-xs text-gray-500">{t('score')}</div>
               </div>
               <div>
@@ -459,10 +539,16 @@ export default function GrammarPage() {
                 <div className="text-xs text-gray-500">Time</div>
               </div>
             </div>
+            {jokersUsedTotal > 0 && (
+              <p className="text-sm text-amber-600">🃏 {t('jokersUsedCount', { count: jokersUsedTotal })}</p>
+            )}
             <div className="flex gap-3 justify-center">
               <button
                 onClick={generate}
-                className="bg-red-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-red-700 transition-colors"
+                className="text-white px-6 py-3 rounded-xl font-medium transition-colors"
+                style={{ backgroundColor: '#d4798a' }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c06b7c')}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#d4798a')}
               >
                 {t('newExercise')}
               </button>

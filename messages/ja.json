@@ -645,7 +645,12 @@
     "topicGeneral": "一般",
     "generating": "演習を生成中...",
     "errorGenerate": "演習の生成に失敗しました。もう一度お試しください。",
-    "errorConnection": "接続エラー。インターネット接続を確認してください。"
+    "errorConnection": "接続エラー。インターネット接続を確認してください。",
+    "jokerLabel": "ジョーカー",
+    "jokerUsedLabel": "使用済み",
+    "jokerTooltip": "ジョーカーを使ってヒントを得る",
+    "noJokersLeft": "ジョーカーなし",
+    "jokersUsedCount": "{count}個のジョーカーを使用"
   },
   "leaderboard": {
     "title": "ランキング",

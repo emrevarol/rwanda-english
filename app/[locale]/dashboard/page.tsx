@@ -125,7 +125,7 @@ export default function DashboardPage() {
     { subject: t('speaking'), value: data ? Math.round(data.avgSpeaking * 10) / 10 : 0, color: '#16a34a' },
     { subject: t('listening'), value: data ? Math.round(data.avgListening / 10 * 10) / 10 : 0, color: '#9333ea' },
     { subject: t('vocabulary'), value: Math.round(vocabScore * 10) / 10, color: '#f59e0b' },
-    { subject: t('grammar'), value: Math.round(grammarScore * 10) / 10, color: '#e11d48' },
+    { subject: t('grammar'), value: Math.round(grammarScore * 10) / 10, color: '#d4798a' },
   ]
 
   return (
@@ -224,8 +224,8 @@ export default function DashboardPage() {
             <div className="text-xs text-gray-400">/10</div>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
-            <div className="text-sm font-medium mb-2" style={{ color: '#e11d48' }}>{t('grammar')}</div>
-            <div className="text-3xl font-bold" style={{ color: '#e11d48' }}>
+            <div className="text-sm font-medium mb-2" style={{ color: '#d4798a' }}>{t('grammar')}</div>
+            <div className="text-3xl font-bold" style={{ color: '#d4798a' }}>
               {loading ? '—' : data?.avgGrammar != null ? Math.round((data.avgGrammar / 9) * 100) / 10 : '—'}
             </div>
             <div className="text-xs text-gray-400">/10</div>

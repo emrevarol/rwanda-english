@@ -630,7 +630,12 @@
     "topicGeneral": "General",
     "generating": "Generating exercise...",
     "errorGenerate": "Failed to generate exercise. Please try again.",
-    "errorConnection": "Connection error. Please check your internet."
+    "errorConnection": "Connection error. Please check your internet.",
+    "jokerLabel": "Joker",
+    "jokerUsedLabel": "Used",
+    "jokerTooltip": "Use a joker to get a hint for this question",
+    "noJokersLeft": "No jokers left",
+    "jokersUsedCount": "{count} joker(s) used"
   },
   "leaderboard": {
     "title": "Leaderboard",

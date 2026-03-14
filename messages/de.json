@@ -645,7 +645,12 @@
     "topicGeneral": "Allgemein",
     "generating": "Übung wird generiert...",
     "errorGenerate": "Übung konnte nicht generiert werden. Bitte erneut versuchen.",
-    "errorConnection": "Verbindungsfehler. Bitte Internet überprüfen."
+    "errorConnection": "Verbindungsfehler. Bitte Internet überprüfen.",
+    "jokerLabel": "Joker",
+    "jokerUsedLabel": "Verwendet",
+    "jokerTooltip": "Verwende einen Joker, um einen Hinweis zu erhalten",
+    "noJokersLeft": "Keine Joker mehr",
+    "jokersUsedCount": "{count} Joker verwendet"
   },
   "leaderboard": {
     "title": "Bestenliste",

@@ -645,7 +645,12 @@
     "topicGeneral": "Generale",
     "generating": "Generazione esercizio...",
     "errorGenerate": "Generazione fallita. Riprova.",
-    "errorConnection": "Errore di connessione. Controlla la tua connessione."
+    "errorConnection": "Errore di connessione. Controlla la tua connessione.",
+    "jokerLabel": "Jolly",
+    "jokerUsedLabel": "Usato",
+    "jokerTooltip": "Usa un jolly per ottenere un suggerimento",
+    "noJokersLeft": "Nessun jolly rimasto",
+    "jokersUsedCount": "{count} jolly usato/i"
   },
   "leaderboard": {
     "title": "Classifica",

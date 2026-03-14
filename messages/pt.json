@@ -645,7 +645,12 @@
     "topicGeneral": "Geral",
     "generating": "Gerando exercício...",
     "errorGenerate": "Falha ao gerar exercício. Tente novamente.",
-    "errorConnection": "Erro de conexão. Verifique sua internet."
+    "errorConnection": "Erro de conexão. Verifique sua internet.",
+    "jokerLabel": "Coringa",
+    "jokerUsedLabel": "Usado",
+    "jokerTooltip": "Use um coringa para obter uma dica",
+    "noJokersLeft": "Sem coringas",
+    "jokersUsedCount": "{count} coringa(s) usado(s)"
   },
   "leaderboard": {
     "title": "Classificação",

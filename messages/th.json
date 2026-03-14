@@ -645,7 +645,12 @@
     "topicGeneral": "ทั่วไป",
     "generating": "กำลังสร้างแบบฝึกหัด...",
     "errorGenerate": "สร้างแบบฝึกหัดไม่สำเร็จ กรุณาลองอีกครั้ง",
-    "errorConnection": "ข้อผิดพลาดการเชื่อมต่อ กรุณาตรวจสอบอินเทอร์เน็ต"
+    "errorConnection": "ข้อผิดพลาดการเชื่อมต่อ กรุณาตรวจสอบอินเทอร์เน็ต",
+    "jokerLabel": "โจ๊กเกอร์",
+    "jokerUsedLabel": "ใช้แล้ว",
+    "jokerTooltip": "ใช้โจ๊กเกอร์เพื่อรับคำใบ้",
+    "noJokersLeft": "ไม่มีโจ๊กเกอร์เหลือ",
+    "jokersUsedCount": "ใช้โจ๊กเกอร์ {count} ใบ"
   },
   "leaderboard": {
     "title": "กระดานผู้นำ",

@@ -126,7 +126,7 @@ export default function ScoreChart({ writingData, speakingData, listeningData = 
         <Line type="monotone" dataKey={speakingLabel} stroke="#16a34a" strokeWidth={2} dot={{ r: 4 }} connectNulls />
         <Line type="monotone" dataKey={listeningLabel} stroke="#9333ea" strokeWidth={2} dot={{ r: 4 }} connectNulls />
         <Line type="monotone" dataKey={vocabLabel} stroke="#f59e0b" strokeWidth={2} dot={{ r: 4 }} connectNulls />
-        <Line type="monotone" dataKey={grammarLabel} stroke="#e11d48" strokeWidth={2} dot={{ r: 4 }} connectNulls />
+        <Line type="monotone" dataKey={grammarLabel} stroke="#d4798a" strokeWidth={2} dot={{ r: 4 }} connectNulls />
       </LineChart>
     </ResponsiveContainer>
   )

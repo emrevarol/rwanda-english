@@ -645,7 +645,12 @@
     "topicGeneral": "일반",
     "generating": "연습 생성 중...",
     "errorGenerate": "연습 생성에 실패했습니다. 다시 시도해 주세요.",
-    "errorConnection": "연결 오류. 인터넷을 확인해 주세요."
+    "errorConnection": "연결 오류. 인터넷을 확인해 주세요.",
+    "jokerLabel": "조커",
+    "jokerUsedLabel": "사용됨",
+    "jokerTooltip": "조커를 사용하여 힌트를 얻으세요",
+    "noJokersLeft": "조커 없음",
+    "jokersUsedCount": "조커 {count}개 사용"
   },
   "leaderboard": {
     "title": "리더보드",

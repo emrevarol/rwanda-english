@@ -645,7 +645,12 @@
     "topicGeneral": "General",
     "generating": "Generando ejercicio...",
     "errorGenerate": "Error al generar el ejercicio. Inténtalo de nuevo.",
-    "errorConnection": "Error de conexión. Comprueba tu internet."
+    "errorConnection": "Error de conexión. Comprueba tu internet.",
+    "jokerLabel": "Comodín",
+    "jokerUsedLabel": "Usado",
+    "jokerTooltip": "Usa un comodín para obtener una pista",
+    "noJokersLeft": "Sin comodines",
+    "jokersUsedCount": "{count} comodín(es) usado(s)"
   },
   "leaderboard": {
     "title": "Clasificación",

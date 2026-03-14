@@ -645,7 +645,12 @@
     "topicGeneral": "Ogólne",
     "generating": "Generowanie ćwiczenia...",
     "errorGenerate": "Nie udało się wygenerować ćwiczenia. Spróbuj ponownie.",
-    "errorConnection": "Błąd połączenia. Sprawdź swoje połączenie internetowe."
+    "errorConnection": "Błąd połączenia. Sprawdź swoje połączenie internetowe.",
+    "jokerLabel": "Joker",
+    "jokerUsedLabel": "Użyto",
+    "jokerTooltip": "Użyj jokera, aby uzyskać podpowiedź",
+    "noJokersLeft": "Brak jokerów",
+    "jokersUsedCount": "Użyto {count} joker(ów)"
   },
   "leaderboard": {
     "title": "Ranking",

@@ -645,7 +645,12 @@
     "topicGeneral": "Rusange",
     "generating": "Gutegura imyitozo...",
     "errorGenerate": "Byanze gutegura imyitozo. Ongera ugerageze.",
-    "errorConnection": "Ikibazo cy'Imiyoboro. Suzuma interineti yawe."
+    "errorConnection": "Ikibazo cy'Imiyoboro. Suzuma interineti yawe.",
+    "jokerLabel": "Joker",
+    "jokerUsedLabel": "Yakoreshejwe",
+    "jokerTooltip": "Koresha joker kugira ngo ubone icyerekezo",
+    "noJokersLeft": "Nta joker isigaye",
+    "jokersUsedCount": "Joker {count} zakoreshejwe"
   },
   "leaderboard": {
     "title": "Imbonerahamwe",

@@ -645,7 +645,12 @@
     "topicGeneral": "Tổng hợp",
     "generating": "Đang tạo bài tập...",
     "errorGenerate": "Không thể tạo bài tập. Vui lòng thử lại.",
-    "errorConnection": "Lỗi kết nối. Vui lòng kiểm tra internet."
+    "errorConnection": "Lỗi kết nối. Vui lòng kiểm tra internet.",
+    "jokerLabel": "Joker",
+    "jokerUsedLabel": "Đã dùng",
+    "jokerTooltip": "Dùng joker để nhận gợi ý",
+    "noJokersLeft": "Hết joker",
+    "jokersUsedCount": "Đã dùng {count} joker"
   },
   "leaderboard": {
     "title": "Bảng xếp hạng",

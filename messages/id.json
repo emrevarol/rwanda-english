@@ -645,7 +645,12 @@
     "topicGeneral": "Umum",
     "generating": "Membuat latihan...",
     "errorGenerate": "Gagal membuat latihan. Silakan coba lagi.",
-    "errorConnection": "Kesalahan koneksi. Periksa internet Anda."
+    "errorConnection": "Kesalahan koneksi. Periksa internet Anda.",
+    "jokerLabel": "Joker",
+    "jokerUsedLabel": "Digunakan",
+    "jokerTooltip": "Gunakan joker untuk mendapatkan petunjuk",
+    "noJokersLeft": "Tidak ada joker tersisa",
+    "jokersUsedCount": "{count} joker digunakan"
   },
   "leaderboard": {
     "title": "Papan Peringkat",

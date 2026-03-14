@@ -645,7 +645,12 @@
     "topicGeneral": "Genel",
     "generating": "Alıştırma oluşturuluyor...",
     "errorGenerate": "Alıştırma oluşturulamadı. Lütfen tekrar deneyin.",
-    "errorConnection": "Bağlantı hatası. Lütfen internetinizi kontrol edin."
+    "errorConnection": "Bağlantı hatası. Lütfen internetinizi kontrol edin.",
+    "jokerLabel": "Joker",
+    "jokerUsedLabel": "Kullanıldı",
+    "jokerTooltip": "Bu soru için ipucu almak için joker kullanın",
+    "noJokersLeft": "Joker kalmadı",
+    "jokersUsedCount": "{count} joker kullanıldı"
   },
   "leaderboard": {
     "title": "Sıralama",

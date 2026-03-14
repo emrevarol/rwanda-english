@@ -645,7 +645,12 @@
     "topicGeneral": "综合",
     "generating": "正在生成练习...",
     "errorGenerate": "生成练习失败，请重试。",
-    "errorConnection": "连接错误，请检查网络。"
+    "errorConnection": "连接错误，请检查网络。",
+    "jokerLabel": "王牌",
+    "jokerUsedLabel": "已使用",
+    "jokerTooltip": "使用王牌获取提示",
+    "noJokersLeft": "没有王牌了",
+    "jokersUsedCount": "使用了{count}张王牌"
   },
   "leaderboard": {
     "title": "排行榜",

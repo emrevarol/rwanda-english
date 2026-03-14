@@ -645,7 +645,12 @@
     "topicGeneral": "Général",
     "generating": "Génération de l'exercice...",
     "errorGenerate": "Échec de la génération. Veuillez réessayer.",
-    "errorConnection": "Erreur de connexion. Vérifiez votre internet."
+    "errorConnection": "Erreur de connexion. Vérifiez votre internet.",
+    "jokerLabel": "Joker",
+    "jokerUsedLabel": "Utilisé",
+    "jokerTooltip": "Utilisez un joker pour obtenir un indice",
+    "noJokersLeft": "Plus de jokers",
+    "jokersUsedCount": "{count} joker(s) utilisé(s)"
   },
   "leaderboard": {
     "title": "Classement",

@@ -645,7 +645,12 @@
     "topicGeneral": "सामान्य",
     "generating": "अभ्यास बनाया जा रहा है...",
     "errorGenerate": "अभ्यास बनाने में विफल। कृपया पुनः प्रयास करें।",
-    "errorConnection": "कनेक्शन त्रुटि। कृपया अपना इंटरनेट जांचें।"
+    "errorConnection": "कनेक्शन त्रुटि। कृपया अपना इंटरनेट जांचें।",
+    "jokerLabel": "जोकर",
+    "jokerUsedLabel": "उपयोग किया",
+    "jokerTooltip": "संकेत पाने के लिए जोकर का उपयोग करें",
+    "noJokersLeft": "कोई जोकर शेष नहीं",
+    "jokersUsedCount": "{count} जोकर उपयोग किए गए"
   },
   "leaderboard": {
     "title": "लीडरबोर्ड",
