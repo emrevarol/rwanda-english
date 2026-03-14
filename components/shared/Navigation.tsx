@@ -68,14 +68,16 @@ export default function Navigation() {
             {session ? (
               <div className="flex items-center gap-2">
                 <Link href="/profile" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                  <Avatar src={session.user.avatar} name={session.user.name} size={32} />
-                  <span className="text-sm text-gray-600 dark:text-gray-300 hidden sm:block">
+                  <div className="relative flex-shrink-0">
+                    <Avatar src={session.user.avatar} name={session.user.name} size={32} />
+                    <span className="absolute -bottom-1 -right-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none border-2 border-white dark:border-gray-900">
+                      {session.user.level}
+                    </span>
+                  </div>
+                  <span className="text-sm text-gray-600 dark:text-gray-300 hidden sm:block max-w-[100px] truncate">
                     {session.user.name}
                   </span>
                 </Link>
-                <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">
-                  {session.user.level}
-                </span>
                 <button
                   onClick={() => signOut({ callbackUrl: '/en' })}
                   className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
