@@ -45,7 +45,10 @@ export async function POST(req: NextRequest) {
       },
     })
 
-    return NextResponse.json(feedback)
+    const { checkAchievements } = await import('@/lib/achievementChecker')
+    const newAchievements = await checkAchievements(session.user.id, { type: 'speaking', score: feedback.score || 5 })
+
+    return NextResponse.json({ ...feedback, newAchievements })
   } catch (error) {
     console.error('Speaking analyze error:', error)
     return NextResponse.json({ error: 'Failed to analyze speaking' }, { status: 500 })

@@ -3,6 +3,7 @@ import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import SessionProviderWrapper from '@/components/shared/SessionProviderWrapper'
+import { AchievementProvider } from '@/components/shared/AchievementToast'
 
 export default async function LocaleLayout({
   children,
@@ -21,7 +22,9 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <SessionProviderWrapper>{children}</SessionProviderWrapper>
+      <SessionProviderWrapper>
+        <AchievementProvider>{children}</AchievementProvider>
+      </SessionProviderWrapper>
     </NextIntlClientProvider>
   )
 }

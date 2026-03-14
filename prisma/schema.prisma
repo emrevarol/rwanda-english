@@ -42,6 +42,8 @@ model User {
   receivedFriendships Friendship[]         @relation("receivedFriendships")
   vocabularyProgress  VocabularyProgress[]
   grammarSessions     GrammarSession[]
+  achievements        UserAchievement[]
+  notifications       Notification[]
 }
 
 model Referral {
@@ -226,4 +228,29 @@ model VocabularyProgress {
 
   @@unique([userId, word])
   @@index([userId, mastery])
+}
+
+model UserAchievement {
+  id             String   @id @default(cuid())
+  userId         String
+  achievementKey String
+  unlockedAt     DateTime @default(now())
+  user           User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, achievementKey])
+  @@index([userId])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  title     String
+  body      String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId, read])
+  @@index([userId, createdAt])
 }

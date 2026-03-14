@@ -7,6 +7,7 @@ import LanguageSwitcher from './LanguageSwitcher'
 import Logo from './Logo'
 import ThemeToggle from './ThemeToggle'
 import Avatar from './Avatar'
+import NotificationBell from './NotificationBell'
 
 export default function Navigation() {
   const t = useTranslations('nav')
@@ -65,6 +66,7 @@ export default function Navigation() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <LanguageSwitcher />
+            {session && <NotificationBell />}
             {session ? (
               <div className="flex items-center gap-2">
                 <Link href="/profile" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">

@@ -96,7 +96,10 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    return NextResponse.json({ ok: true })
+    const { checkAchievements } = await import('@/lib/achievementChecker')
+    const newAchievements = await checkAchievements(session.user.id, { type: 'vocabulary' })
+
+    return NextResponse.json({ ok: true, newAchievements })
   } catch (error) {
     console.error('Vocabulary progress save error:', error)
     return NextResponse.json({ error: 'Failed to save progress' }, { status: 500 })

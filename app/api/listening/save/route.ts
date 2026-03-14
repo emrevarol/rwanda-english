@@ -20,7 +20,10 @@ export async function POST(req: NextRequest) {
       },
     })
 
-    return NextResponse.json({ success: true })
+    const { checkAchievements } = await import('@/lib/achievementChecker')
+    const newAchievements = await checkAchievements(session.user.id, { type: 'listening', score })
+
+    return NextResponse.json({ success: true, newAchievements })
   } catch (error) {
     return NextResponse.json({ error: 'Failed to save session' }, { status: 500 })
   }

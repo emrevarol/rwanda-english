@@ -19,7 +19,10 @@ export async function POST(req: NextRequest) {
       },
     })
 
-    return NextResponse.json(grammarSession)
+    const { checkAchievements } = await import('@/lib/achievementChecker')
+    const newAchievements = await checkAchievements(session.user.id, { type: 'grammar' })
+
+    return NextResponse.json({ ...grammarSession, newAchievements })
   } catch (error) {
     console.error('Grammar complete error:', error)
     return NextResponse.json({ error: 'Failed' }, { status: 500 })
