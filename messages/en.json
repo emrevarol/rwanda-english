@@ -13,7 +13,8 @@
     "dailyPlan": "Daily Plan",
     "friends": "Friends",
     "vocabulary": "Vocab",
-    "grammar": "Grammar"
+    "grammar": "Grammar",
+    "leaderboard": "Leaderboard"
   },
   "landing": {
     "hero": {
@@ -628,5 +629,25 @@
     "generating": "Generating exercise...",
     "errorGenerate": "Failed to generate exercise. Please try again.",
     "errorConnection": "Connection error. Please check your internet."
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "subtitle": "See how you rank against others",
+    "global": "Global",
+    "friends": "Friends",
+    "yourRank": "Your Rank",
+    "outOf": "out of",
+    "players": "players",
+    "loading": "Loading leaderboard...",
+    "noFriends": "Add friends to see the friends leaderboard!",
+    "noData": "No leaderboard data yet.",
+    "you": "you",
+    "writing": "Writing",
+    "speaking": "Speaking",
+    "listening": "Listening",
+    "vocabulary": "Vocabulary",
+    "activities": "activities",
+    "daysActive": "days active",
+    "words": "words"
   }
 }

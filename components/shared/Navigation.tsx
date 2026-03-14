@@ -22,6 +22,7 @@ export default function Navigation() {
         { href: '/vocabulary', label: t('vocabulary'), color: '#f59e0b' },
         { href: '/grammar', label: t('grammar'), color: '#ef4444' },
         { href: '/tutor', label: t('tutor'), color: '' },
+        { href: '/leaderboard', label: t('leaderboard'), color: '' },
         { href: '/friends', label: t('friends'), color: '' },
       ]
     : []

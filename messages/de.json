@@ -13,7 +13,8 @@
     "dailyPlan": "Tagesplan",
     "friends": "Freunde",
     "vocabulary": "Vokabeln",
-    "grammar": "Grammatik"
+    "grammar": "Grammatik",
+    "leaderboard": "Bestenliste"
   },
   "landing": {
     "hero": {
@@ -643,5 +644,25 @@
     "generating": "Übung wird generiert...",
     "errorGenerate": "Übung konnte nicht generiert werden. Bitte erneut versuchen.",
     "errorConnection": "Verbindungsfehler. Bitte Internet überprüfen."
+  },
+  "leaderboard": {
+    "title": "Bestenliste",
+    "subtitle": "Sehen Sie, wie Sie im Vergleich zu anderen abschneiden",
+    "global": "Global",
+    "friends": "Freunde",
+    "yourRank": "Ihr Rang",
+    "outOf": "von",
+    "players": "Spielern",
+    "loading": "Bestenliste wird geladen...",
+    "noFriends": "Fügen Sie Freunde hinzu, um die Freundes-Bestenliste zu sehen!",
+    "noData": "Noch keine Bestenlisten-Daten.",
+    "you": "Sie",
+    "writing": "Schreiben",
+    "speaking": "Sprechen",
+    "listening": "Hören",
+    "vocabulary": "Wortschatz",
+    "activities": "Aktivitäten",
+    "daysActive": "aktive Tage",
+    "words": "Wörter"
   }
 }

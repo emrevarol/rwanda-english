@@ -13,7 +13,8 @@
     "dailyPlan": "每日计划",
     "friends": "好友",
     "vocabulary": "词汇",
-    "grammar": "语法"
+    "grammar": "语法",
+    "leaderboard": "排行榜"
   },
   "landing": {
     "hero": {
@@ -643,5 +644,25 @@
     "generating": "正在生成练习...",
     "errorGenerate": "生成练习失败，请重试。",
     "errorConnection": "连接错误，请检查网络。"
+  },
+  "leaderboard": {
+    "title": "排行榜",
+    "subtitle": "查看您在其他学习者中的排名",
+    "global": "全球",
+    "friends": "好友",
+    "yourRank": "您的排名",
+    "outOf": "/",
+    "players": "名学习者",
+    "loading": "正在加载排行榜...",
+    "noFriends": "添加好友以查看好友排行榜！",
+    "noData": "暂无排行榜数据。",
+    "you": "你",
+    "writing": "写作",
+    "speaking": "口语",
+    "listening": "听力",
+    "vocabulary": "词汇",
+    "activities": "活动",
+    "daysActive": "活跃天数",
+    "words": "单词"
   }
 }

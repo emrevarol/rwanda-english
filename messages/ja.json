@@ -13,7 +13,8 @@
     "dailyPlan": "デイリープラン",
     "friends": "フレンド",
     "vocabulary": "語彙",
-    "grammar": "文法"
+    "grammar": "文法",
+    "leaderboard": "ランキング"
   },
   "landing": {
     "hero": {
@@ -643,5 +644,25 @@
     "generating": "演習を生成中...",
     "errorGenerate": "演習の生成に失敗しました。もう一度お試しください。",
     "errorConnection": "接続エラー。インターネット接続を確認してください。"
+  },
+  "leaderboard": {
+    "title": "ランキング",
+    "subtitle": "他の学習者と比較してあなたの順位を確認",
+    "global": "グローバル",
+    "friends": "フレンド",
+    "yourRank": "あなたの順位",
+    "outOf": "/",
+    "players": "人中",
+    "loading": "ランキングを読み込み中...",
+    "noFriends": "フレンドを追加してフレンドランキングを見ましょう！",
+    "noData": "まだランキングデータがありません。",
+    "you": "あなた",
+    "writing": "ライティング",
+    "speaking": "スピーキング",
+    "listening": "リスニング",
+    "vocabulary": "語彙",
+    "activities": "アクティビティ",
+    "daysActive": "アクティブ日数",
+    "words": "単語"
   }
 }

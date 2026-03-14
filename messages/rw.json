@@ -13,7 +13,8 @@
     "dailyPlan": "Gahunda y'Umunsi",
     "friends": "Inshuti",
     "vocabulary": "Amagambo",
-    "grammar": "Ikigambi"
+    "grammar": "Ikigambi",
+    "leaderboard": "Imbonerahamwe"
   },
   "landing": {
     "hero": {
@@ -643,5 +644,25 @@
     "generating": "Gutegura imyitozo...",
     "errorGenerate": "Byanze gutegura imyitozo. Ongera ugerageze.",
     "errorConnection": "Ikibazo cy'Imiyoboro. Suzuma interineti yawe."
+  },
+  "leaderboard": {
+    "title": "Imbonerahamwe",
+    "subtitle": "Reba aho uhagaze ugereranije n'abandi",
+    "global": "Ku Isi Hose",
+    "friends": "Inshuti",
+    "yourRank": "Urwego Rwawe",
+    "outOf": "muri",
+    "players": "abakinnyi",
+    "loading": "Gutegura imbonerahamwe...",
+    "noFriends": "Ongeraho inshuti kugira ngo ubone imbonerahamwe y'inshuti!",
+    "noData": "Nta makuru y'imbonerahamwe ahari.",
+    "you": "wowe",
+    "writing": "Inyandiko",
+    "speaking": "Kuvuga",
+    "listening": "Kumva",
+    "vocabulary": "Amagambo",
+    "activities": "ibikorwa",
+    "daysActive": "iminsi y'umurimo",
+    "words": "amagambo"
   }
 }

@@ -13,7 +13,8 @@
     "dailyPlan": "Kế hoạch hàng ngày",
     "friends": "Bạn bè",
     "vocabulary": "Từ vựng",
-    "grammar": "Ngữ pháp"
+    "grammar": "Ngữ pháp",
+    "leaderboard": "Bảng xếp hạng"
   },
   "landing": {
     "hero": {
@@ -643,5 +644,25 @@
     "generating": "Đang tạo bài tập...",
     "errorGenerate": "Không thể tạo bài tập. Vui lòng thử lại.",
     "errorConnection": "Lỗi kết nối. Vui lòng kiểm tra internet."
+  },
+  "leaderboard": {
+    "title": "Bảng xếp hạng",
+    "subtitle": "Xem thứ hạng của bạn so với người khác",
+    "global": "Toàn cầu",
+    "friends": "Bạn bè",
+    "yourRank": "Thứ hạng của bạn",
+    "outOf": "trên",
+    "players": "người chơi",
+    "loading": "Đang tải bảng xếp hạng...",
+    "noFriends": "Thêm bạn bè để xem bảng xếp hạng bạn bè!",
+    "noData": "Chưa có dữ liệu bảng xếp hạng.",
+    "you": "bạn",
+    "writing": "Viết",
+    "speaking": "Nói",
+    "listening": "Nghe",
+    "vocabulary": "Từ vựng",
+    "activities": "hoạt động",
+    "daysActive": "ngày hoạt động",
+    "words": "từ"
   }
 }

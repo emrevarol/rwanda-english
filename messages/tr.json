@@ -13,7 +13,8 @@
     "dailyPlan": "Günlük Plan",
     "friends": "Arkadaşlar",
     "vocabulary": "Kelime",
-    "grammar": "Dilbilgisi"
+    "grammar": "Dilbilgisi",
+    "leaderboard": "Sıralama"
   },
   "landing": {
     "hero": {
@@ -643,5 +644,25 @@
     "generating": "Alıştırma oluşturuluyor...",
     "errorGenerate": "Alıştırma oluşturulamadı. Lütfen tekrar deneyin.",
     "errorConnection": "Bağlantı hatası. Lütfen internetinizi kontrol edin."
+  },
+  "leaderboard": {
+    "title": "Sıralama",
+    "subtitle": "Diğerlerine kıyasla nerede olduğunuzu görün",
+    "global": "Genel",
+    "friends": "Arkadaşlar",
+    "yourRank": "Sıralamanız",
+    "outOf": "/",
+    "players": "oyuncu",
+    "loading": "Sıralama yükleniyor...",
+    "noFriends": "Arkadaş sıralamasını görmek için arkadaş ekleyin!",
+    "noData": "Henüz sıralama verisi yok.",
+    "you": "siz",
+    "writing": "Yazma",
+    "speaking": "Konuşma",
+    "listening": "Dinleme",
+    "vocabulary": "Kelime Bilgisi",
+    "activities": "aktivite",
+    "daysActive": "aktif gün",
+    "words": "kelime"
   }
 }

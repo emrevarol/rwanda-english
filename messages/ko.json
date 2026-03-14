@@ -13,7 +13,8 @@
     "dailyPlan": "일일 플랜",
     "friends": "친구",
     "vocabulary": "어휘",
-    "grammar": "문법"
+    "grammar": "문법",
+    "leaderboard": "리더보드"
   },
   "landing": {
     "hero": {
@@ -643,5 +644,25 @@
     "generating": "연습 생성 중...",
     "errorGenerate": "연습 생성에 실패했습니다. 다시 시도해 주세요.",
     "errorConnection": "연결 오류. 인터넷을 확인해 주세요."
+  },
+  "leaderboard": {
+    "title": "리더보드",
+    "subtitle": "다른 학습자와 비교하여 순위를 확인하세요",
+    "global": "전체",
+    "friends": "친구",
+    "yourRank": "내 순위",
+    "outOf": "/",
+    "players": "명 중",
+    "loading": "리더보드 로딩 중...",
+    "noFriends": "친구를 추가하여 친구 리더보드를 확인하세요!",
+    "noData": "아직 리더보드 데이터가 없습니다.",
+    "you": "나",
+    "writing": "쓰기",
+    "speaking": "말하기",
+    "listening": "듣기",
+    "vocabulary": "어휘",
+    "activities": "활동",
+    "daysActive": "활동 일수",
+    "words": "단어"
   }
 }

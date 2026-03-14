@@ -13,7 +13,8 @@
     "dailyPlan": "Plan Dnia",
     "friends": "Znajomi",
     "vocabulary": "Słownictwo",
-    "grammar": "Gramatyka"
+    "grammar": "Gramatyka",
+    "leaderboard": "Ranking"
   },
   "landing": {
     "hero": {
@@ -643,5 +644,25 @@
     "generating": "Generowanie ćwiczenia...",
     "errorGenerate": "Nie udało się wygenerować ćwiczenia. Spróbuj ponownie.",
     "errorConnection": "Błąd połączenia. Sprawdź swoje połączenie internetowe."
+  },
+  "leaderboard": {
+    "title": "Ranking",
+    "subtitle": "Zobacz, jak wypadasz na tle innych",
+    "global": "Globalny",
+    "friends": "Znajomi",
+    "yourRank": "Twoja Pozycja",
+    "outOf": "z",
+    "players": "graczy",
+    "loading": "Ładowanie rankingu...",
+    "noFriends": "Dodaj znajomych, aby zobaczyć ranking znajomych!",
+    "noData": "Brak danych rankingowych.",
+    "you": "ty",
+    "writing": "Pisanie",
+    "speaking": "Mówienie",
+    "listening": "Słuchanie",
+    "vocabulary": "Słownictwo",
+    "activities": "aktywności",
+    "daysActive": "aktywnych dni",
+    "words": "słów"
   }
 }

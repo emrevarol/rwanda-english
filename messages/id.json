@@ -13,7 +13,8 @@
     "dailyPlan": "Rencana Harian",
     "friends": "Teman",
     "vocabulary": "Kosakata",
-    "grammar": "Tata Bahasa"
+    "grammar": "Tata Bahasa",
+    "leaderboard": "Papan Peringkat"
   },
   "landing": {
     "hero": {
@@ -643,5 +644,25 @@
     "generating": "Membuat latihan...",
     "errorGenerate": "Gagal membuat latihan. Silakan coba lagi.",
     "errorConnection": "Kesalahan koneksi. Periksa internet Anda."
+  },
+  "leaderboard": {
+    "title": "Papan Peringkat",
+    "subtitle": "Lihat peringkat Anda dibandingkan yang lain",
+    "global": "Global",
+    "friends": "Teman",
+    "yourRank": "Peringkat Anda",
+    "outOf": "dari",
+    "players": "pemain",
+    "loading": "Memuat papan peringkat...",
+    "noFriends": "Tambahkan teman untuk melihat papan peringkat teman!",
+    "noData": "Belum ada data papan peringkat.",
+    "you": "Anda",
+    "writing": "Menulis",
+    "speaking": "Berbicara",
+    "listening": "Mendengarkan",
+    "vocabulary": "Kosakata",
+    "activities": "aktivitas",
+    "daysActive": "hari aktif",
+    "words": "kata"
   }
 }

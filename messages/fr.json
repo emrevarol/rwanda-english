@@ -13,7 +13,8 @@
     "dailyPlan": "Plan du jour",
     "friends": "Amis",
     "vocabulary": "Vocabulaire",
-    "grammar": "Grammaire"
+    "grammar": "Grammaire",
+    "leaderboard": "Classement"
   },
   "landing": {
     "hero": {
@@ -643,5 +644,25 @@
     "generating": "Génération de l'exercice...",
     "errorGenerate": "Échec de la génération. Veuillez réessayer.",
     "errorConnection": "Erreur de connexion. Vérifiez votre internet."
+  },
+  "leaderboard": {
+    "title": "Classement",
+    "subtitle": "Voyez comment vous vous situez par rapport aux autres",
+    "global": "Mondial",
+    "friends": "Amis",
+    "yourRank": "Votre Rang",
+    "outOf": "sur",
+    "players": "joueurs",
+    "loading": "Chargement du classement...",
+    "noFriends": "Ajoutez des amis pour voir le classement entre amis !",
+    "noData": "Pas encore de données de classement.",
+    "you": "vous",
+    "writing": "Écriture",
+    "speaking": "Expression orale",
+    "listening": "Compréhension orale",
+    "vocabulary": "Vocabulaire",
+    "activities": "activités",
+    "daysActive": "jours actifs",
+    "words": "mots"
   }
 }
