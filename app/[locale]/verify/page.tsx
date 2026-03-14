@@ -50,7 +50,7 @@ export default function VerifyPage() {
             redirect: false,
           })
           if (result?.ok) {
-            router.push(`/${locale}/dashboard`)
+            router.push(`/${locale}/assessment`)
             return
           }
         }

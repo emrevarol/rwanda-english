@@ -15,6 +15,7 @@ model User {
   password            String
   emailVerified       Boolean              @default(false)
   level               String               @default("B1")
+  assessmentDone      Boolean              @default(false)
   language            String               @default("en")
   createdAt           DateTime             @default(now())
   stripeCustomerId    String?              @unique

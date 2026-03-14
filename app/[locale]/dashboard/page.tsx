@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import Navigation from '@/components/shared/Navigation'
@@ -58,10 +59,18 @@ export default function DashboardPage() {
   const tl = useTranslations('learningPath')
   const { data: session, status } = useSession()
   const locale = useLocale()
+  const router = useRouter()
   const [data, setData] = useState<DashboardData | null>(null)
   const [todayPlan, setTodayPlan] = useState<TodayPlan | null>(null)
   const [loading, setLoading] = useState(true)
   const [selectedActivity, setSelectedActivity] = useState<ActivityItem | null>(null)
+
+  // Redirect to assessment if not done yet
+  useEffect(() => {
+    if (status === 'authenticated' && session?.user && !session.user.assessmentDone) {
+      router.push(`/${locale}/assessment`)
+    }
+  }, [status, session, locale, router])
 
   useEffect(() => {
     if (status === 'authenticated') {

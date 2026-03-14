@@ -267,8 +267,13 @@ export default function VocabularyBuilder({ userLevel, initialCategory }: { user
     if (w.length >= 5) {
       const questions = w.slice(0, 5).map((item, i) => {
         const sentence = item.example.replace(new RegExp(item.word, 'gi'), '___')
-        const otherWords = w.filter((_, j) => j !== i).slice(0, 3).map(o => o.word)
-        const options = shuffle([item.word, ...otherWords])
+        // Get unique distractor words (different from the correct answer)
+        const distractors = w
+          .filter((o, j) => j !== i && o.word.toLowerCase() !== item.word.toLowerCase())
+          .map(o => o.word)
+          .filter((word, idx, arr) => arr.findIndex(w => w.toLowerCase() === word.toLowerCase()) === idx)
+          .slice(0, 3)
+        const options = shuffle([item.word, ...distractors])
         return { sentence, answer: item.word, options }
       })
       setFillQuestions(questions)

@@ -156,7 +156,7 @@ export function getAssessmentQuestions(): Array<{
       type: 'multiple-choice',
       options: [
         'The program is funded by the company.',
-        'The program is funded by the company.',
+        'The program funded by the company.',
         'The program were funded the company.',
         'The company is funding by the program.',
       ],

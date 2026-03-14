@@ -19,6 +19,7 @@ export default function AssessmentPage() {
 
   const [current, setCurrent] = useState(0)
   const [answers, setAnswers] = useState<Record<number, string>>({})
+  const [selectedIndex, setSelectedIndex] = useState<Record<number, number>>({})
   const [result, setResult] = useState<{ level: string; score: number; feedback: string } | null>(null)
   const [loading, setLoading] = useState(false)
   const [showPaywall, setShowPaywall] = useState(false)
@@ -151,9 +152,9 @@ export default function AssessmentPage() {
               {question.options?.map((option, i) => (
                 <button
                   key={i}
-                  onClick={() => setAnswers({ ...answers, [question.id]: option })}
+                  onClick={() => { setAnswers({ ...answers, [question.id]: option }); setSelectedIndex({ ...selectedIndex, [question.id]: i }) }}
                   className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-all text-sm ${
-                    answers[question.id] === option
+                    selectedIndex[question.id] === i
                       ? 'border-blue-500 bg-blue-50 text-blue-700'
                       : 'border-gray-200 hover:border-gray-300 text-gray-700'
                   }`}

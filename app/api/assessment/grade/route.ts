@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
 
     await prisma.user.update({
       where: { id: session.user.id },
-      data: { level: result.level },
+      data: { level: result.level, assessmentDone: true },
     })
 
     return NextResponse.json(result)

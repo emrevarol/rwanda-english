@@ -55,6 +55,7 @@ export default function GrammarPage() {
   const [questions, setQuestions] = useState<Question[]>([])
   const [currentIdx, setCurrentIdx] = useState(0)
   const [userAnswer, setUserAnswer] = useState('')
+  const [selectedOptIdx, setSelectedOptIdx] = useState<number>(-1)
   const [reorderWords, setReorderWords] = useState<string[]>([])
   const [checked, setChecked] = useState(false)
   const [isCorrect, setIsCorrect] = useState(false)
@@ -145,6 +146,7 @@ export default function GrammarPage() {
     setChecked(false)
     setIsCorrect(false)
     setUserAnswer('')
+    setSelectedOptIdx(-1)
     // Initialize reorder words for next question
     if (questions[nextIdx]?.type === 'sentence-reorder' && questions[nextIdx].words) {
       setReorderWords([...questions[nextIdx].words!].sort(() => Math.random() - 0.5))
@@ -284,8 +286,8 @@ export default function GrammarPage() {
                       {currentQ.options.map((opt, i) => (
                         <button
                           key={i}
-                          onClick={() => setUserAnswer(opt)}
-                          className={`text-sm px-4 py-2.5 rounded-lg border transition-colors ${userAnswer === opt
+                          onClick={() => { setUserAnswer(opt); setSelectedOptIdx(i) }}
+                          className={`text-sm px-4 py-2.5 rounded-lg border transition-colors ${selectedOptIdx === i
                             ? 'bg-red-50 border-red-300 text-red-700 font-semibold'
                             : 'bg-gray-50 border-gray-200 text-gray-700 hover:bg-gray-100'
                           }`}
@@ -317,8 +319,8 @@ export default function GrammarPage() {
                       {currentQ.options.map((opt, i) => (
                         <button
                           key={i}
-                          onClick={() => setUserAnswer(opt)}
-                          className={`text-sm px-4 py-2.5 rounded-lg border transition-colors ${userAnswer === opt
+                          onClick={() => { setUserAnswer(opt); setSelectedOptIdx(i) }}
+                          className={`text-sm px-4 py-2.5 rounded-lg border transition-colors ${selectedOptIdx === i
                             ? 'bg-red-50 border-red-300 text-red-700 font-semibold'
                             : 'bg-gray-50 border-gray-200 text-gray-700 hover:bg-gray-100'
                           }`}

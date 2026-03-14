@@ -8,6 +8,7 @@ declare module 'next-auth' {
       email: string
       level: string
       language: string
+      assessmentDone: boolean
     }
   }
 
@@ -17,5 +18,6 @@ declare module 'next-auth' {
     email: string
     level: string
     language: string
+    assessmentDone: boolean
   }
 }

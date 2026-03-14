@@ -146,13 +146,23 @@ Only return valid JSON, nothing else.`,
     if (!jsonMatch) throw new Error('No JSON found')
     const data = JSON.parse(jsonMatch[0])
 
-    // Fix sentence-reorder: ensure words array matches the answer exactly
+    // Fix AI-generated questions
     if (data.questions) {
       for (const q of data.questions) {
         if (q.type === 'sentence-reorder' && q.answer) {
           // Always regenerate words from the answer to prevent mismatches
           const answerWords = q.answer.replace(/[.!?,;:'"]/g, '').trim().split(/\s+/)
           q.words = answerWords
+        }
+        // Deduplicate options for multiple-choice and fill-blank
+        if (q.options && Array.isArray(q.options)) {
+          const seen = new Set<string>()
+          q.options = q.options.filter((opt: string) => {
+            const lower = opt.toLowerCase()
+            if (seen.has(lower)) return false
+            seen.add(lower)
+            return true
+          })
         }
       }
     }
