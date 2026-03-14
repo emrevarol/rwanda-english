@@ -29,41 +29,39 @@ export default function ProfilePage() {
     }
   }, [status])
 
-  const uploadToCloudinary = async (file: File) => {
-    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-    const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
-    if (!cloudName || !uploadPreset) {
-      alert('Cloudinary not configured')
-      return
-    }
+  const [uploadStatus, setUploadStatus] = useState('')
 
+  const uploadToCloudinary = async (file: File) => {
     setUploading(true)
+    setUploadStatus('Uploading...')
     try {
       const formData = new FormData()
       formData.append('file', file)
-      formData.append('upload_preset', uploadPreset)
+      formData.append('upload_preset', 'english.cash')
 
-      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+      const res = await fetch('https://api.cloudinary.com/v1_1/dhvofzcwt/image/upload', {
         method: 'POST',
         body: formData,
       })
       const data = await res.json()
       if (data.error) {
-        alert(`Upload error: ${data.error.message}`)
+        setUploadStatus(`Error: ${data.error.message}`)
         return
       }
       if (data.secure_url) {
         setAvatar(data.secure_url)
+        setUploadStatus('Saving...')
         await fetch('/api/profile', {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ avatar: data.secure_url }),
         })
         await update()
+        setUploadStatus('')
       }
     } catch (err: any) {
       console.error('Upload failed:', err)
-      alert(`Upload failed: ${err?.message || 'Unknown error'}`)
+      setUploadStatus(`Failed: ${err?.message || 'Unknown error'}`)
     } finally {
       setUploading(false)
     }
@@ -158,6 +156,11 @@ export default function ProfilePage() {
                 </button>
               )}
             </div>
+            {uploadStatus && (
+              <p className={`text-xs ${uploadStatus.startsWith('Error') || uploadStatus.startsWith('Failed') ? 'text-red-500' : 'text-gray-500'}`}>
+                {uploadStatus}
+              </p>
+            )}
           </div>
         </div>
 
