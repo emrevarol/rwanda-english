@@ -104,28 +104,28 @@ export default function DashboardPage() {
     C2: 'bg-purple-100 text-purple-700',
   }
 
-  // Vocabulary: prefer accuracy (correct/total answers), then mastery, then writing sub-score
-  const vocabPct = data
+  // Vocabulary: prefer accuracy (correct/total answers), then mastery, then writing sub-score — all as 0-10
+  const vocabScore = data
     ? data.vocabAccuracy != null
-      ? data.vocabAccuracy
+      ? data.vocabAccuracy / 10
       : data.vocabMasteryPct != null
-        ? data.vocabMasteryPct
+        ? data.vocabMasteryPct / 10
         : data.avgVocabulary != null
-          ? (data.avgVocabulary / 9) * 100
-          : (data.avgWriting / 9) * 100
+          ? (data.avgVocabulary / 9) * 10
+          : (data.avgWriting / 9) * 10
     : 0
-  const grammarPct = data
+  const grammarScore = data
     ? data.avgGrammar != null
-      ? (data.avgGrammar / 9) * 100
-      : (data.avgWriting / 9) * 100
+      ? (data.avgGrammar / 9) * 10
+      : (data.avgWriting / 9) * 10
     : 0
 
   const skillsData = [
-    { subject: t('writing'), value: data ? (data.avgWriting / 9) * 100 : 0, color: '#2563eb' },
-    { subject: t('speaking'), value: data ? data.avgSpeaking * 10 : 0, color: '#16a34a' },
-    { subject: t('listening'), value: data ? data.avgListening : 0, color: '#9333ea' },
-    { subject: t('vocabulary'), value: vocabPct, color: '#f59e0b' },
-    { subject: t('grammar'), value: grammarPct, color: '#e11d48' },
+    { subject: t('writing'), value: data ? Math.round((data.avgWriting / 9) * 100) / 10 : 0, color: '#2563eb' },
+    { subject: t('speaking'), value: data ? Math.round(data.avgSpeaking * 10) / 10 : 0, color: '#16a34a' },
+    { subject: t('listening'), value: data ? Math.round(data.avgListening / 10 * 10) / 10 : 0, color: '#9333ea' },
+    { subject: t('vocabulary'), value: Math.round(vocabScore * 10) / 10, color: '#f59e0b' },
+    { subject: t('grammar'), value: Math.round(grammarScore * 10) / 10, color: '#e11d48' },
   ]
 
   return (

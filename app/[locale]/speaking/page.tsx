@@ -9,8 +9,11 @@ import { getSpeakingTopic } from '@/lib/helpers'
 interface Feedback {
   score: number
   fluency: string
+  pronunciation: string
+  intonation?: string
   grammar: string
   vocabulary: string
+  fillerAnalysis?: string
   modelAnswer: string
   overallFeedback: string
 }
@@ -321,11 +324,21 @@ export default function SpeakingPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               <div className="bg-blue-50 border border-blue-100 rounded-lg p-3">
                 <div className="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-1">{t('feedback.fluency')}</div>
                 <p className="text-sm text-gray-700 leading-relaxed">{feedback.fluency}</p>
               </div>
+              <div className="bg-indigo-50 border border-indigo-100 rounded-lg p-3">
+                <div className="text-xs font-semibold text-indigo-600 uppercase tracking-wide mb-1">{t('feedback.pronunciation')}</div>
+                <p className="text-sm text-gray-700 leading-relaxed">{feedback.pronunciation}</p>
+              </div>
+              {feedback.intonation && (
+                <div className="bg-cyan-50 border border-cyan-100 rounded-lg p-3">
+                  <div className="text-xs font-semibold text-cyan-600 uppercase tracking-wide mb-1">{t('feedback.intonation')}</div>
+                  <p className="text-sm text-gray-700 leading-relaxed">{feedback.intonation}</p>
+                </div>
+              )}
               <div className="bg-purple-50 border border-purple-100 rounded-lg p-3">
                 <div className="text-xs font-semibold text-purple-600 uppercase tracking-wide mb-1">{t('feedback.grammar')}</div>
                 <p className="text-sm text-gray-700 leading-relaxed">{feedback.grammar}</p>
@@ -334,6 +347,12 @@ export default function SpeakingPage() {
                 <div className="text-xs font-semibold text-green-600 uppercase tracking-wide mb-1">{t('feedback.vocabulary')}</div>
                 <p className="text-sm text-gray-700 leading-relaxed">{feedback.vocabulary}</p>
               </div>
+              {feedback.fillerAnalysis && (
+                <div className="bg-orange-50 border border-orange-100 rounded-lg p-3">
+                  <div className="text-xs font-semibold text-orange-600 uppercase tracking-wide mb-1">{t('feedback.fillerAnalysis')}</div>
+                  <p className="text-sm text-gray-700 leading-relaxed">{feedback.fillerAnalysis}</p>
+                </div>
+              )}
             </div>
 
             {feedback.modelAnswer && (
