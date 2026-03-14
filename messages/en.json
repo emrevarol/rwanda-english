@@ -715,7 +715,8 @@
     "level_c2": "Reached C2",
     "writing_band8": "Band 8+ Writing",
     "speaking_9": "9/10 Speaking",
-    "listening_perfect": "Perfect Listening"
+    "listening_perfect": "Perfect Listening",
+    "nextMilestone": "Next milestone"
   },
   "notifications": {
     "title": "Notifications",

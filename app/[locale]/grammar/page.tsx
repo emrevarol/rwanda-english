@@ -5,6 +5,7 @@ import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import Navigation from '@/components/shared/Navigation'
 import SubscriptionPaywall from '@/components/shared/SubscriptionPaywall'
+import MilestoneProgress from '@/components/shared/MilestoneProgress'
 import { markDailyTaskDone } from '@/lib/dailyComplete'
 
 interface Question {
@@ -251,6 +252,8 @@ export default function GrammarPage() {
           <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
           <p className="text-gray-500 text-sm mt-1">{t('subtitle')}</p>
         </div>
+
+        <MilestoneProgress skill="grammar" />
 
         {/* Topic selection + generate */}
         {questions.length === 0 && !finished && (

@@ -730,7 +730,8 @@
     "level_c2": "C2 Seviyesi",
     "writing_band8": "Band 8+ Yazı",
     "speaking_9": "9/10 Konuşma",
-    "listening_perfect": "Mükemmel Dinleme"
+    "listening_perfect": "Mükemmel Dinleme",
+    "nextMilestone": "Sonraki hedef"
   },
   "notifications": {
     "title": "Bildirimler",

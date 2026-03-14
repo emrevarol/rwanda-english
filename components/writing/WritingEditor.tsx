@@ -6,6 +6,7 @@ import { getWritingPrompt } from '@/lib/helpers'
 import { markDailyTaskDone } from '@/lib/dailyComplete'
 import SampleChart from './SampleChart'
 import SubscriptionPaywall from '@/components/shared/SubscriptionPaywall'
+import MilestoneProgress from '@/components/shared/MilestoneProgress'
 
 interface Feedback {
   band: number
@@ -109,6 +110,7 @@ export default function WritingEditor({
 
   return (
     <div className="space-y-4">
+      <MilestoneProgress skill="writing" />
       {/* Prompt */}
       <div className="bg-sky-50 border border-sky-200 rounded-xl p-4">
         <div className="flex items-start justify-between gap-3">

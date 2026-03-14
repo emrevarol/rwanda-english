@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { markDailyTaskDone } from '@/lib/dailyComplete'
 import SubscriptionPaywall from '@/components/shared/SubscriptionPaywall'
+import MilestoneProgress from '@/components/shared/MilestoneProgress'
 
 interface Word {
   word: string
@@ -795,6 +796,7 @@ export default function VocabularyBuilder({ userLevel, initialCategory }: { user
   // --- MAIN MENU ---
   return (
     <div className="space-y-6">
+      <MilestoneProgress skill="vocabulary" />
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <div className="bg-white rounded-xl border border-gray-200 p-4 text-center">

@@ -6,11 +6,12 @@ import { useTranslations } from 'next-intl'
 interface ToastItem {
   key: string
   icon: string
+  category: string
   id: number
 }
 
 const AchievementContext = createContext<{
-  showAchievements: (achievements: Array<{ key: string; icon: string }>) => void
+  showAchievements: (achievements: Array<{ key: string; icon: string; category: string }>) => void
 }>({ showAchievements: () => {} })
 
 export function useAchievementToast() {
@@ -21,7 +22,7 @@ export function AchievementProvider({ children }: { children: React.ReactNode })
   const [toasts, setToasts] = useState<ToastItem[]>([])
   let counter = 0
 
-  const showAchievements = useCallback((achievements: Array<{ key: string; icon: string }>) => {
+  const showAchievements = useCallback((achievements: Array<{ key: string; icon: string; category: string }>) => {
     if (!achievements || achievements.length === 0) return
     const newToasts = achievements.map(a => ({ ...a, id: ++counter }))
     setToasts(prev => [...prev, ...newToasts])
@@ -63,9 +64,9 @@ function AchievementToastItem({ toast, onDone }: { toast: ToastItem; onDone: () 
       }`}
       style={{ backgroundColor: '#1e293b', borderColor: '#475569' }}
     >
-      <span className="text-2xl">{toast.icon}</span>
+      <span className="text-3xl">{toast.icon}</span>
       <div>
-        <div className="text-xs font-bold text-amber-400">{t('newUnlock')}</div>
+        <div className="text-[10px] font-bold uppercase tracking-wide text-amber-400">{t(`category_${toast.category}`)}</div>
         <div className="text-sm font-medium text-white">{t(toast.key)}</div>
       </div>
     </div>

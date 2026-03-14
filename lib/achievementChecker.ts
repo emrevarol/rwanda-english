@@ -106,11 +106,19 @@ export async function checkAchievements(
             data: { userId, achievementKey: key },
           })
 
+          const categoryTitles: Record<string, string> = {
+            first_steps: 'First Steps',
+            consistency: 'Consistency',
+            volume: 'Volume Milestone',
+            level: 'Level Up',
+            excellence: 'Excellence',
+          }
+
           await tx.notification.create({
             data: {
               userId,
               type: 'achievement',
-              title: `${def.icon} Achievement Unlocked!`,
+              title: categoryTitles[def.category] || 'Achievement',
               body: key,
             },
           })

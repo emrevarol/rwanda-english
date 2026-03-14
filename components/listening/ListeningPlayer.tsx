@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { markDailyTaskDone } from '@/lib/dailyComplete'
 import SubscriptionPaywall from '@/components/shared/SubscriptionPaywall'
+import MilestoneProgress from '@/components/shared/MilestoneProgress'
 
 interface Question {
   question: string
@@ -262,6 +263,7 @@ export default function ListeningPlayer({ locale }: { locale?: string }) {
 
   return (
     <div className="space-y-4">
+      <MilestoneProgress skill="listening" />
       {/* Generate button */}
       <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
         <div className="text-4xl mb-4">🎧</div>

@@ -73,9 +73,9 @@ export default function NotificationBell() {
     if (n.type === 'achievement' && n.body) {
       const def = ACHIEVEMENT_MAP[n.body]
       const label = ta(n.body)
-      return { icon: def?.icon || '🏅', text: label || n.body }
+      return { icon: def?.icon || '🏅', text: label || n.body, subtitle: n.title }
     }
-    return { icon: '🔔', text: n.body }
+    return { icon: '🔔', text: n.body, subtitle: n.title }
   }
 
   const timeAgo = (dateStr: string) => {
@@ -131,11 +131,11 @@ export default function NotificationBell() {
                         : 'bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30'
                     } border-b border-gray-50 dark:border-gray-700/50 last:border-0`}
                   >
-                    <span className="text-xl flex-shrink-0 mt-0.5">{display.icon}</span>
+                    <span className="text-2xl flex-shrink-0">{display.icon}</span>
                     <div className="flex-1 min-w-0">
-                      <div className="text-xs font-semibold text-gray-900 dark:text-white">{n.title}</div>
-                      <div className="text-xs text-gray-600 dark:text-gray-300 mt-0.5">{display.text}</div>
-                      <div className="text-[10px] text-gray-400 mt-1">{timeAgo(n.createdAt)}</div>
+                      <div className="text-[10px] font-semibold uppercase tracking-wide text-blue-500 dark:text-blue-400">{display.subtitle}</div>
+                      <div className="text-sm font-medium text-gray-900 dark:text-white">{display.text}</div>
+                      <div className="text-[10px] text-gray-400 mt-0.5">{timeAgo(n.createdAt)}</div>
                     </div>
                     {!n.read && <span className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 mt-2" />}
                   </button>

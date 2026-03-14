@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import Navigation from '@/components/shared/Navigation'
+import MilestoneProgress from '@/components/shared/MilestoneProgress'
 import { getSpeakingTopic } from '@/lib/helpers'
 
 interface Feedback {
@@ -195,6 +196,8 @@ export default function SpeakingPage() {
             </p>
           </div>
         </div>
+
+        <MilestoneProgress skill="speaking" />
 
         {/* Topic */}
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
