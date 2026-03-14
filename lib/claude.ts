@@ -161,7 +161,7 @@ IMPORTANT: Use this analytics data extensively in your feedback. Be specific:
 
   const message = await anthropic.messages.create({
     model: modelOverride || MODEL,
-    max_tokens: 1500,
+    max_tokens: 2500,
     system: systemPrompt,
     messages: [
       {
@@ -197,7 +197,9 @@ Only return valid JSON, nothing else.`,
   if (content.type !== 'text') throw new Error('Unexpected response type')
 
   try {
-    const jsonMatch = content.text.match(/\{[\s\S]*\}/)
+    // Strip markdown code blocks if present
+    const cleaned = content.text.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim()
+    const jsonMatch = cleaned.match(/\{[\s\S]*\}/)
     if (!jsonMatch) throw new Error('No JSON found')
     return JSON.parse(jsonMatch[0])
   } catch {

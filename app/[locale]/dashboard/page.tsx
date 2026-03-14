@@ -461,8 +461,37 @@ export default function DashboardPage() {
                         <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide">AI Feedback</h4>
                         {(() => {
                           try {
-                            const fb = JSON.parse(selectedActivity.feedback!)
+                            let fb = JSON.parse(selectedActivity.feedback!)
                             if (typeof fb === 'string') return <p className="text-sm text-gray-700 bg-green-50 rounded-lg p-4">{fb}</p>
+
+                            // Handle corrupted data: if fluency contains nested JSON (AI wrapped in code blocks)
+                            if (fb.fluency && fb.fluency.includes('"score"') && (fb.grammar === 'See above' || !fb.pronunciation)) {
+                              try {
+                                const cleaned = fb.fluency.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim()
+                                const inner = JSON.parse(cleaned)
+                                if (inner.score) fb = inner
+                              } catch {
+                                // Nested JSON is truncated — extract whatever fields we can
+                                const extract = (key: string) => {
+                                  const re = new RegExp(`"${key}"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)`, 's')
+                                  const m = fb.fluency.match(re)
+                                  return m ? m[1].replace(/\\"/g, '"').replace(/\\n/g, '\n') : null
+                                }
+                                const scoreMatch = fb.fluency.match(/"score"\s*:\s*(\d+\.?\d*)/)
+                                fb = {
+                                  score: scoreMatch ? parseFloat(scoreMatch[1]) : fb.score,
+                                  fluency: extract('fluency'),
+                                  pronunciation: extract('pronunciation'),
+                                  intonation: extract('intonation'),
+                                  grammar: extract('grammar'),
+                                  vocabulary: extract('vocabulary'),
+                                  fillerAnalysis: extract('fillerAnalysis'),
+                                  modelAnswer: extract('modelAnswer'),
+                                  overallFeedback: extract('overallFeedback'),
+                                }
+                              }
+                            }
+
                             const cards: Array<{ key: string; label: string; bg: string; border: string; title: string }> = [
                               { key: 'fluency', label: 'Fluency', bg: 'bg-blue-50', border: 'border-blue-100', title: 'text-blue-600' },
                               { key: 'pronunciation', label: 'Pronunciation', bg: 'bg-indigo-50', border: 'border-indigo-100', title: 'text-indigo-600' },
@@ -471,10 +500,17 @@ export default function DashboardPage() {
                               { key: 'vocabulary', label: 'Vocabulary', bg: 'bg-green-50', border: 'border-green-100', title: 'text-green-600' },
                               { key: 'fillerAnalysis', label: 'Filler Analysis', bg: 'bg-orange-50', border: 'border-orange-100', title: 'text-orange-600' },
                             ]
+                            const validCards = cards.filter(c => fb[c.key] && fb[c.key] !== 'See above')
                             return (
                               <>
+                                {fb.score && (
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <span className="text-xs text-gray-500">AI Score:</span>
+                                    <span className={`text-lg font-bold ${fb.score >= 7 ? 'text-green-600' : fb.score >= 5 ? 'text-yellow-600' : 'text-red-600'}`}>{fb.score}/10</span>
+                                  </div>
+                                )}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                  {cards.filter(c => fb[c.key]).map(c => (
+                                  {validCards.map(c => (
                                     <div key={c.key} className={`${c.bg} border ${c.border} rounded-lg p-3`}>
                                       <div className={`text-xs font-semibold ${c.title} uppercase tracking-wide mb-1`}>{c.label}</div>
                                       <p className="text-sm text-gray-700 leading-relaxed">{fb[c.key]}</p>
@@ -487,7 +523,7 @@ export default function DashboardPage() {
                                     <p className="text-sm text-amber-700 leading-relaxed italic">&quot;{fb.modelAnswer}&quot;</p>
                                   </div>
                                 )}
-                                {fb.overallFeedback && (
+                                {fb.overallFeedback && !fb.overallFeedback.includes('"score"') && (
                                   <div className="bg-gray-50 rounded-lg p-3">
                                     <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-1">Overall</div>
                                     <p className="text-sm text-gray-600 leading-relaxed">{fb.overallFeedback}</p>
