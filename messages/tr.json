@@ -666,5 +666,19 @@
     "activities": "aktivite",
     "daysActive": "aktif gün",
     "words": "kelime"
+  },
+  "profile": {
+    "title": "Profil",
+    "uploadPhoto": "Fotoğraf Yükle",
+    "changePhoto": "Fotoğrafı Değiştir",
+    "removePhoto": "Kaldır",
+    "bio": "Hakkında",
+    "bioPlaceholder": "Kendini kısaca tanıt...",
+    "save": "Kaydet",
+    "saved": "Kaydedildi!",
+    "uploading": "Yükleniyor...",
+    "name": "İsim",
+    "email": "E-posta",
+    "level": "Seviye"
   }
 }

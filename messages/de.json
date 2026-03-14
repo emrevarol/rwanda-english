@@ -666,5 +666,19 @@
     "activities": "Aktivitäten",
     "daysActive": "aktive Tage",
     "words": "Wörter"
+  },
+  "profile": {
+    "title": "Profil",
+    "uploadPhoto": "Foto hochladen",
+    "changePhoto": "Foto ändern",
+    "removePhoto": "Entfernen",
+    "bio": "Über mich",
+    "bioPlaceholder": "Erzähl etwas über dich...",
+    "save": "Speichern",
+    "saved": "Gespeichert!",
+    "uploading": "Wird hochgeladen...",
+    "name": "Name",
+    "email": "E-Mail",
+    "level": "Stufe"
   }
 }

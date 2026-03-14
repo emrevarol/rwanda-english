@@ -666,5 +666,19 @@
     "activities": "활동",
     "daysActive": "활동 일수",
     "words": "단어"
+  },
+  "profile": {
+    "title": "프로필",
+    "uploadPhoto": "사진 업로드",
+    "changePhoto": "사진 변경",
+    "removePhoto": "삭제",
+    "bio": "소개",
+    "bioPlaceholder": "자기소개를 써주세요...",
+    "save": "저장",
+    "saved": "저장됨!",
+    "uploading": "업로드 중...",
+    "name": "이름",
+    "email": "이메일",
+    "level": "레벨"
   }
 }

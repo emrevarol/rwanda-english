@@ -666,5 +666,19 @@
     "activities": "ibikorwa",
     "daysActive": "iminsi y'umurimo",
     "words": "amagambo"
+  },
+  "profile": {
+    "title": "Umwirondoro",
+    "uploadPhoto": "Ohereza ifoto",
+    "changePhoto": "Hindura ifoto",
+    "removePhoto": "Kuraho",
+    "bio": "Ibyawe",
+    "bioPlaceholder": "Vuga bike kuri wowe...",
+    "save": "Bika",
+    "saved": "Byabitswe!",
+    "uploading": "Birimo koherezwa...",
+    "name": "Izina",
+    "email": "Imeli",
+    "level": "Urwego"
   }
 }

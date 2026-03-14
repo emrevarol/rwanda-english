@@ -666,5 +666,19 @@
     "activities": "活动",
     "daysActive": "活跃天数",
     "words": "单词"
+  },
+  "profile": {
+    "title": "个人资料",
+    "uploadPhoto": "上传照片",
+    "changePhoto": "更换照片",
+    "removePhoto": "删除",
+    "bio": "简介",
+    "bioPlaceholder": "介绍一下你自己...",
+    "save": "保存",
+    "saved": "已保存！",
+    "uploading": "上传中...",
+    "name": "姓名",
+    "email": "邮箱",
+    "level": "等级"
   }
 }

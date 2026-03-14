@@ -666,5 +666,19 @@
     "activities": "hoạt động",
     "daysActive": "ngày hoạt động",
     "words": "từ"
+  },
+  "profile": {
+    "title": "Hồ sơ",
+    "uploadPhoto": "Tải ảnh lên",
+    "changePhoto": "Đổi ảnh",
+    "removePhoto": "Xóa",
+    "bio": "Giới thiệu",
+    "bioPlaceholder": "Giới thiệu về bạn...",
+    "save": "Lưu",
+    "saved": "Đã lưu!",
+    "uploading": "Đang tải...",
+    "name": "Tên",
+    "email": "Email",
+    "level": "Cấp độ"
   }
 }

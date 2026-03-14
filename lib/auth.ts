@@ -32,6 +32,8 @@ export const authOptions: NextAuthOptions = {
           level: user.level,
           language: user.language,
           assessmentDone: user.assessmentDone,
+          avatar: user.avatar,
+          bio: user.bio,
         }
       },
     }),
@@ -43,14 +45,18 @@ export const authOptions: NextAuthOptions = {
         token.level = (user as any).level
         token.language = (user as any).language
         token.assessmentDone = (user as any).assessmentDone
+        token.avatar = (user as any).avatar
+        token.bio = (user as any).bio
       }
-      // Refresh assessmentDone from DB on every session update
+      // Refresh from DB on session update or when assessmentDone not set
       if (trigger === 'update' || !token.assessmentDone) {
         try {
-          const dbUser = await prisma.user.findUnique({ where: { id: token.id as string }, select: { assessmentDone: true, level: true } })
+          const dbUser = await prisma.user.findUnique({ where: { id: token.id as string }, select: { assessmentDone: true, level: true, avatar: true, bio: true } })
           if (dbUser) {
             token.assessmentDone = dbUser.assessmentDone
             token.level = dbUser.level
+            token.avatar = dbUser.avatar
+            token.bio = dbUser.bio
           }
         } catch {}
       }
@@ -62,6 +68,8 @@ export const authOptions: NextAuthOptions = {
         session.user.level = token.level as string
         session.user.language = token.language as string
         session.user.assessmentDone = token.assessmentDone as boolean
+        session.user.avatar = token.avatar as string | null
+        session.user.bio = token.bio as string | null
       }
       return session
     },

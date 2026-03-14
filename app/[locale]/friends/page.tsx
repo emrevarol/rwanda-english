@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { useTranslations, useLocale } from 'next-intl'
 import Navigation from '@/components/shared/Navigation'
+import Avatar from '@/components/shared/Avatar'
 import RadarCompare from '@/components/social/RadarCompare'
 import ShareCard from '@/components/social/ShareCard'
 
@@ -12,6 +13,8 @@ interface UserResult {
   name: string
   email: string
   level: string
+  avatar?: string | null
+  bio?: string | null
 }
 
 interface FriendItem extends UserResult {
@@ -234,9 +237,7 @@ export default function FriendsPage() {
               {pendingReceived.map((f) => (
                 <div key={f.friendshipId} className="flex items-center justify-between p-3 bg-white rounded-lg">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                      {f.name.charAt(0).toUpperCase()}
-                    </div>
+                    <Avatar src={f.avatar} name={f.name} size={40} />
                     <div>
                       <div className="text-sm font-medium text-gray-800">{f.name}</div>
                       <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${levelColors[f.level]}`}>{f.level}</span>
@@ -266,9 +267,7 @@ export default function FriendsPage() {
               {friends.map((f) => (
                 <div key={f.friendshipId} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                      {f.name.charAt(0).toUpperCase()}
-                    </div>
+                    <Avatar src={f.avatar} name={f.name} size={40} />
                     <div>
                       <div className="text-sm font-medium text-gray-800">{f.name}</div>
                       <div className="text-xs text-gray-400">{f.email}</div>
@@ -315,9 +314,7 @@ export default function FriendsPage() {
             {results.map((u) => (
               <div key={u.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                    {u.name.charAt(0).toUpperCase()}
-                  </div>
+                  <Avatar src={u.avatar} name={u.name} size={36} />
                   <div>
                     <div className="text-sm font-medium text-gray-800">{u.name}</div>
                     <div className="text-xs text-gray-400">{u.email}</div>

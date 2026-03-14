@@ -39,6 +39,7 @@ export async function GET(req: NextRequest) {
         id: true,
         name: true,
         level: true,
+        avatar: true,
         createdAt: true,
       },
     })
@@ -129,6 +130,7 @@ export async function GET(req: NextRequest) {
         id: user.id,
         name: user.name,
         level: user.level,
+        avatar: user.avatar,
         xp,
         writingScore: Math.round(writingScore),
         speakingScore: Math.round(speakingScore),

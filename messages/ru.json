@@ -666,5 +666,19 @@
     "activities": "активностей",
     "daysActive": "активных дней",
     "words": "слов"
+  },
+  "profile": {
+    "title": "Профиль",
+    "uploadPhoto": "Загрузить фото",
+    "changePhoto": "Изменить фото",
+    "removePhoto": "Удалить",
+    "bio": "О себе",
+    "bioPlaceholder": "Расскажите о себе...",
+    "save": "Сохранить",
+    "saved": "Сохранено!",
+    "uploading": "Загрузка...",
+    "name": "Имя",
+    "email": "Почта",
+    "level": "Уровень"
   }
 }

@@ -4,11 +4,13 @@ import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import Navigation from '@/components/shared/Navigation'
+import Avatar from '@/components/shared/Avatar'
 
 interface LeaderboardEntry {
   id: string
   name: string
   level: string
+  avatar?: string | null
   xp: number
   rank: number
   writingScore: number
@@ -159,11 +161,7 @@ export default function LeaderboardPage() {
                       {/* Avatar + Name */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
-                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                            entry.isMe ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300' : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
-                          }`}>
-                            {entry.name.charAt(0).toUpperCase()}
-                          </div>
+                          <Avatar src={entry.avatar} name={entry.name} size={32} />
                           <div className="min-w-0">
                             <div className="flex items-center gap-1.5">
                               <span className={`text-sm font-semibold truncate ${entry.isMe ? 'text-blue-700 dark:text-blue-300' : 'text-gray-900 dark:text-white'}`}>

@@ -17,6 +17,8 @@ model User {
   level               String               @default("B1")
   assessmentDone      Boolean              @default(false)
   language            String               @default("en")
+  avatar              String?
+  bio                 String?              @db.VarChar(160)
   createdAt           DateTime             @default(now())
   stripeCustomerId    String?              @unique
   subscriptionId      String?              @unique

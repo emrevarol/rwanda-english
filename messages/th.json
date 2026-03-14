@@ -666,5 +666,19 @@
     "activities": "กิจกรรม",
     "daysActive": "วันที่ใช้งาน",
     "words": "คำ"
+  },
+  "profile": {
+    "title": "โปรไฟล์",
+    "uploadPhoto": "อัปโหลดรูป",
+    "changePhoto": "เปลี่ยนรูป",
+    "removePhoto": "ลบ",
+    "bio": "แนะนำตัว",
+    "bioPlaceholder": "บอกเล่าเกี่ยวกับตัวคุณ...",
+    "save": "บันทึก",
+    "saved": "บันทึกแล้ว!",
+    "uploading": "กำลังอัปโหลด...",
+    "name": "ชื่อ",
+    "email": "อีเมล",
+    "level": "ระดับ"
   }
 }

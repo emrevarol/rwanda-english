@@ -6,6 +6,7 @@ import { Link, usePathname } from '@/i18n/navigation'
 import LanguageSwitcher from './LanguageSwitcher'
 import Logo from './Logo'
 import ThemeToggle from './ThemeToggle'
+import Avatar from './Avatar'
 
 export default function Navigation() {
   const t = useTranslations('nav')
@@ -66,9 +67,12 @@ export default function Navigation() {
             <LanguageSwitcher />
             {session ? (
               <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600 dark:text-gray-300 hidden sm:block">
-                  {session.user.name}
-                </span>
+                <Link href="/profile" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                  <Avatar src={session.user.avatar} name={session.user.name} size={32} />
+                  <span className="text-sm text-gray-600 dark:text-gray-300 hidden sm:block">
+                    {session.user.name}
+                  </span>
+                </Link>
                 <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">
                   {session.user.level}
                 </span>

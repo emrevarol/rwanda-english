@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
   const [users, total] = await Promise.all([
     prisma.user.findMany({
       where,
-      select: { id: true, name: true, email: true, level: true },
+      select: { id: true, name: true, email: true, level: true, avatar: true },
       orderBy: { name: 'asc' },
       take: limit,
       skip,

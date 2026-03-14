@@ -666,5 +666,19 @@
     "activities": "アクティビティ",
     "daysActive": "アクティブ日数",
     "words": "単語"
+  },
+  "profile": {
+    "title": "プロフィール",
+    "uploadPhoto": "写真をアップロード",
+    "changePhoto": "写真を変更",
+    "removePhoto": "削除",
+    "bio": "自己紹介",
+    "bioPlaceholder": "自分について書いてください...",
+    "save": "保存",
+    "saved": "保存しました！",
+    "uploading": "アップロード中...",
+    "name": "名前",
+    "email": "メール",
+    "level": "レベル"
   }
 }

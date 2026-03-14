@@ -666,5 +666,19 @@
     "activities": "गतिविधियाँ",
     "daysActive": "सक्रिय दिन",
     "words": "शब्द"
+  },
+  "profile": {
+    "title": "प्रोफ़ाइल",
+    "uploadPhoto": "फ़ोटो अपलोड करें",
+    "changePhoto": "फ़ोटो बदलें",
+    "removePhoto": "हटाएं",
+    "bio": "परिचय",
+    "bioPlaceholder": "अपने बारे में बताएं...",
+    "save": "सहेजें",
+    "saved": "सहेजा गया!",
+    "uploading": "अपलोड हो रहा है...",
+    "name": "नाम",
+    "email": "ईमेल",
+    "level": "स्तर"
   }
 }

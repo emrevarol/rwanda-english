@@ -12,11 +12,11 @@ export async function GET() {
   const [sent, received] = await Promise.all([
     prisma.friendship.findMany({
       where: { userId: session.user.id },
-      include: { friend: { select: { id: true, name: true, email: true, level: true } } },
+      include: { friend: { select: { id: true, name: true, email: true, level: true, avatar: true, bio: true } } },
     }),
     prisma.friendship.findMany({
       where: { friendId: session.user.id },
-      include: { user: { select: { id: true, name: true, email: true, level: true } } },
+      include: { user: { select: { id: true, name: true, email: true, level: true, avatar: true, bio: true } } },
     }),
   ])
 

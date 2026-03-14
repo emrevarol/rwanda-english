@@ -9,6 +9,8 @@ declare module 'next-auth' {
       level: string
       language: string
       assessmentDone: boolean
+      avatar?: string | null
+      bio?: string | null
     }
   }
 
@@ -19,5 +21,7 @@ declare module 'next-auth' {
     level: string
     language: string
     assessmentDone: boolean
+    avatar?: string | null
+    bio?: string | null
   }
 }

@@ -666,5 +666,19 @@
     "activities": "أنشطة",
     "daysActive": "أيام نشطة",
     "words": "كلمات"
+  },
+  "profile": {
+    "title": "الملف الشخصي",
+    "uploadPhoto": "تحميل صورة",
+    "changePhoto": "تغيير الصورة",
+    "removePhoto": "إزالة",
+    "bio": "نبذة",
+    "bioPlaceholder": "أخبر الآخرين عن نفسك...",
+    "save": "حفظ",
+    "saved": "تم الحفظ!",
+    "uploading": "جاري التحميل...",
+    "name": "الاسم",
+    "email": "البريد",
+    "level": "المستوى"
   }
 }

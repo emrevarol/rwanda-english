@@ -666,5 +666,19 @@
     "activities": "aktivitas",
     "daysActive": "hari aktif",
     "words": "kata"
+  },
+  "profile": {
+    "title": "Profil",
+    "uploadPhoto": "Unggah Foto",
+    "changePhoto": "Ubah Foto",
+    "removePhoto": "Hapus",
+    "bio": "Bio",
+    "bioPlaceholder": "Ceritakan tentang dirimu...",
+    "save": "Simpan",
+    "saved": "Tersimpan!",
+    "uploading": "Mengunggah...",
+    "name": "Nama",
+    "email": "Email",
+    "level": "Level"
   }
 }
