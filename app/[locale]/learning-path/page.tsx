@@ -171,21 +171,31 @@ export default function LearningPathPage() {
                 <div className="bg-white rounded-xl border border-gray-200 p-5">
                   <h3 className="font-semibold text-gray-800 mb-4">{t('monthlySummary')}</h3>
                   <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
-                    {Array.from({ length: 12 }, (_, i) => {
-                      const monthDays = historyData.heatmapDays.filter(d => new Date(d.date).getMonth() === i)
-                      const active = monthDays.filter(d => d.count > 0).length
-                      const total = monthDays.length
-                      const pct = total > 0 ? Math.round((active / total) * 100) : 0
-                      return (
-                        <div key={i} className="text-center p-2 bg-gray-50 rounded-lg">
-                          <div className="text-xs font-medium text-gray-500 mb-1">{monthNames[i]}</div>
-                          <div className="text-sm font-bold text-gray-800">{active}<span className="text-gray-400 font-normal">/{total}</span></div>
-                          <div className="h-1 bg-gray-200 rounded-full mt-1">
-                            <div className="h-1 bg-blue-500 rounded-full" style={{ width: `${pct}%` }} />
+                    {(() => {
+                      // Group by year-month, only show months with actual data (excluding pre-registration)
+                      const monthMap = new Map<string, { active: number; total: number; month: number; year: number }>()
+                      for (const d of historyData.heatmapDays) {
+                        if (d.count === -1) continue // skip pre-registration
+                        const date = new Date(d.date)
+                        const key = `${date.getFullYear()}-${date.getMonth()}`
+                        const entry = monthMap.get(key) || { active: 0, total: 0, month: date.getMonth(), year: date.getFullYear() }
+                        entry.total++
+                        if (d.count > 0) entry.active++
+                        monthMap.set(key, entry)
+                      }
+                      return Array.from(monthMap.values()).map((m, i) => {
+                        const pct = m.total > 0 ? Math.round((m.active / m.total) * 100) : 0
+                        return (
+                          <div key={i} className="text-center p-2 bg-gray-50 rounded-lg">
+                            <div className="text-xs font-medium text-gray-500 mb-1">{monthNames[m.month]}</div>
+                            <div className="text-sm font-bold text-gray-800">{m.active}<span className="text-gray-400 font-normal">/{m.total}</span></div>
+                            <div className="h-1 bg-gray-200 rounded-full mt-1">
+                              <div className="h-1 bg-blue-500 rounded-full" style={{ width: `${pct}%` }} />
+                            </div>
                           </div>
-                        </div>
-                      )
-                    })}
+                        )
+                      })
+                    })()}
                   </div>
                 </div>
               </div>

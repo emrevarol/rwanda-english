@@ -26,19 +26,22 @@ export async function GET(req: NextRequest) {
       completedMap[p.date] = { task1Done: p.task1Done, task2Done: p.task2Done }
     }
 
-    // Build last 52 weeks (364 days) for the heatmap
-    // Days before user registration are marked as -1 (not applicable)
+    // Build heatmap from join date to today (no empty pre-registration days)
     const today = new Date()
+    today.setHours(0, 0, 0, 0)
     const userJoinDate = new Date(user.createdAt)
     userJoinDate.setHours(0, 0, 0, 0)
+
+    // Start from the beginning of the week that contains the join date
+    const startDate = new Date(userJoinDate)
+    startDate.setDate(startDate.getDate() - startDate.getDay())
+
     const heatmapDays: Array<{ date: string; count: number }> = []
-    for (let i = 363; i >= 0; i--) {
-      const d = new Date(today)
-      d.setDate(d.getDate() - i)
-      d.setHours(0, 0, 0, 0)
-      const dateStr = d.toISOString().split('T')[0]
-      if (d < userJoinDate) {
-        heatmapDays.push({ date: dateStr, count: -1 }) // before registration
+    const current = new Date(startDate)
+    while (current <= today) {
+      const dateStr = current.toISOString().split('T')[0]
+      if (current < userJoinDate) {
+        heatmapDays.push({ date: dateStr, count: -1 })
       } else {
         const progress = completedMap[dateStr]
         const count = progress
@@ -46,6 +49,7 @@ export async function GET(req: NextRequest) {
           : 0
         heatmapDays.push({ date: dateStr, count })
       }
+      current.setDate(current.getDate() + 1)
     }
 
     // Full 365-day plan preview
