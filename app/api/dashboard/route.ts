@@ -51,13 +51,18 @@ export async function GET(req: NextRequest) {
       vocabAllProgress = vAll
 
       // Group vocab entries by date into "sessions"
+      // Count each word once: if mastery >= 1 it was answered correctly last time
       const sessionMap = new Map<string, { date: Date; words: number; correct: number; incorrect: number }>()
       for (const v of vAll) {
         const dateKey = v.lastSeen.toISOString().split('T')[0]
         const entry = sessionMap.get(dateKey) || { date: v.lastSeen, words: 0, correct: 0, incorrect: 0 }
         entry.words++
-        entry.correct += v.correct || 0
-        entry.incorrect += v.incorrect || 0
+        // Count 1 per word (not cumulative attempts)
+        if (v.correct > v.incorrect) {
+          entry.correct++
+        } else if (v.incorrect > 0) {
+          entry.incorrect++
+        }
         if (v.lastSeen > entry.date) entry.date = v.lastSeen
         sessionMap.set(dateKey, entry)
       }
