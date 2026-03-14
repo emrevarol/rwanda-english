@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import Navigation from '@/components/shared/Navigation'
@@ -10,8 +10,6 @@ export default function ProfilePage() {
   const { data: session, status, update } = useSession()
   const t = useTranslations('profile')
   const tc = useTranslations('common')
-  const fileRef = useRef<HTMLInputElement>(null)
-
   const [avatar, setAvatar] = useState<string | null>(null)
   const [bio, setBio] = useState('')
   const [uploading, setUploading] = useState(false)
@@ -131,22 +129,16 @@ export default function ProfilePage() {
               )}
             </div>
 
-            <input
-              ref={fileRef}
-              type="file"
-              accept="image/*"
-              onChange={handleFileChange}
-              className="hidden"
-            />
-
             <div className="flex gap-2">
-              <button
-                onClick={() => fileRef.current?.click()}
-                disabled={uploading}
-                className="text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
-              >
+              <label className={`text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer ${uploading ? 'opacity-50 pointer-events-none' : ''}`}>
                 {uploading ? t('uploading') : avatar ? t('changePhoto') : t('uploadPhoto')}
-              </button>
+                <input
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+              </label>
               {avatar && (
                 <button
                   onClick={removeAvatar}
@@ -157,7 +149,7 @@ export default function ProfilePage() {
               )}
             </div>
             {uploadStatus && (
-              <p className={`text-xs ${uploadStatus.startsWith('Error') || uploadStatus.startsWith('Failed') ? 'text-red-500' : 'text-gray-500'}`}>
+              <p className={`text-sm mt-1 ${uploadStatus.startsWith('Error') || uploadStatus.startsWith('Failed') ? 'text-red-600 font-medium' : 'text-blue-600'}`}>
                 {uploadStatus}
               </p>
             )}
