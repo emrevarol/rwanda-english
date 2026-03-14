@@ -104,9 +104,18 @@ export default function ChatInterface({ userName, userLevel, dailyContext }: { u
     fetchSessions()
   }, [])
 
-  const fetchSessions = async () => {
+  // Debounced server-side search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchSessions(searchQuery || undefined)
+    }, 300)
+    return () => clearTimeout(timer)
+  }, [searchQuery])
+
+  const fetchSessions = async (query?: string) => {
     try {
-      const res = await fetch('/api/tutor/sessions')
+      const url = query ? `/api/tutor/sessions?q=${encodeURIComponent(query)}` : '/api/tutor/sessions'
+      const res = await fetch(url)
       if (res.ok) setSessions(await res.json())
     } catch {}
   }
@@ -259,7 +268,6 @@ export default function ChatInterface({ userName, userLevel, dailyContext }: { u
             <div className="p-4 text-xs text-gray-600 text-center">{t('noHistory')}</div>
           ) : (
             sessions
-              .filter((s) => !searchQuery || s.title.toLowerCase().includes(searchQuery.toLowerCase()))
               .map((s) => {
                 const date = new Date(s.updatedAt)
                 const today = new Date()
@@ -295,7 +303,7 @@ export default function ChatInterface({ userName, userLevel, dailyContext }: { u
                 )
               })
           )}
-          {searchQuery && sessions.filter((s) => s.title.toLowerCase().includes(searchQuery.toLowerCase())).length === 0 && (
+          {searchQuery && sessions.length === 0 && (
             <div className="p-4 text-xs text-gray-600 text-center">{t('noResults')}</div>
           )}
         </div>
