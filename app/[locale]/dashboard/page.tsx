@@ -404,16 +404,44 @@ export default function DashboardPage() {
                       </div>
                     )}
                     {selectedActivity.feedback && (
-                      <div>
-                        <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">AI Feedback</h4>
-                        <div className="text-sm text-gray-700 bg-green-50 rounded-lg p-4 whitespace-pre-wrap">
-                          {(() => {
-                            try {
-                              const fb = JSON.parse(selectedActivity.feedback!)
-                              return typeof fb === 'string' ? fb : fb.feedback || fb.overall || JSON.stringify(fb, null, 2)
-                            } catch { return selectedActivity.feedback }
-                          })()}
-                        </div>
+                      <div className="space-y-3">
+                        <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide">AI Feedback</h4>
+                        {(() => {
+                          try {
+                            const fb = JSON.parse(selectedActivity.feedback!)
+                            if (typeof fb === 'string') return <p className="text-sm text-gray-700 bg-green-50 rounded-lg p-4">{fb}</p>
+                            const cards: Array<{ key: string; label: string; bg: string; border: string; title: string }> = [
+                              { key: 'taskAchievement', label: 'Task Achievement', bg: 'bg-blue-50', border: 'border-blue-100', title: 'text-blue-600' },
+                              { key: 'coherence', label: 'Coherence & Cohesion', bg: 'bg-indigo-50', border: 'border-indigo-100', title: 'text-indigo-600' },
+                              { key: 'vocabulary', label: 'Vocabulary', bg: 'bg-green-50', border: 'border-green-100', title: 'text-green-600' },
+                              { key: 'grammar', label: 'Grammar', bg: 'bg-purple-50', border: 'border-purple-100', title: 'text-purple-600' },
+                            ]
+                            return (
+                              <>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                  {cards.filter(c => fb[c.key]).map(c => (
+                                    <div key={c.key} className={`${c.bg} border ${c.border} rounded-lg p-3`}>
+                                      <div className={`text-xs font-semibold ${c.title} uppercase tracking-wide mb-1`}>{c.label}</div>
+                                      <p className="text-sm text-gray-700 leading-relaxed">{fb[c.key]}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                                {fb.improvedSentences && (
+                                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
+                                    <div className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-1">Improved Sentences</div>
+                                    <p className="text-sm text-amber-700 leading-relaxed whitespace-pre-wrap">{Array.isArray(fb.improvedSentences) ? fb.improvedSentences.join('\n') : fb.improvedSentences}</p>
+                                  </div>
+                                )}
+                                {fb.overallFeedback && (
+                                  <div className="bg-gray-50 rounded-lg p-3">
+                                    <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-1">Overall</div>
+                                    <p className="text-sm text-gray-600 leading-relaxed">{fb.overallFeedback}</p>
+                                  </div>
+                                )}
+                              </>
+                            )
+                          } catch { return <p className="text-sm text-gray-700 bg-green-50 rounded-lg p-4">{selectedActivity.feedback}</p> }
+                        })()}
                       </div>
                     )}
                   </>
@@ -429,16 +457,46 @@ export default function DashboardPage() {
                       </div>
                     )}
                     {selectedActivity.feedback && (
-                      <div>
-                        <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">AI Feedback</h4>
-                        <div className="text-sm text-gray-700 bg-green-50 rounded-lg p-4 whitespace-pre-wrap">
-                          {(() => {
-                            try {
-                              const fb = JSON.parse(selectedActivity.feedback!)
-                              return typeof fb === 'string' ? fb : fb.feedback || fb.overall || JSON.stringify(fb, null, 2)
-                            } catch { return selectedActivity.feedback }
-                          })()}
-                        </div>
+                      <div className="space-y-3">
+                        <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide">AI Feedback</h4>
+                        {(() => {
+                          try {
+                            const fb = JSON.parse(selectedActivity.feedback!)
+                            if (typeof fb === 'string') return <p className="text-sm text-gray-700 bg-green-50 rounded-lg p-4">{fb}</p>
+                            const cards: Array<{ key: string; label: string; bg: string; border: string; title: string }> = [
+                              { key: 'fluency', label: 'Fluency', bg: 'bg-blue-50', border: 'border-blue-100', title: 'text-blue-600' },
+                              { key: 'pronunciation', label: 'Pronunciation', bg: 'bg-indigo-50', border: 'border-indigo-100', title: 'text-indigo-600' },
+                              { key: 'intonation', label: 'Intonation', bg: 'bg-cyan-50', border: 'border-cyan-100', title: 'text-cyan-600' },
+                              { key: 'grammar', label: 'Grammar', bg: 'bg-purple-50', border: 'border-purple-100', title: 'text-purple-600' },
+                              { key: 'vocabulary', label: 'Vocabulary', bg: 'bg-green-50', border: 'border-green-100', title: 'text-green-600' },
+                              { key: 'fillerAnalysis', label: 'Filler Analysis', bg: 'bg-orange-50', border: 'border-orange-100', title: 'text-orange-600' },
+                            ]
+                            return (
+                              <>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                  {cards.filter(c => fb[c.key]).map(c => (
+                                    <div key={c.key} className={`${c.bg} border ${c.border} rounded-lg p-3`}>
+                                      <div className={`text-xs font-semibold ${c.title} uppercase tracking-wide mb-1`}>{c.label}</div>
+                                      <p className="text-sm text-gray-700 leading-relaxed">{fb[c.key]}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                                {fb.modelAnswer && (
+                                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
+                                    <div className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-1">Model Answer</div>
+                                    <p className="text-sm text-amber-700 leading-relaxed italic">&quot;{fb.modelAnswer}&quot;</p>
+                                  </div>
+                                )}
+                                {fb.overallFeedback && (
+                                  <div className="bg-gray-50 rounded-lg p-3">
+                                    <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-1">Overall</div>
+                                    <p className="text-sm text-gray-600 leading-relaxed">{fb.overallFeedback}</p>
+                                  </div>
+                                )}
+                              </>
+                            )
+                          } catch { return <p className="text-sm text-gray-700 bg-green-50 rounded-lg p-4">{selectedActivity.feedback}</p> }
+                        })()}
                       </div>
                     )}
                   </>
