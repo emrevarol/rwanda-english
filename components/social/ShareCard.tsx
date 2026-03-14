@@ -42,8 +42,15 @@ export default function ShareCard({ userName, userLevel, onClose }: Props) {
     grammar: stats.grammar,
   })
 
+  const levelNames: Record<string, string> = {
+    A1: 'Beginner', A2: 'Elementary',
+    B1: 'Intermediate', B2: 'Upper Intermediate',
+    C1: 'Advanced', C2: 'Proficient',
+  }
+  const levelLabel = `${userLevel} (${levelNames[userLevel] || userLevel})`
+
   // Rich formatted text for social media
-  const shareTextFormatted = `🎓 ${userName} — ${userLevel} level on english.cash!\n\n📊 My scores:\n✍️ Writing: ${stats.writing}/10\n🗣️ Speaking: ${stats.speaking}/10\n👂 Listening: ${stats.listening}/10\n📚 Vocabulary: ${stats.vocabulary}/10\n📝 Grammar: ${stats.grammar}/10\n\n🚀 Learn English with AI — try it free!`
+  const shareTextFormatted = `🎓 ${userName} — ${levelLabel} level on english.cash!\n\n📊 My scores:\n✍️ Writing: ${stats.writing}/10\n🗣️ Speaking: ${stats.speaking}/10\n👂 Listening: ${stats.listening}/10\n📚 Vocabulary: ${stats.vocabulary}/10\n📝 Grammar: ${stats.grammar}/10\n\n🚀 Learn English with AI — try it free!`
 
   const siteUrl = typeof window !== 'undefined'
     ? `${window.location.origin}${referralCode ? `?ref=${referralCode}` : ''}`
@@ -62,7 +69,7 @@ export default function ShareCard({ userName, userLevel, onClose }: Props) {
 
   const shareToTwitter = () => {
     // Twitter/X has 280 char limit, use compact format
-    const tweetText = `🎓 I'm at ${userLevel} level on english.cash!\n\n✍️ ${stats.writing}/10 · 🗣️ ${stats.speaking}/10 · 👂 ${stats.listening}/10 · 📚 ${stats.vocabulary}/10 · 📝 ${stats.grammar}/10\n\n🚀 Learn English with AI — try it free!`
+    const tweetText = `🎓 I'm at ${levelLabel} level on english.cash!\n\n✍️ Writing ${stats.writing}/10\n🗣️ Speaking ${stats.speaking}/10\n👂 Listening ${stats.listening}/10\n📚 Vocabulary ${stats.vocabulary}/10\n📝 Grammar ${stats.grammar}/10\n\n🚀 Learn English with AI!`
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText + '\n\n' + siteUrl)}`
     window.open(url, '_blank', 'width=600,height=500')
   }
