@@ -304,7 +304,7 @@ export default function VocabularyBuilder({ userLevel, initialCategory }: { user
         if (matchedPairs.length + 1 === matchWords.length) onGameComplete()
       } else {
         setMatchWrong(true)
-        saveProgress(matchWords[id].word, false)
+        // Don't penalize — wrong match pair is not the same as not knowing the word
         setTimeout(() => { setSelectedWord(null); setSelectedDef(null); setMatchWrong(false) }, 800)
       }
     }
@@ -325,7 +325,7 @@ export default function VocabularyBuilder({ userLevel, initialCategory }: { user
         if (matchedPairs.length + 1 === matchWords.length) onGameComplete()
       } else {
         setMatchWrong(true)
-        saveProgress(matchWords[selectedWord].word, false)
+        // Don't penalize — wrong match pair is not the same as not knowing the word
         setTimeout(() => { setSelectedWord(null); setSelectedDef(null); setMatchWrong(false) }, 800)
       }
     }

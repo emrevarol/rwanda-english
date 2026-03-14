@@ -559,6 +559,35 @@ export default function DashboardPage() {
                   </>
                 )}
 
+                {/* Vocabulary detail */}
+                {selectedActivity.type === 'vocabulary' && (
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-3 gap-2">
+                      <div className="rounded-lg p-3 text-center" style={{ backgroundColor: '#14532d', border: '1px solid #22c55e' }}>
+                        <div className="text-lg font-bold" style={{ color: '#86efac' }}>{data?.vocabMastered || 0}</div>
+                        <div className="text-[10px] uppercase tracking-wide" style={{ color: '#bbf7d0' }}>Mastered</div>
+                      </div>
+                      <div className="rounded-lg p-3 text-center" style={{ backgroundColor: '#78350f', border: '1px solid #f59e0b' }}>
+                        <div className="text-lg font-bold" style={{ color: '#fcd34d' }}>{(data?.vocabTotal || 0) - (data?.vocabMastered || 0)}</div>
+                        <div className="text-[10px] uppercase tracking-wide" style={{ color: '#fef3c7' }}>Learning</div>
+                      </div>
+                      <div className="rounded-lg p-3 text-center" style={{ backgroundColor: '#1e3a5f', border: '1px solid #2563eb' }}>
+                        <div className="text-lg font-bold" style={{ color: '#93c5fd' }}>{data?.vocabTotal || 0}</div>
+                        <div className="text-[10px] uppercase tracking-wide" style={{ color: '#dbeafe' }}>Total Words</div>
+                      </div>
+                    </div>
+                    <div className="rounded-lg p-3" style={{ backgroundColor: '#1e293b', border: '1px solid #475569' }}>
+                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#94a3b8' }}>Accuracy</div>
+                      <div className="flex items-center gap-3">
+                        <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ backgroundColor: '#334155' }}>
+                          <div className="h-full rounded-full" style={{ width: `${data?.vocabAccuracy || 0}%`, backgroundColor: '#f59e0b' }} />
+                        </div>
+                        <span className="text-sm font-bold" style={{ color: '#fbbf24' }}>{data?.vocabAccuracy || 0}%</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {/* Listening detail */}
                 {selectedActivity.type === 'listening' && (
                   <>
