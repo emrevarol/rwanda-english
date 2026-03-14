@@ -211,6 +211,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({
       level: levelUp ? levelUp.to : (user?.level || 'B1'),
       levelUp,
+      referralCode: user?.referralCode || null,
       avgWriting: Math.round(avgWriting * 10) / 10,
       avgSpeaking: Math.round(avgSpeaking * 10) / 10,
       avgListening: Math.round(avgListening * 10) / 10,

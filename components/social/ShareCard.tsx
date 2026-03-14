@@ -13,22 +13,26 @@ export default function ShareCard({ userName, userLevel, onClose }: Props) {
   const t = useTranslations('social')
   const cardRef = useRef<HTMLDivElement>(null)
   const [stats, setStats] = useState({ writing: 0, speaking: 0, listening: 0, vocabulary: 0, grammar: 0 })
+  const [referralCode, setReferralCode] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     fetch('/api/dashboard')
       .then((r) => r.json())
-      .then((d) => setStats({
-        writing: Math.round((d.avgWriting / 9) * 100) / 10,
-        speaking: Math.round(d.avgSpeaking * 10) / 10,
-        listening: Math.round(d.avgListening) / 10,
-        vocabulary: d.vocabAccuracy != null ? Math.round(d.vocabAccuracy) / 10 : 0,
-        grammar: d.avgGrammar != null ? Math.round((d.avgGrammar / 9) * 100) / 10 : 0,
-      }))
+      .then((d) => {
+        setStats({
+          writing: Math.round((d.avgWriting / 9) * 100) / 10,
+          speaking: Math.round(d.avgSpeaking * 10) / 10,
+          listening: Math.round(d.avgListening) / 10,
+          vocabulary: d.vocabAccuracy != null ? Math.round(d.vocabAccuracy) / 10 : 0,
+          grammar: d.avgGrammar != null ? Math.round((d.avgGrammar / 9) * 100) / 10 : 0,
+        })
+        if (d.referralCode) setReferralCode(d.referralCode)
+      })
       .catch(() => {})
   }, [])
 
-  const shareText = t('shareText', {
+  const shareTextPlain = t('shareText', {
     name: userName,
     level: userLevel,
     writing: stats.writing,
@@ -38,23 +42,33 @@ export default function ShareCard({ userName, userLevel, onClose }: Props) {
     grammar: stats.grammar,
   })
 
+  // Rich formatted text for social media
+  const shareTextFormatted = `🎓 ${userName} — ${userLevel} level on english.cash!\n\n📊 My scores:\n✍️ Writing: ${stats.writing}/10\n🗣️ Speaking: ${stats.speaking}/10\n👂 Listening: ${stats.listening}/10\n📚 Vocabulary: ${stats.vocabulary}/10\n📝 Grammar: ${stats.grammar}/10\n\n🚀 Learn English with AI — try it free!`
+
+  const siteUrl = typeof window !== 'undefined'
+    ? `${window.location.origin}${referralCode ? `?ref=${referralCode}` : ''}`
+    : 'https://english.cash'
+
   const shareToWhatsApp = () => {
-    const url = `https://wa.me/?text=${encodeURIComponent(shareText + '\n\n' + window.location.origin)}`
+    const url = `https://wa.me/?text=${encodeURIComponent(shareTextFormatted + '\n\n' + siteUrl)}`
     window.open(url, '_blank')
   }
 
   const shareToLinkedIn = () => {
-    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.origin)}&summary=${encodeURIComponent(shareText)}`
-    window.open(url, '_blank', 'width=600,height=500')
+    const fullText = shareTextFormatted + '\n\n' + siteUrl
+    const url = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(fullText)}`
+    window.open(url, '_blank', 'width=600,height=600')
   }
 
   const shareToTwitter = () => {
-    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(window.location.origin)}`
+    // Twitter/X has 280 char limit, use compact format
+    const tweetText = `🎓 I'm at ${userLevel} level on english.cash!\n\n✍️ ${stats.writing}/10 · 🗣️ ${stats.speaking}/10 · 👂 ${stats.listening}/10 · 📚 ${stats.vocabulary}/10 · 📝 ${stats.grammar}/10\n\n🚀 Learn English with AI — try it free!`
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText + '\n\n' + siteUrl)}`
     window.open(url, '_blank', 'width=600,height=500')
   }
 
   const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(shareText + '\n' + window.location.origin)
+    await navigator.clipboard.writeText(shareTextFormatted + '\n\n' + siteUrl)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
