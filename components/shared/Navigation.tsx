@@ -68,16 +68,19 @@ export default function Navigation() {
             <LanguageSwitcher />
             {session && <NotificationBell />}
             {session ? (
-              <div className="flex items-center gap-2">
-                <Link href="/profile" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">
-                  <Avatar src={session.user.avatar} name={session.user.name} size={32} />
-                  <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full leading-none flex-shrink-0">
+              <div className="flex items-center gap-1.5">
+                <Link href="/profile" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity flex-shrink-0">
+                  <Avatar src={session.user.avatar} name={session.user.name} size={28} />
+                  <span className="text-xs text-gray-700 dark:text-gray-300 font-medium hidden sm:block max-w-[80px] truncate">
+                    {session.user.name?.split(' ')[0]}
+                  </span>
+                  <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full leading-none flex-shrink-0">
                     {session.user.level}
                   </span>
                 </Link>
                 <button
                   onClick={() => signOut({ callbackUrl: '/en' })}
-                  className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+                  className="text-xs text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors flex-shrink-0"
                 >
                   {t('logout')}
                 </button>

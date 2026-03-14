@@ -81,12 +81,14 @@ export default function NotificationBell() {
   const timeAgo = (dateStr: string) => {
     const diff = Date.now() - new Date(dateStr).getTime()
     const mins = Math.floor(diff / 60000)
-    if (mins < 1) return 'now'
-    if (mins < 60) return `${mins}m`
+    if (mins < 1) return 'just now'
+    if (mins < 60) return `${mins}m ago`
     const hours = Math.floor(mins / 60)
-    if (hours < 24) return `${hours}h`
+    if (hours < 24) return `${hours}h ago`
     const days = Math.floor(hours / 24)
-    return `${days}d`
+    if (days < 7) return `${days}d ago`
+    const weeks = Math.floor(days / 7)
+    return `${weeks}w ago`
   }
 
   return (
@@ -131,11 +133,14 @@ export default function NotificationBell() {
                         : 'bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30'
                     } border-b border-gray-50 dark:border-gray-700/50 last:border-0`}
                   >
-                    <span className="text-2xl flex-shrink-0">{display.icon}</span>
+                    <span className="text-lg flex-shrink-0">{display.icon}</span>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[10px] font-semibold uppercase tracking-wide text-blue-500 dark:text-blue-400">{display.subtitle}</div>
-                      <div className="text-sm font-medium text-gray-900 dark:text-white">{display.text}</div>
-                      <div className="text-[10px] text-gray-400 mt-0.5">{timeAgo(n.createdAt)}</div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] font-semibold uppercase tracking-wide text-blue-500 dark:text-blue-400">{display.subtitle}</span>
+                        <span className="text-[10px] text-gray-400">·</span>
+                        <span className="text-[10px] text-gray-400">{timeAgo(n.createdAt)}</span>
+                      </div>
+                      <div className="text-xs font-medium text-gray-800 dark:text-gray-100 mt-0.5">{display.text}</div>
                     </div>
                     {!n.read && <span className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 mt-2" />}
                   </button>
