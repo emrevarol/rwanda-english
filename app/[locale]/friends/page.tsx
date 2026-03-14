@@ -256,6 +256,48 @@ export default function FriendsPage() {
           </div>
         )}
 
+        {/* Friends List */}
+        <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <h3 className="font-semibold text-gray-800 mb-3">{t('yourFriends')} ({friends.length})</h3>
+          {friends.length === 0 ? (
+            <p className="text-sm text-gray-400 text-center py-6">{t('noFriends')}</p>
+          ) : (
+            <div className="space-y-2">
+              {friends.map((f) => (
+                <div key={f.friendshipId} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                      {f.name.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium text-gray-800">{f.name}</div>
+                      <div className="text-xs text-gray-400">{f.email}</div>
+                    </div>
+                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${levelColors[f.level] || 'bg-gray-100'}`}>
+                      {f.level}
+                    </span>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => compareFriend(f.id)}
+                      disabled={comparingId === f.id}
+                      className="text-xs bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg hover:bg-blue-100 border border-blue-200 transition-colors disabled:opacity-50"
+                    >
+                      {comparingId === f.id ? '...' : t('compare')}
+                    </button>
+                    <button
+                      onClick={() => removeFriend(f.friendshipId)}
+                      className="text-xs text-gray-400 hover:text-red-500 px-2 py-1.5 transition-colors"
+                    >
+                      ×
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
         {/* Search & Browse Users */}
         <div className="bg-white rounded-xl border border-gray-200 p-5">
           <div className="flex items-center justify-between mb-3">
@@ -318,48 +360,6 @@ export default function FriendsPage() {
               >
                 {t('next')}
               </button>
-            </div>
-          )}
-        </div>
-
-        {/* Friends List */}
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <h3 className="font-semibold text-gray-800 mb-3">{t('yourFriends')} ({friends.length})</h3>
-          {friends.length === 0 ? (
-            <p className="text-sm text-gray-400 text-center py-6">{t('noFriends')}</p>
-          ) : (
-            <div className="space-y-2">
-              {friends.map((f) => (
-                <div key={f.friendshipId} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                      {f.name.charAt(0).toUpperCase()}
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium text-gray-800">{f.name}</div>
-                      <div className="text-xs text-gray-400">{f.email}</div>
-                    </div>
-                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${levelColors[f.level] || 'bg-gray-100'}`}>
-                      {f.level}
-                    </span>
-                  </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => compareFriend(f.id)}
-                      disabled={comparingId === f.id}
-                      className="text-xs bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg hover:bg-blue-100 border border-blue-200 transition-colors disabled:opacity-50"
-                    >
-                      {comparingId === f.id ? '...' : t('compare')}
-                    </button>
-                    <button
-                      onClick={() => removeFriend(f.friendshipId)}
-                      className="text-xs text-gray-400 hover:text-red-500 px-2 py-1.5 transition-colors"
-                    >
-                      ×
-                    </button>
-                  </div>
-                </div>
-              ))}
             </div>
           )}
         </div>
