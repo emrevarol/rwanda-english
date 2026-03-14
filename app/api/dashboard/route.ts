@@ -176,8 +176,8 @@ export async function GET(req: NextRequest) {
         id: `vocab-session-${i}`,
         type: 'vocabulary' as const,
         date: s.date,
-        score: s.accuracy,
-        detail: `${s.words} words · ${s.accuracy}% accuracy`,
+        score: vocabAccuracy ?? s.accuracy,
+        detail: `${vocabTotal} words · ${vocabAccuracy ?? s.accuracy}% accuracy`,
       })),
       ...grammarSessions.map(g => ({
         id: g.id,
