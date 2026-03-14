@@ -122,7 +122,7 @@ export default function ScoreChart({ writingData, speakingData, listeningData = 
         />
         <Tooltip formatter={(value) => [`${value}/10`]} />
         <Legend />
-        <Line type="monotone" dataKey={writingLabel} stroke="#2563eb" strokeWidth={2} dot={{ r: 4 }} connectNulls />
+        <Line type="monotone" dataKey={writingLabel} stroke="#0284c7" strokeWidth={2} dot={{ r: 4 }} connectNulls />
         <Line type="monotone" dataKey={speakingLabel} stroke="#16a34a" strokeWidth={2} dot={{ r: 4 }} connectNulls />
         <Line type="monotone" dataKey={listeningLabel} stroke="#9333ea" strokeWidth={2} dot={{ r: 4 }} connectNulls />
         <Line type="monotone" dataKey={vocabLabel} stroke="#f59e0b" strokeWidth={2} dot={{ r: 4 }} connectNulls />

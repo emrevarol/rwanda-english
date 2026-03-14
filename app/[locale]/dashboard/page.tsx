@@ -121,7 +121,7 @@ export default function DashboardPage() {
     : 0
 
   const skillsData = [
-    { subject: t('writing'), value: data ? Math.round((data.avgWriting / 9) * 100) / 10 : 0, color: '#2563eb' },
+    { subject: t('writing'), value: data ? Math.round((data.avgWriting / 9) * 100) / 10 : 0, color: '#0284c7' },
     { subject: t('speaking'), value: data ? Math.round(data.avgSpeaking * 10) / 10 : 0, color: '#16a34a' },
     { subject: t('listening'), value: data ? Math.round(data.avgListening / 10 * 10) / 10 : 0, color: '#9333ea' },
     { subject: t('vocabulary'), value: Math.round(vocabScore * 10) / 10, color: '#f59e0b' },
@@ -196,7 +196,7 @@ export default function DashboardPage() {
             </div>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
-            <div className="text-sm font-medium mb-2" style={{ color: '#2563eb' }}>{t('writing')}</div>
+            <div className="text-sm font-medium mb-2" style={{ color: '#0284c7' }}>{t('writing')}</div>
             <div className="text-3xl font-bold text-blue-600">
               {loading ? '—' : data ? Math.round((data.avgWriting / 9) * 100) / 10 : 0}
             </div>

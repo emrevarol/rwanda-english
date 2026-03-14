@@ -82,8 +82,8 @@ export default function SkillsRadar({ data }: { data: SkillData[] }) {
         <Radar
           name="Skills"
           dataKey="value"
-          stroke="#2563eb"
-          fill="#2563eb"
+          stroke="#0284c7"
+          fill="#0284c7"
           fillOpacity={0.3}
         />
       </RadarChart>

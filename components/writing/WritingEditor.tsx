@@ -110,17 +110,17 @@ export default function WritingEditor({
   return (
     <div className="space-y-4">
       {/* Prompt */}
-      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+      <div className="bg-sky-50 border border-sky-200 rounded-xl p-4">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <div className="text-xs font-medium text-blue-600 uppercase tracking-wide mb-1">
+            <div className="text-xs font-medium text-sky-600 uppercase tracking-wide mb-1">
               {t('prompt')}
             </div>
             <p className="text-gray-800 text-sm leading-relaxed">{prompt}</p>
           </div>
           <button
             onClick={generatePrompt}
-            className="flex-shrink-0 text-xs bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition-colors"
+            className="flex-shrink-0 text-xs bg-sky-600 text-white px-3 py-1.5 rounded-lg hover:bg-sky-700 transition-colors"
           >
             {t('newTask')}
           </button>
@@ -151,7 +151,7 @@ export default function WritingEditor({
           <button
             onClick={handleSubmit}
             disabled={loading || wordCount < 5}
-            className="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-sky-600 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-sky-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? t('submitting') : t('submit')}
           </button>
@@ -205,9 +205,9 @@ export default function WritingEditor({
             </div>
           )}
 
-          <div className="bg-gray-50 rounded-lg p-4">
-            <div className="text-sm font-semibold text-gray-700 mb-1">{t('feedback.overall')}</div>
-            <p className="text-sm text-gray-600 leading-relaxed">{feedback.overallFeedback}</p>
+          <div className="bg-slate-100 border border-slate-200 rounded-lg p-4">
+            <div className="text-sm font-semibold text-slate-800 mb-1">{t('feedback.overall')}</div>
+            <p className="text-sm text-slate-700 leading-relaxed">{feedback.overallFeedback}</p>
           </div>
 
           <button
@@ -231,17 +231,19 @@ function FeedbackSection({
   content: string
   color: string
 }) {
-  const colors: Record<string, string> = {
-    blue: 'bg-blue-50 border-blue-100',
-    purple: 'bg-purple-50 border-purple-100',
-    green: 'bg-green-50 border-green-100',
-    orange: 'bg-orange-50 border-orange-100',
+  const colors: Record<string, { bg: string; title: string; body: string }> = {
+    blue: { bg: 'bg-blue-50 border-blue-200', title: 'text-blue-700', body: 'text-blue-900' },
+    purple: { bg: 'bg-purple-50 border-purple-200', title: 'text-purple-700', body: 'text-purple-900' },
+    green: { bg: 'bg-green-50 border-green-200', title: 'text-green-700', body: 'text-green-900' },
+    orange: { bg: 'bg-orange-50 border-orange-200', title: 'text-orange-700', body: 'text-orange-900' },
   }
 
+  const c = colors[color] || colors.blue
+
   return (
-    <div className={`p-3 rounded-lg border ${colors[color]}`}>
-      <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">{title}</div>
-      <p className="text-sm text-gray-700 leading-relaxed">{content}</p>
+    <div className={`p-3 rounded-lg border ${c.bg}`}>
+      <div className={`text-xs font-semibold uppercase tracking-wide mb-1 ${c.title}`}>{title}</div>
+      <p className={`text-sm leading-relaxed ${c.body}`}>{content}</p>
     </div>
   )
 }

@@ -43,7 +43,7 @@ export default function WritingPage() {
           <div>
             <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
             <p className="text-gray-500 text-sm mt-1">
-              {t('level')} <span className="font-medium text-blue-600">{session?.user?.level}</span>
+              {t('level')} <span className="font-medium text-sky-600">{session?.user?.level}</span>
             </p>
           </div>
           <div className="flex gap-2">
@@ -51,7 +51,7 @@ export default function WritingPage() {
               onClick={() => setActiveTab('practice')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeTab === 'practice'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-sky-600 text-white'
                   : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
               }`}
             >
@@ -61,7 +61,7 @@ export default function WritingPage() {
               onClick={() => setActiveTab('history')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeTab === 'history'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-sky-600 text-white'
                   : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
               }`}
             >
@@ -79,7 +79,7 @@ export default function WritingPage() {
                   onClick={() => setTaskType('task1')}
                   className={`flex-1 py-3 rounded-lg text-sm font-medium transition-colors ${
                     taskType === 'task1'
-                      ? 'bg-blue-50 border-2 border-blue-500 text-blue-700'
+                      ? 'bg-sky-50 border-2 border-sky-500 text-sky-700'
                       : 'border-2 border-gray-200 text-gray-600 hover:bg-gray-50'
                   }`}
                 >
@@ -89,7 +89,7 @@ export default function WritingPage() {
                   onClick={() => setTaskType('task2')}
                   className={`flex-1 py-3 rounded-lg text-sm font-medium transition-colors ${
                     taskType === 'task2'
-                      ? 'bg-blue-50 border-2 border-blue-500 text-blue-700'
+                      ? 'bg-sky-50 border-2 border-sky-500 text-sky-700'
                       : 'border-2 border-gray-200 text-gray-600 hover:bg-gray-50'
                   }`}
                 >
@@ -118,14 +118,14 @@ export default function WritingPage() {
                     <div key={sub.id} className="border border-gray-200 rounded-xl p-4">
                       <div className="flex items-start justify-between mb-2">
                         <div>
-                          <span className="text-xs font-medium bg-blue-100 text-blue-700 px-2 py-0.5 rounded mr-2">
+                          <span className="text-xs font-medium bg-sky-100 text-sky-700 px-2 py-0.5 rounded mr-2">
                             {t('taskLabel', { n: sub.taskType === 'task1' ? 1 : 2 })}
                           </span>
                           <span className="text-xs text-gray-600">
                             {new Date(sub.createdAt).toLocaleDateString(locale)}
                           </span>
                         </div>
-                        <span className="text-lg font-bold text-blue-600">Band {sub.band}</span>
+                        <span className="text-lg font-bold text-sky-600">Band {sub.band}</span>
                       </div>
                       <p className="text-sm text-gray-600 line-clamp-2">{sub.prompt}</p>
                       {feedback.overallFeedback && (

@@ -190,7 +190,7 @@ export default function LeaderboardPage() {
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         <div className="text-center">
                           <div className="text-xs text-gray-500 dark:text-gray-400 mb-0.5">{t('writing')}</div>
-                          <div className="text-sm font-semibold" style={{ color: '#2563eb' }}>{entry.writingScore}%</div>
+                          <div className="text-sm font-semibold" style={{ color: '#0284c7' }}>{entry.writingScore}%</div>
                         </div>
                         <div className="text-center">
                           <div className="text-xs text-gray-500 dark:text-gray-400 mb-0.5">{t('speaking')}</div>

@@ -426,11 +426,11 @@ export default function ListeningPlayer({ locale }: { locale?: string }) {
                           disabled={submitted}
                           className={`w-full text-left px-4 py-2.5 rounded-lg border-2 text-sm transition-all ${
                             isCorrect
-                              ? 'border-green-500 bg-green-50 text-green-700'
+                              ? 'border-green-500 bg-green-50 text-green-800 font-medium'
                               : isWrong
-                              ? 'border-red-400 bg-red-50 text-red-700'
+                              ? 'border-red-400 bg-red-50 text-red-800'
                               : isSelected
-                              ? 'border-blue-500 bg-blue-50 text-blue-700'
+                              ? 'border-sky-500 bg-sky-100 text-sky-900 font-medium'
                               : 'border-gray-200 text-gray-700 hover:border-gray-300'
                           }`}
                         >
@@ -443,8 +443,8 @@ export default function ListeningPlayer({ locale }: { locale?: string }) {
                     })}
                   </div>
                   {submitted && (
-                    <div className="mt-2 text-xs text-gray-500 bg-gray-50 rounded-lg p-3">
-                      <span className="font-medium">{t('explanation')}:</span> {q.explanation}
+                    <div className="mt-2 text-xs text-slate-700 bg-slate-100 border border-slate-200 rounded-lg p-3">
+                      <span className="font-semibold">{t('explanation')}:</span> {q.explanation}
                     </div>
                   )}
                 </div>

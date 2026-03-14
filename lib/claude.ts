@@ -238,9 +238,21 @@ export async function generateListeningContent(level: string, language: string, 
         role: 'user',
         content: `Generate a listening comprehension exercise for a ${level} English learner.
 
+PASSAGE LENGTH by level:
+- A1/A2: 100-150 words
+- B1: 150-220 words
+- B2: 220-300 words
+- C1: 300-400 words
+- C2: 400-500 words
+
+QUESTION COUNT by level:
+- A1/A2: 4 questions
+- B1/B2: 5 questions
+- C1/C2: 6 questions
+
 Return a JSON object:
 {
-  "passage": "<a reading passage of 100-200 words appropriate for ${level} level, about ${topicDesc}. The passage MUST be in English since this is an English learning exercise>",
+  "passage": "<a passage appropriate for ${level} level, about ${topicDesc}. The passage MUST be in English since this is an English listening exercise>",
   "questions": [
     {
       "question": "<comprehension question>",
@@ -251,8 +263,15 @@ Return a JSON object:
   ]
 }
 
+CRITICAL RULES FOR ANSWER OPTIONS:
+- WRONG options (distractors) must be PLAUSIBLE and closely related to the passage content. They should sound like they COULD be correct to someone who didn't listen carefully.
+- At least 2 of the 3 wrong options should use words, phrases, or ideas that actually appear in the passage but in a different context or with a different meaning.
+- NEVER use obviously absurd, unrelated, or silly wrong options. Every option should require careful comprehension to distinguish from the correct answer.
+- Include questions that test: inference (not just literal recall), detail comprehension, main idea, and vocabulary in context.
+- For B2+: include questions where the answer requires understanding implied meaning, tone, or the author's purpose — not just what was explicitly stated.
+
 IMPORTANT: The "passage" must be in English (it's an English listening exercise). The "question" text, "options", and "explanation" must all be in ${LANG_NAMES[language] || 'English'} so the student can understand them in their preferred language.
-Include 4 questions. Only return valid JSON, nothing else.`,
+Only return valid JSON, nothing else.`,
       },
     ],
   })

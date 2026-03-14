@@ -17,7 +17,7 @@ export default function Navigation() {
     ? [
         { href: '/learning-path', label: t('dailyPlan'), color: '' },
         { href: '/dashboard', label: t('dashboard'), color: '' },
-        { href: '/writing', label: t('writing'), color: '#2563eb' },
+        { href: '/writing', label: t('writing'), color: '#0284c7' },
         { href: '/listening', label: t('listening'), color: '#9333ea' },
         { href: '/speaking', label: t('speaking'), color: '#16a34a' },
         { href: '/vocabulary', label: t('vocabulary'), color: '#f59e0b' },
