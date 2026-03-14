@@ -410,11 +410,11 @@ export default function DashboardPage() {
                           try {
                             const fb = JSON.parse(selectedActivity.feedback!)
                             if (typeof fb === 'string') return <p className="text-sm text-gray-700 bg-green-50 rounded-lg p-4">{fb}</p>
-                            const cards: Array<{ key: string; label: string; bg: string; border: string; title: string }> = [
-                              { key: 'taskAchievement', label: 'Task Achievement', bg: 'bg-blue-50', border: 'border-blue-100', title: 'text-blue-600' },
-                              { key: 'coherence', label: 'Coherence & Cohesion', bg: 'bg-indigo-50', border: 'border-indigo-100', title: 'text-indigo-600' },
-                              { key: 'vocabulary', label: 'Vocabulary', bg: 'bg-green-50', border: 'border-green-100', title: 'text-green-600' },
-                              { key: 'grammar', label: 'Grammar', bg: 'bg-purple-50', border: 'border-purple-100', title: 'text-purple-600' },
+                            const cards: Array<{ key: string; label: string; bg: string; border: string; title: string; body: string }> = [
+                              { key: 'taskAchievement', label: 'Task Achievement', bg: 'bg-blue-50', border: 'border-blue-200', title: 'text-blue-700', body: 'text-blue-900' },
+                              { key: 'coherence', label: 'Coherence & Cohesion', bg: 'bg-indigo-50', border: 'border-indigo-200', title: 'text-indigo-700', body: 'text-indigo-900' },
+                              { key: 'vocabulary', label: 'Vocabulary', bg: 'bg-green-50', border: 'border-green-200', title: 'text-green-700', body: 'text-green-900' },
+                              { key: 'grammar', label: 'Grammar', bg: 'bg-purple-50', border: 'border-purple-200', title: 'text-purple-700', body: 'text-purple-900' },
                             ]
                             return (
                               <>
@@ -422,7 +422,7 @@ export default function DashboardPage() {
                                   {cards.filter(c => fb[c.key]).map(c => (
                                     <div key={c.key} className={`${c.bg} border ${c.border} rounded-lg p-3`}>
                                       <div className={`text-xs font-semibold ${c.title} uppercase tracking-wide mb-1`}>{c.label}</div>
-                                      <p className="text-sm text-gray-700 leading-relaxed">{fb[c.key]}</p>
+                                      <p className={`text-sm ${c.body} leading-relaxed`}>{fb[c.key]}</p>
                                     </div>
                                   ))}
                                 </div>
@@ -433,9 +433,9 @@ export default function DashboardPage() {
                                   </div>
                                 )}
                                 {fb.overallFeedback && (
-                                  <div className="bg-gray-50 rounded-lg p-3">
-                                    <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-1">Overall</div>
-                                    <p className="text-sm text-gray-600 leading-relaxed">{fb.overallFeedback}</p>
+                                  <div className="bg-slate-100 border border-slate-200 rounded-lg p-3">
+                                    <div className="text-xs font-semibold text-slate-800 uppercase tracking-wide mb-1">Overall</div>
+                                    <p className="text-sm text-slate-700 leading-relaxed">{fb.overallFeedback}</p>
                                   </div>
                                 )}
                               </>
@@ -492,13 +492,13 @@ export default function DashboardPage() {
                               }
                             }
 
-                            const cards: Array<{ key: string; label: string; bg: string; border: string; title: string }> = [
-                              { key: 'fluency', label: 'Fluency', bg: 'bg-blue-50', border: 'border-blue-100', title: 'text-blue-600' },
-                              { key: 'pronunciation', label: 'Pronunciation', bg: 'bg-indigo-50', border: 'border-indigo-100', title: 'text-indigo-600' },
-                              { key: 'intonation', label: 'Intonation', bg: 'bg-cyan-50', border: 'border-cyan-100', title: 'text-cyan-600' },
-                              { key: 'grammar', label: 'Grammar', bg: 'bg-purple-50', border: 'border-purple-100', title: 'text-purple-600' },
-                              { key: 'vocabulary', label: 'Vocabulary', bg: 'bg-green-50', border: 'border-green-100', title: 'text-green-600' },
-                              { key: 'fillerAnalysis', label: 'Filler Analysis', bg: 'bg-orange-50', border: 'border-orange-100', title: 'text-orange-600' },
+                            const cards: Array<{ key: string; label: string; bg: string; border: string; title: string; body: string }> = [
+                              { key: 'fluency', label: 'Fluency', bg: 'bg-blue-50', border: 'border-blue-200', title: 'text-blue-700', body: 'text-blue-900' },
+                              { key: 'pronunciation', label: 'Pronunciation', bg: 'bg-indigo-50', border: 'border-indigo-200', title: 'text-indigo-700', body: 'text-indigo-900' },
+                              { key: 'intonation', label: 'Intonation', bg: 'bg-cyan-50', border: 'border-cyan-200', title: 'text-cyan-700', body: 'text-cyan-900' },
+                              { key: 'grammar', label: 'Grammar', bg: 'bg-purple-50', border: 'border-purple-200', title: 'text-purple-700', body: 'text-purple-900' },
+                              { key: 'vocabulary', label: 'Vocabulary', bg: 'bg-green-50', border: 'border-green-200', title: 'text-green-700', body: 'text-green-900' },
+                              { key: 'fillerAnalysis', label: 'Filler Analysis', bg: 'bg-orange-50', border: 'border-orange-200', title: 'text-orange-700', body: 'text-orange-900' },
                             ]
                             const validCards = cards.filter(c => fb[c.key] && fb[c.key] !== 'See above')
                             return (
@@ -513,7 +513,7 @@ export default function DashboardPage() {
                                   {validCards.map(c => (
                                     <div key={c.key} className={`${c.bg} border ${c.border} rounded-lg p-3`}>
                                       <div className={`text-xs font-semibold ${c.title} uppercase tracking-wide mb-1`}>{c.label}</div>
-                                      <p className="text-sm text-gray-700 leading-relaxed">{fb[c.key]}</p>
+                                      <p className={`text-sm ${c.body} leading-relaxed`}>{fb[c.key]}</p>
                                     </div>
                                   ))}
                                 </div>
@@ -524,9 +524,9 @@ export default function DashboardPage() {
                                   </div>
                                 )}
                                 {fb.overallFeedback && !fb.overallFeedback.includes('"score"') && (
-                                  <div className="bg-gray-50 rounded-lg p-3">
-                                    <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-1">Overall</div>
-                                    <p className="text-sm text-gray-600 leading-relaxed">{fb.overallFeedback}</p>
+                                  <div className="bg-slate-100 border border-slate-200 rounded-lg p-3">
+                                    <div className="text-xs font-semibold text-slate-800 uppercase tracking-wide mb-1">Overall</div>
+                                    <p className="text-sm text-slate-700 leading-relaxed">{fb.overallFeedback}</p>
                                   </div>
                                 )}
                               </>

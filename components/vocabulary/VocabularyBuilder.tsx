@@ -158,19 +158,88 @@ export default function VocabularyBuilder({ userLevel, initialCategory }: { user
     setLoading(false)
   }
 
-  const checkFlashcard = () => {
+  const checkFlashcard = async () => {
     const word = words[flashIndex]
     const userAnswer = flashInput.trim().toLowerCase()
     const definition = word.definition.toLowerCase()
 
-    // Fuzzy match: extract content words and check overlap
-    const extractWords = (s: string) => s.replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(w => w.length > 2)
+    // Stop words to ignore in matching
+    const stopWords = new Set([
+      'the', 'a', 'an', 'is', 'are', 'was', 'were', 'be', 'been', 'being',
+      'to', 'of', 'in', 'for', 'on', 'with', 'at', 'by', 'from', 'or',
+      'and', 'not', 'but', 'that', 'this', 'it', 'its', 'as', 'do', 'does',
+      'did', 'has', 'had', 'have', 'will', 'would', 'could', 'should', 'may',
+      'can', 'very', 'more', 'most', 'also', 'than', 'then', 'just', 'about',
+      'into', 'over', 'such', 'some', 'make', 'like', 'way', 'something',
+      'someone', 'thing', 'things', 'used', 'using', 'which', 'when', 'what',
+      'who', 'how', 'all', 'each', 'any', 'many', 'much', 'own', 'other',
+    ])
+
+    // Extract meaningful content words
+    const extractWords = (s: string) =>
+      s.replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(w => w.length > 2 && !stopWords.has(w))
+
+    // Get word stems (simple suffix stripping)
+    const stem = (w: string) => {
+      if (w.endsWith('ing') && w.length > 5) return w.slice(0, -3)
+      if (w.endsWith('tion') && w.length > 5) return w.slice(0, -4)
+      if (w.endsWith('ness') && w.length > 5) return w.slice(0, -4)
+      if (w.endsWith('ment') && w.length > 5) return w.slice(0, -4)
+      if (w.endsWith('able') && w.length > 5) return w.slice(0, -4)
+      if (w.endsWith('ible') && w.length > 5) return w.slice(0, -4)
+      if (w.endsWith('ful') && w.length > 4) return w.slice(0, -3)
+      if (w.endsWith('less') && w.length > 5) return w.slice(0, -4)
+      if (w.endsWith('ly') && w.length > 4) return w.slice(0, -2)
+      if (w.endsWith('ed') && w.length > 4) return w.slice(0, -2)
+      if (w.endsWith('er') && w.length > 4) return w.slice(0, -2)
+      if (w.endsWith('est') && w.length > 4) return w.slice(0, -3)
+      if (w.endsWith('ies') && w.length > 4) return w.slice(0, -3) + 'y'
+      if (w.endsWith('es') && w.length > 4) return w.slice(0, -2)
+      if (w.endsWith('s') && w.length > 4) return w.slice(0, -1)
+      return w
+    }
+
     const defWords = extractWords(definition)
     const answerWords = extractWords(userAnswer)
 
-    // Count how many definition keywords the user got
-    const matched = defWords.filter(dw => answerWords.some(aw => aw.includes(dw) || dw.includes(aw)))
-    const correct = defWords.length > 0 && matched.length >= Math.ceil(defWords.length * 0.4)
+    // Check if user typed the word itself (they should define it, not repeat it)
+    const wordLower = word.word.toLowerCase()
+    const isJustRepeating = answerWords.length <= 2 && answerWords.some(aw => wordLower.includes(aw) || aw.includes(wordLower))
+
+    if (isJustRepeating && answerWords.length > 0) {
+      setFlashResult('wrong')
+      saveProgress(word.word, false)
+      flashJustCheckedRef.current = true
+      setTimeout(() => { flashJustCheckedRef.current = false }, 300)
+      return
+    }
+
+    // Match using stems for more flexible comparison
+    const matched = defWords.filter(dw =>
+      answerWords.some(aw =>
+        aw.includes(dw) || dw.includes(aw) ||
+        stem(aw) === stem(dw) ||
+        (aw.length > 3 && dw.length > 3 && (
+          stem(aw).includes(stem(dw)) || stem(dw).includes(stem(aw))
+        ))
+      )
+    )
+
+    // Also check if the answer words appear in the example sentence context
+    const exampleLower = word.example.toLowerCase()
+    const exampleWords = extractWords(exampleLower)
+    const contextMatch = answerWords.filter(aw =>
+      exampleWords.some(ew => stem(aw) === stem(ew)) ||
+      defWords.some(dw => stem(aw) === stem(dw))
+    )
+
+    // More lenient: need 30% keyword match OR significant context match
+    const keywordRatio = defWords.length > 0 ? matched.length / defWords.length : 0
+    const contextRatio = answerWords.length > 0 ? contextMatch.length / answerWords.length : 0
+
+    // Accept if: 30%+ definition keywords matched, OR user wrote enough relevant words
+    const correct = (defWords.length > 0 && keywordRatio >= 0.3) ||
+                    (answerWords.length >= 2 && contextRatio >= 0.5 && matched.length >= 1)
 
     setFlashResult(correct ? 'correct' : 'wrong')
     if (correct) setFlashScore(prev => prev + 1)
