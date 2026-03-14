@@ -186,7 +186,7 @@ export default function DashboardPage() {
         )}
 
         {/* Level badge */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center col-span-2 md:col-span-1">
             <div className="text-sm text-gray-500 mb-2">{t('level')}</div>
             <div
@@ -220,6 +220,13 @@ export default function DashboardPage() {
             <div className="text-sm text-gray-500 mb-2">{t('vocabulary')}</div>
             <div className="text-3xl font-bold text-amber-600">
               {loading ? '—' : data?.vocabAccuracy != null ? Math.round(data.vocabAccuracy) / 10 : '—'}
+            </div>
+            <div className="text-xs text-gray-400">/10</div>
+          </div>
+          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
+            <div className="text-sm text-gray-500 mb-2">{t('grammar')}</div>
+            <div className="text-3xl font-bold" style={{ color: '#e11d48' }}>
+              {loading ? '—' : data?.avgGrammar != null ? Math.round((data.avgGrammar / 9) * 100) / 10 : '—'}
             </div>
             <div className="text-xs text-gray-400">/10</div>
           </div>
