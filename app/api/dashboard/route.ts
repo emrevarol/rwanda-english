@@ -120,6 +120,27 @@ export async function GET(req: NextRequest) {
       ? Math.round((vocabMastered / vocabTotal) * 100)
       : null
 
+    // Grammar sessions from DailyProgress
+    let grammarSessions: Array<{ id: string; date: Date; mins: number }> = []
+    try {
+      const grammarProgress = await prisma.dailyProgress.findMany({
+        where: {
+          userId: session.user.id,
+          OR: [
+            { task1Type: 'grammar', task1Done: true },
+            { task2Type: 'grammar', task2Done: true },
+          ],
+        },
+        orderBy: { createdAt: 'desc' },
+        take: 5,
+      })
+      grammarSessions = grammarProgress.map(g => ({
+        id: g.id,
+        date: g.createdAt,
+        mins: g.task1Type === 'grammar' ? g.task1Mins : g.task2Mins,
+      }))
+    } catch {}
+
     const recentActivity = [
       ...writing.map(w => ({
         id: w.id,
@@ -156,6 +177,13 @@ export async function GET(req: NextRequest) {
         date: s.date,
         score: s.accuracy,
         detail: `${s.words} words · ${s.correct}/${s.correct + s.incorrect} correct`,
+      })),
+      ...grammarSessions.map(g => ({
+        id: g.id,
+        type: 'grammar' as const,
+        date: g.date,
+        score: 0,
+        detail: `Grammar practice · ${g.mins} min`,
       })),
     ]
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())

@@ -125,7 +125,7 @@ export default function DashboardPage() {
     { subject: t('speaking'), value: data ? data.avgSpeaking * 10 : 0, color: '#16a34a' },
     { subject: t('listening'), value: data ? data.avgListening : 0, color: '#9333ea' },
     { subject: t('vocabulary'), value: vocabPct, color: '#f59e0b' },
-    { subject: t('grammar'), value: grammarPct, color: '#ef4444' },
+    { subject: t('grammar'), value: grammarPct, color: '#e11d48' },
   ]
 
   return (
@@ -195,33 +195,33 @@ export default function DashboardPage() {
               {level}
             </div>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center" title="IELTS-style band score from 1 (lowest) to 9 (highest)">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
             <div className="text-sm text-gray-500 mb-2">{t('writing')}</div>
             <div className="text-3xl font-bold text-blue-600">
-              {loading ? '—' : data?.avgWriting || 0}
+              {loading ? '—' : data ? Math.round((data.avgWriting / 9) * 100) / 10 : 0}
             </div>
-            <div className="text-xs text-gray-600">{t('bandScore')} (1-9)</div>
+            <div className="text-xs text-gray-400">/10</div>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center" title="Fluency score from AI analysis, out of 10">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
             <div className="text-sm text-gray-500 mb-2">{t('speaking')}</div>
             <div className="text-3xl font-bold text-green-600">
               {loading ? '—' : data?.avgSpeaking || 0}
             </div>
-            <div className="text-xs text-gray-600">{t('fluencyScore')} (/10)</div>
+            <div className="text-xs text-gray-400">/10</div>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center" title="Average percentage of correct answers in listening comprehension">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
             <div className="text-sm text-gray-500 mb-2">{t('listening')}</div>
             <div className="text-3xl font-bold text-purple-600">
-              {loading ? '—' : data?.avgListening || 0}%
+              {loading ? '—' : data ? Math.round(data.avgListening) / 10 : 0}
             </div>
-            <div className="text-xs text-gray-600">% correct</div>
+            <div className="text-xs text-gray-400">/10</div>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center" title="Vocabulary accuracy from practice sessions">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
             <div className="text-sm text-gray-500 mb-2">{t('vocabulary')}</div>
             <div className="text-3xl font-bold text-amber-600">
-              {loading ? '—' : data?.vocabAccuracy != null ? `${data.vocabAccuracy}%` : '—'}
+              {loading ? '—' : data?.vocabAccuracy != null ? Math.round(data.vocabAccuracy) / 10 : '—'}
             </div>
-            <div className="text-xs text-gray-600">{t('accuracy')}</div>
+            <div className="text-xs text-gray-400">/10</div>
           </div>
         </div>
 
@@ -263,7 +263,7 @@ export default function DashboardPage() {
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-lg">
-                        {item.type === 'writing' ? '✍️' : item.type === 'speaking' ? '🎙️' : item.type === 'vocabulary' ? '📚' : '🎧'}
+                        {item.type === 'writing' ? '✍️' : item.type === 'speaking' ? '🎙️' : item.type === 'vocabulary' ? '📚' : item.type === 'grammar' ? '📝' : '🎧'}
                       </span>
                       <div>
                         <div className="text-sm font-medium text-gray-700 capitalize">
@@ -275,10 +275,13 @@ export default function DashboardPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold text-blue-600" title={item.type === 'writing' ? 'Band score (1-9)' : item.type === 'speaking' ? 'Score out of 10' : item.type === 'vocabulary' ? 'Accuracy' : 'Percentage correct'}>
-                        {item.type === 'writing' ? `Band ${item.score}/9`
-                          : item.type === 'vocabulary' ? `${item.score}%`
-                          : `${item.score}${item.type === 'listening' ? '%' : '/10'}`}
+                      <span className="text-sm font-semibold text-blue-600">
+                        {item.type === 'grammar'
+                          ? item.detail
+                          : item.type === 'writing' ? `${Math.round((item.score / 9) * 100) / 10}/10`
+                          : item.type === 'vocabulary' ? `${Math.round(item.score) / 10}/10`
+                          : item.type === 'listening' ? `${Math.round(item.score) / 10}/10`
+                          : `${item.score}/10`}
                       </span>
                       <span className="text-gray-300 text-xs">›</span>
                     </div>

@@ -90,19 +90,19 @@ export default function ScoreChart({ writingData, speakingData, listeningData = 
     return aIdx - bIdx
   })
 
-  const writingLabel = `${t('writing')} (band/9)`
-  const speakingLabel = `${t('speaking')} (/10)`
-  const listeningLabel = `${t('listening')} (%)`
-  const vocabLabel = `${t('vocabulary')} (/10)`
-  const grammarLabel = `${t('grammar')} (/9)`
+  const writingLabel = t('writing')
+  const speakingLabel = t('speaking')
+  const listeningLabel = t('listening')
+  const vocabLabel = t('vocabulary')
+  const grammarLabel = t('grammar')
 
   const combined = sortedEntries.map((entry) => ({
     date: entry.date,
-    [writingLabel]: entry.writing,
+    [writingLabel]: entry.writing != null ? Math.round((entry.writing / 9) * 100) / 10 : undefined,
     [speakingLabel]: entry.speaking,
-    [listeningLabel]: entry.listening != null ? Math.round(entry.listening / 10) : undefined,
+    [listeningLabel]: entry.listening != null ? Math.round(entry.listening) / 10 : undefined,
     [vocabLabel]: entry.vocab != null ? Math.round(entry.vocab * 10) / 10 : undefined,
-    [grammarLabel]: entry.grammar,
+    [grammarLabel]: entry.grammar != null ? Math.round((entry.grammar / 9) * 100) / 10 : undefined,
   }))
 
   return (
@@ -120,20 +120,13 @@ export default function ScoreChart({ writingData, speakingData, listeningData = 
           tick={{ fontSize: 11 }}
           domain={[0, 10]}
         />
-        <Tooltip
-          formatter={(value, name) => {
-            if (typeof name === 'string' && name.includes('%')) return [`${Number(value) * 10}%`, t('listening')]
-            if (typeof name === 'string' && name.includes(t('vocabulary'))) return [`${value}/10`, t('vocabulary')]
-            if (typeof name === 'string' && name.includes(t('grammar'))) return [`${value}/9`, t('grammar')]
-            return [value, name]
-          }}
-        />
+        <Tooltip formatter={(value) => [`${value}/10`]} />
         <Legend />
         <Line type="monotone" dataKey={writingLabel} stroke="#2563eb" strokeWidth={2} dot={{ r: 4 }} connectNulls />
         <Line type="monotone" dataKey={speakingLabel} stroke="#16a34a" strokeWidth={2} dot={{ r: 4 }} connectNulls />
         <Line type="monotone" dataKey={listeningLabel} stroke="#9333ea" strokeWidth={2} dot={{ r: 4 }} connectNulls />
         <Line type="monotone" dataKey={vocabLabel} stroke="#f59e0b" strokeWidth={2} dot={{ r: 4 }} connectNulls />
-        <Line type="monotone" dataKey={grammarLabel} stroke="#ef4444" strokeWidth={2} dot={{ r: 4 }} connectNulls />
+        <Line type="monotone" dataKey={grammarLabel} stroke="#e11d48" strokeWidth={2} dot={{ r: 4 }} connectNulls />
       </LineChart>
     </ResponsiveContainer>
   )

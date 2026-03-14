@@ -20,7 +20,7 @@ export default function Navigation() {
         { href: '/listening', label: t('listening'), color: '#9333ea' },
         { href: '/speaking', label: t('speaking'), color: '#16a34a' },
         { href: '/vocabulary', label: t('vocabulary'), color: '#f59e0b' },
-        { href: '/grammar', label: t('grammar'), color: '#ef4444' },
+        { href: '/grammar', label: t('grammar'), color: '#e11d48' },
         { href: '/tutor', label: t('tutor'), color: '' },
         { href: '/leaderboard', label: t('leaderboard'), color: '' },
         { href: '/friends', label: t('friends'), color: '' },

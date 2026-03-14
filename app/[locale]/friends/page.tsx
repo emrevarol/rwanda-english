@@ -223,6 +223,39 @@ export default function FriendsPage() {
           </div>
         )}
 
+        {/* Pending Requests — shown prominently at top */}
+        {pendingReceived.length > 0 && (
+          <div className="bg-amber-50 rounded-xl border-2 border-amber-300 p-5 shadow-sm">
+            <h3 className="font-bold text-amber-800 mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-amber-500 text-white rounded-full flex items-center justify-center text-xs font-bold">{pendingReceived.length}</span>
+              {t('pendingRequests')}
+            </h3>
+            <div className="space-y-2">
+              {pendingReceived.map((f) => (
+                <div key={f.friendshipId} className="flex items-center justify-between p-3 bg-white rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                      {f.name.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium text-gray-800">{f.name}</div>
+                      <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${levelColors[f.level]}`}>{f.level}</span>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <button onClick={() => respondRequest(f.friendshipId, 'accept')} className="text-sm bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 font-medium transition-colors">
+                      {t('accept')}
+                    </button>
+                    <button onClick={() => respondRequest(f.friendshipId, 'reject')} className="text-sm bg-gray-200 text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors">
+                      {t('reject')}
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Search & Browse Users */}
         <div className="bg-white rounded-xl border border-gray-200 p-5">
           <div className="flex items-center justify-between mb-3">
@@ -288,36 +321,6 @@ export default function FriendsPage() {
             </div>
           )}
         </div>
-
-        {/* Pending Requests */}
-        {pendingReceived.length > 0 && (
-          <div className="bg-amber-50 rounded-xl border border-amber-200 p-5">
-            <h3 className="font-semibold text-amber-800 mb-3">{t('pendingRequests')} ({pendingReceived.length})</h3>
-            <div className="space-y-2">
-              {pendingReceived.map((f) => (
-                <div key={f.friendshipId} className="flex items-center justify-between p-3 bg-white rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                      {f.name.charAt(0).toUpperCase()}
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium text-gray-800">{f.name}</div>
-                      <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${levelColors[f.level]}`}>{f.level}</span>
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    <button onClick={() => respondRequest(f.friendshipId, 'accept')} className="text-xs bg-green-600 text-white px-3 py-1.5 rounded-lg hover:bg-green-700">
-                      {t('accept')}
-                    </button>
-                    <button onClick={() => respondRequest(f.friendshipId, 'reject')} className="text-xs bg-gray-200 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-gray-300">
-                      {t('reject')}
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Friends List */}
         <div className="bg-white rounded-xl border border-gray-200 p-5">

@@ -56,13 +56,13 @@ export async function POST(req: NextRequest) {
     prisma.friendship.create({
       data: { userId: session.user.id, friendId },
     }),
-    prisma.user.findUnique({ where: { id: friendId }, select: { email: true, name: true } }),
+    prisma.user.findUnique({ where: { id: friendId }, select: { email: true, name: true, language: true } }),
     prisma.user.findUnique({ where: { id: session.user.id }, select: { name: true } }),
   ])
 
   // Send email notification (fire & forget)
   if (friend?.email && sender?.name) {
-    sendFriendRequestEmail(friend.email, friend.name, sender.name)
+    sendFriendRequestEmail(friend.email, friend.name, sender.name, friend.language || 'en')
   }
 
   return NextResponse.json(friendship)
