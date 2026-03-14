@@ -139,6 +139,12 @@ export default function GrammarPage() {
       setFinished(true)
       setTimerRunning(false)
       markDailyTaskDone('grammar', Math.round(timer / 60))
+      // Save grammar session
+      fetch('/api/grammar/complete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ score, total: totalAnswered + (checked ? 0 : 1), mins: Math.round(timer / 60) }),
+      }).catch(() => {})
       return
     }
     const nextIdx = currentIdx + 1

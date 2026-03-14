@@ -41,6 +41,7 @@ model User {
   sentFriendships     Friendship[]         @relation("sentFriendships")
   receivedFriendships Friendship[]         @relation("receivedFriendships")
   vocabularyProgress  VocabularyProgress[]
+  grammarSessions     GrammarSession[]
 }
 
 model Referral {
@@ -179,6 +180,19 @@ model ListeningContent {
   createdAt DateTime @default(now())
 
   @@index([level, language])
+}
+
+model GrammarSession {
+  id        String   @id @default(cuid())
+  userId    String
+  score     Int      // correct answers
+  total     Int      // total questions
+  mins      Int      @default(0)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
 }
 
 model VocabularyWord {

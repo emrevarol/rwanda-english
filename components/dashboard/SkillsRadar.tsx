@@ -6,6 +6,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
   Radar,
+  Tooltip,
   ResponsiveContainer,
 } from 'recharts'
 
@@ -64,6 +65,20 @@ export default function SkillsRadar({ data }: { data: SkillData[] }) {
           tickLine={false}
         />
         <PolarRadiusAxis domain={[0, 100]} tickCount={6} tick={{ fontSize: 9, fill: '#9ca3af' }} axisLine={false} />
+        <Tooltip
+          content={({ active, payload }) => {
+            if (active && payload && payload.length > 0) {
+              const d = payload[0].payload as SkillData
+              return (
+                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 shadow-md">
+                  <div className="text-xs font-semibold" style={{ color: d.color }}>{d.subject}</div>
+                  <div className="text-sm font-bold text-gray-900 dark:text-white">{Math.round(d.value)}/100</div>
+                </div>
+              )
+            }
+            return null
+          }}
+        />
         <Radar
           name="Skills"
           dataKey="value"

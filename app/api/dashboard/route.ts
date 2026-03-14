@@ -125,24 +125,20 @@ export async function GET(req: NextRequest) {
       ? Math.round((vocabMastered / vocabTotal) * 100)
       : null
 
-    // Grammar sessions from DailyProgress
-    let grammarSessions: Array<{ id: string; date: Date; mins: number }> = []
+    // Grammar sessions
+    let grammarSessions: Array<{ id: string; date: Date; score: number; total: number; mins: number }> = []
     try {
-      const grammarProgress = await prisma.dailyProgress.findMany({
-        where: {
-          userId: session.user.id,
-          OR: [
-            { task1Type: 'grammar', task1Done: true },
-            { task2Type: 'grammar', task2Done: true },
-          ],
-        },
+      const gs = await prisma.grammarSession.findMany({
+        where: { userId: session.user.id },
         orderBy: { createdAt: 'desc' },
         take: 5,
       })
-      grammarSessions = grammarProgress.map(g => ({
+      grammarSessions = gs.map(g => ({
         id: g.id,
         date: g.createdAt,
-        mins: g.task1Type === 'grammar' ? g.task1Mins : g.task2Mins,
+        score: g.score,
+        total: g.total,
+        mins: g.mins,
       }))
     } catch {}
 
@@ -187,8 +183,8 @@ export async function GET(req: NextRequest) {
         id: g.id,
         type: 'grammar' as const,
         date: g.date,
-        score: 0,
-        detail: `Grammar practice · ${g.mins} min`,
+        score: g.total > 0 ? Math.round((g.score / g.total) * 10 * 10) / 10 : 0,
+        detail: `${g.score}/${g.total} correct · ${g.mins} min`,
       })),
     ]
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -223,14 +219,16 @@ export async function GET(req: NextRequest) {
       vocabAccuracy,
       vocabTotal,
       vocabMastered,
-      avgGrammar: avgGrammar != null ? Math.round(avgGrammar * 10) / 10 : null,
+      avgGrammar: grammarSessions.length > 0
+        ? Math.round(grammarSessions.reduce((s, g) => s + (g.total > 0 ? (g.score / g.total) * 9 : 0), 0) / grammarSessions.length * 10) / 10
+        : (avgGrammar != null ? Math.round(avgGrammar * 10) / 10 : null),
       writingHistory: writing.map(w => ({ date: w.createdAt, score: w.band })),
       speakingHistory: speaking.map(s => ({ date: s.createdAt, score: s.score })),
       listeningHistory: listening.map(l => ({ date: l.createdAt, score: l.score })),
       vocabHistory: vocabHistoryData,
-      grammarHistory: writing
-        .filter(w => w.grammarScore != null)
-        .map(w => ({ date: w.createdAt, score: w.grammarScore! })),
+      grammarHistory: grammarSessions.length > 0
+        ? grammarSessions.map(g => ({ date: g.date, score: g.total > 0 ? (g.score / g.total) * 9 : 0 }))
+        : writing.filter(w => w.grammarScore != null).map(w => ({ date: w.createdAt, score: w.grammarScore! })),
       recentActivity,
     })
   } catch (error) {
