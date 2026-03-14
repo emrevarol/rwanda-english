@@ -410,19 +410,19 @@ export default function DashboardPage() {
                           try {
                             const fb = JSON.parse(selectedActivity.feedback!)
                             if (typeof fb === 'string') return <p className="text-sm text-gray-700 bg-green-50 rounded-lg p-4">{fb}</p>
-                            const cards: Array<{ key: string; label: string; bg: string; border: string; title: string; body: string }> = [
-                              { key: 'taskAchievement', label: 'Task Achievement', bg: 'bg-blue-50', border: 'border-blue-200', title: 'text-blue-700', body: 'text-blue-900' },
-                              { key: 'coherence', label: 'Coherence & Cohesion', bg: 'bg-indigo-50', border: 'border-indigo-200', title: 'text-indigo-700', body: 'text-indigo-900' },
-                              { key: 'vocabulary', label: 'Vocabulary', bg: 'bg-green-50', border: 'border-green-200', title: 'text-green-700', body: 'text-green-900' },
-                              { key: 'grammar', label: 'Grammar', bg: 'bg-purple-50', border: 'border-purple-200', title: 'text-purple-700', body: 'text-purple-900' },
+                            const wCards = [
+                              { key: 'taskAchievement', label: 'Task Achievement', bg: '#eff6ff', border: '#bfdbfe', title: '#1d4ed8', body: '#1e3a5f' },
+                              { key: 'coherence', label: 'Coherence & Cohesion', bg: '#eef2ff', border: '#c7d2fe', title: '#4338ca', body: '#312e81' },
+                              { key: 'vocabulary', label: 'Vocabulary', bg: '#f0fdf4', border: '#bbf7d0', title: '#15803d', body: '#14532d' },
+                              { key: 'grammar', label: 'Grammar', bg: '#faf5ff', border: '#d8b4fe', title: '#7e22ce', body: '#3b0764' },
                             ]
                             return (
                               <>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                  {cards.filter(c => fb[c.key]).map(c => (
-                                    <div key={c.key} className={`${c.bg} border ${c.border} rounded-lg p-3`}>
-                                      <div className={`text-xs font-semibold ${c.title} uppercase tracking-wide mb-1`}>{c.label}</div>
-                                      <p className={`text-sm ${c.body} leading-relaxed`}>{fb[c.key]}</p>
+                                  {wCards.filter(c => fb[c.key]).map(c => (
+                                    <div key={c.key} className="rounded-lg p-3" style={{ backgroundColor: c.bg, border: `1px solid ${c.border}` }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: c.title }}>{c.label}</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: c.body }}>{fb[c.key]}</p>
                                     </div>
                                   ))}
                                 </div>
@@ -433,9 +433,9 @@ export default function DashboardPage() {
                                   </div>
                                 )}
                                 {fb.overallFeedback && (
-                                  <div className="bg-slate-100 border border-slate-200 rounded-lg p-3">
-                                    <div className="text-xs font-semibold text-slate-800 uppercase tracking-wide mb-1">Overall</div>
-                                    <p className="text-sm text-slate-700 leading-relaxed">{fb.overallFeedback}</p>
+                                  <div className="rounded-lg p-3" style={{ backgroundColor: '#f1f5f9', border: '1px solid #cbd5e1' }}>
+                                    <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#1e293b' }}>Overall</div>
+                                    <p className="text-sm leading-relaxed" style={{ color: '#334155' }}>{fb.overallFeedback}</p>
                                   </div>
                                 )}
                               </>
@@ -492,15 +492,6 @@ export default function DashboardPage() {
                               }
                             }
 
-                            const cards: Array<{ key: string; label: string; bg: string; border: string; title: string; body: string }> = [
-                              { key: 'fluency', label: 'Fluency', bg: 'bg-blue-50', border: 'border-blue-200', title: 'text-blue-700', body: 'text-blue-900' },
-                              { key: 'pronunciation', label: 'Pronunciation', bg: 'bg-indigo-50', border: 'border-indigo-200', title: 'text-indigo-700', body: 'text-indigo-900' },
-                              { key: 'intonation', label: 'Intonation', bg: 'bg-cyan-50', border: 'border-cyan-200', title: 'text-cyan-700', body: 'text-cyan-900' },
-                              { key: 'grammar', label: 'Grammar', bg: 'bg-purple-50', border: 'border-purple-200', title: 'text-purple-700', body: 'text-purple-900' },
-                              { key: 'vocabulary', label: 'Vocabulary', bg: 'bg-green-50', border: 'border-green-200', title: 'text-green-700', body: 'text-green-900' },
-                              { key: 'fillerAnalysis', label: 'Filler Analysis', bg: 'bg-orange-50', border: 'border-orange-200', title: 'text-orange-700', body: 'text-orange-900' },
-                            ]
-                            const validCards = cards.filter(c => fb[c.key] && fb[c.key] !== 'See above')
                             return (
                               <>
                                 {fb.score && (
@@ -510,23 +501,53 @@ export default function DashboardPage() {
                                   </div>
                                 )}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                  {validCards.map(c => (
-                                    <div key={c.key} className={`${c.bg} border ${c.border} rounded-lg p-3`}>
-                                      <div className={`text-xs font-semibold ${c.title} uppercase tracking-wide mb-1`}>{c.label}</div>
-                                      <p className={`text-sm ${c.body} leading-relaxed`}>{fb[c.key]}</p>
+                                  {fb.fluency && fb.fluency !== 'See above' && (
+                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#eff6ff', border: '1px solid #bfdbfe' }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#1d4ed8' }}>Fluency</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: '#1e3a5f' }}>{fb.fluency}</p>
                                     </div>
-                                  ))}
+                                  )}
+                                  {fb.pronunciation && fb.pronunciation !== 'See above' && (
+                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#eef2ff', border: '1px solid #c7d2fe' }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#4338ca' }}>Pronunciation</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: '#312e81' }}>{fb.pronunciation}</p>
+                                    </div>
+                                  )}
+                                  {fb.intonation && fb.intonation !== 'See above' && (
+                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#ecfeff', border: '1px solid #a5f3fc' }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#0e7490' }}>Intonation</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: '#164e63' }}>{fb.intonation}</p>
+                                    </div>
+                                  )}
+                                  {fb.grammar && fb.grammar !== 'See above' && (
+                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#faf5ff', border: '1px solid #d8b4fe' }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#7e22ce' }}>Grammar</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: '#3b0764' }}>{fb.grammar}</p>
+                                    </div>
+                                  )}
+                                  {fb.vocabulary && fb.vocabulary !== 'See above' && (
+                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0' }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#15803d' }}>Vocabulary</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: '#14532d' }}>{fb.vocabulary}</p>
+                                    </div>
+                                  )}
+                                  {fb.fillerAnalysis && fb.fillerAnalysis !== 'See above' && (
+                                    <div className="rounded-lg p-3" style={{ backgroundColor: '#fff7ed', border: '1px solid #fed7aa' }}>
+                                      <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#c2410c' }}>Filler Analysis</div>
+                                      <p className="text-sm leading-relaxed" style={{ color: '#7c2d12' }}>{fb.fillerAnalysis}</p>
+                                    </div>
+                                  )}
                                 </div>
                                 {fb.modelAnswer && (
-                                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
-                                    <div className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-1">Model Answer</div>
-                                    <p className="text-sm text-amber-700 leading-relaxed italic">&quot;{fb.modelAnswer}&quot;</p>
+                                  <div className="rounded-lg p-3" style={{ backgroundColor: '#fffbeb', border: '1px solid #fcd34d' }}>
+                                    <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#92400e' }}>Model Answer</div>
+                                    <p className="text-sm leading-relaxed italic" style={{ color: '#78350f' }}>&quot;{fb.modelAnswer}&quot;</p>
                                   </div>
                                 )}
                                 {fb.overallFeedback && !fb.overallFeedback.includes('"score"') && (
-                                  <div className="bg-slate-100 border border-slate-200 rounded-lg p-3">
-                                    <div className="text-xs font-semibold text-slate-800 uppercase tracking-wide mb-1">Overall</div>
-                                    <p className="text-sm text-slate-700 leading-relaxed">{fb.overallFeedback}</p>
+                                  <div className="rounded-lg p-3" style={{ backgroundColor: '#f1f5f9', border: '1px solid #cbd5e1' }}>
+                                    <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: '#1e293b' }}>Overall</div>
+                                    <p className="text-sm leading-relaxed" style={{ color: '#334155' }}>{fb.overallFeedback}</p>
                                   </div>
                                 )}
                               </>
