@@ -27,7 +27,7 @@ function ColoredTick(props: any) {
   const dx = x - cx
   const dy = y - cy
   const dist = Math.sqrt(dx * dx + dy * dy)
-  const offset = 22
+  const offset = 14
   const nx = x + (dx / dist) * offset
   const ny = y + (dy / dist) * offset
 
@@ -43,7 +43,7 @@ function ColoredTick(props: any) {
       textAnchor={anchor}
       dominantBaseline="central"
       fill={color}
-      fontSize={11}
+      fontSize={13}
       fontWeight={600}
     >
       {payload.value}
@@ -56,7 +56,7 @@ export default function SkillsRadar({ data }: { data: SkillData[] }) {
 
   return (
     <ResponsiveContainer width="100%" height={280}>
-      <RadarChart data={data} outerRadius="58%">
+      <RadarChart data={data} outerRadius="52%">
         <PolarGrid />
         <PolarAngleAxis
           dataKey="subject"
