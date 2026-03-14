@@ -196,35 +196,35 @@ export default function DashboardPage() {
             </div>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
-            <div className="text-sm text-gray-500 mb-2">{t('writing')}</div>
+            <div className="text-sm font-medium mb-2" style={{ color: '#2563eb' }}>{t('writing')}</div>
             <div className="text-3xl font-bold text-blue-600">
               {loading ? '—' : data ? Math.round((data.avgWriting / 9) * 100) / 10 : 0}
             </div>
             <div className="text-xs text-gray-400">/10</div>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
-            <div className="text-sm text-gray-500 mb-2">{t('speaking')}</div>
+            <div className="text-sm font-medium mb-2" style={{ color: '#16a34a' }}>{t('speaking')}</div>
             <div className="text-3xl font-bold text-green-600">
               {loading ? '—' : data?.avgSpeaking || 0}
             </div>
             <div className="text-xs text-gray-400">/10</div>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
-            <div className="text-sm text-gray-500 mb-2">{t('listening')}</div>
+            <div className="text-sm font-medium mb-2" style={{ color: '#9333ea' }}>{t('listening')}</div>
             <div className="text-3xl font-bold text-purple-600">
               {loading ? '—' : data ? Math.round(data.avgListening) / 10 : 0}
             </div>
             <div className="text-xs text-gray-400">/10</div>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
-            <div className="text-sm text-gray-500 mb-2">{t('vocabulary')}</div>
+            <div className="text-sm font-medium mb-2" style={{ color: '#f59e0b' }}>{t('vocabulary')}</div>
             <div className="text-3xl font-bold text-amber-600">
               {loading ? '—' : data?.vocabAccuracy != null ? Math.round(data.vocabAccuracy) / 10 : '—'}
             </div>
             <div className="text-xs text-gray-400">/10</div>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
-            <div className="text-sm text-gray-500 mb-2">{t('grammar')}</div>
+            <div className="text-sm font-medium mb-2" style={{ color: '#e11d48' }}>{t('grammar')}</div>
             <div className="text-3xl font-bold" style={{ color: '#e11d48' }}>
               {loading ? '—' : data?.avgGrammar != null ? Math.round((data.avgGrammar / 9) * 100) / 10 : '—'}
             </div>
