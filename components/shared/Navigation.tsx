@@ -67,15 +67,10 @@ export default function Navigation() {
             <LanguageSwitcher />
             {session ? (
               <div className="flex items-center gap-2">
-                <Link href="/profile" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                  <div className="relative flex-shrink-0">
-                    <Avatar src={session.user.avatar} name={session.user.name} size={32} />
-                    <span className="absolute -bottom-1 -right-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none border-2 border-white dark:border-gray-900">
-                      {session.user.level}
-                    </span>
-                  </div>
-                  <span className="text-sm text-gray-600 dark:text-gray-300 hidden sm:block max-w-[100px] truncate">
-                    {session.user.name}
+                <Link href="/profile" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+                  <Avatar src={session.user.avatar} name={session.user.name} size={32} />
+                  <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full leading-none flex-shrink-0">
+                    {session.user.level}
                   </span>
                 </Link>
                 <button
