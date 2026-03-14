@@ -48,9 +48,12 @@ export default function ProfilePage() {
         body: formData,
       })
       const data = await res.json()
+      if (data.error) {
+        alert(`Upload error: ${data.error.message}`)
+        return
+      }
       if (data.secure_url) {
         setAvatar(data.secure_url)
-        // Save immediately
         await fetch('/api/profile', {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
@@ -58,8 +61,9 @@ export default function ProfilePage() {
         })
         await update()
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Upload failed:', err)
+      alert(`Upload failed: ${err?.message || 'Unknown error'}`)
     } finally {
       setUploading(false)
     }
