@@ -483,7 +483,7 @@
     },
     "shareProgress": "Поделиться Прогрессом",
     "shareYourProgress": "Поделитесь Вашим Прогрессом",
-    "shareText": "{name} на уровне {level} в english.cash! Письмо: {writing}/9 · Говорение: {speaking}% · Аудирование: {listening}%",
+    "shareText": "{name} на уровне {level} в english.cash! Письмо: {writing}/10 · Говорение: {speaking}/10 · Аудирование: {listening}/10 · Словарный запас: {vocabulary}/10 · Грамматика: {grammar}/10",
     "shareCardSubtitle": "Прогресс Изучения Английского",
     "writing": "Письмо",
     "speaking": "Говорение",
@@ -499,7 +499,9 @@
     "totalLearners": "учеников",
     "noResults": "Пользователи не найдены.",
     "prev": "Назад",
-    "next": "Далее"
+    "next": "Далее",
+    "vocabulary": "Словарный запас",
+    "grammar": "Грамматика"
   },
   "vocabulary": {
     "title": "Словарный Запас",

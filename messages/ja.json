@@ -483,7 +483,7 @@
     },
     "shareProgress": "進捗を共有",
     "shareYourProgress": "あなたの進捗を共有",
-    "shareText": "{name}はenglish.cashで{level}レベルです！ライティング：{writing}/9 · スピーキング：{speaking}% · リスニング：{listening}%",
+    "shareText": "{name}はenglish.cashで{level}レベルです！ライティング：{writing}/10 · スピーキング：{speaking}/10 · リスニング：{listening}/10 · 語彙：{vocabulary}/10 · 文法：{grammar}/10",
     "shareCardSubtitle": "英語学習の進捗",
     "writing": "ライティング",
     "speaking": "スピーキング",
@@ -499,7 +499,9 @@
     "totalLearners": "学習者",
     "noResults": "ユーザーが見つかりません。",
     "prev": "前へ",
-    "next": "次へ"
+    "next": "次へ",
+    "vocabulary": "語彙",
+    "grammar": "文法"
   },
   "vocabulary": {
     "title": "語彙ビルダー",

@@ -483,7 +483,7 @@
     },
     "shareProgress": "分享进度",
     "shareYourProgress": "分享您的进度",
-    "shareText": "{name} 在 english.cash 上达到了 {level} 等级！写作：{writing}/9 · 口语：{speaking}% · 听力：{listening}%",
+    "shareText": "{name} 在 english.cash 上达到了 {level} 等级！写作：{writing}/10 · 口语：{speaking}/10 · 听力：{listening}/10 · 词汇：{vocabulary}/10 · 语法：{grammar}/10",
     "shareCardSubtitle": "英语学习进度",
     "writing": "写作",
     "speaking": "口语",
@@ -499,7 +499,9 @@
     "totalLearners": "学习者",
     "noResults": "未找到用户。",
     "prev": "上一页",
-    "next": "下一页"
+    "next": "下一页",
+    "vocabulary": "词汇",
+    "grammar": "语法"
   },
   "vocabulary": {
     "title": "词汇学习",

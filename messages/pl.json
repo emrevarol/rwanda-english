@@ -483,7 +483,7 @@
     },
     "shareProgress": "Udostępnij Postępy",
     "shareYourProgress": "Udostępnij Swoje Postępy",
-    "shareText": "{name} jest na poziomie {level} w english.cash! Pisanie: {writing}/9 · Mówienie: {speaking}% · Słuchanie: {listening}%",
+    "shareText": "{name} jest na poziomie {level} w english.cash! Pisanie: {writing}/10 · Mówienie: {speaking}/10 · Słuchanie: {listening}/10 · Słownictwo: {vocabulary}/10 · Gramatyka: {grammar}/10",
     "shareCardSubtitle": "Postępy w Nauce Angielskiego",
     "writing": "Pisanie",
     "speaking": "Mówienie",
@@ -499,7 +499,9 @@
     "totalLearners": "uczniów",
     "noResults": "Nie znaleziono użytkowników.",
     "prev": "Poprzedni",
-    "next": "Następny"
+    "next": "Następny",
+    "vocabulary": "Słownictwo",
+    "grammar": "Gramatyka"
   },
   "vocabulary": {
     "title": "Budowanie Słownictwa",

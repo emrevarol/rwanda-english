@@ -483,7 +483,7 @@
     },
     "shareProgress": "İlerlemeyi Paylaş",
     "shareYourProgress": "İlerlemenizi Paylaşın",
-    "shareText": "{name} english.cash'da {level} seviyesinde! Yazma: {writing}/9 · Konuşma: {speaking}% · Dinleme: {listening}%",
+    "shareText": "{name} english.cash'da {level} seviyesinde! Yazma: {writing}/10 · Konuşma: {speaking}/10 · Dinleme: {listening}/10 · Kelime: {vocabulary}/10 · Gramer: {grammar}/10",
     "shareCardSubtitle": "İngilizce Öğrenme İlerlemesi",
     "writing": "Yazma",
     "speaking": "Konuşma",
@@ -499,7 +499,9 @@
     "totalLearners": "öğrenci",
     "noResults": "Kullanıcı bulunamadı.",
     "prev": "Önceki",
-    "next": "Sonraki"
+    "next": "Sonraki",
+    "vocabulary": "Kelime",
+    "grammar": "Gramer"
   },
   "vocabulary": {
     "title": "Kelime Hazinesi",

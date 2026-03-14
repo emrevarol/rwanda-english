@@ -483,7 +483,7 @@
     },
     "shareProgress": "प्रगति साझा करें",
     "shareYourProgress": "अपनी प्रगति साझा करें",
-    "shareText": "{name} english.cash पर {level} स्तर पर है! लेखन: {writing}/9 · बोलना: {speaking}% · सुनना: {listening}%",
+    "shareText": "{name} english.cash पर {level} स्तर पर है! लेखन: {writing}/10 · बोलना: {speaking}/10 · सुनना: {listening}/10 · शब्दावली: {vocabulary}/10 · व्याकरण: {grammar}/10",
     "shareCardSubtitle": "अंग्रेज़ी सीखने की प्रगति",
     "writing": "लेखन",
     "speaking": "बोलना",
@@ -499,7 +499,9 @@
     "totalLearners": "छात्र",
     "noResults": "कोई उपयोगकर्ता नहीं मिला।",
     "prev": "पिछला",
-    "next": "अगला"
+    "next": "अगला",
+    "vocabulary": "शब्दावली",
+    "grammar": "व्याकरण"
   },
   "vocabulary": {
     "title": "शब्दावली निर्माता",

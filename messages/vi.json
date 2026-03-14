@@ -483,7 +483,7 @@
     },
     "shareProgress": "Chia sẻ tiến trình",
     "shareYourProgress": "Chia sẻ tiến trình của bạn",
-    "shareText": "{name} đang ở trình độ {level} trên english.cash! Viết: {writing}/9 · Nói: {speaking}% · Nghe: {listening}%",
+    "shareText": "{name} đang ở trình độ {level} trên english.cash! Viết: {writing}/10 · Nói: {speaking}/10 · Nghe: {listening}/10 · Từ vựng: {vocabulary}/10 · Ngữ pháp: {grammar}/10",
     "shareCardSubtitle": "Tiến trình học tiếng Anh",
     "writing": "Viết",
     "speaking": "Nói",
@@ -499,7 +499,9 @@
     "totalLearners": "học viên",
     "noResults": "Không tìm thấy người dùng.",
     "prev": "Trước",
-    "next": "Sau"
+    "next": "Sau",
+    "vocabulary": "Từ vựng",
+    "grammar": "Ngữ pháp"
   },
   "vocabulary": {
     "title": "Xây Dựng Từ Vựng",

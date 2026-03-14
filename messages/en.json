@@ -468,7 +468,7 @@
     },
     "shareProgress": "Share Progress",
     "shareYourProgress": "Share Your Progress",
-    "shareText": "{name} is at {level} level on english.cash! Writing: {writing}/9 · Speaking: {speaking}% · Listening: {listening}%",
+    "shareText": "{name} is at {level} level on english.cash! Writing: {writing}/10 · Speaking: {speaking}/10 · Listening: {listening}/10 · Vocabulary: {vocabulary}/10 · Grammar: {grammar}/10",
     "shareCardSubtitle": "English Learning Progress",
     "writing": "Writing",
     "speaking": "Speaking",
@@ -484,7 +484,9 @@
     "totalLearners": "learners",
     "noResults": "No users found.",
     "prev": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "vocabulary": "Vocabulary",
+    "grammar": "Grammar"
   },
   "pricing": {
     "title": "Simple Pricing",

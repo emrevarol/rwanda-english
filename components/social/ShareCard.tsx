@@ -12,22 +12,30 @@ interface Props {
 export default function ShareCard({ userName, userLevel, onClose }: Props) {
   const t = useTranslations('social')
   const cardRef = useRef<HTMLDivElement>(null)
-  const [stats, setStats] = useState({ avgWriting: 0, avgSpeaking: 0, avgListening: 0 })
+  const [stats, setStats] = useState({ writing: 0, speaking: 0, listening: 0, vocabulary: 0, grammar: 0 })
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     fetch('/api/dashboard')
       .then((r) => r.json())
-      .then((d) => setStats({ avgWriting: d.avgWriting, avgSpeaking: d.avgSpeaking, avgListening: d.avgListening }))
+      .then((d) => setStats({
+        writing: Math.round((d.avgWriting / 9) * 100) / 10,
+        speaking: Math.round(d.avgSpeaking * 10) / 10,
+        listening: Math.round(d.avgListening) / 10,
+        vocabulary: d.vocabAccuracy != null ? Math.round(d.vocabAccuracy) / 10 : 0,
+        grammar: d.avgGrammar != null ? Math.round((d.avgGrammar / 9) * 100) / 10 : 0,
+      }))
       .catch(() => {})
   }, [])
 
   const shareText = t('shareText', {
     name: userName,
     level: userLevel,
-    writing: stats.avgWriting,
-    speaking: stats.avgSpeaking,
-    listening: stats.avgListening,
+    writing: stats.writing,
+    speaking: stats.speaking,
+    listening: stats.listening,
+    vocabulary: stats.vocabulary,
+    grammar: stats.grammar,
   })
 
   const shareToWhatsApp = () => {
@@ -95,10 +103,12 @@ export default function ShareCard({ userName, userLevel, onClose }: Props) {
       ctx.fillText(userLevel, 300, 230)
 
       // Stats
-      ctx.font = '16px Inter, sans-serif'
+      ctx.font = '15px Inter, sans-serif'
       ctx.fillStyle = 'rgba(255,255,255,0.9)'
-      const statsLine = `Writing: ${stats.avgWriting} · Speaking: ${stats.avgSpeaking} · Listening: ${stats.avgListening}`
-      ctx.fillText(statsLine, 300, 290)
+      const statsLine1 = `Writing: ${stats.writing}/10 · Speaking: ${stats.speaking}/10 · Listening: ${stats.listening}/10`
+      const statsLine2 = `Vocabulary: ${stats.vocabulary}/10 · Grammar: ${stats.grammar}/10`
+      ctx.fillText(statsLine1, 300, 280)
+      ctx.fillText(statsLine2, 300, 305)
 
       // Footer
       ctx.font = '14px Inter, sans-serif'
@@ -127,19 +137,19 @@ export default function ShareCard({ userName, userLevel, onClose }: Props) {
         <div className="text-sm opacity-80 mb-1">english.cash</div>
         <div className="text-2xl font-bold mb-1">{userName}</div>
         <div className="text-4xl font-extrabold text-yellow-300 mb-3">{userLevel}</div>
-        <div className="flex justify-center gap-6 text-sm">
-          <div>
-            <div className="opacity-70">{t('writing')}</div>
-            <div className="font-bold text-lg">{stats.avgWriting}</div>
-          </div>
-          <div>
-            <div className="opacity-70">{t('speaking')}</div>
-            <div className="font-bold text-lg">{stats.avgSpeaking}</div>
-          </div>
-          <div>
-            <div className="opacity-70">{t('listening')}</div>
-            <div className="font-bold text-lg">{stats.avgListening}</div>
-          </div>
+        <div className="flex justify-center gap-4 text-sm flex-wrap">
+          {[
+            { label: t('writing'), value: stats.writing, color: '#93c5fd' },
+            { label: t('speaking'), value: stats.speaking, color: '#86efac' },
+            { label: t('listening'), value: stats.listening, color: '#c4b5fd' },
+            { label: t('vocabulary'), value: stats.vocabulary, color: '#fcd34d' },
+            { label: t('grammar'), value: stats.grammar, color: '#fda4af' },
+          ].map((s) => (
+            <div key={s.label}>
+              <div className="opacity-70">{s.label}</div>
+              <div className="font-bold text-lg" style={{ color: s.color }}>{s.value}/10</div>
+            </div>
+          ))}
         </div>
       </div>
 

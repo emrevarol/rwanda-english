@@ -483,7 +483,7 @@
     },
     "shareProgress": "Bagikan Kemajuan",
     "shareYourProgress": "Bagikan Kemajuan Anda",
-    "shareText": "{name} berada di level {level} di english.cash! Menulis: {writing}/9 · Berbicara: {speaking}% · Mendengarkan: {listening}%",
+    "shareText": "{name} berada di level {level} di english.cash! Menulis: {writing}/10 · Berbicara: {speaking}/10 · Mendengarkan: {listening}/10 · Kosakata: {vocabulary}/10 · Tata Bahasa: {grammar}/10",
     "shareCardSubtitle": "Kemajuan Belajar Bahasa Inggris",
     "writing": "Menulis",
     "speaking": "Berbicara",
@@ -499,7 +499,9 @@
     "totalLearners": "pelajar",
     "noResults": "Pengguna tidak ditemukan.",
     "prev": "Sebelumnya",
-    "next": "Selanjutnya"
+    "next": "Selanjutnya",
+    "vocabulary": "Kosakata",
+    "grammar": "Tata Bahasa"
   },
   "vocabulary": {
     "title": "Pembangun Kosakata",

@@ -483,7 +483,7 @@
     },
     "shareProgress": "مشاركة التقدم",
     "shareYourProgress": "شارك تقدمك",
-    "shareText": "{name} في مستوى {level} على english.cash! الكتابة: {writing}/9 · المحادثة: {speaking}% · الاستماع: {listening}%",
+    "shareText": "{name} في مستوى {level} على english.cash! الكتابة: {writing}/10 · المحادثة: {speaking}/10 · الاستماع: {listening}/10 · المفردات: {vocabulary}/10 · القواعد: {grammar}/10",
     "shareCardSubtitle": "تقدم تعلم الإنجليزية",
     "writing": "الكتابة",
     "speaking": "المحادثة",
@@ -499,7 +499,9 @@
     "totalLearners": "متعلمين",
     "noResults": "لم يتم العثور على مستخدمين.",
     "prev": "السابق",
-    "next": "التالي"
+    "next": "التالي",
+    "vocabulary": "المفردات",
+    "grammar": "القواعد"
   },
   "vocabulary": {
     "title": "بناء المفردات",

@@ -483,7 +483,7 @@
     },
     "shareProgress": "Compartir Progreso",
     "shareYourProgress": "Comparte Tu Progreso",
-    "shareText": "¡{name} está en el nivel {level} en english.cash! Escritura: {writing}/9 · Expresión Oral: {speaking}% · Comprensión Auditiva: {listening}%",
+    "shareText": "¡{name} está en el nivel {level} en english.cash! Escritura: {writing}/10 · Expresión Oral: {speaking}/10 · Comprensión Auditiva: {listening}/10 · Vocabulario: {vocabulary}/10 · Gramática: {grammar}/10",
     "shareCardSubtitle": "Progreso de Aprendizaje de Inglés",
     "writing": "Escritura",
     "speaking": "Expresión Oral",
@@ -499,7 +499,9 @@
     "totalLearners": "estudiantes",
     "noResults": "No se encontraron usuarios.",
     "prev": "Anterior",
-    "next": "Siguiente"
+    "next": "Siguiente",
+    "vocabulary": "Vocabulario",
+    "grammar": "Gramática"
   },
   "vocabulary": {
     "title": "Constructor de Vocabulario",

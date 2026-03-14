@@ -483,7 +483,7 @@
     },
     "shareProgress": "แชร์ความก้าวหน้า",
     "shareYourProgress": "แชร์ความก้าวหน้าของคุณ",
-    "shareText": "{name} อยู่ที่ระดับ {level} บน english.cash! การเขียน: {writing}/9 · การพูด: {speaking}% · การฟัง: {listening}%",
+    "shareText": "{name} อยู่ที่ระดับ {level} บน english.cash! การเขียน: {writing}/10 · การพูด: {speaking}/10 · การฟัง: {listening}/10 · คำศัพท์: {vocabulary}/10 · ไวยากรณ์: {grammar}/10",
     "shareCardSubtitle": "ความก้าวหน้าการเรียนภาษาอังกฤษ",
     "writing": "การเขียน",
     "speaking": "การพูด",
@@ -499,7 +499,9 @@
     "totalLearners": "ผู้เรียน",
     "noResults": "ไม่พบผู้ใช้",
     "prev": "ก่อนหน้า",
-    "next": "ถัดไป"
+    "next": "ถัดไป",
+    "vocabulary": "คำศัพท์",
+    "grammar": "ไวยากรณ์"
   },
   "vocabulary": {
     "title": "สร้างคำศัพท์",

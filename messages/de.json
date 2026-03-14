@@ -483,7 +483,7 @@
     },
     "shareProgress": "Fortschritt teilen",
     "shareYourProgress": "Ihren Fortschritt teilen",
-    "shareText": "{name} ist auf {level}-Niveau bei english.cash! Schreiben: {writing}/9 · Sprechen: {speaking}% · Hören: {listening}%",
+    "shareText": "{name} ist auf {level}-Niveau bei english.cash! Schreiben: {writing}/10 · Sprechen: {speaking}/10 · Hören: {listening}/10 · Wortschatz: {vocabulary}/10 · Grammatik: {grammar}/10",
     "shareCardSubtitle": "Englisch-Lernfortschritt",
     "writing": "Schreiben",
     "speaking": "Sprechen",
@@ -499,7 +499,9 @@
     "totalLearners": "Lernende",
     "noResults": "Keine Benutzer gefunden.",
     "prev": "Zurück",
-    "next": "Weiter"
+    "next": "Weiter",
+    "vocabulary": "Wortschatz",
+    "grammar": "Grammatik"
   },
   "vocabulary": {
     "title": "Vokabeltrainer",
