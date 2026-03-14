@@ -325,9 +325,6 @@ export default function DashboardPage() {
                 className="block bg-white/10 hover:bg-white/20 text-white text-sm px-4 py-3 rounded-lg transition-colors"
               >
                 📚 {t('vocabulary')}
-                {data && data.vocabTotal > 0 && (
-                  <span className="text-blue-200 text-xs ml-2">({data.vocabMastered}/{data.vocabTotal})</span>
-                )}
               </Link>
               <Link
                 href="/grammar"
