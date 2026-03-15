@@ -1,15 +1,11 @@
-'use client'
-
-import { useTranslations } from 'next-intl'
-import { useSession } from 'next-auth/react'
+import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import Navigation from '@/components/shared/Navigation'
+import AuthCTA from '@/components/shared/AuthCTA'
 
-export default function HomePage() {
-  const t = useTranslations('landing')
-  const tc = useTranslations('nav')
-  const { data: session } = useSession()
-  const actionHref = session ? '/dashboard' : '/register'
+export default async function HomePage() {
+  const t = await getTranslations('landing')
+  const tc = await getTranslations('nav')
 
   const cefrLevels = [
     { level: 'A1', label: t('cefr.a1'), color: 'bg-red-100 text-red-700 border-red-200' },
@@ -32,78 +28,39 @@ export default function HomePage() {
           <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-yellow-200 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-30" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-4 py-2 rounded-full mb-6 border border-white/20">
-                <span>💰</span>
-                <span>{t('hero.badge')}</span>
-              </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-                {t('hero.titleBefore')}{' '}
-                <span className="text-yellow-300">{t('hero.titleHighlight')}</span>
-              </h1>
-              <p className="text-lg text-blue-100 mb-8 leading-relaxed max-w-lg">
-                {t('hero.subtitle')}
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href={actionHref}
-                  className="bg-yellow-400 text-blue-900 text-base font-bold px-7 py-3.5 rounded-xl hover:bg-yellow-300 transition-all shadow-lg"
-                >
-                  {t('hero.cta')}
-                </Link>
-                <Link
-                  href="/login"
-                  className="bg-white/10 border border-white/30 text-white text-base font-medium px-7 py-3.5 rounded-xl hover:bg-white/20 transition-all"
-                >
-                  {t('hero.login')}
-                </Link>
-              </div>
-              <div className="mt-10 flex items-center gap-6 text-sm text-blue-200">
-                <div className="flex items-center gap-2">
-                  <span className="text-yellow-300 font-bold text-lg">365</span>
-                  <span>{t('hero.dayProgram')}</span>
-                </div>
-                <div className="w-px h-6 bg-white/20" />
-                <div className="flex items-center gap-2">
-                  <span className="text-yellow-300 font-bold text-lg">30</span>
-                  <span>{t('hero.minDay')}</span>
-                </div>
-                <div className="w-px h-6 bg-white/20" />
-                <div className="flex items-center gap-2">
-                  <span className="text-yellow-300 font-bold text-lg">A1→C2</span>
-                  <span>CEFR</span>
-                </div>
-              </div>
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-4 py-2 rounded-full mb-6 border border-white/20">
+              <span>💰</span>
+              <span>{t('hero.badge')}</span>
             </div>
-
-            {/* Hero image */}
-            <div className="hidden lg:block relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 h-80">
-                <img
-                  src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=800&q=80"
-                  alt="People learning English"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = 'none'
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent" />
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+              {t('hero.titleBefore')}{' '}
+              <span className="text-yellow-300">{t('hero.titleHighlight')}</span>
+            </h1>
+            <p className="text-lg text-blue-100 mb-4 leading-relaxed max-w-lg">
+              {t('hero.subtitle')}
+            </p>
+            <p className="text-sm text-blue-200 mb-8">No credit card required.</p>
+            <div className="flex flex-wrap gap-4">
+              <AuthCTA
+                label={t('hero.cta')}
+                className="bg-yellow-400 text-blue-900 text-base font-bold px-7 py-3.5 rounded-xl hover:bg-yellow-300 transition-all shadow-lg"
+              />
+            </div>
+            <div className="mt-10 flex items-center gap-6 text-sm text-blue-200">
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-300 font-bold text-lg">365</span>
+                <span>{t('hero.dayProgram')}</span>
               </div>
-              {/* Floating stats card */}
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-xl p-4 flex items-center gap-3">
-                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-xl">🔥</div>
-                <div>
-                  <div className="text-xs text-gray-400">{t('hero.streakLabel')}</div>
-                  <div className="text-lg font-bold text-gray-800">{t('hero.streakDays')}</div>
-                </div>
+              <div className="w-px h-6 bg-white/20" />
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-300 font-bold text-lg">30</span>
+                <span>{t('hero.minDay')}</span>
               </div>
-              <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-xl p-4 flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-xl">📈</div>
-                <div>
-                  <div className="text-xs text-gray-400">{t('hero.levelUpLabel')}</div>
-                  <div className="text-lg font-bold text-gray-800">A2 → B1</div>
-                </div>
+              <div className="w-px h-6 bg-white/20" />
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-300 font-bold text-lg">A1→C2</span>
+                <span>CEFR</span>
               </div>
             </div>
           </div>
@@ -124,6 +81,12 @@ export default function HomePage() {
             <StepCard step="02" icon="🗓" title={t('howItWorks.step2Title')} description={t('howItWorks.step2Desc')} color="green" />
             <StepCard step="03" icon="📊" title={t('howItWorks.step3Title')} description={t('howItWorks.step3Desc')} color="purple" />
           </div>
+          <div className="text-center mt-8">
+            <AuthCTA
+              label={t('howItWorks.step1Title') + ' →'}
+              className="inline-block bg-blue-600 text-white text-sm font-medium px-6 py-3 rounded-xl hover:bg-blue-700 transition-colors"
+            />
+          </div>
         </div>
       </section>
 
@@ -139,33 +102,25 @@ export default function HomePage() {
               icon="✍️"
               title={t('features.writing.title')}
               description={t('features.writing.description')}
-              image="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80"
               color="blue"
-              href={actionHref}
             />
             <FeatureBig
               icon="🎧"
               title={t('features.listening.title')}
               description={t('features.listening.description')}
-              image="https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=600&q=80"
               color="purple"
-              href={actionHref}
             />
             <FeatureBig
               icon="🤖"
               title={t('features.tutor.title')}
               description={t('features.tutor.description')}
-              image="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=600&q=80"
               color="green"
-              href={actionHref}
             />
             <FeatureBig
               icon="🎙️"
               title={t('features.speaking.title')}
               description={t('features.speaking.description')}
-              image="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=600&q=80"
               color="orange"
-              href={actionHref}
             />
           </div>
         </div>
@@ -183,6 +138,12 @@ export default function HomePage() {
                 <div className="text-xs mt-1 font-medium">{l.label}</div>
               </div>
             ))}
+          </div>
+          <div className="mt-8">
+            <AuthCTA
+              label="Find Your Level — Free Test →"
+              className="inline-block bg-blue-600 text-white text-sm font-medium px-6 py-3 rounded-xl hover:bg-blue-700 transition-colors"
+            />
           </div>
         </div>
       </section>
@@ -207,9 +168,7 @@ export default function HomePage() {
                 <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.freeFeature2')}</li>
                 <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.freeFeature3')}</li>
               </ul>
-              <Link href={actionHref} className="w-full text-center bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
-                {t('pricing.freeBtn')}
-              </Link>
+              <AuthCTA label={t('pricing.freeBtn')} className="w-full text-center bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors block" />
             </div>
 
             {/* Daily */}
@@ -225,9 +184,7 @@ export default function HomePage() {
                 <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.dailyFeature2')}</li>
                 <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.dailyFeature3')}</li>
               </ul>
-              <Link href={actionHref} className="w-full text-center bg-blue-600 text-white py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors">
-                {t('pricing.dailyBtn')}
-              </Link>
+              <AuthCTA label={t('pricing.dailyBtn')} className="w-full text-center bg-blue-600 text-white py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors block" />
             </div>
 
             {/* Monthly — highlighted */}
@@ -246,12 +203,11 @@ export default function HomePage() {
                 <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.monthlyFeature2')}</li>
                 <li className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span>{t('pricing.monthlyFeature3')}</li>
               </ul>
-              <Link href={actionHref} className="w-full text-center bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-md">
-                {t('pricing.monthlyBtn')}
-              </Link>
+              <AuthCTA label={t('pricing.monthlyBtn')} className="w-full text-center bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-md block" />
             </div>
           </div>
-          <p className="text-center mt-6 text-sm text-green-600 font-medium">🎓 {t('pricing.studentDiscount')}</p>
+          <p className="text-center mt-4 text-xs text-gray-400">No credit card required for free trial. Cancel anytime.</p>
+          <p className="text-center mt-2 text-sm text-green-600 font-medium">🎓 {t('pricing.studentDiscount')}</p>
         </div>
       </section>
 
@@ -263,12 +219,10 @@ export default function HomePage() {
           <p className="text-blue-100 mb-8 text-lg">
             {t('cta.subtitle')}
           </p>
-          <Link
-            href={actionHref}
+          <AuthCTA
+            label={t('cta.button')}
             className="inline-block bg-yellow-400 text-blue-900 text-lg font-bold px-10 py-4 rounded-xl hover:bg-yellow-300 transition-all shadow-lg"
-          >
-            {t('cta.button')}
-          </Link>
+          />
         </div>
       </section>
 
@@ -296,9 +250,8 @@ function StepCard({ step, icon, title, description, color }: {
   )
 }
 
-function FeatureBig({ icon, title, description, image, color, href, comingSoonLabel }: {
-  icon: string; title: string; description: string; image: string
-  color: string; href: string; comingSoonLabel?: string
+function FeatureBig({ icon, title, description, color }: {
+  icon: string; title: string; description: string; color: string
 }) {
   const colors: Record<string, string> = {
     blue: 'from-blue-500 to-blue-700',
@@ -308,22 +261,8 @@ function FeatureBig({ icon, title, description, image, color, href, comingSoonLa
   }
   return (
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-      <div className={`relative h-40 bg-gradient-to-br ${colors[color]} overflow-hidden`}>
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover mix-blend-overlay opacity-40"
-          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-        />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-5xl">{icon}</span>
-        </div>
-        {comingSoonLabel && (
-          <div className="absolute top-3 right-3 bg-white/90 text-orange-600 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
-            <span className="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse"></span>
-            {comingSoonLabel}
-          </div>
-        )}
+      <div className={`h-32 bg-gradient-to-br ${colors[color]} flex items-center justify-center`}>
+        <span className="text-5xl">{icon}</span>
       </div>
       <div className="p-6">
         <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>

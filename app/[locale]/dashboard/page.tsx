@@ -6,8 +6,9 @@ import { useRouter } from 'next/navigation'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import Navigation from '@/components/shared/Navigation'
-import SkillsRadar from '@/components/dashboard/SkillsRadar'
-import ScoreChart from '@/components/dashboard/ScoreChart'
+import dynamic from 'next/dynamic'
+const SkillsRadar = dynamic(() => import('@/components/dashboard/SkillsRadar'), { ssr: false, loading: () => <div className="h-[280px] flex items-center justify-center text-gray-400 text-sm">Loading chart...</div> })
+const ScoreChart = dynamic(() => import('@/components/dashboard/ScoreChart'), { ssr: false, loading: () => <div className="h-[200px] flex items-center justify-center text-gray-400 text-sm">Loading chart...</div> })
 
 interface ActivityItem {
   id: string
