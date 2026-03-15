@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     template: '%s | english.cash',
   },
   description: 'AI-powered English learning platform. Master English in 365 days with personalized daily lessons. Writing, speaking, listening, grammar & vocabulary — all with AI feedback.',
+  verification: {
+    google: 'GIeQgwMg-wPBVMWt6lF7n-xMc5_rxHODVXL8v3sgu6Q',
+  },
   metadataBase: new URL('https://english.cash'),
   alternates: {
     canonical: '/',
