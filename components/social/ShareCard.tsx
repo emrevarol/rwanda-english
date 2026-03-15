@@ -49,8 +49,8 @@ export default function ShareCard({ userName, userLevel, onClose }: Props) {
   }
   const levelLabel = `${userLevel} (${levelNames[userLevel] || userLevel})`
 
-  // Rich formatted text for social media
-  const shareTextFormatted = `🎓 ${userName} — ${levelLabel} level on english.cash!\n\n📊 My scores:\n✍️ Writing: ${stats.writing}/10\n🗣️ Speaking: ${stats.speaking}/10\n👂 Listening: ${stats.listening}/10\n📚 Vocabulary: ${stats.vocabulary}/10\n📝 Grammar: ${stats.grammar}/10\n\n🚀 Learn English with AI — try it free!`
+  // Rich formatted text for social media (WhatsApp-safe emojis only — no multi-codepoint)
+  const shareTextFormatted = `${userName} - ${levelLabel} level on english.cash!\n\nMy scores:\n- Writing: ${stats.writing}/10\n- Speaking: ${stats.speaking}/10\n- Listening: ${stats.listening}/10\n- Vocabulary: ${stats.vocabulary}/10\n- Grammar: ${stats.grammar}/10\n\nLearn English with AI - try it free!`
 
   const siteUrl = typeof window !== 'undefined'
     ? `${window.location.origin}${referralCode ? `?ref=${referralCode}` : ''}`
@@ -69,7 +69,7 @@ export default function ShareCard({ userName, userLevel, onClose }: Props) {
 
   const shareToTwitter = () => {
     // Twitter/X has 280 char limit, use compact format
-    const tweetText = `🎓 I'm at ${levelLabel} level on english.cash!\n\n✍️ Writing ${stats.writing}/10\n🗣️ Speaking ${stats.speaking}/10\n👂 Listening ${stats.listening}/10\n📚 Vocabulary ${stats.vocabulary}/10\n📝 Grammar ${stats.grammar}/10\n\n🚀 Learn English with AI!`
+    const tweetText = `I'm at ${levelLabel} level on english.cash!\n\nWriting ${stats.writing}/10\nSpeaking ${stats.speaking}/10\nListening ${stats.listening}/10\nVocabulary ${stats.vocabulary}/10\nGrammar ${stats.grammar}/10\n\nLearn English with AI!`
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText + '\n\n' + siteUrl)}`
     window.open(url, '_blank', 'width=600,height=500')
   }
