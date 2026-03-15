@@ -15,6 +15,22 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: 'Invalid email format' }, { status: 400 })
+    }
+
+    // Password complexity: min 6 chars
+    if (password.length < 6) {
+      return NextResponse.json({ error: 'Password must be at least 6 characters' }, { status: 400 })
+    }
+
+    // Name length
+    if (name.trim().length < 2 || name.trim().length > 50) {
+      return NextResponse.json({ error: 'Name must be 2-50 characters' }, { status: 400 })
+    }
+
     const existing = await prisma.user.findUnique({ where: { email } })
     if (existing && existing.emailVerified) {
       return NextResponse.json({ error: 'Email already registered' }, { status: 400 })

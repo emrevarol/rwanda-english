@@ -24,19 +24,7 @@ export async function POST(req: NextRequest) {
       orderBy: { createdAt: 'desc' },
       take: 5,
     })
-    console.log('Verify OTP debug:', {
-      email,
-      codeReceived: code,
-      codeLength: code.length,
-      codeType: typeof code,
-      now: new Date().toISOString(),
-      allCodes: allCodes.map(c => ({
-        code: c.code,
-        used: c.used,
-        expiresAt: c.expiresAt.toISOString(),
-        expired: c.expiresAt < new Date(),
-      })),
-    })
+    // Debug log removed for security
 
     const otpRecord = await prisma.otpCode.findFirst({
       where: {

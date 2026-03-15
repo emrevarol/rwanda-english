@@ -30,7 +30,8 @@ export async function PATCH(req: NextRequest) {
   }
 
   if (typeof body.bio === 'string') {
-    data.bio = body.bio.slice(0, 160) || null
+    // Strip HTML tags to prevent XSS
+    data.bio = body.bio.replace(/<[^>]*>/g, '').slice(0, 160) || null
   }
 
   const user = await prisma.user.update({
